@@ -1,0 +1,104 @@
+
+<template>
+  <Layout :title="$page.people.name">
+    <v-container>
+      <v-row>
+        <v-col cols="6">
+          <h1 v-html="$page.people.name" class="title" />
+          <h2 v-html="$page.people.jobTitle" class="subtitle" />
+
+          <div v-html="marked($page.people.bio)" />
+          <span
+            class="pillar pr-1 grey--text subtitle-1"
+            v-for="pillar in $page.people.expertise"
+            :key="pillar.id"
+          >{{ pillar.title }}</span>
+        </v-col>
+        <v-col cols="6">
+          <img
+            v-if="$page.people.photo.url"
+            :src="`${$page.people.photo.url}?auto=compress&w=900&fit=fillmax`"
+            :alt="`Photo of ${$page.people.name}`"
+            style="max-width: 100%"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-item-group class="grey lighten-2" fluid>
+      <v-container v-if="$page.posts.belongsTo.edges">
+        <div class="subtitle">Recent Posts by {{$page.people.name}}</div>
+        <v-row class="mb-6">
+          <v-col cols="4" v-for="post in $page.posts.belongsTo.edges" :key="post.node.id">
+            <PostCardLarge :post="post.node" :key="post.node.id" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-item-group>
+  </Layout>
+</template>
+
+<page-query>
+
+  query Dato($id: String!)  {
+    people(id: $id) {
+      name
+      jobTitle
+      expertise {
+        title
+        id
+      }
+      photo {
+        url
+      }
+      bio
+      
+    }
+
+  posts: people(id: $id) {
+    belongsTo {
+      edges {
+        node {
+          ... on Posts {
+            id
+            categories {
+              title
+              id
+            }
+            authors {
+              name
+            }
+            title
+            slug
+            image {
+              url
+            }
+            publishDate
+          }
+        }
+      }
+    }
+  }
+}
+
+</page-query>
+<style lang="postcss">
+.pillar + .pillar:before {
+  content: "| ";
+}
+</style>
+<script>
+import Layout from "~/layouts/Default.vue";
+import PostCardLarge from "~/components/PostCardLarge.vue";
+
+export default {
+  components: {
+    Layout,
+    PostCardLarge
+  },
+  metaInfo() {
+    return {
+      title: this.$page.people.title
+    };
+  }
+};
+</script>
