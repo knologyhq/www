@@ -103,14 +103,13 @@
                     </v-col>
                   </v-row>
                   <input type="hidden" name="form-name" value="comments-queue" />
-                  <v-text-field
+                  <input
                     type="hidden"
                     name="path"
                     id="path"
-                    v-model="formData.path"
-                  >/article/${$page.posts.slug}</v-text-field>
-
-                  <v-text-field type="hidden" name="postId" id="postId">{{$page.posts.id}}</v-text-field>
+                    :value="`/article/${$page.posts.slug}`"
+                  />
+                  <input type="hidden" name="postId" id="postId" :value="$page.posts.id" />
                   <input
                     type="hidden"
                     name="action"

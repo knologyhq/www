@@ -63,7 +63,7 @@ gulp.task("check-init", function(done) {
       if (!err && response.statusCode === 200) {
         var body = JSON.parse(body);
         var approvedForm = body.filter(function(f) {
-          return f.name == "approved-comments";
+          return f.name == "comments-approved";
         });
         var initStatus = {
           environment: true,
