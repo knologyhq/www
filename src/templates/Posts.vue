@@ -63,6 +63,20 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="6" md="12">
+                <v-form ref="form" name="comments-queue" netlify="netlify">
+                  <v-row>
+                    <v-col cols="12" md="12">
+                      <v-textarea name="comment" outlined label="Leave your reply…" value></v-textarea>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-text-field name="first_name" outlined label="First Name" required></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-text-field name="last_name" outlined label="Last Name" required></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-form>
+
                 <div class="title mb-2">Join the Conversation</div>
 
                 <v-form ref="form" name="approved-comments" netlify="netlify">
