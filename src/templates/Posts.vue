@@ -65,7 +65,7 @@
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
 
-                <v-form ref="form" name="approved-comments" data-netlify="true" method="post">
+                <v-form ref="form" name="approved-comments" data-netlify="true" method="POST">
                   <v-row>
                     <v-col cols="12" md="12">
                       <v-textarea
@@ -95,7 +95,7 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-
+                  <v-text-field type="hidden" name="approved-comments" value="approved-comments" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
