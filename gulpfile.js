@@ -117,7 +117,7 @@ function saveInitStatus(initStatus) {
 /*
  Run our static site generator to build the pages
 */
-gulp.task("generate", shell.task("gridsome develop"));
+gulp.task("generate", shell.task("gridsome build"));
 
 /*
   Collect and stash comments for the build
