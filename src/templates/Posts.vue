@@ -68,6 +68,7 @@
                 <v-form
                   ref="form"
                   name="approved-comments"
+                  id="approved-comments"
                   data-netlify="true"
                   method="POST"
                   action="/about/mission/"
