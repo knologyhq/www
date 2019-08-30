@@ -111,6 +111,7 @@
                     id="path"
                     :value="`/article/${$page.posts.slug}`"
                   />
+                  <input type="hidden" name="action" id="action" value="?submitted" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
@@ -208,7 +209,7 @@ export default {
         body: this.encode({
           "form-name": e.target.getAttribute("name"),
           path: e.target.querySelector("#path").value,
-          action: e.target.querySelector("#path").value,
+          action: e.target.querySelector("#action").value,
           ...this.formData
         })
       })
