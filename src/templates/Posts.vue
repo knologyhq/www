@@ -71,6 +71,8 @@
                   data-netlify="true"
                   method="POST"
                   action="?submitted"
+                  v-on:submit.prevent="handleSubmit"
+                  data-netlify-honeypot="bot-field"
                 >
                   <v-row>
                     <v-col cols="12" md="12">
@@ -80,6 +82,7 @@
                         label="Leave your reply…"
                         required
                         value="test"
+                        v-model="formData.message"
                       ></v-textarea>
                     </v-col>
                     <v-col cols="12" md="6">
@@ -89,6 +92,7 @@
                         label="First Name"
                         required
                         value="test"
+                        v-model="formData.name"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
@@ -98,10 +102,11 @@
                         label="Last Name"
                         required
                         value="test"
+                        v-model="formData.name"
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                  <input type="hidden" name="approved-comments" value="approved-comments" />
+                  <input type="hidden" name="form-name" value="approved-comments" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
@@ -162,6 +167,7 @@ import Cta from "~/components/Cta.vue";
 export default {
   data() {
     return {
+      formData: {},
       cta: {
         buttonLink: "https://www.knology.org/donate",
         buttonText: "Donate",
@@ -182,6 +188,27 @@ export default {
     return {
       title: this.$page.posts.title
     };
+  },
+  methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        )
+        .join("&");
+    },
+    handleSubmit(e) {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: this.encode({
+          "form-name": e.target.getAttribute("approved-comments"),
+          ...this.formData
+        })
+      })
+        .then(() => this.$router.push("?submitted"))
+        .catch(error => alert(error));
+    }
   }
 };
 </script>
