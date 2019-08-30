@@ -2,9 +2,16 @@
   "name": "knology",
   "private": true,
   "scripts": {
-    "build": "netlify-lambda build src-functions && gridsome build",
-    "develop": "netlify-lambda serve src-functions && gridsome develop",
-    "explore": "gridsome explore"
+    "develop": "gulp build && yarn run build:functions && gridsome develop",
+    "explore": "gridsome explore",
+    "start": "yarn run build:local && yarn run watch",
+    "build": "gulp build && yarn run build:functions && gridsome build",
+    "gen": "gulp generate",
+    "gather": "gulp get:comments",
+    "build:local": "gulp build:local && yarn run build:functions",
+    "build:functions": "netlify-lambda build src/lambda",
+    "watch": "gulp watch & gulp serve",
+    "check": "gulp check-init"
   },
   "dependencies": {
     "axios": "^0.19.0",
