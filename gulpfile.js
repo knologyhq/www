@@ -119,14 +119,15 @@ gulp.task("get:comments", function(done) {
       var comments = {};
 
       // massage the data into the shape we want,
-      // and add a gravatar URL if possible
       for (var item in body) {
         var data = body[item].data;
 
         var comment = {
-          first_name: `${data.first_name} ${data.last_name}`,
+          first_name: data.first_name,
+          last_name: data.last_name,
           comment: "\n" + data.comment.trim(),
-          date: body[item].created_at
+          date: body[item].created_at,
+          path: data.path
         };
 
         // Add it to an existing array or create a new one
