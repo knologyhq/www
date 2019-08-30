@@ -71,7 +71,6 @@
                   id="comments-queue"
                   data-netlify="true"
                   method="POST"
-                  action="/about/mission/"
                   v-on:submit.prevent="handleSubmit"
                 >
                   <v-row>

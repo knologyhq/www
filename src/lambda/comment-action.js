@@ -29,7 +29,6 @@ export function handler(event, context, callback) {
   var payload = JSON.parse(unescape(body));
   var method = payload.actions[0].name;
   var id = payload.actions[0].value;
-  console.log(body, payload, method, id);
 
   if (method == "delete") {
     purgeComment(id);
@@ -53,10 +52,10 @@ export function handler(event, context, callback) {
           "form-name": "approved-comments",
           path: data.path,
           postId: data.postId,
-          received: new Date().toString(),
-          last_name: data.last_name,
-          first_name: data.first_name,
-          comment: data.comment
+          received: new Date().toString()
+          // last_name: data.last_name,
+          // first_name: data.first_name,
+          // comment: data.comment
         };
         var approvedURL = process.env.URL;
 
