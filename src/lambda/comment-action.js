@@ -61,15 +61,14 @@ export function handler(event, context, callback) {
         var approvedURL = process.env.URL;
 
         console.log("Posting to", approvedURL);
-        console.log(payload);
 
-        // post the comment to the approved lost
         request.post({ url: approvedURL, formData: payload }, function(
           err,
           httpResponse,
           body
         ) {
           var msg;
+          console.log(payload);
           if (err) {
             msg = "Post to approved comments failed:" + err;
             console.log(msg);
