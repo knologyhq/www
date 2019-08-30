@@ -65,7 +65,7 @@
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
 
-                <v-form ref="form" method="POST" name="approved-comments" netlify>
+                <v-form ref="form" method="POST" name="approved-comments" netlify="netlify">
                   <v-row>
                     <v-col cols="12" md="12">
                       <v-textarea name="comment" outlined label="Leave your reply…" value></v-textarea>
