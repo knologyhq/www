@@ -70,7 +70,7 @@
                   name="approved-comments"
                   data-netlify="true"
                   method="POST"
-                  :action="`${$page.posts.slug}?submitted`"
+                  action="?submitted"
                 >
                   <v-row>
                     <v-col cols="12" md="12">
@@ -101,7 +101,7 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                  <v-text-field type="hidden" name="approved-comments" value="approved-comments" />
+                  <input type="hidden" name="approved-comments" value="approved-comments" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
