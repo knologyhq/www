@@ -72,7 +72,6 @@
                   method="POST"
                   action="?submitted"
                   v-on:submit.prevent="handleSubmit"
-                  data-netlify-honeypot="bot-field"
                 >
                   <v-row>
                     <v-col cols="12" md="12">
@@ -81,8 +80,7 @@
                         outlined
                         label="Leave your reply…"
                         required
-                        value="test"
-                        v-model="formData.message"
+                        v-model="formData.comment"
                       ></v-textarea>
                     </v-col>
                     <v-col cols="12" md="6">
@@ -91,8 +89,7 @@
                         outlined
                         label="First Name"
                         required
-                        value="test"
-                        v-model="formData.name"
+                        v-model="formData.first_name"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
@@ -102,7 +99,7 @@
                         label="Last Name"
                         required
                         value="test"
-                        v-model="formData.name"
+                        v-model="formData.last_name"
                       ></v-text-field>
                     </v-col>
                   </v-row>
