@@ -105,6 +105,7 @@
                     </v-col>
                   </v-row>
                   <input type="hidden" name="form-name" value="comments-queue" />
+                  <input type="hidden" name="path" id="path" :value="$page.posts.slug" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
