@@ -111,6 +111,7 @@
                     id="path"
                     :value="`/article/${$page.posts.slug}`"
                   />
+                  <input type="hidden" name="postId" id="postId" :value="$page.posts.id" />
                   <input type="hidden" name="action" id="action" value="?submitted" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
@@ -135,6 +136,7 @@
 
 query Dato($id: String!)  {
   posts(id: $id) {
+    id
     title
     body
     categories {
@@ -209,6 +211,7 @@ export default {
         body: this.encode({
           "form-name": e.target.getAttribute("name"),
           path: e.target.querySelector("#path").value,
+          postId: e.target.querySelector("#postId").value,
           ...this.formData
         })
       })
