@@ -34,20 +34,6 @@ gulp.task(
 );
 
 /*
-  Compile SCSS files to CSS
-*/
-gulp.task("scss", function() {
-  return gulp
-    .src(buildSrc + "/scss/main.scss")
-    .pipe(
-      sass({
-        outputStyle: "compressed"
-      }).on("error", sass.logError)
-    )
-    .pipe(gulp.dest(buildDest + "/css"));
-});
-
-/*
   simplest possible noddy js management
 */
 gulp.task("js", function() {
@@ -188,12 +174,9 @@ gulp.task("watch", function() {
   Let's build this sucker for production
 */
 
-gulp.task(
-  "build",
-  gulp.series("get:comments", "check-init", "generate", "scss", "js")
-);
+gulp.task("build", gulp.series("get:comments", "check-init", "generate", "js"));
 
 /*
   Let's build this for local development
 */
-gulp.task("build:local", gulp.series("generate", "scss", "js"));
+// gulp.task("build:local", gulp.series("generate", "scss", "js"));
