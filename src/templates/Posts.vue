@@ -207,6 +207,7 @@ export default {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
           "form-name": e.target.getAttribute("name"),
+          path: e.target.querySelector("#path").value,
           ...this.formData
         })
       })
