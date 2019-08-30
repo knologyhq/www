@@ -65,7 +65,13 @@
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
 
-                <v-form ref="form" name="approved-comments" data-netlify="true" method="POST">
+                <v-form
+                  ref="form"
+                  name="approved-comments"
+                  data-netlify="true"
+                  method="POST"
+                  :action="`${$page.posts.slug}?submitted`"
+                >
                   <v-row>
                     <v-col cols="12" md="12">
                       <v-textarea
