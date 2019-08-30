@@ -65,22 +65,34 @@
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
 
-                <v-form
-                  ref="form"
-                  name="approved-comments"
-                  netlify="netlify"
-                  method="POST"
-                  data-netlify="true"
-                >
+                <v-form ref="form" name="approved-comments" data-netlify="true" method="post">
                   <v-row>
                     <v-col cols="12" md="12">
-                      <v-textarea name="comment" outlined label="Leave your reply…" required></v-textarea>
+                      <v-textarea
+                        name="comment"
+                        outlined
+                        label="Leave your reply…"
+                        required
+                        value="test"
+                      ></v-textarea>
                     </v-col>
                     <v-col cols="12" md="6">
-                      <v-text-field name="first_name" outlined label="First Name" required></v-text-field>
+                      <v-text-field
+                        name="first_name"
+                        outlined
+                        label="First Name"
+                        required
+                        value="test"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
-                      <v-text-field name="last_name" outlined label="Last Name" required></v-text-field>
+                      <v-text-field
+                        name="last_name"
+                        outlined
+                        label="Last Name"
+                        required
+                        value="test"
+                      ></v-text-field>
                     </v-col>
                   </v-row>
 
