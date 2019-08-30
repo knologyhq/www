@@ -70,7 +70,7 @@
                   name="approved-comments"
                   data-netlify="true"
                   method="POST"
-                  action="?submitted"
+                  action="/about/mission/"
                   v-on:submit.prevent="handleSubmit"
                 >
                   <v-row>
@@ -203,7 +203,7 @@ export default {
           ...this.formData
         })
       })
-        .then(() => this.$router.push("?submitted"))
+        .then(() => this.$router.push("/about/mission/"))
         .catch(error => alert(error));
     }
   }
