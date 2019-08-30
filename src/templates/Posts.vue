@@ -71,14 +71,14 @@
                       <v-list-item class="grow">
                         <v-list-item-content>
                           <v-list-item-title
-                            v-html="`${comment.node.data.first_name} ${comment.node.data.last_name}`"
+                            v-html="`By ${comment.node.data.first_name} ${comment.node.data.last_name}`"
                           />
                         </v-list-item-content>
 
                         <v-row align="center" justify="end">
                           <span
                             class="subheading"
-                          >{{comment.node.created_at | moment("dddd, MMMM D, YYYY")}}</span>
+                          >On {{comment.node.created_at | moment("dddd, MMMM D, YYYY")}}</span>
                         </v-row>
                       </v-list-item>
                     </v-card-actions>
@@ -89,7 +89,6 @@
             <v-row no-gutters>
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
-
                 <v-form
                   ref="form"
                   name="comments-queue"
