@@ -5,8 +5,27 @@
       <v-row>
         <v-col cols="6">
           <h1 v-html="$page.people.name" class="title" />
-          <h2 v-html="$page.people.jobTitle" class="subtitle" />
-
+          <h2 v-html="$page.people.jobTitle" class="subtitle text-uppercase" />
+          <h2 v-html="$page.people.education" class="subtitle font-italic font-weight-regular" />
+          <v-row>
+            <v-col>
+              <v-btn
+                v-if="$page.people.email"
+                x-large
+                color="orange"
+                class="mr-3"
+                elevation="0"
+                :href="`mailto:${$page.people.email}`"
+              >Email</v-btn>
+              <v-btn
+                v-if="$page.people.website"
+                x-large
+                color="orange"
+                elevation="0"
+                :href="$page.people.website"
+              >Website</v-btn>
+            </v-col>
+          </v-row>
           <div v-html="marked($page.people.bio)" />
           <span
             class="pillar pr-1 grey--text subtitle-1"
@@ -25,7 +44,7 @@
       </v-row>
     </v-container>
     <v-item-group class="grey lighten-2" fluid>
-      <v-container v-if="$page.posts.belongsTo.edges">
+      <v-container v-if="$page.posts.belongsTo.edges[0]">
         <div class="subtitle">Recent Posts by {{$page.people.name}}</div>
         <v-row class="mb-6">
           <v-col cols="4" v-for="post in $page.posts.belongsTo.edges" :key="post.node.id">
@@ -43,6 +62,9 @@
     people(id: $id) {
       name
       jobTitle
+      education
+      email
+      website
       expertise {
         title
         id
