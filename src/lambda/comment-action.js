@@ -4,7 +4,6 @@ var request = require("request");
 
 // populate environment variables locally.
 require("dotenv").config();
-console.log("Slack hit the function!");
 /*
   delete this submission via the api
 */
@@ -49,11 +48,12 @@ export function handler(event, context, callback) {
 
         // now we have the data, let's massage it and post it to the approved form
         var payload = {
-          path: data.path,
-          received: new Date().toString(),
-          last_name: data.last_name,
-          first_name: data.first_name,
-          comment: data.comment
+          "form-name": "approved-comments",
+          "path": data.path,
+          "received": new Date().toString(),
+          "last_name": data.last_name,
+          "first_name": data.first_name,
+          "comment": data.comment
         };
         var approvedURL = process.env.URL;
 
