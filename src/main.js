@@ -1,6 +1,7 @@
 import DefaultLayout from "~/layouts/Default.vue";
 
 import Vuetify from "vuetify";
+import VueMoment from "vue-moment";
 import "vuetify/dist/vuetify.min.css";
 
 export default function(Vue, { head, appOptions }) {
@@ -10,6 +11,8 @@ export default function(Vue, { head, appOptions }) {
     }
   }; //opts includes, vuetify themes, icons, etc.
   Vue.use(Vuetify);
+  Vue.use(VueMoment);
+
   appOptions.vuetify = new Vuetify(opts);
 
   var marked = require("marked");

@@ -59,6 +59,31 @@
             <v-row>
               <v-col cols="6" md="12">
                 <div class="title">Comments</div>
+                <span
+                  cols="8"
+                  v-for="comment in $page.comments.belongsTo.edges"
+                  :key="comment.node.id"
+                >
+                  <v-card class="mx-auto mb-4" light flat tile>
+                    <v-card-text class="body-1" v-html="comment.node.data.comment" />
+
+                    <v-card-actions>
+                      <v-list-item class="grow">
+                        <v-list-item-content>
+                          <v-list-item-title
+                            v-html="`${comment.node.data.first_name} ${comment.node.data.last_name}`"
+                          />
+                        </v-list-item-content>
+
+                        <v-row align="center" justify="end">
+                          <span
+                            class="subheading"
+                          >{{comment.node.created_at | moment("dddd, MMMM D, YYYY")}}</span>
+                        </v-row>
+                      </v-list-item>
+                    </v-card-actions>
+                  </v-card>
+                </span>
               </v-col>
             </v-row>
             <v-row no-gutters>
@@ -146,6 +171,25 @@
 <page-query>
 
 query Dato($id: String!)  {
+
+  comments: posts(id: $id) {
+    belongsTo(filter: {typeName: {eq: Comments}}) {
+      edges {
+        node {
+          ...on Comments {
+            created_at
+            data {
+              first_name
+              last_name
+              comment
+            }
+          }
+        }
+      }
+    }
+  }
+
+
   posts(id: $id) {
     id
     title

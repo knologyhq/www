@@ -78,7 +78,7 @@ module.exports = function(api) {
     posts.addReference("initiativeList", "Initiatives");
     people.addReference("initiativeList", "Initiatives");
     pillars.addReference("initiativeList", "Initiatives");
-    comments.addReference("postList", "Posts");
+    comments.addReference("post", "Posts");
 
     const datoPages = await axios({
       method: "POST",
@@ -260,8 +260,12 @@ module.exports = function(api) {
 
     const netlifyComments = await axios.get(netlifyFormsUrl).then(response => {
       for (const item of response.data) {
+        // create reference to parent post
+        let post = item.data.postId;
+
         comments.addNode({
-          ...item
+          ...item,
+          post: post
         });
       }
     });
