@@ -124,13 +124,8 @@ gulp.task("get:comments", function(done) {
         var data = body[item].data;
 
         var comment = {
-          name: data.name,
-          avatar: gravatar.url(
-            data.email,
-            { s: "100", r: "x", d: "retro" },
-            true
-          ),
-          comment: "\n" + data.comment.trim(), // add a newline before the markdown so that 11ty can spot the markdown and interpret it.
+          first_name: `${data.first_name} ${data.last_name}`,
+          comment: "\n" + data.comment.trim(),
           date: body[item].created_at
         };
 

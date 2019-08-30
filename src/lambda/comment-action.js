@@ -1,18 +1,17 @@
-'use strict';
+"use strict";
 
 var request = require("request");
 
 // populate environment variables locally.
-require('dotenv').config()
-
+require("dotenv").config();
 
 /*
   delete this submission via the api
 */
 function purgeComment(id) {
   var url = `https://api.netlify.com/api/v1/submissions/${id}?access_token=${process.env.API_AUTH}`;
-  request.delete(url, function(err, response, body){
-    if(err){
+  request.delete(url, function(err, response, body) {
+    if (err) {
       return console.log(err);
     } else {
       return console.log("Comment deleted from queue.");
@@ -20,44 +19,39 @@ function purgeComment(id) {
   });
 }
 
-
 /*
   Handle the lambda invocation
 */
 export function handler(event, context, callback) {
-
   // parse the payload
   var body = event.body.split("payload=")[1];
   var payload = JSON.parse(unescape(body));
-  var method = payload.actions[0].name
-  var id = payload.actions[0].value
+  var method = payload.actions[0].name;
+  var id = payload.actions[0].value;
 
-  if(method == "delete") {
+  if (method == "delete") {
     purgeComment(id);
     callback(null, {
       statusCode: 200,
       body: "Comment deleted"
     });
-  } else if (method == "approve"){
-
+  } else if (method == "approve") {
     // get the comment data from the queue
     var url = `https://api.netlify.com/api/v1/submissions/${id}?access_token=${process.env.API_AUTH}`;
 
-    console.log()
+    console.log();
 
-
-    request(url, function(err, response, body){
-      if(!err && response.statusCode === 200){
+    request(url, function(err, response, body) {
+      if (!err && response.statusCode === 200) {
         var data = JSON.parse(body).data;
 
         // now we have the data, let's massage it and post it to the approved form
         var payload = {
-          'form-name' : "approved-comments",
-          'path': data.path,
-          'received': new Date().toString(),
-          'email': data.email,
-          'name': data.name,
-          'comment': data.comment
+          path: data.path,
+          received: new Date().toString(),
+          last_name: data.last_name,
+          first_name: data.first_name,
+          comment: data.comment
         };
         var approvedURL = process.env.URL;
 
@@ -65,13 +59,17 @@ export function handler(event, context, callback) {
         console.log(payload);
 
         // post the comment to the approved lost
-        request.post({'url':approvedURL, 'formData': payload }, function(err, httpResponse, body) {
+        request.post({ url: approvedURL, formData: payload }, function(
+          err,
+          httpResponse,
+          body
+        ) {
           var msg;
           if (err) {
-            msg = 'Post to approved comments failed:' + err;
+            msg = "Post to approved comments failed:" + err;
             console.log(msg);
           } else {
-            msg = 'Post to approved comments list successful.'
+            msg = "Post to approved comments list successful.";
             console.log(msg);
             purgeComment(id);
           }
@@ -79,11 +77,10 @@ export function handler(event, context, callback) {
           callback(null, {
             statusCode: 200,
             body: msg
-          })
+          });
           return console.log(msg);
         });
       }
     });
-
   }
 }
