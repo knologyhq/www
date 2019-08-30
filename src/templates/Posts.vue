@@ -208,6 +208,7 @@ export default {
         body: this.encode({
           "form-name": e.target.getAttribute("name"),
           path: e.target.querySelector("#path").value,
+          action: e.target.querySelector("#path").value,
           ...this.formData
         })
       })

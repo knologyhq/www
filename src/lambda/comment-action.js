@@ -4,7 +4,7 @@ var request = require("request");
 
 // populate environment variables locally.
 require("dotenv").config();
-
+console.log("Slack hit the function!");
 /*
   delete this submission via the api
 */
@@ -23,6 +23,8 @@ function purgeComment(id) {
   Handle the lambda invocation
 */
 export function handler(event, context, callback) {
+  console.log("Slack got inside the handler!");
+
   // parse the payload
   var body = event.body.split("payload=")[1];
   var payload = JSON.parse(unescape(body));
