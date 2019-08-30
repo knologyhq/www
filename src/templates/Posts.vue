@@ -199,12 +199,21 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
-          "form-name": e.target.getAttribute("approved-comments"),
+          "form-name": form.getAttribute("name"),
           ...this.formData
         })
       })
-        .then(() => this.$router.push("/about/mission/"))
-        .catch(error => alert(error));
+        .then(response => {
+          console.log("====================================");
+          console.log(`${JSON.stringify(response, null, 2)}`);
+          console.log("====================================");
+          navigate(form.getAttribute("action"));
+        })
+        .catch(error => {
+          console.log("====================================");
+          console.log(`error in submiting the form data:${error}`);
+          console.log("====================================");
+        });
     }
   }
 };
