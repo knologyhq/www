@@ -107,9 +107,16 @@
                     type="hidden"
                     name="path"
                     id="path"
+                    label="path"
                     :value="`/article/${$page.posts.slug}`"
                   />
-                  <input type="hidden" name="postId" id="postId" :value="$page.posts.id" />
+                  <input
+                    type="hidden"
+                    name="postId"
+                    label="postId"
+                    id="postId"
+                    :value="$page.posts.id"
+                  />
                   <input
                     type="hidden"
                     name="action"
