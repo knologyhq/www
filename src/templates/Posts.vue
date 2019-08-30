@@ -67,8 +67,8 @@
 
                 <v-form
                   ref="form"
-                  name="approved-comments"
-                  id="approved-comments"
+                  name="comments-queue"
+                  id="comments-queue"
                   data-netlify="true"
                   method="POST"
                   action="/about/mission/"
@@ -104,7 +104,7 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                  <input type="hidden" name="form-name" value="approved-comments" />
+                  <input type="hidden" name="form-name" value="comments-queue" />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
