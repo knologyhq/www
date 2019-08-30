@@ -1,6 +1,7 @@
 "use strict";
 
 var request = require("request");
+console.log(request);
 
 // populate environment variables locally.
 require("dotenv").config();
@@ -23,12 +24,12 @@ function purgeComment(id) {
 */
 export function handler(event, context, callback) {
   console.log("Slack got inside the handler!");
-
   // parse the payload
   var body = event.body.split("payload=")[1];
   var payload = JSON.parse(unescape(body));
   var method = payload.actions[0].name;
   var id = payload.actions[0].value;
+  console.log(body, payload, method, id);
 
   if (method == "delete") {
     purgeComment(id);
@@ -49,11 +50,11 @@ export function handler(event, context, callback) {
         // now we have the data, let's massage it and post it to the approved form
         var payload = {
           "form-name": "approved-comments",
-          "path": data.path,
-          "received": new Date().toString(),
-          "last_name": data.last_name,
-          "first_name": data.first_name,
-          "comment": data.comment
+          path: data.path,
+          received: new Date().toString(),
+          last_name: data.last_name,
+          first_name: data.first_name,
+          comment: data.comment
         };
         var approvedURL = process.env.URL;
 
