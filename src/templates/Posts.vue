@@ -209,7 +209,6 @@ export default {
         body: this.encode({
           "form-name": e.target.getAttribute("name"),
           path: e.target.querySelector("#path").value,
-          action: e.target.querySelector("#action").value,
           ...this.formData
         })
       })
@@ -217,6 +216,7 @@ export default {
           console.log("====================================");
           console.log(`${JSON.stringify(response, null, 2)}`);
           console.log("====================================");
+          navigate(e.target.querySelector("#action").value);
         })
         .catch(error => {
           console.log("====================================");
