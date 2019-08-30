@@ -101,63 +101,8 @@ function saveInitStatus(initStatus) {
 }
 
 /*
- Run our static site generator to build the pages
-*/
-gulp.task("generate", shell.task("gridsome build"));
-
-/*
   Collect and stash comments for the build
 */
-gulp.task("get:comments", function(done) {
-  // set up our request with appropriate auth token and Form ID
-  var url = `https://api.netlify.com/api/v1/forms/${process.env.APPROVED_COMMENTS_FORM_ID}/submissions/?access_token=${process.env.API_AUTH}`;
-
-  // Go and get the data from Netlify's submissions API
-  request(url, function(err, response, body) {
-    if (!err && response.statusCode === 200) {
-      var body = JSON.parse(body);
-      var comments = {};
-
-      // massage the data into the shape we want,
-      for (var item in body) {
-        var data = body[item].data;
-
-        var comment = {
-          first_name: data.first_name,
-          last_name: data.last_name,
-          comment: "\n" + data.comment.trim(),
-          date: body[item].created_at,
-          path: data.path
-        };
-
-        // Add it to an existing array or create a new one
-        if (comments[data.path]) {
-          comments[data.path].push(comment);
-        } else {
-          comments[data.path] = [comment];
-        }
-      }
-
-      // write our data to a file where our site generator can get it.
-      fs.writeFile(
-        buildSrc + "/site/_data/comments.json",
-        JSON.stringify(comments, null, 2),
-        function(err) {
-          if (err) {
-            console.log(err);
-            done();
-          } else {
-            console.log("Comments data saved.");
-            done();
-          }
-        }
-      );
-    } else {
-      console.log("Couldn't get comments from Netlify");
-      done();
-    }
-  });
-});
 
 /*
   Watch src folder for changes
@@ -170,7 +115,7 @@ gulp.task("watch", function() {
   Let's build this sucker for production
 */
 
-gulp.task("build", gulp.series("get:comments", "check-init", "generate", "js"));
+gulp.task("build", gulp.series("check-init", "js"));
 
 /*
   Let's build this for local development

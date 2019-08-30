@@ -1,6 +1,6 @@
 const axios = require("axios");
 const nodeExternals = require("webpack-node-externals");
-
+const netlifyFormsUrl = `https://api.netlify.com/api/v1/forms/${process.env.APPROVED_COMMENTS_FORM_ID}/submissions/?access_token=${process.env.API_AUTH}`;
 module.exports = function(api) {
   api.chainWebpack((config, { isServer }) => {
     if (isServer) {
@@ -71,10 +71,14 @@ module.exports = function(api) {
       typeName: "Pillars",
       route: "category/:slug"
     });
+    const comments = store.addContentType({
+      typeName: "Comments"
+    });
     posts.addReference("peopleList", "People");
     posts.addReference("initiativeList", "Initiatives");
     people.addReference("initiativeList", "Initiatives");
     pillars.addReference("initiativeList", "Initiatives");
+    comments.addReference("postList", "Posts");
 
     const datoPages = await axios({
       method: "POST",
@@ -252,6 +256,16 @@ module.exports = function(api) {
       community.addNode({
         ...result.data.data.community
       });
+    });
+
+    const netlifyComments = await axios.get(netlifyFormsUrl).then(response => {
+      console.log(response);
+      for (const item of response.data) {
+        console.log("hello");
+        comments.addNode({
+          ...item
+        });
+      }
     });
 
     const dato = await axios({
