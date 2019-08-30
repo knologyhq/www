@@ -99,7 +99,6 @@
                         outlined
                         label="Last Name"
                         required
-                        value="test"
                         v-model="formData.last_name"
                       ></v-text-field>
                     </v-col>
@@ -112,7 +111,13 @@
                     :value="`/article/${$page.posts.slug}`"
                   />
                   <input type="hidden" name="postId" id="postId" :value="$page.posts.id" />
-                  <input type="hidden" name="action" id="action" value="?submitted" />
+                  <input
+                    type="hidden"
+                    name="action"
+                    id="action"
+                    value="?submitted"
+                    v-model="formData.action"
+                  />
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
@@ -219,7 +224,6 @@ export default {
           console.log("====================================");
           console.log(`${JSON.stringify(response, null, 2)}`);
           console.log("====================================");
-          navigate(e.target.querySelector("#action").value);
         })
         .catch(error => {
           console.log("====================================");

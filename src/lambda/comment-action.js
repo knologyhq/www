@@ -46,6 +46,7 @@ export function handler(event, context, callback) {
     request(url, function(err, response, body) {
       if (!err && response.statusCode === 200) {
         var data = JSON.parse(body).data;
+        console.log(data);
 
         // now we have the data, let's massage it and post it to the approved form
         var payload = {

@@ -259,9 +259,7 @@ module.exports = function(api) {
     });
 
     const netlifyComments = await axios.get(netlifyFormsUrl).then(response => {
-      console.log(response);
       for (const item of response.data) {
-        console.log("hello");
         comments.addNode({
           ...item
         });
