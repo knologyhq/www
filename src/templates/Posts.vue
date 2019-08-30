@@ -215,7 +215,6 @@ export default {
           console.log("====================================");
           console.log(`${JSON.stringify(response, null, 2)}`);
           console.log("====================================");
-          navigate(e.target.getAttribute("action"));
         })
         .catch(error => {
           console.log("====================================");
