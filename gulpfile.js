@@ -67,7 +67,7 @@ gulp.task("check-init", function(done) {
         });
         var initStatus = {
           environment: true,
-          // approved_form_id: approvedForm[0].id,
+          approved_form_id: approvedForm[0].id,
           rootURL: process.env.URL,
           siteName: siteDomain.replace(".netlify.com", "")
         };

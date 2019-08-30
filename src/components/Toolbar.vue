@@ -31,9 +31,15 @@
                     class="pa-3 ma-0"
                     :color="`${pillar.node.colour ? pillar.node.colour.hex : 'light-blue'}`"
                   >
-                    <v-subheader v-html="pillar.node.title" :to="`/category/${pillar.node.slug}`" />
                     <v-list color="transparent">
                       <v-list-item-group>
+                        <v-list-item :to="`/category/${pillar.node.slug}`">
+                          <v-list-item-content>
+                            <v-list-item-title
+                              class="white--text font-weight-bold"
+                            >{{pillar.node.title}}</v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
                         <v-list-item
                           :to="`/initiative/${initiative.slug}`"
                           v-for="initiative in pillar.node.initiative"
@@ -82,7 +88,7 @@
 
 <static-query>
 query  {
-  pillars: allPillars {
+  pillars: allPillars(sortBy: "position", order: ASC) {
     edges {
       node {
         title

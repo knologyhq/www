@@ -93,7 +93,8 @@
         }
       }
     }
-    allPillars {
+      allPillars(sortBy: "position", order: ASC) {
+
       edges {
         node {
           title

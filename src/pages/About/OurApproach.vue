@@ -32,7 +32,7 @@
           <div v-html="marked(pillar.node.description)" />
           <v-btn
             :color="`${pillar.node.colour ? pillar.node.colour.hex : 'orange' }`"
-            to="#main"
+            :to="`/category/${pillar.node.slug}`"
             class="white--text"
           >Read More →</v-btn>
         </v-col>
@@ -73,7 +73,7 @@
       }
     }
   }
-  pillars: allPillars {
+  pillars: allPillars(sortBy: "position", order: ASC) {
       edges {
         node {
           title
