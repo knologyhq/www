@@ -200,7 +200,7 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
-          "form-name": form.getAttribute("name"),
+          "form-name": e.target.getAttribute("name"),
           ...this.formData
         })
       })
@@ -208,7 +208,7 @@ export default {
           console.log("====================================");
           console.log(`${JSON.stringify(response, null, 2)}`);
           console.log("====================================");
-          navigate(form.getAttribute("action"));
+          navigate(e.target.getAttribute("action"));
         })
         .catch(error => {
           console.log("====================================");
