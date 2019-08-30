@@ -1,0 +1,5 @@
+[build]
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
+  NODE_ENV = "10.15.3"

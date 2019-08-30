@@ -11,6 +11,14 @@ function addStyleResource(rule) {
 
 module.exports = {
   siteName: "Knology",
+  devServer: {
+    proxy: {
+      "/.netlify": {
+        target: "http://localhost:9000",
+        pathRewrite: { "^/.netlify/functions": "" }
+      }
+    }
+  },
   plugins: [
     {
       use: "gridsome-source-google-sheets",

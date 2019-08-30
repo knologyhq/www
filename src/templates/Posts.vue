@@ -65,20 +65,20 @@
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
 
-                <v-form ref="form">
+                <v-form ref="form" method="POST" name="approved-comments" netlify>
                   <v-row>
                     <v-col cols="12" md="12">
-                      <v-textarea outlined name="input-7-4" label="Leave your reply…" value></v-textarea>
+                      <v-textarea name="comment" outlined label="Leave your reply…" value></v-textarea>
                     </v-col>
                     <v-col cols="12" md="6">
-                      <v-text-field outlined label="First Name" required></v-text-field>
+                      <v-text-field name="first_name" outlined label="First Name" required></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
-                      <v-text-field outlined label="Last Name" required></v-text-field>
+                      <v-text-field name="last_name" outlined label="Last Name" required></v-text-field>
                     </v-col>
                   </v-row>
 
-                  <v-btn color="success" class="mr-4" elevation="0">Submit</v-btn>
+                  <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
             </v-row>
