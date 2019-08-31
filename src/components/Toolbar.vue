@@ -79,6 +79,7 @@
       </v-btn>
       <v-btn rounded color="info" elevation="0" to="/donate">Donate</v-btn>
     </v-toolbar-items>
+    <SearchForm />
 
     <!-- <template v-if="$vuetify.breakpoint.smAndDown">
       <v-btn icon>Menu</v-btn>
@@ -116,7 +117,12 @@ query  {
 </static-query>
 
 <script>
+import SearchForm from "~/components/SearchForm.vue";
+
 export default {
+  components: {
+    SearchForm
+  },
   data() {
     return {
       drawer: null,

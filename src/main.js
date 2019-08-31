@@ -1,13 +1,14 @@
 import DefaultLayout from "~/layouts/Default.vue";
-
+import "@fortawesome/fontawesome-free/css/all.css"; // Ensure you are using css-loader
 import Vuetify from "vuetify";
 import VueMoment from "vue-moment";
+
 import "vuetify/dist/vuetify.min.css";
 
 export default function(Vue, { head, appOptions }) {
   const opts = {
     icons: {
-      iconfont: "mdiSvg"
+      iconfont: "fa"
     }
   }; //opts includes, vuetify themes, icons, etc.
   Vue.use(Vuetify);

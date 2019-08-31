@@ -124,6 +124,7 @@ import Logo from "~/components/Logo.vue";
 export default {
   data() {
     return {
+      searchMenu: null,
       drawer: null,
       col1Items: [
         { title: "About", to: "/about/mission" },

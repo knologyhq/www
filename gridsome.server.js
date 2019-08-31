@@ -267,7 +267,6 @@ module.exports = function(api) {
       for (const item of response.data) {
         // create reference to parent post
         let post = item.data.postId;
-        console.log(post);
         comments.addNode({
           ...item,
           post: post
