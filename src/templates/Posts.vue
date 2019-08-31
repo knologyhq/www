@@ -140,7 +140,7 @@
                     name="postId"
                     label="postId"
                     id="postId"
-                    :value="$page.posts.id"
+                    :value="$page.posts.postId"
                   />
                   <input
                     type="hidden"
@@ -173,7 +173,7 @@
 query Dato($id: String!)  {
 
   comments: posts(id: $id) {
-    id
+    postId: id
     belongsTo(filter: {typeName: {eq: Comments}}) {
       edges {
         node {
