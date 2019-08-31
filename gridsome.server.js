@@ -76,11 +76,10 @@ module.exports = function(api) {
     });
 
     posts.addReference("peopleList", "People");
-
     posts.addReference("initiativeList", "Initiatives");
-    people.addReference("initiativeList", "Initiatives");
-
     posts.addReference("pillarList", "Pillars");
+
+    people.addReference("initiativeList", "Initiatives");
     people.addReference("pillarList", "Pillars");
 
     pillars.addReference("initiativeList", "Initiatives");
@@ -268,7 +267,7 @@ module.exports = function(api) {
       for (const item of response.data) {
         // create reference to parent post
         let post = item.data.postId;
-
+        console.log(post);
         comments.addNode({
           ...item,
           post: post
@@ -296,7 +295,7 @@ module.exports = function(api) {
             body
             publishDate
             slug
-
+            id
           }
 
         query Collections {
@@ -463,7 +462,7 @@ module.exports = function(api) {
           return initiative.id;
         });
 
-        // create reference to initiatives
+        // create reference to categories
         let pillars = item.expertise;
         let pillarList = pillars.map(function(p) {
           return p.id;
@@ -487,7 +486,6 @@ module.exports = function(api) {
         let pillarList = pillars.map(function(e) {
           return e.id;
         });
-        console.log(pillarList);
 
         // create reference to people
         let people = item.authors;
@@ -500,7 +498,6 @@ module.exports = function(api) {
           peopleList: peopleList,
           pillarList: pillarList
         });
-        // console.log(`People: ${peopleList} - ${item.title}`);
       }
       for (const item of result.data.data.wellnessPosts) {
         wellnessPosts.addNode({

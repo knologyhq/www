@@ -55,6 +55,7 @@
       <v-row>
         <v-col id="main" cols="8">
           <div v-html="marked($page.posts.body)" />
+          {{$page.posts.id}}
           <v-container id="comments">
             <v-row>
               <v-col cols="6" md="12">
@@ -172,6 +173,7 @@
 query Dato($id: String!)  {
 
   comments: posts(id: $id) {
+    id
     belongsTo(filter: {typeName: {eq: Comments}}) {
       edges {
         node {
