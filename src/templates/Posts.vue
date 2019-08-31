@@ -51,13 +51,11 @@
           >Download Post</v-btn>
         </v-col>
       </v-row>
-
-      <v-row>
+      <v-row id="comments" v-if="$page.posts.allowComments == true">
         <v-col id="main" cols="8">
           <div v-html="marked($page.posts.body)" />
-          {{$page.posts.id}}
           <v-container id="comments">
-            <v-row>
+            <v-row v-if="$page.comments.belongsTo.edges[0]">
               <v-col cols="6" md="12">
                 <div class="title">Comments</div>
                 <span
@@ -174,6 +172,7 @@ query Dato($id: String!)  {
 
   comments: posts(id: $id) {
     postId: id
+    
     belongsTo(filter: {typeName: {eq: Comments}}) {
       edges {
         node {
@@ -192,7 +191,8 @@ query Dato($id: String!)  {
 
 
   posts(id: $id) {
-    id
+    allowComments
+    postId: id
     title
     body
     categories {

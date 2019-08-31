@@ -296,6 +296,7 @@ module.exports = function(api) {
             publishDate
             slug
             id
+            allowComments
           }
 
         query Collections {
