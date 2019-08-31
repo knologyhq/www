@@ -27,11 +27,14 @@
             </v-col>
           </v-row>
           <div v-html="marked($page.people.bio)" />
-          <span
-            class="pillar pr-1 grey--text subtitle-1"
+          <!-- class="pillar pr-1 grey--text subtitle-1" -->
+          <v-subheader>Expertise in</v-subheader>
+          <v-btn
             v-for="pillar in $page.people.expertise"
             :key="pillar.id"
-          >{{ pillar.title }}</span>
+            text
+            :to="`/category/${pillar.slug}`"
+          >{{ pillar.title }}</v-btn>
         </v-col>
         <v-col cols="6">
           <img
@@ -68,6 +71,7 @@
       expertise {
         title
         id
+        slug
       }
       photo {
         url
@@ -104,7 +108,7 @@
 
 </page-query>
 <style lang="postcss">
-.pillar + .pillar:before {
+v-btn__content.pillar + .pillar:before {
   content: "| ";
 }
 </style>

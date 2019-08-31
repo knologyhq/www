@@ -74,9 +74,15 @@ module.exports = function(api) {
     const comments = store.addContentType({
       typeName: "Comments"
     });
+
     posts.addReference("peopleList", "People");
+
     posts.addReference("initiativeList", "Initiatives");
     people.addReference("initiativeList", "Initiatives");
+
+    posts.addReference("pillarList", "Pillars");
+    people.addReference("pillarList", "Pillars");
+
     pillars.addReference("initiativeList", "Initiatives");
     comments.addReference("post", "Posts");
 
@@ -419,6 +425,7 @@ module.exports = function(api) {
             expertise {
               title
               id
+              slug
             }
             initiatives {
               title
@@ -456,9 +463,16 @@ module.exports = function(api) {
           return initiative.id;
         });
 
+        // create reference to initiatives
+        let pillars = item.expertise;
+        let pillarList = pillars.map(function(p) {
+          return p.id;
+        });
+
         people.addNode({
           ...item,
-          initiativeList: initiativeList
+          initiativeList: initiativeList,
+          pillarList: pillarList
         });
       }
       for (const item of result.data.data.posts) {
@@ -467,7 +481,13 @@ module.exports = function(api) {
         let initiativeList = initiatives.map(function(initiative) {
           return initiative.id;
         });
-        // console.log(`Initiative: ${initiativeList} - ${item.title}`);
+
+        // create reference to pillars
+        let pillars = item.categories;
+        let pillarList = pillars.map(function(e) {
+          return e.id;
+        });
+        console.log(pillarList);
 
         // create reference to people
         let people = item.authors;
@@ -477,7 +497,8 @@ module.exports = function(api) {
         posts.addNode({
           ...item,
           initiativeList: initiativeList,
-          peopleList: peopleList
+          peopleList: peopleList,
+          pillarList: pillarList
         });
         // console.log(`People: ${peopleList} - ${item.title}`);
       }
@@ -518,6 +539,7 @@ module.exports = function(api) {
         let initiativeList = initiatives.map(function(initiative) {
           return initiative.id;
         });
+
         pillars.addNode({
           ...item,
           initiativeList: initiativeList

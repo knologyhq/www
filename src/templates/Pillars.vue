@@ -41,8 +41,7 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <v-container fluid v-if="$page.people.belongsTo.edges">
+    <v-container fluid v-if="$page.people.belongsTo.edges[0]">
       <div class="subtitle">Meet Our Experts in the Area</div>
 
       <v-row class="mb-6">
