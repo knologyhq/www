@@ -74,6 +74,9 @@ module.exports = function(api) {
     const comments = store.addContentType({
       typeName: "Comments"
     });
+    const roles = store.addContentType({
+      typeName: "Roles"
+    });
 
     posts.addReference("peopleList", "People");
     posts.addReference("initiativeList", "Initiatives");
@@ -297,8 +300,12 @@ module.exports = function(api) {
             id
             allowComments
           }
+          
 
-        query Collections {
+          query Collections {
+            roles: allRoles {
+              title
+            }
           about: allAboutSectionPages {
             id
             slug
@@ -416,6 +423,10 @@ module.exports = function(api) {
             ...postFields
           }
           people: allPeople {
+            role {
+              id
+              title
+            }
             id
             bio
             slug
@@ -497,6 +508,11 @@ module.exports = function(api) {
           initiativeList: initiativeList,
           peopleList: peopleList,
           pillarList: pillarList
+        });
+      }
+      for (const item of result.data.data.roles) {
+        roles.addNode({
+          ...item
         });
       }
       for (const item of result.data.data.wellnessPosts) {
