@@ -34,6 +34,12 @@ module.exports = function(api) {
     const about = store.addContentType({
       typeName: "About"
     });
+    const alumni = store.addContentType({
+      typeName: "Alumni"
+    });
+    const ourTeam = store.addContentType({
+      typeName: "OurTeam"
+    });
     const people = store.addContentType({
       typeName: "People",
       route: "person/:slug"
@@ -305,6 +311,12 @@ query SingleInstances {
       });
       community.addNode({
         ...result.data.data.community
+      });
+      alumni.addNode({
+        ...result.data.data.alumni
+      });
+      ourTeam.addNode({
+        ...result.data.data.ourTeam
       });
     });
 

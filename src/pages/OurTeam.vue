@@ -60,7 +60,18 @@
           }
           bannerCopy
           introCopy
-          cta
+          cta {
+              buttonLink
+              buttonText
+              class
+              body
+              colour2 {
+                hex
+              }
+              colour {
+                hex
+              }    
+            }
           body
         }
       }
