@@ -56,7 +56,8 @@ module.exports = function(api) {
       typeName: "Milestones"
     });
     const wellnessPosts = store.addContentType({
-      typeName: "WellnessPosts"
+      typeName: "WellnessPosts",
+      route: "category/:slug"
     });
     const mediaPosts = store.addContentType({
       typeName: "MediaPosts"

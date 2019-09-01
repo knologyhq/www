@@ -31,6 +31,7 @@
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.7.1",
     "marked": "^0.7.0",
+    "mem": "^5.1.1",
     "netlify-lambda": "^1.6.3",
     "postcss-custom-media": "^7.0.8",
     "postcss-mixins": "^6.2.2",
