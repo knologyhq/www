@@ -29,16 +29,44 @@
         </v-col>
 
         <v-col cols="4">
-          <g-link
-            v-if="$page.pillars.belongsTo.edges[0]"
-            :to="`/category/${$page.pillars.belongsTo.edges[0].node.slug}`"
-            class="title"
-          >{{$page.pillars.belongsTo.edges[0].node.title}}</g-link>
+          <v-list dense>
+            <v-subheader>Research Area</v-subheader>
+            <v-list-item-group color="primary">
+              <v-list-item dense>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    <g-link
+                      v-if="$page.pillars.belongsTo.edges[0]"
+                      :to="`/category/${$page.pillars.belongsTo.edges[0].node.slug}`"
+                      class="title"
+                    >{{$page.pillars.belongsTo.edges[0].node.title}}</g-link>
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+
+          <v-list dense v-if="$page.initiatives.collaborators[0]">
+            <v-subheader>Collaborators</v-subheader>
+            <v-list-item-group color="primary">
+              <v-list-item
+                dense
+                v-for="collaborator in $page.initiatives.collaborators"
+                :key="collaborator.id"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>
+                    <a :href="collaborator.link">{{ collaborator.title}}</a>
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
         </v-col>
       </v-row>
     </v-container>
 
-    <v-container fluid v-if="$page.people.belongsTo.edges">
+    <v-container fluid v-if="$page.people.belongsTo.edges[0]">
       <div class="subtitle">Meet Our Experts in the Area</div>
 
       <v-row class="mb-6">
@@ -47,7 +75,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-if="$page.posts.belongsTo.edges">
+    <v-container v-if="$page.posts.belongsTo.edges[0]">
       <div class="subtitle">Recent posts about {{$page.initiatives.title}}</div>
       <v-row class="mb-6">
         <v-col cols="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
@@ -63,6 +91,10 @@ query InitativeData($id: String!) {
   initiatives(id: $id) {
     title
     description
+    collaborators {
+      title
+      link
+    }
   }
 
 

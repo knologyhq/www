@@ -361,6 +361,10 @@ module.exports = function(api) {
             title
             slug
             description
+            collaborators {
+              title
+              link
+            }
           }
           
           posts: allPosts {
