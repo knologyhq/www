@@ -20,7 +20,18 @@
 
     <v-container>
       <v-row>
-        <v-col id="main" cols="8" v-html="marked($page.allAlumni.edges[0].node.body)" />
+        <v-col id="main" cols="8">
+          <div v-html="marked($page.allAlumni.edges[0].node.body)" />
+          <template>
+            <v-card class="mx-auto" tile flat>
+              <v-list-item v-for="person in $page.allPeople.edges" :key="person.id">
+                <v-list-item-content>
+                  <v-list-item-title>{{ person.node.name }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-card>
+          </template>
+        </v-col>
 
         <v-col cols="4">
           <Sidebar />
