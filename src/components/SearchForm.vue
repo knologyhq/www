@@ -13,7 +13,8 @@
       :close-on-content-click="false"
     >
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on" @click="setFocus()" class="ml-2">
+        <v-btn icon v-on="on" class="ml-2">
+          <!-- @click="setFocus()" -->
           <SearchIcon />
           <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>

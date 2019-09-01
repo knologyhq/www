@@ -88,13 +88,20 @@
             <v-row no-gutters>
               <v-col cols="6" md="12">
                 <div class="title mb-2">Join the Conversation</div>
+                <v-alert
+                  type="success"
+                  v-if="submitted"
+                >Thank you for your submission, {{ formData.first_name }}. Our editors will review your comment shortly.</v-alert>
+
                 <v-form
                   ref="form"
                   name="comments-queue"
                   id="comments-queue"
                   data-netlify="true"
                   method="POST"
-                  v-on:submit.prevent="handleSubmit"
+                  action
+                  v-if="!submitted"
+                  @submit.prevent="handleSubmit"
                 >
                   <v-row>
                     <v-col cols="12" md="12">
@@ -140,13 +147,7 @@
                     id="postId"
                     :value="$page.posts.postId"
                   />
-                  <input
-                    type="hidden"
-                    name="action"
-                    id="action"
-                    value="?submitted"
-                    v-model="formData.action"
-                  />
+
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
@@ -231,6 +232,7 @@ export default {
   data() {
     return {
       formData: {},
+      submitted: false,
       cta: {
         buttonLink: "https://www.knology.org/donate",
         buttonText: "Donate",
@@ -272,9 +274,7 @@ export default {
         })
       })
         .then(response => {
-          console.log("====================================");
-          console.log(`${JSON.stringify(response, null, 2)}`);
-          console.log("====================================");
+          this.submitted = true;
         })
         .catch(error => {
           console.log("====================================");

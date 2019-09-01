@@ -14,7 +14,11 @@ export default function(Vue, { head, appOptions }) {
   Vue.use(Vuetify);
   Vue.use(VueMoment);
 
-  appOptions.vuetify = new Vuetify();
+  appOptions.vuetify = new Vuetify({
+    icons: {
+      iconfont: "mdiSvg" // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+    }
+  });
 
   var marked = require("marked");
   Vue.mixin({
