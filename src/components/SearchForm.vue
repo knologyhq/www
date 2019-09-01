@@ -13,8 +13,9 @@
       :close-on-content-click="false"
     >
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on" @click="setFocus()">
-          <font-awesome :icon="['fa', 'search']" />
+        <v-btn icon v-on="on" @click="setFocus()" class="ml-2">
+          <SearchIcon />
+          <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>
       </template>
       <v-list class="pa-4" tile>
@@ -50,6 +51,8 @@ query Posts {
 
 <script>
 import Flexsearch from "flexsearch";
+import SearchIcon from "~/components/SearchIcon";
+
 export default {
   // methods: {
   //   setFocus: function() {
@@ -57,6 +60,9 @@ export default {
   // this.$nextTick(() => this.$refs.search.$el.input.focus());
   //   }
   // },
+  components: {
+    SearchIcon
+  },
   data() {
     return {
       searchMenu: null,
