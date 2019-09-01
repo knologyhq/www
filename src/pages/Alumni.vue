@@ -3,14 +3,14 @@
     <template slot="textBanner">
       <v-responsive
         class="white--text py-12"
-        :style="`background: linear-gradient(to right, ${$page.allEthics.edges[0].node.colour.hex ? $page.allEthics.edges[0].node.colour.hex : '#266093' }, ${$page.allEthics.edges[0].node.colour2.hex ? $page.allEthics.edges[0].node.colour2.hex : '#00A2AE'})`"
+        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
       >
         <v-container>
           <v-row>
             <v-card-text>
               <h1
                 class="display-2 font-weight-thin mb-4"
-                v-html="$page.allEthics.edges[0].node.title"
+                v-html="$page.allAlumni.edges[0].node.title"
               />
             </v-card-text>
           </v-row>
@@ -20,7 +20,7 @@
 
     <v-container>
       <v-row>
-        <v-col id="main" cols="8" v-html="marked($page.allEthics.edges[0].node.body)" />
+        <v-col id="main" cols="8" v-html="marked($page.allAlumni.edges[0].node.body)" />
 
         <v-col cols="4">
           <Sidebar />
@@ -32,7 +32,27 @@
 <page-query>
 
 query Dato {
-  allPeople(filter: {team: {eq: true}}) {
+allAlumni {
+    edges {
+      node {
+        title
+        body
+        cta {
+          buttonLink
+          buttonText
+          class
+          body
+          colour2 {
+            hex
+          }
+          colour {
+            hex
+          }    
+        }
+      }
+    }
+}
+  allPeople(filter: {team: {eq: false}}) {
     edges {
       node {
         name

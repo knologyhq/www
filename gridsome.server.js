@@ -107,11 +107,6 @@ module.exports = function(api) {
 query SingleInstances {
   alumni: alumniPage {
     title
-    bannerImage {
-      url
-    }
-    bannerCopy
-    introCopy
     cta {
       buttonLink
       buttonText
