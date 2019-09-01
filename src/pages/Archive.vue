@@ -13,14 +13,16 @@
     alldataSheet {
       edges {
         node {
+          Publication_Title
+          Funder_Name
+          Grant_Number
           Project_Name
-          Initiative
           Research_Area
+          Initiative
           Authors
-          Date
-          Title
+          Publication_Date
           Citation
-          Instruments___Data_URL__When_Available_         
+          Instruments___Data_URL__When_Available_     
         }
       }
     }
@@ -33,6 +35,21 @@ export default {
   data() {
     return {
       headers: [
+        {
+          sortable: true,
+          text: "Title",
+          value: "node.Publication_Title"
+        },
+        {
+          sortable: false,
+          text: "Funder Name",
+          value: "node.Funder_Name"
+        },
+        {
+          sortable: false,
+          text: "Grant Number",
+          value: "node.Grant_Number"
+        },
         {
           sortable: true,
           text: "Project Name",
@@ -55,16 +72,11 @@ export default {
         },
         {
           sortable: true,
-          text: "Date",
-          value: "node.Date"
+          text: "Publication Date",
+          value: "node.Publication_Date"
         },
         {
-          sortable: true,
-          text: "Title",
-          value: "node.Title"
-        },
-        {
-          sortable: true,
+          sortable: false,
           text: "Citation",
           value: "node.Citation"
         },
