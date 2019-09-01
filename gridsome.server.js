@@ -180,7 +180,6 @@ module.exports = function(api) {
                 id
               }
             }
-
             introCopy
             id
             bannerCopy
@@ -209,7 +208,6 @@ module.exports = function(api) {
                 hex
               }
             }
-            bannerCopy
             featuredPosts {
               title
               publishDate
@@ -246,6 +244,7 @@ module.exports = function(api) {
             }
           }
         }
+
       `
       }
     }).then(result => {

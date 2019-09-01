@@ -1,7 +1,9 @@
 <template>
   <v-toolbar flat>
     <v-toolbar-title>
-      <v-img src="/logo.png" class="mr-5" contain height="48" width="48" />
+      <g-link to="/">
+        <v-img src="/logo.png" class="mr-5" contain height="48" width="48" />
+      </g-link>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
