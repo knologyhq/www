@@ -97,153 +97,196 @@ module.exports = function(api) {
         Authorization: `Bearer ${process.env.DATO_TOKEN}`
       },
       data: {
-        query: ` query SingleInstances {
-          ethics: ethicsPage {
-            colour {
-              hex
-            }
-            colour2 {
-              hex
-            }
-            body
-            title
-            cta {
-              title
-              id
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }
-              buttonText
-              buttonLink
-              body
-            }
-          }
-          privacy: privacyPolicyPage {
-            colour {
-              hex
-            }
-            colour2 {
-              hex
-            }
-            body
-            title
-            cta {
-              title
-              id
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }
-              buttonText
-              buttonLink
-              body
-            }
-          }
-          community: communityPage {
-            cta {
-              buttonLink
-              buttonText
-              class
-              body
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }
-            }
-            partners {
-              logo {
-                url
-              }
-              title
-              url
-              id
-            }
-            featuredPosts {
-              title
-              publishDate
-              slug
-              image {
-                url
-              }
-              authors {
-                name
-              }
-              categories {
-                title
-                id
-              }
-            }
-            introCopy
-            id
-            bannerCopy
-            bannerImage {
-              url
-            }
-            affiliations {
-              id
-              title
-              url
-              logo {
-                url
-              }
-            }
-          }
-          home: homePage {
-            cta {
-              buttonLink
-              buttonText
-              class
-              body
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }
-            }
-            featuredPosts {
-              title
-              publishDate
-              slug
-              image {
-                url
-              }
-              authors {
-                name
-              }
-              categories {
-                title
-                id
-              }
-            }
-          }
-          contact: contactPage {
-            phone
-            mailingAddress
-            email
-            fax
-            socialMedia {
-              handle
-              icon
-              profileUrl
-            }
-            location {
-              address
-              id
-              image {
-                url
-              }
-              title
-            }
-          }
-        }
+        query: ` 
+query SingleInstances {
+  alumni: alumniPage {
+    title
+    bannerImage {
+      url
+    }
+    bannerCopy
+    introCopy
+    cta {
+      buttonLink
+      buttonText
+      class
+      body
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+    }
+    body
+  }
+  ourTeam: ourTeamPage {
+    title
+    bannerImage {
+      url
+    }
+    bannerCopy
+    introCopy
+    cta {
+      buttonLink
+      buttonText
+      class
+      body
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+    }
+    body
+  }
+  ethics: ethicsPage {
+    colour {
+      hex
+    }
+    colour2 {
+      hex
+    }
+    body
+    title
+    cta {
+      title
+      id
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+      buttonText
+      buttonLink
+      body
+    }
+  }
+  privacy: privacyPolicyPage {
+    colour {
+      hex
+    }
+    colour2 {
+      hex
+    }
+    body
+    title
+    cta {
+      title
+      id
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+      buttonText
+      buttonLink
+      body
+    }
+  }
+  community: communityPage {
+    cta {
+      buttonLink
+      buttonText
+      class
+      body
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+    }
+    partners {
+      logo {
+        url
+      }
+      title
+      url
+      id
+    }
+    featuredPosts {
+      title
+      publishDate
+      slug
+      image {
+        url
+      }
+      authors {
+        name
+      }
+      categories {
+        title
+        id
+      }
+    }
+    introCopy
+    id
+    bannerCopy
+    bannerImage {
+      url
+    }
+    affiliations {
+      id
+      title
+      url
+      logo {
+        url
+      }
+    }
+  }
+  home: homePage {
+    cta {
+      buttonLink
+      buttonText
+      class
+      body
+      colour2 {
+        hex
+      }
+      colour {
+        hex
+      }
+    }
+    featuredPosts {
+      title
+      publishDate
+      slug
+      image {
+        url
+      }
+      authors {
+        name
+      }
+      categories {
+        title
+        id
+      }
+    }
+  }
+  contact: contactPage {
+    phone
+    mailingAddress
+    email
+    fax
+    socialMedia {
+      handle
+      icon
+      profileUrl
+    }
+    location {
+      address
+      id
+      image {
+        url
+      }
+      title
+    }
+  }
+}
 
       `
       }

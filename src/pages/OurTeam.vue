@@ -1,7 +1,30 @@
 <template>
   <Layout>
-    <h1 class="title">Our Team</h1>
     <v-container>
+      <v-card
+        flat
+        class="mb-4 banner"
+        :style="`background-image: url(${$page.allOurTeam.edges[0].node.bannerImage.url})`"
+        height="300"
+      >
+        <v-card-text>
+          <div
+            class="title white--text"
+            v-html="marked($page.allOurTeam.edges[0].node.bannerCopy)"
+          />
+          <v-btn color="orange" to="#main">Read More →</v-btn>
+        </v-card-text>
+      </v-card>
+
+      <v-row>
+        <v-col
+          cols="12"
+          id="main"
+          class="body"
+          v-html="marked($page.allOurTeam.edges[0].node.introCopy)"
+        />
+      </v-row>
+
       <template>
         <v-card class="mx-auto" flat tile>
           <v-card-text>
@@ -29,6 +52,19 @@
 </template>
 <page-query>
   query {
+    allOurTeam {
+      edges {
+        node {
+          bannerImage {
+            url
+          }
+          bannerCopy
+          introCopy
+          cta
+          body
+        }
+      }
+    }
     allRoles {
       edges {
         node {
