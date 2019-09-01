@@ -17,49 +17,72 @@
       </v-card>
 
       <v-row>
-        <v-col id="featured-posts" cols="4">
-          <h3 class="title">Featured Posts</h3>
-          <PostCardLarge
-            :post="post"
-            v-for="post in $page.allCommunity.edges[0].node.featuredPosts"
-            :key="post.id"
-          />
-        </v-col>
-        <v-col id="new-posts" cols="4">
-          <h3 class="title">New Posts</h3>
-          <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
-        </v-col>
-        <v-col cols="4">
-          <div class="title">Our Affiliations</div>
-          <v-container fluid>
-            <v-row>
-              <v-col
-                v-for="affiliate in $page.allCommunity.edges[0].node.affiliations"
-                :key="affiliate.id"
-                cols="4"
-              >
-                <img :src="affiliate.logo.url" class="image" width="100%" height="100%" />
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
+        <v-col
+          cols="12"
+          id="main"
+          class="body"
+          v-html="marked($page.allCommunity.edges[0].node.introCopy)"
+        />
       </v-row>
-    </v-container>
-    <v-container fluid>
       <v-row>
-        <div class="title">Our Partners</div>
-        <v-container fluid>
-          <v-row>
-            <v-col
-              class="d-flex justify-center .justify-space-around mb-6"
-              v-for="partner in $page.allCommunity.edges[0].node.partners"
-              :key="partner.id"
-              cols="2"
-            >
-              <img :src="partner.logo.url" class="image" width="100%" height="100%" />
+        <v-col cols="6">
+          <v-row v-if="$page.allCommunity.edges[0].node.featuredPosts[0]">
+            <v-col id="featured-posts" cols="12">
+              <h3 class="title">Featured Posts</h3>
+              <PostCardLarge
+                :post="post"
+                v-for="post in $page.allCommunity.edges[0].node.featuredPosts"
+                :key="post.id"
+              />
             </v-col>
           </v-row>
-        </v-container>
+
+          <v-row v-if="$page.newposts.edges[0]">
+            <v-col id="new-posts" cols="12">
+              <h3 class="title">New Posts</h3>
+              <PostCardMedium
+                :post="post.node"
+                v-for="post in $page.newposts.edges"
+                :key="post.id"
+              />
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="6">
+          <v-row v-if="$page.allCommunity.edges[0].node.affiliations[0]">
+            <v-col id="affiliations" cols="12">
+              <div class="title">Our Affiliations</div>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="affiliate in $page.allCommunity.edges[0].node.affiliations"
+                    :key="affiliate.id"
+                    cols="4"
+                  >
+                    <img :src="affiliate.logo.url" class="image" width="100%" height="100%" />
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-col>
+          </v-row>
+          <v-row v-if="$page.allCommunity.edges[0].node.affiliations[0]">
+            <v-col id="partners" cols="12">
+              <div class="title">Our Partners</div>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    class="d-flex justify-center .justify-space-around mb-6"
+                    v-for="partner in $page.allCommunity.edges[0].node.partners"
+                    :key="partner.id"
+                    cols="2"
+                  >
+                    <img :src="partner.logo.url" class="image" width="100%" height="100%" />
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-col>
+          </v-row>
+        </v-col>
       </v-row>
     </v-container>
 

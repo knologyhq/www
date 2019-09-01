@@ -10,7 +10,10 @@
       <div>{{ post.title }}</div>
     </v-card-title>
     <v-card-text v-if="post.authors">
-      <div class="pr-1 grey--text subtitle-1">By {{post.authors[0].name}} • {{post.publishDate}}</div>
+      <div class="pr-1 grey--text subtitle-1">
+        By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }} •
+        {{post.publishDate | moment("MMM D, YYYY") }}
+      </div>
     </v-card-text>
   </v-card>
 </template>

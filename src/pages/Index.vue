@@ -1,5 +1,22 @@
 <template>
   <Layout>
+    <template slot="textBanner">
+      <!-- todo: If takeover banners will be used regularly, this should be added as a model in Dato -->
+      <v-responsive
+        class="white--text py-12"
+        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
+      >
+        <v-container>
+          <v-row align="center" justify="center">
+            <h1 class="display-2 font-weight-thin mb-4">New Name, Same People</h1>
+            <h4
+              class="subheading"
+            >In 2019, New Knowledge Organization Ltd. became Knology. With this change, we’ve renewed our commitment to studying and untangling complex social issues. We’re proud that our new website puts more social science research into the hands of people who can make a difference.</h4>
+          </v-row>
+        </v-container>
+      </v-responsive>
+    </template>
+
     <v-container>
       <template slot="tagline">
         <v-container grid-list-xs>
@@ -11,9 +28,9 @@
         </v-container>
       </template>
       <Logo />
+    </v-container>
 
-      <div id="banner" v-html="$page.allHome.edges[0].node.bannerCopy" />
-
+    <v-container>
       <v-row>
         <v-col id="featured-posts" cols="4">
           <h3 class="subtitle-1">Featured Posts</h3>

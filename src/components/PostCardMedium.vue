@@ -10,9 +10,11 @@
           >{{ category.title }}</span>
         </div>
         <v-list-item-title class="headline mb-1">{{ post.title }}</v-list-item-title>
-        <v-list-item-subtitle
-          class="pr-1 grey--text subtitle-1"
-        >By {{post.authors[0].name}} • {{post.publishDate}}</v-list-item-subtitle>
+
+        <v-list-item-subtitle class="pr-1 grey--text subtitle-1">
+          By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }} •
+          {{post.publishDate | moment("MMM D, YYYY") }}
+        </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
   </v-card>

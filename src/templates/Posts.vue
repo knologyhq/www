@@ -54,6 +54,8 @@
       <v-row id="comments" v-if="$page.posts.allowComments == true">
         <v-col id="main" cols="8">
           <div v-html="marked($page.posts.body)" />
+
+          <!-- todo: make a component for comment block -->
           <v-container id="comments">
             <v-row v-if="$page.comments.belongsTo.edges[0]">
               <v-col cols="6" md="12">
