@@ -6,14 +6,17 @@
       </v-col>
     </v-row>
     <v-row id="featured-new-bites">
-      <v-container>
+      <v-col>
         <h4 class="subtitle">Featured New Bites</h4>
         <PostCardSmall
           :post="post.node"
           v-for="post in $static.newposts.edges"
           :key="post.node.id"
         />
-      </v-container>
+        <div>
+          <g-link to="/articles">View all posts</g-link>
+        </div>
+      </v-col>
     </v-row>
     <div id="tags"></div>
   </v-container>
