@@ -37,6 +37,14 @@ module.exports = function(api) {
     const alumni = store.addContentType({
       typeName: "Alumni"
     });
+
+    const careers = store.addContentType({
+      typeName: "CareersPage"
+    });
+    const jobsPosts = store.addContentType({
+      typeName: "JobsPosts",
+      route: "job/:slug"
+    });
     const ourTeam = store.addContentType({
       typeName: "OurTeam"
     });
@@ -105,23 +113,43 @@ module.exports = function(api) {
       },
       data: {
         query: ` 
-query SingleInstances {
-  alumni: alumniPage {
-    title
-    cta {
-      buttonLink
-      buttonText
-      class
-      body
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-    }
-    body
-  }
+          query SingleInstances {
+            alumni: alumniPage {
+              title
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+              }
+              body
+            }
+            careers: careersPage {
+              title
+              bannerImage {
+                url
+              }
+              bannerCopy
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+              }
+            }
+
   ourTeam: ourTeamPage {
     title
     bannerImage {
@@ -290,6 +318,7 @@ query SingleInstances {
   }
 }
 
+
       `
       }
     }).then(result => {
@@ -313,6 +342,9 @@ query SingleInstances {
       });
       ourTeam.addNode({
         ...result.data.data.ourTeam
+      });
+      careers.addNode({
+        ...result.data.data.careers
       });
     });
 
@@ -356,159 +388,166 @@ query SingleInstances {
             roles: allRoles {
               title
             }
-          about: allAboutSectionPages {
-            id
-            slug
-            title
-            introCopy
-            position
-            body
-            bannerImage {
-              url
-            }
-            bannerCopy
-            cta {
-              buttonLink
-              buttonText
-              class
-              body
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }    
-            }
-          }
-          milestones: allTimelineItems(orderBy: position_ASC) {
-            description
-            id
-            image {
-              url
-            }
-            title
-            position
-            link
-          }
-          
-          pillars: allPillars {
-            id
-            title
-            description
-            slug
-            svgIcon
-            colour {
-              hex
-            }
-            initiative {
-              id
+
+            jobs: allJobs(filter: {open: {eq: true}}) {
               title
+              description
               slug
             }
-          }
-          initiatives: allInitiatives {
-            id
-            title
-            slug
-            description
-            collaborators {
+
+            about: allAboutSectionPages {
+              id
+              slug
               title
+              introCopy
+              position
+              body
+              bannerImage {
+                url
+              }
+              bannerCopy
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }    
+              }
+            }
+            milestones: allTimelineItems(orderBy: position_ASC) {
+              description
+              id
+              image {
+                url
+              }
+              title
+              position
               link
             }
-          }
-          
-          posts: allPosts {
-            ...postFields
-            dataFile
-            tags
-            postFile {
-              url
-            }
-            postType {
-              title
-              id
-            }
-            authors {
-              name
-              id
-            }
-            categories {
-              title
-              id
-            }
-            initiatives {
-              id
-            }
-          }
-          wellnessPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
-            ...postFields
-            authors {
-              name
-            }
-          }
-          mediaPosts: allPosts(filter: {categories: {anyIn: ["1366604"]}}) {
-            authors {
-              name
-            }
-            ...postFields
-          }
-          processPosts: allPosts(filter: {categories: {anyIn: ["1366603"]}}) {
-            authors {
-              name
-            }
-            ...postFields
-          }
-          systemsPosts: allPosts(filter: {categories: {anyIn: ["1366605"]}}) {
-            authors {
-              name
-            }
-            ...postFields
-          }
-          biospherePosts: allPosts(filter: {categories: {anyIn: ["1366598"]}}) {
-            authors {
-              name
-            }
-            ...postFields
-          }
-          culturePosts: allPosts(filter: {categories: {anyIn: ["1366602"]}}) {
-            authors {
-              name
-            }
-            ...postFields
-          }
-          people: allPeople {
-            role {
+            
+            pillars: allPillars {
               id
               title
-            }
-            id
-            bio
-            slug
-            education
-            email
-            expertise {
-              title
-              id
+              description
               slug
+              svgIcon
+              colour {
+                hex
+              }
+              initiative {
+                id
+                title
+                slug
+              }
             }
-            initiatives {
-              title
+            initiatives: allInitiatives {
               id
+              title
+              slug
+              description
+              collaborators {
+                title
+                link
+              }
             }
-            jobTitle
-            name
-            team
-            photo {
-              url
+            
+            posts: allPosts {
+              ...postFields
+              dataFile
+              tags
+              postFile {
+                url
+              }
+              postType {
+                title
+                id
+              }
+              authors {
+                name
+                id
+              }
+              categories {
+                title
+                id
+              }
+              initiatives {
+                id
+              }
             }
-            website
+            wellnessPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
+              ...postFields
+              authors {
+                name
+              }
+            }
+            mediaPosts: allPosts(filter: {categories: {anyIn: ["1366604"]}}) {
+              authors {
+                name
+              }
+              ...postFields
+            }
+            processPosts: allPosts(filter: {categories: {anyIn: ["1366603"]}}) {
+              authors {
+                name
+              }
+              ...postFields
+            }
+            systemsPosts: allPosts(filter: {categories: {anyIn: ["1366605"]}}) {
+              authors {
+                name
+              }
+              ...postFields
+            }
+            biospherePosts: allPosts(filter: {categories: {anyIn: ["1366598"]}}) {
+              authors {
+                name
+              }
+              ...postFields
+            }
+            culturePosts: allPosts(filter: {categories: {anyIn: ["1366602"]}}) {
+              authors {
+                name
+              }
+              ...postFields
+            }
+            people: allPeople {
+              role {
+                id
+                title
+              }
+              id
+              bio
+              slug
+              education
+              email
+              expertise {
+                title
+                id
+                slug
+              }
+              initiatives {
+                title
+                id
+              }
+              jobTitle
+              name
+              team
+              photo {
+                url
+              }
+              website
+            }
+            _site {
+              globalSeo {
+                siteName
+              }
+            }
           }
-          _site {
-            globalSeo {
-              siteName
-            }
-          }
-        }
         `
       }
     }).then(result => {
@@ -517,6 +556,11 @@ query SingleInstances {
       });
       for (const item of result.data.data.about) {
         about.addNode({
+          ...item
+        });
+      }
+      for (const item of result.data.data.jobs) {
+        jobsPosts.addNode({
           ...item
         });
       }

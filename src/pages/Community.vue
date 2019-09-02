@@ -1,20 +1,23 @@
 <template>
   <Layout>
     <v-container>
-      <v-card
-        flat
-        class="mb-4 banner"
-        :style="`background-image: url(${$page.allCommunity.edges[0].node.bannerImage.url})`"
-        height="300"
-      >
-        <v-card-text>
-          <div
-            class="title white--text"
-            v-html="marked($page.allCommunity.edges[0].node.bannerCopy)"
-          />
-          <v-btn color="orange" to="#main">Read More →</v-btn>
-        </v-card-text>
-      </v-card>
+      <v-row align="center" justify="center">
+        <v-col>
+          <v-card
+            class="mb-4 banner py-12"
+            :style="`background-image: url(${$page.allCommunity.edges[0].node.bannerImage.url})`"
+            height="300"
+          >
+            <v-card-text>
+              <div
+                class="title white--text"
+                v-html="marked($page.allCommunity.edges[0].node.bannerCopy)"
+              />
+              <v-btn color="orange" to="#main">Read More →</v-btn>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
 
       <v-row>
         <v-col
