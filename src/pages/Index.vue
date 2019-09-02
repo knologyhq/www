@@ -10,7 +10,7 @@
           <v-row align="center" justify="center">
             <h1 class="display-2 font-weight-thin mb-4">New Name, Same People</h1>
             <h4
-              class="subheading"
+              class="subheading text-center font-weight-regular"
             >In 2019, New Knowledge Organization Ltd. became Knology. With this change, we’ve renewed our commitment to studying and untangling complex social issues. We’re proud that our new website puts more social science research into the hands of people who can make a difference.</h4>
           </v-row>
         </v-container>
