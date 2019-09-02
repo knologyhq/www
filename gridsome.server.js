@@ -82,9 +82,20 @@ module.exports = function(api) {
     const culturePosts = store.addContentType({
       typeName: "CulturePosts"
     });
+    // using a different pillar overview template here
+    // Pillars (model name and old term) == Categories (interface/paths) == Research Areas (internal term)
     const pillars = store.addContentType({
       typeName: "Pillars",
       route: "category/:slug"
+    });
+    const categories = store.addContentType({
+      typeName: "Categories",
+      route: "articles/category/:slug"
+    });
+
+    const tags = store.addContentType({
+      typeName: "Tags",
+      route: "articles/tag/:slug"
     });
     const comments = store.addContentType({
       typeName: "Comments"
@@ -96,6 +107,7 @@ module.exports = function(api) {
     posts.addReference("peopleList", "People");
     posts.addReference("initiativeList", "Initiatives");
     posts.addReference("pillarList", "Pillars");
+    posts.addReference("tagList", "Tags");
 
     people.addReference("initiativeList", "Initiatives");
     people.addReference("pillarList", "Pillars");
@@ -385,8 +397,14 @@ module.exports = function(api) {
           
 
           query Collections {
+            tags: allTags {
+              title
+              id
+              slug
+            }
             roles: allRoles {
               title
+              id
             }
 
             jobs: allJobs(filter: {open: {eq: true}}) {
@@ -459,7 +477,11 @@ module.exports = function(api) {
             posts: allPosts {
               ...postFields
               dataFile
-              tags
+              tags {
+                id
+                title
+                slug
+              }
               postFile {
                 url
               }
@@ -474,9 +496,12 @@ module.exports = function(api) {
               categories {
                 title
                 id
+                slug
               }
               initiatives {
                 id
+                title
+                slug
               }
             }
             wellnessPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
@@ -599,6 +624,12 @@ module.exports = function(api) {
           return e.id;
         });
 
+        // create reference to tags
+        let tags = item.tags;
+        let tagList = tags.map(function(tag) {
+          return tag.id;
+        });
+
         // create reference to people
         let people = item.authors;
         let peopleList = people.map(function(person) {
@@ -608,7 +639,8 @@ module.exports = function(api) {
           ...item,
           initiativeList: initiativeList,
           peopleList: peopleList,
-          pillarList: pillarList
+          pillarList: pillarList,
+          tagList: tagList
         });
       }
       for (const item of result.data.data.roles) {
@@ -616,6 +648,19 @@ module.exports = function(api) {
           ...item
         });
       }
+
+      for (const item of result.data.data.tags) {
+        tags.addNode({
+          ...item
+        });
+      }
+
+      for (const item of result.data.data.pillars) {
+        categories.addNode({
+          ...item
+        });
+      }
+
       for (const item of result.data.data.wellnessPosts) {
         wellnessPosts.addNode({
           ...item

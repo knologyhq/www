@@ -15,7 +15,14 @@
         class="overline category pr-1 grey--text"
         v-for="category in $page.posts.categories"
         :key="category.id"
-      >{{ category.title }}</span>
+      >
+        <g-link :to="`/articles/category/${ category.slug }`">{{ category.title }}</g-link>
+      </span>
+      <br />
+
+      <span class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
+        <g-link :to="`/articles/tag/${ tag.slug }`">{{ tag.title }}</g-link>
+      </span>
       <h1 class="display-2" v-html="marked($page.posts.title)" />
       <div v-if="$page.posts.subtitle">
         <h1 class="display-1" v-html="marked($page.posts.subtitle)" />
@@ -199,7 +206,14 @@ query Dato($id: String!)  {
     title
     body
     categories {
-    title
+      title
+      slug
+      id
+    }
+    tags {
+      title
+      id
+      slug
     }
     authors {
       name
