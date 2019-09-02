@@ -27,7 +27,7 @@
     <v-container>
       <v-row>
         <v-col id="main" cols="8">
-          <template>
+          <template v-if="$page.allJobsPosts.edges[0]">
             <v-card class="mx-auto" tile flat>
               <v-list-item
                 v-for="job in $page.allJobsPosts.edges"
@@ -39,6 +39,12 @@
                 </v-list-item-content>
               </v-list-item>
             </v-card>
+          </template>
+          <template v-else>
+            <v-alert
+              outlined
+              color="purple"
+            >Currently there are no openings at Knology. Please check back later.</v-alert>
           </template>
         </v-col>
 

@@ -129,7 +129,8 @@ export default {
       col1Items: [
         { title: "About", to: "/about/mission" },
         { title: "Publications", to: "/?publications" },
-        { title: "Our Team", to: "/our-team" }
+        { title: "Our Team", to: "/our-team" },
+        { title: "Careers", to: "/careers" }
       ],
 
       col2Items: [
