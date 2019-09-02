@@ -35,7 +35,8 @@ export default function(Vue, { head, appOptions }) {
   });
   head.link.push({
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css?family=Ubuntu|Roboto&display=swap"
+    href:
+      "https://fonts.googleapis.com/css?family=Ubuntu:100,400,700|Roboto:100,400,700&display=swap"
   });
   head.link.push({
     rel: "stylesheet",

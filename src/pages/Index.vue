@@ -27,7 +27,7 @@
           </v-row>
         </v-container>
       </template>
-      <Logo />
+      <Logo :tagline="true" />
     </v-container>
 
     <v-container>

@@ -545,6 +545,9 @@ module.exports = function(api) {
             _site {
               globalSeo {
                 siteName
+                fallbackSeo {
+                  description
+                }
               }
             }
           }
