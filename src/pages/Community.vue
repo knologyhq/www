@@ -39,15 +39,18 @@
               />
             </v-col>
           </v-row>
-
           <v-row v-if="$page.newposts.edges[0]">
             <v-col id="new-posts" cols="12">
               <h3 class="title">New Posts</h3>
-              <PostCardMedium
-                :post="post.node"
-                v-for="post in $page.newposts.edges"
-                :key="post.id"
-              />
+              <template v-for="edge in $page.newposts.edges">
+                <div v-for="post in edge" :key="post.id">
+                  <PostCardMedium
+                    :post="item[0].node"
+                    v-for="item in post.belongsTo"
+                    :key="item.id"
+                  />
+                </div>
+              </template>
             </v-col>
           </v-row>
         </v-col>
@@ -156,20 +159,29 @@
       }
     }
     
-    newposts: allPosts(limit: 4, order: DESC, sortBy: "publishDate", filter: {tags: {contains: "Idea Brewery"}}) {
+    newposts: allTags(filter: {id: {eq: "1435043"}}) {
       edges {
         node {
-          slug
           title
-          publishDate
-          categories {
-            title
-          }
-          authors {
-            name
-          }
-          image {
-            url
+          belongsTo {
+            edges {
+              node {
+                ... on Posts {
+                  slug
+                  title
+                  publishDate
+                  categories {
+                    title
+                  }
+                  authors {
+                    name
+                  }
+                  image {
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
