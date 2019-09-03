@@ -13,7 +13,7 @@
                 class="title white--text"
                 v-html="marked($page.allCommunity.edges[0].node.bannerCopy)"
               />
-              <v-btn color="orange" to="#main">Read More →</v-btn>
+              <ReadMoreButton />
             </v-card-text>
           </v-card>
         </v-col>
@@ -193,6 +193,7 @@ import Cta from "~/components/Cta.vue";
 import PostCardLarge from "~/components/PostCardLarge.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Sidebar from "~/components/Sidebar.vue";
+import ReadMoreButton from "~/components/ReadMoreButton.vue";
 
 export default {
   metaInfo: {
@@ -202,7 +203,8 @@ export default {
     Cta,
     PostCardLarge,
     PostCardMedium,
-    Sidebar
+    Sidebar,
+    ReadMoreButton
   }
 };
 </script>

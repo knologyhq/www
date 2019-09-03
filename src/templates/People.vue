@@ -12,15 +12,14 @@
               <v-btn
                 v-if="$page.people.email"
                 x-large
-                color="orange"
-                class="mr-3"
+                class="deep-orange lighten1 white--text mr-3"
                 elevation="0"
                 :href="`mailto:${$page.people.email}`"
               >Email</v-btn>
               <v-btn
                 v-if="$page.people.website"
                 x-large
-                color="orange"
+                class="deep-orange lighten1 white--text"
                 elevation="0"
                 :href="$page.people.website"
               >Website</v-btn>

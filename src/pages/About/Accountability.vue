@@ -9,7 +9,7 @@
       >
         <v-card-text>
           <div class="title" v-html="marked($page.about.edges[0].node.bannerCopy)" />
-          <v-btn color="orange" to="#main">Read More →</v-btn>
+          <ReadMoreButton />
         </v-card-text>
       </v-card>
 

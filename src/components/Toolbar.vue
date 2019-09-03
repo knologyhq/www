@@ -8,79 +8,83 @@
 
     <v-spacer></v-spacer>
 
-    <v-toolbar-items>
-      <v-btn text v-for="item in items" :key="item.id">
-        <v-menu
-          v-if="item.action === 'menu' && item.title == 'Publication'"
-          :close-on-content-click="false"
-          bottom
-          offset-y
-          full-width
-          min-width="100%"
-          z-index="10000000"
-        >
-          <template v-slot:activator="{ on }">
-            <span text id="pub-btn" color="primary" v-on="on">{{ item.title }}</span>
-          </template>
-          <v-card class="pa-0 ma-0">
-            <v-container fluid class="pa-0 ma-0">
-              <v-row no-gutters>
-                <v-col cols="2" v-for="pillar in $static.pillars.edges" :key="pillar.id">
-                  <v-card
-                    flat
-                    tile
-                    height="300"
-                    class="pa-3 ma-0"
-                    :color="`${pillar.node.colour ? pillar.node.colour.hex : 'light-blue'}`"
-                  >
-                    <v-list color="transparent">
-                      <v-list-item-group>
-                        <v-list-item :to="`/category/${pillar.node.slug}`">
-                          <v-list-item-content>
-                            <v-list-item-title
-                              class="white--text font-weight-bold"
-                            >{{pillar.node.title}}</v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item
-                          :to="`/initiative/${initiative.slug}`"
-                          v-for="initiative in pillar.node.initiative"
-                          :key="initiative.id"
-                        >
-                          <v-list-item-content>
-                            <v-list-item-title class="white--text">{{initiative.title}}</v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </v-list-item-group>
-                    </v-list>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-        </v-menu>
-
-        <template v-if="item.action === 'menu' && item.title == 'About'">
-          <v-menu offset-y :key="item.id">
-            <template v-slot:activator="{ on }">
-              <span text color="primary" v-on="on">{{item.title}}</span>
-            </template>
-            <v-list>
-              <v-list-item v-for="page in $static.about.edges" :key="page.id">
-                <v-list-item-content>
-                  <g-link :to="`/about/${page.node.slug}`">{{page.node.title}}</g-link>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+    <v-btn text v-for="item in items" :key="item.id">
+      <v-menu
+        v-if="item.action === 'menu' && item.title == 'Publication'"
+        :close-on-content-click="false"
+        bottom
+        offset-y
+        full-width
+        min-width="100%"
+        z-index="10000000"
+      >
+        <template v-slot:activator="{ on }">
+          <span text id="pub-btn" color="primary" v-on="on">{{ item.title }}</span>
         </template>
+        <v-card class="pa-0 ma-0">
+          <v-container fluid class="pa-0 ma-0">
+            <v-row no-gutters>
+              <v-col cols="2" v-for="pillar in $static.pillars.edges" :key="pillar.id">
+                <v-card
+                  flat
+                  tile
+                  height="300"
+                  class="pa-3 ma-0"
+                  :color="`${pillar.node.colour ? pillar.node.colour.hex : 'light-blue'}`"
+                >
+                  <v-list color="transparent">
+                    <v-list-item-group>
+                      <v-list-item :to="`/category/${pillar.node.slug}`">
+                        <v-list-item-content>
+                          <v-list-item-title
+                            class="white--text font-weight-bold"
+                          >{{pillar.node.title}}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                      <v-list-item
+                        :to="`/initiative/${initiative.slug}`"
+                        v-for="initiative in pillar.node.initiative"
+                        :key="initiative.id"
+                      >
+                        <v-list-item-content>
+                          <v-list-item-title class="white--text">{{initiative.title}}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list-item-group>
+                  </v-list>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-menu>
 
-        <span text v-else-if="item.action !== 'menu'">
-          <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
-        </span>
-      </v-btn>
-      <v-btn rounded color="info" elevation="0" to="/donate">Donate</v-btn>
-    </v-toolbar-items>
+      <template v-if="item.action === 'menu' && item.title == 'About'">
+        <v-menu offset-y :key="item.id">
+          <template v-slot:activator="{ on }">
+            <span text color="primary" v-on="on">{{item.title}}</span>
+          </template>
+          <v-list>
+            <v-list-item v-for="page in $static.about.edges" :key="page.id">
+              <v-list-item-content>
+                <g-link :to="`/about/${page.node.slug}`">{{page.node.title}}</g-link>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </template>
+
+      <span text v-else-if="item.action !== 'menu'">
+        <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
+      </span>
+    </v-btn>
+    <v-btn
+      rounded
+      color="deep-orange"
+      class="lighten-1 white--text"
+      elevation="0"
+      to="/donate"
+    >Donate</v-btn>
     <SearchForm />
 
     <!-- <template v-if="$vuetify.breakpoint.smAndDown">
@@ -118,6 +122,12 @@ query  {
 
 </static-query>
 
+<style lang="postcss" scoped>
+.v-toolbar button {
+  text-transform: none;
+  letter-spacing: 0;
+}
+</style>
 <script>
 import SearchForm from "~/components/SearchForm.vue";
 

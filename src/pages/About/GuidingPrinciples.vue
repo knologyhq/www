@@ -9,7 +9,7 @@
       >
         <v-card-text>
           <div class="title" v-html="marked($page.about.edges[0].node.bannerCopy)" />
-          <v-btn color="orange" to="#main">Read More →</v-btn>
+          <ReadMoreButton />
         </v-card-text>
       </v-card>
 
@@ -58,10 +58,12 @@
 </page-query>
 <script>
 import Cta from "~/components/Cta.vue";
+import ReadMoreButton from "~/components/ReadMoreButton.vue";
 
 export default {
   components: {
-    Cta
+    Cta,
+    ReadMoreButton
   }
 };
 </script>

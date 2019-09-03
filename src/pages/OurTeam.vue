@@ -12,7 +12,7 @@
             class="title white--text"
             v-html="marked($page.allOurTeam.edges[0].node.bannerCopy)"
           />
-          <v-btn color="orange" to="#main">Read More →</v-btn>
+          <ReadMoreButton />
         </v-card-text>
       </v-card>
 
@@ -112,6 +112,7 @@
 </page-query>
 <script>
 import PersonCard from "~/components/PersonCard.vue";
+import ReadMoreButton from "~/components/ReadMoreButton.vue";
 
 export default {
   computed: {
@@ -140,7 +141,8 @@ export default {
     title: "Our Team"
   },
   components: {
-    PersonCard
+    PersonCard,
+    ReadMoreButton
   }
 };
 </script>

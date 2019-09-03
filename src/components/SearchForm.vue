@@ -15,7 +15,7 @@
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on" class="ml-2">
           <!-- @click="setFocus()" -->
-          <SearchIcon />
+          <SearchIcon color="#FF7043" />
           <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>
       </template>
@@ -53,7 +53,7 @@ query Posts {
 <script>
 import Flexsearch from "flexsearch";
 import SearchIcon from "~/components/SearchIcon";
-
+import colors from "vuetify/lib/util/colors";
 export default {
   // methods: {
   //   setFocus: function() {

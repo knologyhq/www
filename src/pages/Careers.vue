@@ -18,7 +18,7 @@
                 class="title white--text"
                 v-html="marked($page.allCareersPage.edges[0].node.bannerCopy)"
               />
-              <v-btn color="orange" to="#main">Read More →</v-btn>
+              <ReadMoreButton />
             </v-card-text>
           </v-card>
         </v-col>
@@ -95,6 +95,8 @@ query Dato {
 </page-query>
 <script>
 import Sidebar from "~/components/Sidebar.vue";
+import ReadMoreButton from "~/components/ReadMoreButton.vue";
+
 export default {
   metaInfo() {
     return {
@@ -102,7 +104,8 @@ export default {
     };
   },
   components: {
-    Sidebar
+    Sidebar,
+    ReadMoreButton
   }
 };
 </script>

@@ -44,15 +44,14 @@
           <v-btn
             v-if="$page.posts.dataFile"
             x-large
-            color="orange"
-            class="mr-3"
+            class="deep-orange lighten1 white--text mr-3"
             elevation="0"
             :href="$page.posts.dataFile"
           >Download Data</v-btn>
           <v-btn
             v-if="$page.posts.postFile"
             x-large
-            color="orange"
+            class="deep-orange lighten1 white--text"
             elevation="0"
             :href="$page.posts.postFile.url"
           >Download Post</v-btn>
