@@ -182,20 +182,7 @@ query Dato($id: String!)  {
   comments: posts(id: $id) {
     postId: id
     
-    belongsTo(filter: {typeName: {eq: Comments}}) {
-      edges {
-        node {
-          ...on Comments {
-            created_at
-            data {
-              first_name
-              last_name
-              comment
-            }
-          }
-        }
-      }
-    }
+    
   }
 
 
