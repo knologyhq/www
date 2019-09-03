@@ -316,7 +316,7 @@ module.exports = function(api) {
     fax
     socialMedia {
       handle
-      icon
+      platform
       profileUrl
     }
     location {

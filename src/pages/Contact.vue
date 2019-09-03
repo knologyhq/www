@@ -55,7 +55,7 @@ query Dato {
         mailingAddress
         socialMedia {
           handle
-          icon
+          platform
           profileUrl
         }
         location {

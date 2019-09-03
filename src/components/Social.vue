@@ -1,7 +1,7 @@
 <template>
-  <v-avatar class="profile mr-3" size="52" tile>
-    <div class="social-icon" v-html="account.icon" />
-  </v-avatar>
+  <v-btn text icon color="deep-orange" :href="account.profileUrl">
+    <v-icon v-html="`mdi-${account.platform}`" />
+  </v-btn>
 </template>
 
 <style lang="postcss">
