@@ -4,21 +4,29 @@ import Vuetify from "vuetify";
 import VueMoment from "vue-moment";
 
 import "vuetify/dist/vuetify.min.css";
+import "@mdi/font/css/materialdesignicons.css";
 
-export default function(Vue, { head, appOptions }) {
-  // const opts = {
-  //   icons: {
-  //     iconfont: "fa"
-  //   }
-  // }; //opts includes, vuetify themes, icons, etc.
-  Vue.use(Vuetify);
-  Vue.use(VueMoment);
-
-  appOptions.vuetify = new Vuetify({
-    icons: {
-      iconfont: "mdiSvg" // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
-    }
+export default function(Vue, { appOptions, head }) {
+  head.link.push({
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/icon?family=Material+Icons"
   });
+
+  const opts = {
+    icons: {
+      iconfont: "mdi",
+      theme: {
+        primary: "#b747ff" //,
+        // success: '',
+        // info: '',
+        // error: ''
+      }
+    }
+  };
+  Vue.use(Vuetify);
+  appOptions.vuetify = new Vuetify(opts);
+
+  Vue.use(VueMoment);
 
   var marked = require("marked");
   Vue.mixin({
@@ -37,10 +45,6 @@ export default function(Vue, { head, appOptions }) {
     rel: "stylesheet",
     href:
       "https://fonts.googleapis.com/css?family=Ubuntu:100,400,700|Roboto:100,400,700&display=swap"
-  });
-  head.link.push({
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/icon?family=Material+Icons"
   });
 
   Vue.component("Layout", DefaultLayout);

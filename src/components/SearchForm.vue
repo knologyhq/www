@@ -14,8 +14,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on" class="ml-2">
-          <!-- @click="setFocus()" -->
-          <SearchIcon color="#FF7043" />
+          <v-icon color="deep-orange" class="lighten-1">mdi-magnify</v-icon>
           <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>
       </template>
@@ -52,7 +51,6 @@ query Posts {
 
 <script>
 import Flexsearch from "flexsearch";
-import SearchIcon from "~/components/SearchIcon";
 import colors from "vuetify/lib/util/colors";
 export default {
   // methods: {
@@ -61,9 +59,7 @@ export default {
   // this.$nextTick(() => this.$refs.search.$el.input.focus());
   //   }
   // },
-  components: {
-    SearchIcon
-  },
+
   data() {
     return {
       searchMenu: null,
