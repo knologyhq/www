@@ -62,6 +62,7 @@
           <div v-html="marked($page.posts.body)" />
 
           <!-- todo: make a component for comment block -->
+          <p>test!</p>
           <v-container id="comments" v-if="$page.posts.allowComments == true">
             <v-row no-gutters>
               <v-col cols="6" md="12">
