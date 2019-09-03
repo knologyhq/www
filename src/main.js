@@ -17,7 +17,8 @@ export default function(Vue, { appOptions, head }) {
       themes: {
         light: {
           primary: "#266093",
-          secondary: "#FF7043"
+          secondary: "#FF7043",
+          background: "#ffffff"
         }
       }
     },

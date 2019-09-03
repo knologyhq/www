@@ -33,16 +33,22 @@
     <v-container>
       <v-row>
         <v-col id="featured-posts" cols="4">
-          <h3 class="subtitle-1">Featured Posts</h3>
-          <PostCardLarge
-            :post="post"
-            v-for="post in $page.allHome.edges[0].node.featuredPosts"
-            :key="post.id"
-          />
+          <v-sheet>
+            <div class="title font-weight-black black--text mb-2">Featured Posts</div>
+            <v-divider></v-divider>
+            <PostCardLarge
+              :post="post"
+              v-for="post in $page.allHome.edges[0].node.featuredPosts"
+              :key="post.id"
+            />
+          </v-sheet>
         </v-col>
         <v-col id="new-posts" cols="4">
-          <h3 class="subtitle-1">New Posts</h3>
-          <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
+          <v-sheet>
+            <div class="title font-weight-black black--text mb-2">New Posts</div>
+            <v-divider></v-divider>
+            <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
+          </v-sheet>
 
           <div class="text-center">
             <v-container>

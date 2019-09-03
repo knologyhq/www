@@ -1,5 +1,5 @@
 <template>
-  <v-app id="knology">
+  <v-app id="knology" :style="{background: $vuetify.theme.themes[theme].background}">
     <header class="header">
       <toolbar />
     </header>
