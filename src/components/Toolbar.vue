@@ -9,7 +9,7 @@
     <v-spacer></v-spacer>
     <div v-for="item in items" :key="item.id">
       <template v-if="item.action === 'menu' && item.title == 'Publication'">
-        <v-btn text class="deep-orange--text lighten-1 mx-2">
+        <v-btn text class="primary--text mx-2">
           <v-menu
             :close-on-content-click="false"
             bottom
@@ -66,7 +66,7 @@
       </template>
 
       <template v-if="item.action === 'menu' && item.title == 'About'">
-        <v-btn text class="deep-orange--text lighten-1 mx-2">
+        <v-btn text class="primary--text mx-2">
           <v-menu offset-y :key="item.id">
             <template v-slot:activator="{ on }">
               <span text color="primary" v-on="on">
@@ -85,17 +85,11 @@
         </v-btn>
       </template>
       <template v-else-if="item.action !== 'menu'">
-        <v-btn text class="deep-orange--text lighten-1 mx-2" :to="item.to">{{ item.title }}</v-btn>
+        <v-btn text class="primary--text mx-2" :to="item.to">{{ item.title }}</v-btn>
       </template>
     </div>
 
-    <v-btn
-      rounded
-      color="deep-orange"
-      class="lighten-1 white--text ml-2"
-      elevation="0"
-      to="/donate"
-    >Donate</v-btn>
+    <v-btn color="secondary" class="white--text ml-2" elevation="0" to="/donate">Donate</v-btn>
     <SearchForm />
 
     <!-- <template v-if="$vuetify.breakpoint.smAndDown">

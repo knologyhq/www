@@ -1,5 +1,5 @@
 <template>
-  <v-btn text icon color="deep-orange" :href="account.profileUrl">
+  <v-btn text icon color="secondary" :href="account.profileUrl">
     <v-icon v-html="`mdi-${account.platform}`" />
   </v-btn>
 </template>

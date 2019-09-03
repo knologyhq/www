@@ -14,7 +14,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn icon v-on="on" class="ml-2">
-          <v-icon color="deep-orange" class="lighten-1">mdi-magnify</v-icon>
+          <v-icon color="secondary">mdi-magnify</v-icon>
           <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>
       </template>

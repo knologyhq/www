@@ -13,14 +13,16 @@ export default function(Vue, { appOptions, head }) {
   });
 
   const opts = {
-    icons: {
-      iconfont: "mdi",
-      theme: {
-        primary: "#b747ff" //,
-        // success: '',
-        // info: '',
-        // error: ''
+    theme: {
+      themes: {
+        light: {
+          primary: "#266093",
+          secondary: "#FF7043"
+        }
       }
+    },
+    icons: {
+      iconfont: "mdi"
     }
   };
   Vue.use(Vuetify);

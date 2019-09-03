@@ -1,5 +1,5 @@
 <template>
-  <v-btn color="deep-orange" class="lighten-1 white--text" to="#main">Read More →</v-btn>
+  <v-btn color="secondary" class="white--text" to="#main">Read More →</v-btn>
 </template>
 
 <script>

@@ -95,11 +95,13 @@
 <script>
 import Cta from "~/components/Cta.vue";
 import PostCardLarge from "~/components/PostCardLarge.vue";
+import ReadMoreButton from "~/components/ReadMoreButton.vue";
 
 export default {
   components: {
     Cta,
-    PostCardLarge
+    PostCardLarge,
+    ReadMoreButton
   }
 };
 </script>
