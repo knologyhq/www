@@ -1,16 +1,16 @@
 <template>
-  <v-card class="mx-auto" flat tile :to="`/article/${post.slug}`">
+  <v-card class="mx-auto mb-4" flat tile :to="`/article/${post.slug}`">
     <v-img height="200px" :src="`${post.image.url}?auto=compress&w=500&fit=fillmax`" />
-    <v-card-title class="align-end fill-height title">
+    <v-card-title class="align-end fill-height px-0">
       <div
-        class="category pr-1 grey--text subtitle-1"
+        class="category pr-1 grey--text body-2 py-2"
         v-for="category in post.categories"
         :key="category.id"
       >{{ category.title }}</div>
-      <div>{{ post.title }}</div>
+      <div class="black--text font-weight-black title">{{ post.title }}</div>
     </v-card-title>
-    <v-card-text v-if="post.authors">
-      <div class="pr-1 grey--text subheader">
+    <v-card-text v-if="post.authors" class="px-0 pr-1 ">
+      <div class="grey--text subheader">
         By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }} •
         {{post.publishDate | moment("MMM D, YYYY") }}
       </div>
@@ -18,9 +18,12 @@
   </v-card>
 </template>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .category + .category:before {
   content: "| ";
+}
+.title {
+  line-height: 1.5rem;
 }
 </style>
 
