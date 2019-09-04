@@ -1,16 +1,17 @@
 <template>
   <v-app id="knology">
+    <div v-if="$slots.alertBanner">
+      <slot name="alertBanner" />
+    </div>
     <header class="header">
       <toolbar />
     </header>
-
     <div v-if="$slots.textBanner">
       <slot name="textBanner" />
     </div>
     <div v-if="$slots.imageBanner">
       <slot name="imageBanner" />
     </div>
-
     <v-content>
       <v-container>
         <v-row>

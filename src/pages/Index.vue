@@ -1,36 +1,31 @@
 <template>
   <Layout>
-    <template slot="textBanner">
-      <!-- todo: If takeover banners will be used regularly, this should be added as a model in Dato -->
+    <template slot="alertBanner">
       <v-responsive
         class="white--text py-12"
         :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
       >
         <v-container>
           <v-row align="center" justify="center">
-            <h1 class="display-2 font-weight-thin mb-4">New Name, Same People</h1>
-            <h4
-              class="subheading text-center font-weight-regular"
-            >In 2019, New Knowledge Organization Ltd. became Knology. With this change, we’ve renewed our commitment to studying and untangling complex social issues. We’re proud that our new website puts more social science research into the hands of people who can make a difference.</h4>
+            <div class="display-1 font-weight-black mb-4 text-uppercase">New Name, Same People</div>
+          </v-row>
+          <v-row align="center" justify="center">
+            <div
+              class="subheading text-center font-weight-regular pa-4 col-md-7"
+            >In 2019, New Knowledge Organization Ltd. became Knology. With this change, we’ve renewed our commitment to studying and untangling complex social issues. We’re proud that our new website puts more social science research into the hands of people who can make a difference.</div>
           </v-row>
         </v-container>
       </v-responsive>
     </template>
 
     <v-container>
-      <template slot="tagline">
-        <v-container grid-list-xs>
-          <v-row>
-            <v-col cols="5">
-              <p>is a digital publication that explains ideas debated in culture with visual essays.</p>
-            </v-col>
-          </v-row>
-        </v-container>
-      </template>
-      <Logo :tagline="true" />
-    </v-container>
-
-    <v-container>
+      <v-row>
+        <v-col cols="5" class="pa-0">
+          <p
+            class="headline grey--text lighten-1 mb-4 d-flex"
+          >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
+        </v-col>
+      </v-row>
       <v-row>
         <v-col id="featured-posts" cols="4">
           <v-sheet>
@@ -83,6 +78,18 @@
 
 <page-query>
   query Dato($page: Int) {
+    allSite {
+      edges {
+        node {
+          globalSeo {
+            siteName
+            fallbackSeo {
+              description
+            }
+          }
+        }
+      }
+    }
     allHome {
       edges {
         node {

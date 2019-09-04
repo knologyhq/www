@@ -1,10 +1,9 @@
 <template>
-  <v-toolbar flat>
-    <v-toolbar-title>
-      <g-link to="/">
-        <v-img src="/logo.png" class="mr-5" contain height="48" width="48" />
-      </g-link>
-    </v-toolbar-title>
+  <v-toolbar flat class="align-center">
+    <g-link to="/">
+      <Logo />
+      <!-- <v-img src="/logo.png" class="mr-5" contain height="48" width="48" /> -->
+    </g-link>
 
     <v-spacer></v-spacer>
     <div v-for="item in items" :key="item.id">
@@ -135,10 +134,12 @@ query  {
 </style>
 <script>
 import SearchForm from "~/components/SearchForm.vue";
+import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
-    SearchForm
+    SearchForm,
+    Logo
   },
   data() {
     return {

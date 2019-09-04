@@ -22,7 +22,7 @@
       </defs>
     </svg>
 
-    <div v-if="tagline == true" class="col-md-7 pa-0">
+    <div v-if="tagline == true" class="pa-0">
       <p
         class="headline grey--text lighten-1 mb-4 d-flex"
       >{{ $static.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
