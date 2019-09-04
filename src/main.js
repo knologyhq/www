@@ -4,14 +4,17 @@ import Vuetify from "vuetify";
 import VueMoment from "vue-moment";
 
 import "vuetify/dist/vuetify.min.css";
-import "@mdi/font/css/materialdesignicons.css";
 
 export default function(Vue, { appOptions, head }) {
   head.link.push({
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/icon?family=Material+Icons"
   });
-
+  head.link.push({
+    rel: "stylesheet",
+    href:
+      "https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css"
+  });
   const opts = {
     theme: {
       themes: {
