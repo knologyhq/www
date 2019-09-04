@@ -16,7 +16,7 @@
         </v-card-text>
       </v-card>
 
-      <v-row>
+      <v-row v-if="$page.allOurTeam.edges[0].node.introCopy">
         <v-col
           cols="12"
           id="main"
@@ -26,24 +26,20 @@
       </v-row>
 
       <template>
-        <v-card class="mx-auto" flat tile>
-          <v-card-text>
-            <v-chip-group column active-class="primary--text" v-model="selectedRole">
-              <v-chip class="ma-2" value="All" filter>All</v-chip>
-              <v-chip
-                class="ma-2"
-                :value="role.node.title"
-                filter
-                v-for="role in $page.allRoles.edges"
-                :key="role.node.id"
-              >{{ role.node.title}}</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
+        <v-chip-group column class="mx-auto" active-class="primary--text" v-model="selectedRole">
+          <v-chip class="ma-2" value="All" filter>All</v-chip>
+          <v-chip
+            class="ma-2"
+            :value="role.node.title"
+            filter
+            v-for="role in $page.allRoles.edges"
+            :key="role.node.id"
+          >{{ role.node.title}}</v-chip>
+        </v-chip-group>
       </template>
 
       <v-row class="mb-6">
-        <v-col cols="3" v-for="person in filteredPeople" :key="person.id">
+        <v-col cols="12" xs="12" sm="6" md="3" v-for="person in filteredPeople" :key="person.id">
           <PersonCard :person="person.node" />
         </v-col>
       </v-row>

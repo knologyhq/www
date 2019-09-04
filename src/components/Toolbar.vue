@@ -97,13 +97,13 @@
     <div class="hidden-md-and-up">
       <v-dialog v-model="dialog" fullscreen hide-overlay flat transition="dialog-bottom-transition">
         <template v-slot:activator="{ on }">
-          <v-icon color="primary" dark v-on="on">mdi-menu</v-icon>
+          <v-icon color="primary" v-on="on">mdi-menu</v-icon>
         </template>
         <v-card>
           <v-toolbar color="primary" flat tile>
             <v-spacer></v-spacer>
 
-            <v-btn icon right dark @click="dialog = false">
+            <v-btn icon right @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>

@@ -58,7 +58,7 @@
         </v-col>
       </v-row>
       <v-row id="main">
-        <v-col cols="8" sm="12" md="8">
+        <v-col cols="12" md="8">
           <div v-html="marked($page.posts.body)" />
 
           <!-- todo: make a component for comment block -->
@@ -163,7 +163,7 @@
           </v-container>
         </v-col>
 
-        <v-col sm="12" md="4">
+        <v-col cols="12" md="4">
           <Sidebar />
         </v-col>
       </v-row>

@@ -32,7 +32,7 @@
         <Logo />
         <h4 class="subtitle-1">Subscribe to our newsletter</h4>
         <v-text-field></v-text-field>
-        <v-btn small color="primary" dark>Subscribe</v-btn>
+        <v-btn small color="primary">Subscribe</v-btn>
       </v-col>
       <v-col cols="3">
         <v-card flat tile>

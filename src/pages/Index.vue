@@ -7,7 +7,9 @@
       >
         <v-container>
           <v-row align="center" justify="center">
-            <div class="display-1 font-weight-black mb-4 text-uppercase">New Name, Same People</div>
+            <div
+              class="display-1 font-weight-black mb-4 text-center text-uppercase"
+            >New Name, Same People</div>
           </v-row>
           <v-row align="center" justify="center">
             <div
