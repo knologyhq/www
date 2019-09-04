@@ -28,7 +28,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col id="featured-posts" sm="12" md="8" lg="4" order-md="1">
+      <v-col id="featured-posts" cols="12" sm="12" md="8" lg="4" order-md="1">
         <v-sheet>
           <div class="title font-weight-black black--text mb-2">Featured Posts</div>
           <v-divider class="mb-2" />
@@ -39,7 +39,7 @@
           />
         </v-sheet>
       </v-col>
-      <v-col id="new-posts" sm="12" md="4" lg="4" order-md="2">
+      <v-col id="new-posts" cols="12" sm="12" md="4" lg="4" order-md="2">
         <v-sheet>
           <div class="title font-weight-black black--text mb-2">New Posts</div>
           <v-divider class="mb-2" />
@@ -58,7 +58,7 @@
           </v-container>
         </div>
       </v-col>
-      <v-col sm="12" md="4" lg="4" order-md="4" order-lg="3">
+      <v-col cols="12" sm="12" md="4" lg="4" order-md="4" order-lg="3">
         <Sidebar />
       </v-col>
 

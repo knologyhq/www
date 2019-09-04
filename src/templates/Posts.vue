@@ -3,29 +3,47 @@
   <Layout :title="$page.posts.title">
     <template slot="imageBanner">
       <v-responsive
+        v-if="$page.posts.image"
         fluid
         height="500"
         class="white--text py-12 banner"
-        :style="`background-image: url(${$page.posts.image.url});`"
+        :style="`background-image: url(${$page.posts.image.url})`"
+      />
+      <v-responsive
+        v-else
+        fluid
+        height="200"
+        class="white--text py-12 banner"
+        style="background-color: #00A2AE"
       />
     </template>
 
     <v-container>
-      <div
-        class="overline category pr-1 grey--text"
-        v-for="category in $page.posts.categories"
-        :key="category.id"
-      >
-        <g-link :to="`/articles/category/${ category.slug }`">{{ category.title }}</g-link>
-      </div>
-      <br />
+      <v-card flat class="mb-8">
+        <v-card-text class="pa-0 mb-0 ml-n3">
+          <span class="category" v-for="category in $page.posts.categories" :key="category.id">
+            <v-btn
+              text
+              color="grey darken-2"
+              :to="`/articles/category/${ category.slug }`"
+            >{{ category.title }}</v-btn>
+          </span>
+          <br />
 
-      <span class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
-        <g-link :to="`/articles/tag/${ tag.slug }`">{{ tag.title }}</g-link>
-      </span>
-      <h1 class="display-2" v-html="marked($page.posts.title)" />
+          <span class="category" v-for="tag in $page.posts.tags" :key="tag.id">
+            <v-btn
+              color="grey darken-1"
+              class
+              text
+              :to="`/articles/tag/${ tag.slug }`"
+            >{{ tag.title }}</v-btn>
+          </span>
+        </v-card-text>
+      </v-card>
+
+      <div class="black--text font-weight-black display-2" v-html="marked($page.posts.title)" />
       <div v-if="$page.posts.subtitle">
-        <h1 class="display-1" v-html="marked($page.posts.subtitle)" />
+        <div class="font-weight-normal display-1" v-html="marked($page.posts.subtitle)" />
       </div>
       <div class="pr-1 grey--text subtitle-1">
         <template v-if="$page.posts.authors[0]">
@@ -306,7 +324,7 @@ export default {
   background-size: cover;
 }
 .category + .category:before {
-  content: "| ";
+  content: " | ";
 }
 .author + .author:before {
   content: ", ";

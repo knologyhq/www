@@ -38,9 +38,12 @@
 
 
 
+<!-- pagination allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8, page: $page) @paginate {
+  -->
+
 <page-query>
-query Dato($page: Int) {
- allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8, page: $page) @paginate {
+query Dato {
+ allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate") {
     pageInfo {
       totalPages
       currentPage

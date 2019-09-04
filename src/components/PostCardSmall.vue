@@ -1,9 +1,10 @@
 <template>
   <v-card flat tile :to="`/article/${post.slug}`">
     <v-list-item three-line>
-      <v-avatar class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
+      <v-avatar v-if="post.image" class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
         <v-img tile :src="`${post.image.url}?auto=compress&w=80&h=80&fit=crop`" />
       </v-avatar>
+      <v-avatar v-else class="profile shrink mr-3 pa-0" color="#00A2AE" size="80" tile />
 
       <v-list-item-content>
         <div class="black--text font-weight-normal subtitle mb-1">{{ post.title }}</div>
