@@ -11,18 +11,18 @@
     </template>
 
     <v-container>
-      <span
+      <div
         class="overline category pr-1 grey--text"
         v-for="category in $page.posts.categories"
         :key="category.id"
       >
         <g-link :to="`/articles/category/${ category.slug }`">{{ category.title }}</g-link>
-      </span>
+      </div>
       <br />
 
-      <span class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
+      <div class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
         <g-link :to="`/articles/tag/${ tag.slug }`">{{ tag.title }}</g-link>
-      </span>
+      </div>
       <h1 class="display-2" v-html="marked($page.posts.title)" />
       <div v-if="$page.posts.subtitle">
         <h1 class="display-1" v-html="marked($page.posts.subtitle)" />

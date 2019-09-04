@@ -1,25 +1,16 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <SubscribeFormInline />
-      </v-col>
-    </v-row>
-    <v-row id="featured-new-bites">
-      <v-col>
-        <h4 class="subtitle">Featured New Bites</h4>
-        <PostCardSmall
-          :post="post.node"
-          v-for="post in $static.newposts.edges"
-          :key="post.node.id"
-        />
-        <div>
-          <g-link to="/articles">View all posts</g-link>
-        </div>
-      </v-col>
-    </v-row>
+  <div>
+    <div class="title font-weight-black black--text mb-2">Subscribe to our Newsletter</div>
+    <v-divider class="mb-2" />
+    <SubscribeFormInline />
+    <div class="title font-weight-black black--text mb-2 mt-4">Featured New Bites</div>
+    <v-divider></v-divider>
+    <PostCardSmall :post="post.node" v-for="post in $static.newposts.edges" :key="post.node.id" />
+    <div>
+      <g-link to="/articles">View all posts</g-link>
+    </div>
     <div id="tags"></div>
-  </v-container>
+  </div>
 </template>
 
 <static-query>

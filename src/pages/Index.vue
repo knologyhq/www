@@ -18,55 +18,58 @@
       </v-responsive>
     </template>
 
-    <v-container>
-      <v-row>
-        <v-col cols="5" class="pa-0">
-          <p
-            class="headline grey--text lighten-1 mb-4 d-flex"
-          >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col id="featured-posts" cols="4">
-          <v-sheet>
-            <div class="title font-weight-black black--text mb-2">Featured Posts</div>
-            <v-divider></v-divider>
-            <PostCardLarge
-              :post="post"
-              v-for="post in $page.allHome.edges[0].node.featuredPosts"
-              :key="post.id"
-            />
-          </v-sheet>
-        </v-col>
-        <v-col id="new-posts" cols="4">
-          <v-sheet>
-            <div class="title font-weight-black black--text mb-2">New Posts</div>
-            <v-divider></v-divider>
-            <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
-          </v-sheet>
+    <v-row>
+      <v-col cols="5" class="pa-0">
+        <p
+          class="headline grey--text lighten-1 mb-4 d-flex"
+        >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col id="featured-posts" sm="12" md="8" lg="4" order-md="1">
+        <v-sheet>
+          <div class="title font-weight-black black--text mb-2">Featured Posts</div>
+          <v-divider class="mb-2" />
+          <PostCardLarge
+            :post="post"
+            v-for="post in $page.allHome.edges[0].node.featuredPosts"
+            :key="post.id"
+          />
+        </v-sheet>
+      </v-col>
+      <v-col id="new-posts" sm="12" md="4" lg="4" order-md="2">
+        <v-sheet>
+          <div class="title font-weight-black black--text mb-2">New Posts</div>
+          <v-divider class="mb-2" />
+          <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
+        </v-sheet>
 
-          <div class="text-center">
-            <v-container>
-              <v-row justify="center">
-                <v-col cols="8">
-                  <v-container class="max-width">
-                    <Pager linkClass="my-4" :info="$page.newposts.pageInfo" />
-                  </v-container>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
-        </v-col>
-        <v-col cols="4">
-          <Sidebar />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col md="6" sm="12" v-for="pillar in $page.allPillars.edges" :key="pillar.id">
-          <RecentPostsByPillar :pillar="pillar.node" />
-        </v-col>
-      </v-row>
-    </v-container>
+        <div class="text-center">
+          <v-container>
+            <v-row justify="center">
+              <v-col cols="8">
+                <v-container class="max-width">
+                  <Pager linkClass="my-4" :info="$page.newposts.pageInfo" />
+                </v-container>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+      </v-col>
+      <v-col sm="12" md="4" lg="4" order-md="4" order-lg="3">
+        <Sidebar />
+      </v-col>
+
+      <v-col order-md="3" sm="12" md="8" lg="12">
+        <v-row>
+          <RecentPostsByPillar
+            :pillar="pillar.node"
+            :key="pillar.id"
+            v-for="pillar in $page.allPillars.edges"
+          />
+        </v-row>
+      </v-col>
+    </v-row>
 
     <template slot="cta">
       <Cta :cta="$page.allHome.edges[0].node.cta" />

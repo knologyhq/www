@@ -1,20 +1,16 @@
 <template>
-  <v-container>
+  <v-col lg="6" md="12">
     <v-row>
       <v-col>
         <h3 v-html="`Recent Posts in ${pillar.title}`" class="subtitle-1" />
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12">
-        <v-row>
-          <v-col xs="12" md="6" v-for="post in $static[pillar.slug].edges" :key="post.id">
-            <PostCardLarge :post="post.node" />
-          </v-col>
-        </v-row>
+      <v-col xs="12" md="6" v-for="post in $static[pillar.slug].edges" :key="post.id">
+        <PostCardLarge :post="post.node" />
       </v-col>
     </v-row>
-  </v-container>
+  </v-col>
 </template>
 <static-query>
 

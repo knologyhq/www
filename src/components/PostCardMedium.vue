@@ -1,14 +1,12 @@
 <template>
   <v-card class="mx-auto mb-1" flat tile :to="`/article/${post.slug}`">
-    <v-card-title class="align-end fill-height px-0">
-      <div class="overline mb-3">
-        <span
-          class="category pr-1 grey--text body-2 py-2 overline"
-          v-for="category in post.categories"
-          :key="category.id"
-        >{{ category.title }}</span>
-      </div>
-      <div class="black--text font-weight-black title">{{ post.title }}</div>
+    <span
+      class="category pr-1 grey--text body-2 py-2 overline"
+      v-for="category in post.categories"
+      :key="category.id"
+    >{{ category.title }}</span>
+    <v-card-title class="fill-height pa-0 my-2">
+      <div class="black--text d-block font-weight-black title">{{ post.title }}</div>
     </v-card-title>
     <v-card-text v-if="post.authors" class="px-0 pr-1">
       <div class="grey--text subheader font-italic">

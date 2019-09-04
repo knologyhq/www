@@ -1,25 +1,21 @@
 <template>
-  <v-row>
-    <v-col cols="12" class="py-0 my-2">
-      <v-card flat tile :to="`/article/${post.slug}`">
-        <v-list-item three-line>
-          <v-avatar class="profile shrink mr-3" color="grey" size="80" tile>
-            <v-img tile :src="`${post.image.url}?auto=compress&w=80&h=80&fit=crop`" />
-          </v-avatar>
+  <v-card flat tile :to="`/article/${post.slug}`">
+    <v-list-item three-line>
+      <v-avatar class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
+        <v-img tile :src="`${post.image.url}?auto=compress&w=80&h=80&fit=crop`" />
+      </v-avatar>
 
-          <v-list-item-content>
-            <div class="black--text font-weight-normal subtitle mb-1">{{ post.title }}</div>
+      <v-list-item-content>
+        <div class="black--text font-weight-normal subtitle mb-1">{{ post.title }}</div>
 
-            <v-card-text v-if="post.authors" class="px-0 pr-1">
-              <div
-                class="grey--text subheader font-italic"
-              >By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }}</div>
-            </v-card-text>
-          </v-list-item-content>
-        </v-list-item>
-      </v-card>
-    </v-col>
-  </v-row>
+        <v-card-text v-if="post.authors" class="px-0 pr-1">
+          <div
+            class="grey--text subheader font-italic"
+          >By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }}</div>
+        </v-card-text>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
 
 <style lang="postcss" scoped>

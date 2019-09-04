@@ -3,7 +3,7 @@
     <v-img height="200px" :src="`${post.image.url}?auto=compress&w=500&fit=fillmax`" />
     <v-card-title class="align-end fill-height px-0">
       <div
-        class="category pr-1 grey--text body-2 py-2 overline"
+        class="category pr-1 grey--text body-2 py-2 overline d-block"
         v-for="category in post.categories"
         :key="category.id"
       >{{ category.title }}</div>

@@ -5,17 +5,16 @@
     method="post"
     id="mc-embedded-subscribe-form"
     name="mc-embedded-subscribe-form"
-    class="validate"
     target="_blank"
     novalidate
   >
     <v-text-field
-      label="Subscribe to our newsletter"
+      label="Email address"
       color="primary"
       type="email"
       value
       name="EMAIL"
-      class="required email"
+      class="required email mr-0"
       id="mce-EMAIL"
     >
       <div style="position: absolute; left: -5000px;" aria-hidden="true">
@@ -26,7 +25,8 @@
           depressed
           tile
           color="primary"
-          class="button"
+          large
+          class="button my-0"
           type="submit"
           value="Subscribe"
           name="subscribe"
@@ -39,7 +39,10 @@
 
 
 
-<style lang="postcss">
+<style lang="postcss" scoped>
+#app .v-messages {
+  display: none;
+}
 </style>
 
 <script>
