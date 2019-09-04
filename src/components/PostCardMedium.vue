@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto mb-1" flat tile :to="`/article/${post.slug}`">
+  <v-card class="mx-auto mb-2" flat tile :to="`/article/${post.slug}`">
     <span
       class="category pr-1 grey--text body-2 py-2 overline"
       v-for="category in post.categories"
@@ -19,7 +19,7 @@
 
 <style lang="postcss" scoped>
 .category + .category:before {
-  content: "| ";
+  content: " | ";
 }
 .title {
   line-height: 1.4rem;
