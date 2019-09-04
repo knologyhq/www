@@ -41,21 +41,28 @@
         </v-card-text>
       </v-card>
 
-      <div class="black--text font-weight-black display-2" v-html="marked($page.posts.title)" />
+      <div class="black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
       <div v-if="$page.posts.subtitle">
-        <div class="font-weight-normal display-1" v-html="marked($page.posts.subtitle)" />
+        <div
+          class="grey--text font-italic font-weight-normal subtitle"
+          v-html="marked($page.posts.subtitle)"
+        />
       </div>
-      <div class="pr-1 grey--text subtitle-1">
+
+      <span class="font-italic">
         <template v-if="$page.posts.authors[0]">
-          By
+          by
           <span
             class="author subtitle-1"
             v-for="author in $page.posts.authors"
             :key="author.id"
           >{{ author.name }}</span>
         </template>
-        <div class="pr-1 grey--text subtitle-1">{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
-      </div>
+      </span>
+
+      <div
+        class="pr-1 black--text subtitle-1 mb-2"
+      >{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
 
       <v-row>
         <v-col>
