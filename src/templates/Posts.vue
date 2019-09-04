@@ -20,9 +20,9 @@
       </div>
       <br />
 
-      <div class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
+      <span class="overline category pr-1 grey--text" v-for="tag in $page.posts.tags" :key="tag.id">
         <g-link :to="`/articles/tag/${ tag.slug }`">{{ tag.title }}</g-link>
-      </div>
+      </span>
       <h1 class="display-2" v-html="marked($page.posts.title)" />
       <div v-if="$page.posts.subtitle">
         <h1 class="display-1" v-html="marked($page.posts.subtitle)" />
@@ -36,7 +36,7 @@
             :key="author.id"
           >{{ author.name }}</span>
         </template>
-        <div class="pr-1 grey--text subtitle-1">{{$page.posts.publishDate}}</div>
+        <div class="pr-1 grey--text subtitle-1">{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
       </div>
 
       <v-row>
@@ -58,16 +58,16 @@
         </v-col>
       </v-row>
       <v-row id="main">
-        <v-col cols="8">
+        <v-col cols="8" sm="12" md="8">
           <div v-html="marked($page.posts.body)" />
 
           <!-- todo: make a component for comment block -->
           <v-container id="comments" v-if="$page.posts.allowComments == true">
             <v-row v-if="$page.comments.belongsTo.edges[0]">
-              <v-col cols="6" md="12">
+              <v-col sm="12">
                 <div class="title">Comments</div>
                 <span
-                  cols="8"
+                  cols="12"
                   v-for="comment in $page.comments.belongsTo.edges"
                   :key="comment.node.id"
                 >
@@ -94,7 +94,7 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col cols="6" md="12">
+              <v-col sm="12">
                 <div class="title mb-2">Join the Conversation</div>
                 <v-alert
                   type="success"
@@ -163,7 +163,7 @@
           </v-container>
         </v-col>
 
-        <v-col cols="4">
+        <v-col sm="12" md="4">
           <Sidebar />
         </v-col>
       </v-row>
