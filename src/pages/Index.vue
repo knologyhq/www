@@ -19,7 +19,7 @@
     </template>
 
     <v-row>
-      <v-col cols="5" class="pa-0">
+      <v-col md="5" xs="12">
         <p
           class="headline grey--text lighten-1 mb-4 d-flex"
         >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
