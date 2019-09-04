@@ -14,11 +14,13 @@
     </div>
     <v-content>
       <v-container>
-        <v-row>
-          <v-col cols="12">
-            <slot />
-          </v-col>
-        </v-row>
+        <v-slide-y-transition mode="out-in">
+          <v-row>
+            <v-col cols="12">
+              <slot />
+            </v-col>
+          </v-row>
+        </v-slide-y-transition>
       </v-container>
     </v-content>
 

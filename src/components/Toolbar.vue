@@ -2,11 +2,10 @@
   <v-toolbar flat class="align-center">
     <g-link to="/">
       <Logo />
-      <!-- <v-img src="/logo.png" class="mr-5" contain height="48" width="48" /> -->
     </g-link>
 
     <v-spacer></v-spacer>
-    <div v-for="item in items" :key="item.id">
+    <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
       <template v-if="item.action === 'menu' && item.title == 'Publication'">
         <v-btn text class="primary--text mx-2">
           <v-menu
@@ -88,12 +87,34 @@
       </template>
     </div>
 
-    <v-btn color="secondary" class="white--text ml-2" elevation="0" to="/donate">Donate</v-btn>
-    <SearchForm />
+    <v-btn
+      color="secondary"
+      class="white--text ml-2 hidden-sm-and-down"
+      elevation="0"
+      to="/donate"
+    >Donate</v-btn>
 
-    <!-- <template v-if="$vuetify.breakpoint.smAndDown">
-      <v-btn icon>Menu</v-btn>
-    </template>-->
+    <div class="hidden-md-and-up">
+      <v-dialog v-model="dialog" fullscreen hide-overlay flat transition="dialog-bottom-transition">
+        <template v-slot:activator="{ on }">
+          <v-icon color="primary" dark v-on="on">mdi-menu</v-icon>
+        </template>
+        <v-card>
+          <v-toolbar color="primary" flat tile>
+            <v-spacer></v-spacer>
+
+            <v-btn icon right dark @click="dialog = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-toolbar>
+
+          <v-list>
+            <v-list-item v-for="item in items" :key="item.id" :to="item.to">{{item.title}}</v-list-item>
+          </v-list>
+        </v-card>
+      </v-dialog>
+    </div>
+    <SearchForm />
   </v-toolbar>
 </template>
 
@@ -143,6 +164,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       drawer: null,
       items: [
         { title: "Home", to: "/" },
