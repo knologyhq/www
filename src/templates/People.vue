@@ -3,7 +3,7 @@
   <Layout :title="$page.people.name">
     <v-container>
       <v-row>
-        <v-col cols="6">
+        <v-col cols="12" md="6" order-xs="2">
           <h1 v-html="$page.people.name" class="title" />
           <h2 v-html="$page.people.jobTitle" class="subtitle text-uppercase" />
           <h2 v-html="$page.people.education" class="subtitle font-italic font-weight-regular" />
@@ -35,7 +35,7 @@
             :to="`/category/${pillar.slug}`"
           >{{ pillar.title }}</v-btn>
         </v-col>
-        <v-col cols="6">
+        <v-col cols="12" md="6" order-xs="1">
           <img
             v-if="$page.people.photo.url"
             :src="`${$page.people.photo.url}?auto=compress&w=900&fit=fillmax`"
@@ -45,16 +45,28 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-item-group class="grey lighten-2" fluid>
-      <v-container v-if="$page.posts.belongsTo.edges[0]">
-        <div class="subtitle">Recent Posts by {{$page.people.name}}</div>
-        <v-row class="mb-6">
-          <v-col cols="4" v-for="post in $page.posts.belongsTo.edges" :key="post.node.id">
-            <PostCardLarge :post="post.node" :key="post.node.id" />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-item-group>
+
+    <template slot="textBannerAppend">
+      <v-responsive class="grey lighten-4">
+        <v-item-group fluid>
+          <v-container v-if="$page.posts.belongsTo.edges[0]" fluid>
+            <div class="title text--black font-weight-black">Recent Posts by {{$page.people.name}}</div>
+            <v-row class="mb-0">
+              <v-col
+                cols="12"
+                sm="6"
+                md="4"
+                lg="3"
+                v-for="post in $page.posts.belongsTo.edges"
+                :key="post.node.id"
+              >
+                <PostCardLarge postClasses="grey lighten-4" :post="post.node" :key="post.node.id" />
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-item-group>
+      </v-responsive>
+    </template>
   </Layout>
 </template>
 

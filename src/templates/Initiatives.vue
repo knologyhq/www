@@ -67,7 +67,7 @@
     </v-container>
 
     <v-container fluid v-if="$page.people.belongsTo.edges[0]">
-      <div class="subtitle">Meet Our Experts in the Area</div>
+      <div class="title text--black font-weight-black">Meet Our Experts in the Area</div>
 
       <v-row class="mb-6">
         <v-col cols="3" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
@@ -76,7 +76,9 @@
       </v-row>
     </v-container>
     <v-container v-if="$page.posts.belongsTo.edges[0]">
-      <div class="subtitle">Recent posts about {{$page.initiatives.title}}</div>
+      <div
+        class="title text--black font-weight-black"
+      >Recent posts about {{$page.initiatives.title}}</div>
       <v-row class="mb-6">
         <v-col cols="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
           <PostCardLarge :post="edge.node" :key="edge.node.id" />

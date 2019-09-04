@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto mb-8" flat tile :to="`/article/${post.slug}`">
+  <v-card :class="`mx-auto mb-8 ${postClasses}`" flat tile :to="`/article/${post.slug}`">
     <v-img
       v-if="post.image"
       height="200px"
@@ -39,7 +39,7 @@
 <script>
 export default {
   name: "PostCardLarge",
-  props: ["post"]
+  props: ["post", "postClasses"]
 };
 </script>
 

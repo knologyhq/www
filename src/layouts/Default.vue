@@ -23,7 +23,9 @@
         </v-slide-y-transition>
       </v-container>
     </v-content>
-
+    <div v-if="$slots.textBannerAppend">
+      <slot name="textBannerAppend" />
+    </div>
     <div id="cta" v-if="$slots.cta">
       <slot name="cta" />
     </div>
