@@ -39,7 +39,7 @@
               />
             </v-col>
           </v-row>
-          <v-row v-if="$page.newposts.edges[0]">
+          <v-row v-if="$page.newposts.edges[0].node.edges">
             <v-col id="new-posts" cols="12">
               <h3 class="title">New Posts</h3>
               <template v-for="edge in $page.newposts.edges">
@@ -65,7 +65,13 @@
                     :key="affiliate.id"
                     cols="4"
                   >
-                    <img :src="affiliate.logo.url" class="image" width="100%" height="100%" />
+                    <v-img
+                      :src="affiliate.logo.url"
+                      class="image"
+                      max-width="100%"
+                      max-height="100%"
+                      contain
+                    />
                   </v-col>
                 </v-row>
               </v-container>
@@ -77,12 +83,18 @@
               <v-container fluid>
                 <v-row>
                   <v-col
-                    class="d-flex justify-center .justify-space-around mb-6"
+                    class="d-flex justify-center justify-space-around mb-6"
                     v-for="partner in $page.allCommunity.edges[0].node.partners"
                     :key="partner.id"
                     cols="2"
                   >
-                    <img :src="partner.logo.url" class="image" width="100%" height="100%" />
+                    <v-img
+                      :src="partner.logo.url"
+                      class="image"
+                      max-width="100%"
+                      max-height="100%"
+                      contain
+                    />
                   </v-col>
                 </v-row>
               </v-container>
