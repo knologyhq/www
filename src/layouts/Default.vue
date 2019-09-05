@@ -30,59 +30,86 @@
       <slot name="cta" />
     </div>
     <v-footer padless color="white">
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="4">
         <Logo />
         <SubscribeFormInline />
       </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-card flat tile>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text--black font-weight-black">General Inquiries</v-list-item-title>
-              <v-list-item-subtitle>
-                <a href="mailto:contact@knology.com">contact@knology.com</a>
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text--black font-weight-black">Press Inquiries</v-list-item-title>
-              <v-list-item-subtitle>
-                <a href="mailto:press@knology.com">press@knology.com</a>
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text--black font-weight-black text-uppercase"
+                >General Inquiries</v-list-item-title>
+                <v-list-item-subtitle>
+                  <a href="mailto:contact@knology.com">contact@knology.com</a>
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="text--black font-weight-black text-uppercase"
+                >Press Inquiries</v-list-item-title>
+                <v-list-item-subtitle>
+                  <a href="mailto:press@knology.com">press@knology.com</a>
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-card>
       </v-col>
       <v-col cols="12" md="6">
         <v-container fluid>
           <v-row no-gutters class="pa-0">
             <v-col cols="12" md="4">
-              <v-list-item class="pl-1" text v-for="item in col1Items" :key="item.id">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+              <v-list dense>
+                <v-list-item class="pl-1" text v-for="item in col1Items" :key="item.id">
+                  <v-list-item-content class="my-0 py-0" dense>
+                    <v-list-item-title>
+                      <g-link
+                        style="text-decoration: none"
+                        class="text--black text-uppercase font-weight-bold black--text"
+                        color="black"
+                        :to="item.to"
+                      >{{ item.title }}</g-link>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
             </v-col>
             <v-col cols="12" md="4">
-              <v-list-item class="pl-1" text v-for="item in col2Items" :key="item.id">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+              <v-list dense>
+                <v-list-item class="pl-1" text v-for="item in col2Items" :key="item.id">
+                  <v-list-item-content class="my-0 py-0" dense>
+                    <v-list-item-title>
+                      <g-link
+                        style="text-decoration: none"
+                        class="text--black text-uppercase font-weight-bold black--text"
+                        color="black"
+                        :to="item.to"
+                      >{{ item.title }}</g-link>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
             </v-col>
             <v-col cols="12" md="4">
-              <v-list-item class="pl-1" text v-for="item in col3Items" :key="item.id">
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+              <v-list dense>
+                <v-list-item class="pl-1" text v-for="item in col3Items" :key="item.id">
+                  <v-list-item-content class="my-0 py-0" dense>
+                    <v-list-item-title>
+                      <g-link
+                        style="text-decoration: none"
+                        class="text--black text-uppercase font-weight-bold black--text"
+                        color="black"
+                        :to="item.to"
+                      >{{ item.title }}</g-link>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
             </v-col>
           </v-row>
         </v-container>

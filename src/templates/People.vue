@@ -37,7 +37,7 @@
         </v-col>
         <v-col cols="12" md="6" order-xs="1">
           <img
-            v-if="$page.people.photo.url"
+            v-if="$page.people.photo !== null"
             :src="`${$page.people.photo.url}?auto=compress&w=900&fit=fillmax`"
             :alt="`Photo of ${$page.people.name}`"
             style="max-width: 100%"
