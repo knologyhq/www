@@ -30,33 +30,35 @@
       <slot name="cta" />
     </div>
     <v-footer padless color="white">
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <Logo />
-        <h4 class="subtitle-1">Subscribe to our newsletter</h4>
-        <v-text-field></v-text-field>
-        <v-btn small color="primary">Subscribe</v-btn>
+        <SubscribeFormInline />
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <v-card flat tile>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title>General Inquiries</v-list-item-title>
-              <v-list-item-subtitle>contact@knology.com</v-list-item-subtitle>
+              <v-list-item-title class="text--black font-weight-black">General Inquiries</v-list-item-title>
+              <v-list-item-subtitle>
+                <a href="mailto:contact@knology.com">contact@knology.com</a>
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title>Press Inquiries</v-list-item-title>
-              <v-list-item-subtitle>press@knology.com</v-list-item-subtitle>
+              <v-list-item-title class="text--black font-weight-black">Press Inquiries</v-list-item-title>
+              <v-list-item-subtitle>
+                <a href="mailto:press@knology.com">press@knology.com</a>
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-card>
       </v-col>
-      <v-col cols="6">
-        <v-container>
-          <v-row no-gutters>
-            <v-col cols="sm">
-              <v-list-item text v-for="item in col1Items" :key="item.id">
+      <v-col cols="12" md="6">
+        <v-container fluid>
+          <v-row no-gutters class="pa-0">
+            <v-col cols="12" md="4">
+              <v-list-item class="pl-1" text v-for="item in col1Items" :key="item.id">
                 <v-list-item-content>
                   <v-list-item-title>
                     <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
@@ -64,8 +66,8 @@
                 </v-list-item-content>
               </v-list-item>
             </v-col>
-            <v-col cols="sm">
-              <v-list-item text v-for="item in col2Items" :key="item.id">
+            <v-col cols="12" md="4">
+              <v-list-item class="pl-1" text v-for="item in col2Items" :key="item.id">
                 <v-list-item-content>
                   <v-list-item-title>
                     <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
@@ -73,8 +75,8 @@
                 </v-list-item-content>
               </v-list-item>
             </v-col>
-            <v-col cols="sm">
-              <v-list-item text v-for="item in col3Items" :key="item.id">
+            <v-col cols="12" md="4">
+              <v-list-item class="pl-1" text v-for="item in col3Items" :key="item.id">
                 <v-list-item-content>
                   <v-list-item-title>
                     <g-link class="nav__link" :to="item.to">{{ item.title }}</g-link>
@@ -125,6 +127,7 @@ h3 {
 <script>
 import Toolbar from "~/components/Toolbar.vue";
 import Logo from "~/components/Logo.vue";
+import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
 
 export default {
   data() {
@@ -151,7 +154,8 @@ export default {
   },
   components: {
     Toolbar,
-    Logo
+    Logo,
+    SubscribeFormInline
   }
 };
 </script>

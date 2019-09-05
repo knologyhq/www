@@ -15,6 +15,7 @@
         </v-container>
       </v-responsive>
     </template>
+
     <v-container v-if="$page.pillars.belongsTo.edges[0]">
       <v-row class="mb-6">
         <v-col cols="8">

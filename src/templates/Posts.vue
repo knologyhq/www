@@ -29,15 +29,6 @@
             >{{ category.title }}</v-btn>
           </span>
           <br />
-
-          <span class="category" v-for="tag in $page.posts.tags" :key="tag.id">
-            <v-btn
-              color="grey darken-1"
-              class
-              text
-              :to="`/articles/tag/${ tag.slug }`"
-            >{{ tag.title }}</v-btn>
-          </span>
         </v-card-text>
       </v-card>
 
@@ -85,6 +76,17 @@
       <v-row id="main">
         <v-col cols="12" md="8">
           <div v-html="marked($page.posts.body)" />
+
+          <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2">
+            <v-btn
+              flat
+              elevation="0"
+              color="grey"
+              class="ma-2 lighten-2 black--text"
+              dark
+              :to="`/articles/tag/${ tag.slug }`"
+            >{{ tag.title }}</v-btn>
+          </span>
 
           <!-- todo: make a component for comment block -->
           <v-container id="comments" v-if="$page.posts.allowComments == true">

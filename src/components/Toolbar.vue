@@ -11,8 +11,8 @@
           <v-menu
             :close-on-content-click="false"
             bottom
-            offset-y
-            class="mt-4"
+            :offset-y="offset"
+            class="mt-10"
             full-width
             min-width="100%"
             z-index="10000000"
@@ -49,7 +49,7 @@
                             :key="initiative.id"
                           >
                             <v-list-item-content>
-                              <v-list-item-title class="white--text">{{initiative.title}}</v-list-item-title>
+                              <div class="white--text">{{initiative.title}}</div>
                             </v-list-item-content>
                           </v-list-item>
                         </v-list-item-group>
@@ -65,7 +65,7 @@
 
       <template v-if="item.action === 'menu' && item.title == 'About'">
         <v-btn text class="primary--text mx-2">
-          <v-menu offset-y :key="item.id">
+          <v-menu :offset-y="offset" bottom :key="item.id">
             <template v-slot:activator="{ on }">
               <span text color="primary" v-on="on">
                 {{item.title}}
@@ -97,13 +97,13 @@
     <div class="hidden-md-and-up">
       <v-dialog v-model="dialog" fullscreen hide-overlay flat transition="dialog-bottom-transition">
         <template v-slot:activator="{ on }">
-          <v-icon color="primary" v-on="on">mdi-menu</v-icon>
+          <v-icon color="primary" dark v-on="on">mdi-menu</v-icon>
         </template>
         <v-card>
           <v-toolbar color="primary" flat tile>
             <v-spacer></v-spacer>
 
-            <v-btn icon right @click="dialog = false">
+            <v-btn icon right dark @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
@@ -166,6 +166,8 @@ export default {
     return {
       dialog: false,
       drawer: null,
+      offset: true,
+
       items: [
         { title: "Home", to: "/" },
         { title: "Publication", to: "/publication", action: "menu" },
