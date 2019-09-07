@@ -40,7 +40,7 @@
 <page-query>
 
 {
-  about: allAbout(filter: {title: {eq: "Accountability"}}) {
+  about: allAbout(filter: {id: {eq: "1407758"}}) {
     edges {
       node {
         bannerCopy
