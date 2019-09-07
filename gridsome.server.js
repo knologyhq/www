@@ -474,7 +474,7 @@ module.exports = function(api) {
               }
             }
             
-            posts: allPosts {
+            posts: allPosts(first: 100) {
               ...postFields
               dataFile
               tags {
@@ -540,7 +540,7 @@ module.exports = function(api) {
               }
               ...postFields
             }
-            people: allPeople {
+            people: allPeople(first: 100) {
               role {
                 id
                 title
