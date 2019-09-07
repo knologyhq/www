@@ -42,13 +42,9 @@
           <v-row v-if="$page.newposts.edges[0].node">
             <v-col id="new-posts" cols="12">
               <h3 class="title">New Posts</h3>
-              <template v-for="edge in $page.newposts.edges">
+              <template v-for="edge in $page.newposts.edges[0]">
                 <div v-for="post in edge" :key="post.id">
-                  <PostCardMedium
-                    :post="item[0].node"
-                    v-for="item in post.belongsTo"
-                    :key="item.id"
-                  />
+                  <PostCardMedium :post="item.node" v-for="item in post.edges" :key="item.id" />
                 </div>
               </template>
             </v-col>
