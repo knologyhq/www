@@ -39,7 +39,7 @@
               />
             </v-col>
           </v-row>
-          <v-row v-if="$page.newposts.edges[0].node.edges">
+          <v-row v-if="$page.newposts.edges[0].node">
             <v-col id="new-posts" cols="12">
               <h3 class="title">New Posts</h3>
               <template v-for="edge in $page.newposts.edges">
