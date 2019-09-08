@@ -287,6 +287,7 @@ module.exports = function(api) {
         id
       }
     }
+    title
     introCopy
     id
     bannerCopy

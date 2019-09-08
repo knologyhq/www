@@ -342,7 +342,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .banner {
   background-size: cover;
 }
@@ -352,8 +352,12 @@ export default {
 .author + .author:before {
   content: ", ";
 }
-#post-body img {
-  max-width: 100%;
+#post-body {
+  p {
+    img {
+      max-width: 100%;
+    }
+  }
 }
 </style>
 

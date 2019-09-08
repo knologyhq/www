@@ -1,20 +1,9 @@
 <template>
   <Layout>
     <v-container>
-      <v-card
-        flat
-        class="mb-4 banner"
-        :style="`background-image: url(${$page.allOurTeam.edges[0].node.bannerImage.url})`"
-        height="300"
-      >
-        <v-card-text>
-          <div
-            class="title white--text"
-            v-html="marked($page.allOurTeam.edges[0].node.bannerCopy)"
-          />
-          <ReadMoreButton />
-        </v-card-text>
-      </v-card>
+      <Banner
+        :banner="{ image: $page.allOurTeam.edges[0].node.bannerImage.url, title: $page.allOurTeam.edges[0].node.title, copy: $page.allOurTeam.edges[0].node.bannerCopy }"
+      />
 
       <v-row v-if="$page.allOurTeam.edges[0].node.introCopy">
         <v-col
@@ -51,6 +40,7 @@
     allOurTeam {
       edges {
         node {
+          title
           bannerImage {
             url
           }
@@ -108,7 +98,7 @@
 </page-query>
 <script>
 import PersonCard from "~/components/PersonCard.vue";
-import ReadMoreButton from "~/components/ReadMoreButton.vue";
+import Banner from "~/components/Banner.vue";
 
 export default {
   computed: {
@@ -138,7 +128,7 @@ export default {
   },
   components: {
     PersonCard,
-    ReadMoreButton
+    Banner
   }
 };
 </script>

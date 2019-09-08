@@ -35,7 +35,7 @@ module.exports = {
     config.mode("development");
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
     types.forEach(type => {
-      addStyleResource(config.module.rule("postcss").oneOf(type));
+      addStyleResource(config.module.rule("css").oneOf(type));
     });
     config.module
       .rule("postcss")

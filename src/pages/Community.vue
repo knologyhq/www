@@ -1,23 +1,9 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" justify="center">
-        <v-col>
-          <v-card
-            class="mb-4 banner py-12"
-            :style="`background-image: url(${$page.allCommunity.edges[0].node.bannerImage.url})`"
-            height="300"
-          >
-            <v-card-text>
-              <div
-                class="title white--text"
-                v-html="marked($page.allCommunity.edges[0].node.bannerCopy)"
-              />
-              <ReadMoreButton />
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
+      <Banner
+        :banner="{ image: $page.allCommunity.edges[0].node.bannerImage.url, title: $page.allCommunity.edges[0].node.title, copy: $page.allCommunity.edges[0].node.bannerCopy, button: true }"
+      />
 
       <v-row>
         <v-col
@@ -179,7 +165,7 @@
               id
             }
           }
-
+          title
           introCopy
           id
           bannerCopy
@@ -232,7 +218,7 @@ import Cta from "~/components/Cta.vue";
 import PostCardLarge from "~/components/PostCardLarge.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Sidebar from "~/components/Sidebar.vue";
-import ReadMoreButton from "~/components/ReadMoreButton.vue";
+import Banner from "~/components/Banner.vue";
 
 export default {
   metaInfo: {
@@ -243,7 +229,7 @@ export default {
     PostCardLarge,
     PostCardMedium,
     Sidebar,
-    ReadMoreButton
+    Banner
   }
 };
 </script>

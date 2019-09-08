@@ -1,17 +1,9 @@
 <template>
   <Layout>
     <v-container>
-      <v-card
-        flat
-        class="mb-4 banner"
-        :style="`background-image: url(${$page.about.edges[0].node.bannerImage.url})`"
-        height="300"
-      >
-        <v-card-text>
-          <div class="title" v-html="marked($page.about.edges[0].node.bannerCopy)" />
-          <ReadMoreButton />
-        </v-card-text>
-      </v-card>
+      <Banner
+        :banner="{ image: $page.about.edges[0].node.bannerImage.url, title: $page.about.edges[0].node.title, copy: $page.about.edges[0].node.bannerCopy, button: $page.about.edges[0].node.readMoreButton }"
+      />
 
       <h1>{{ $page.about.edges[0].node.title }}</h1>
 
@@ -102,12 +94,12 @@
 </page-query>
 <script>
 import Cta from "~/components/Cta.vue";
-import ReadMoreButton from "~/components/ReadMoreButton.vue";
+import Banner from "~/components/Banner.vue";
 
 export default {
   components: {
     Cta,
-    ReadMoreButton
+    Banner
   }
 };
 </script>
