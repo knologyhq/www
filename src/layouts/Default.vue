@@ -162,7 +162,7 @@ export default {
       searchMenu: null,
       drawer: null,
       col1Items: [
-        { title: "Mission &amp; Vision", to: "/about/mission" },
+        { title: "Mission & Vision", to: "/about/mission" },
         { title: "Community", to: "/community" },
         { title: "Our Team", to: "/our-team" },
         { title: "Contact", to: "/contact" }
