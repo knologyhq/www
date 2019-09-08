@@ -10,9 +10,10 @@
 
 
   query GoogleData {
-    alldataSheet {
+      alldataSheet(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
+          Row_Should_Be_Visible_on_Website_       
           Publication_Title
           Funder_Name
           Grant_Number
