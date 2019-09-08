@@ -478,6 +478,7 @@ module.exports = function(api) {
             posts: allPosts(first: 100) {
               ...postFields
               dataFile
+              dataFileLabel
               tags {
                 id
                 title

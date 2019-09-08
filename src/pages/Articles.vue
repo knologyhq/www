@@ -8,7 +8,7 @@
         <v-container>
           <v-row>
             <v-card-text>
-              <h1 class="display-2 font-weight-thin mb-4">Articles Archive</h1>
+              <h1 class="display-2 font-weight-thin mb-4">All Articles</h1>
             </v-card-text>
           </v-row>
         </v-container>

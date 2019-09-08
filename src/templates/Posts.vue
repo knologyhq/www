@@ -63,7 +63,7 @@
             class="deep-orange lighten1 white--text mr-3"
             elevation="0"
             :href="$page.posts.dataFile"
-          >Download Data</v-btn>
+          >{{$page.posts.dataFileLabel ? $page.posts.dataFileLabel : "Download Data"}}</v-btn>
           <v-btn
             v-if="$page.posts.postFile"
             x-large
@@ -75,7 +75,7 @@
       </v-row>
       <v-row id="main">
         <v-col cols="12" md="8">
-          <div v-html="marked($page.posts.body)" />
+          <div id="post-body" v-html="marked($page.posts.body)" />
 
           <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2">
             <v-btn
@@ -255,6 +255,7 @@ query Dato($id: String!)  {
       url
     }
     dataFile
+    dataFileLabel
     postFile {
       url
     }
@@ -337,6 +338,9 @@ export default {
 }
 .author + .author:before {
   content: ", ";
+}
+#post-body img {
+  max-width: 100%;
 }
 </style>
 

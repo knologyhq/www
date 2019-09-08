@@ -16,6 +16,9 @@
       <h1>{{ $page.about.edges[0].node.title }}</h1>
 
       <v-row>
+        <v-col cols="12" id="main" v-html="marked($page.about.edges[0].node.introCopy)" />
+      </v-row>
+      <v-row>
         <v-col cols="12" id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
       </v-row>
     </v-container>
