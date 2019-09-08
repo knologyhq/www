@@ -175,7 +175,7 @@ export default {
       ],
       col3Items: [
         { title: "Archive", to: "/archive" },
-        { title: "Privacy Policy", to: "/privacy" }
+        { title: "Privacy Information", to: "/privacy" }
       ]
     };
   },
