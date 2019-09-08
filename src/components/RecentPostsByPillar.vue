@@ -3,6 +3,10 @@
     <v-row>
       <v-col>
         <h3 v-html="`Recent Posts in ${pillar.title}`" class="subtitle-1" />
+
+        <div class="divider-1">
+          <span></span>
+        </div>
       </v-col>
     </v-row>
     <v-row>
@@ -109,6 +113,20 @@ query {
 </static-query>
 
 <style lang="postcss">
+.divider-1 {
+  border-bottom: 1px solid #fff;
+  background-color: #ddd;
+  height: 2px;
+  span {
+    display: block;
+    width: 80px;
+    height: 5px;
+    position: relative;
+    top: -4px;
+    border-radius: 4px;
+    background-color: #f60;
+  }
+}
 </style>
 
 <script>
@@ -117,6 +135,13 @@ import PostCardLarge from "~/components/PostCardLarge.vue";
 export default {
   name: "RecentPostsByPillar",
   props: ["pillar"],
+  // computed: {
+  //   cssProps() {
+  //     return {
+  //       "--color": this.pillar.h / 2 + "px"
+  //     };
+  //   }
+  // },
   components: {
     PostCardLarge
   }

@@ -31,7 +31,10 @@
       <v-col id="featured-posts" cols="12" sm="12" md="8" lg="4" order-md="1">
         <v-sheet>
           <div class="title font-weight-black black--text mb-2">Featured Posts</div>
-          <v-divider class="mb-2" />
+
+          <div class="divider mb-4">
+            <span />
+          </div>
           <PostCardLarge
             :post="post"
             v-for="post in $page.allHome.edges[0].node.featuredPosts"
@@ -41,8 +44,18 @@
       </v-col>
       <v-col id="new-posts" cols="12" sm="12" md="4" lg="4" order-md="2">
         <v-sheet>
-          <div class="title font-weight-black black--text mb-2">New Posts</div>
-          <v-divider class="mb-2" />
+          <div class="title font-weight-black black--text mb-2">
+            New Posts
+            <g-link
+              class="subtitle font-weight-normal black--text float-right"
+              to="/articles"
+              style="text-decoration: none"
+            >View All ></g-link>
+          </div>
+
+          <div class="divider mb-4">
+            <span />
+          </div>
           <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
         </v-sheet>
 
