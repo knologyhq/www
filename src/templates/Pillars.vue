@@ -9,7 +9,7 @@
         <v-container>
           <v-row>
             <v-card-text>
-              <h1 class="display-2 font-weight-thin mb-4" v-html="$page.pillars.title" />
+              <h1 class="display-2 font-weight-bold ma-0" v-html="$page.pillars.title" />
             </v-card-text>
           </v-row>
         </v-container>

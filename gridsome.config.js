@@ -26,7 +26,7 @@ module.exports = {
         sheetId: process.env.GOOGLE_SHEET_ID,
         apiKey: process.env.GOOGLE_API_KEY,
         range: "2019",
-        type: "dataSheet"
+        type: "dataSheet2019"
       }
     }
   ],

@@ -2,7 +2,7 @@
   <Layout>
     <v-container>
       <div class="display-2 mb-4">Archive</div>
-      <v-data-table :headers="headers" :items="$page.alldataSheet.edges"></v-data-table>
+      <v-data-table :headers="headers" :items="$page.alldataSheet2019.edges"></v-data-table>
     </v-container>
   </Layout>
 </template>
@@ -10,7 +10,7 @@
 
 
   query GoogleData {
-      alldataSheet(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+      alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
           Row_Should_Be_Visible_on_Website_       
