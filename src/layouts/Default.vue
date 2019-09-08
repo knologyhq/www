@@ -126,7 +126,7 @@
       </v-col>
 
       <v-col
-        class="primary lighten-2 py-4 white--text"
+        class="primary py-4 white--text"
         cols="12"
       >Unless otherwise noted this site and its contents are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</v-col>
     </v-footer>
@@ -161,16 +161,7 @@ query {
 }
 </static-query>
 
-<style lang="postcss">
-body {
-  font-family: var(--font-family-body);
-}
-h1,
-h2,
-h3 {
-  font-family: var(--font-family-headers);
-}
-</style>
+
 <script>
 import Toolbar from "~/components/Toolbar.vue";
 import Logo from "~/components/Logo.vue";
