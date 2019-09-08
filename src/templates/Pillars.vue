@@ -51,7 +51,7 @@
       </v-row>
     </v-container>
     <v-container v-if="$page.posts.belongsTo.edges">
-      <div class="title text--black font-weight-black">Recent posts about {{$page.pillars.title}}</div>
+      <div class="title text--black font-weight-black">Recent Posts About {{$page.pillars.title}}</div>
       <v-row class="mb-6">
         <v-col cols="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
           <PostCardLarge :post="edge.node" :key="edge.node.id" />
