@@ -415,6 +415,7 @@ module.exports = function(api) {
             }
             title
             subtitle
+            additionalAuthors
             body
             publishDate
             slug
@@ -521,6 +522,7 @@ module.exports = function(api) {
               }
               authors {
                 name
+                slug
                 id
               }
               categories {

@@ -43,11 +43,19 @@
       <span class="font-italic">
         <template v-if="$page.posts.authors[0]">
           by
-          <span
+          <g-link
+            :to="`/person/${author.slug}`"
             class="author subtitle-1"
             v-for="author in $page.posts.authors"
             :key="author.id"
-          >{{ author.name }}</span>
+          >{{ author.name }}</g-link>
+        </template>
+        <template v-if="$page.posts.additionalAuthors">
+          <span
+            class="author subtitle-1"
+            v-for="author in $page.posts.additionalAuthors"
+            :key="author.id"
+          >{{ author }}</span>
         </template>
       </span>
 
@@ -231,6 +239,7 @@ query Dato($id: String!)  {
     postId: id
     title
     body
+    additionalAuthors
     categories {
       title
       slug
@@ -243,6 +252,8 @@ query Dato($id: String!)  {
     }
     authors {
       name
+      slug
+      id
     }
     title
     subtitle
