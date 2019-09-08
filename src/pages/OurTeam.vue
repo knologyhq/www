@@ -80,7 +80,7 @@
         }
       }
     }
-    allPeople(filter: {team: {eq: true}}) {
+    allPeople(filter: {team: {eq: true}}, sortBy: "name", order: ASC) {
       edges {
         node {
           bio
