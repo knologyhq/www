@@ -7,7 +7,7 @@
     </template>
     <v-spacer></v-spacer>
     <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
-      <template v-if="item.action === 'menu' && item.title == 'Publication'">
+      <template v-if="item.action === 'menu' && item.title == 'Research'">
         <v-btn text class="primary--text mx-2">
           <v-menu
             :close-on-content-click="false"
@@ -176,7 +176,7 @@ export default {
 
       items: [
         { title: "Home", to: "/" },
-        { title: "Publication", to: "/publication", action: "menu" },
+        { title: "Research", to: "#", action: "menu" },
         { title: "Community", to: "/community" },
         { title: "Our Team", to: "/our-team" },
         { title: "About", to: "/about", action: "menu" },
