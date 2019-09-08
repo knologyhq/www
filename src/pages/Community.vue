@@ -53,7 +53,7 @@
         <v-col cols="6">
           <v-row v-if="$page.allCommunity.edges[0].node.affiliations[0]">
             <v-col id="affiliations" cols="12">
-              <div class="title">Our Affiliations</div>
+              <div class="title">Affiliations</div>
               <v-container fluid>
                 <v-row>
                   <v-col
