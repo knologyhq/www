@@ -6,10 +6,6 @@
     <div class="title font-weight-black black--text mb-2 mt-4">Featured New Bites</div>
     <v-divider></v-divider>
     <PostCardSmall :post="post.node" v-for="post in $static.newposts.edges" :key="post.node.id" />
-    <div>
-      <g-link to="/articles">View all posts</g-link>
-    </div>
-    <div id="tags"></div>
   </div>
 </template>
 
