@@ -26,14 +26,15 @@
             </v-col>
           </v-row>
           <div v-html="marked($page.people.bio)" />
-          <!-- class="pillar pr-1 grey--text subtitle-1" -->
-          <v-subheader>Expertise in</v-subheader>
-          <v-btn
-            v-for="pillar in $page.people.expertise"
-            :key="pillar.id"
-            text
-            :to="`/category/${pillar.slug}`"
-          >{{ pillar.title }}</v-btn>
+          <template v-if="$page.people.expertise[0]">
+            <div class="subtitle black--text font-weight-black mb-4">Expertise in</div>
+            <v-btn
+              v-for="pillar in $page.people.expertise"
+              :key="pillar.id"
+              text
+              :to="`/category/${pillar.slug}`"
+            >{{ pillar.title }}</v-btn>
+          </template>
         </v-col>
         <v-col cols="12" md="6" order-xs="1">
           <img
