@@ -14,56 +14,52 @@
         />
       </v-row>
       <v-row>
-        <v-col cols="6">
-          <v-row v-if="$page.allCommunity.edges[0].node.featuredPosts[0]">
-            <v-col id="featured-posts" cols="12">
-              <h3 class="title">Featured Posts</h3>
-              <PostCardLarge
-                :post="post"
-                v-for="post in $page.allCommunity.edges[0].node.featuredPosts"
-                :key="post.id"
-              />
-            </v-col>
-          </v-row>
-          <v-row v-if="$page.newposts.edges[0].node">
-            <v-col id="new-posts" cols="12">
-              <h3 class="title">New Posts</h3>
-              <template v-for="edge in $page.newposts.edges[0]">
-                <div v-for="post in edge" :key="post.id">
-                  <PostCardMedium :post="item.node" v-for="item in post.edges" :key="item.id" />
-                </div>
-              </template>
-            </v-col>
-            <g-link
-              class="subtitle font-weight-bold black--text float-right"
-              style="text-decoration: none"
-              to="/articles/tag/idea-brewery"
-            >More ></g-link>
-          </v-row>
-        </v-col>
-        <v-col cols="6">
-          <v-row v-if="$page.allCommunity.edges[0].node.affiliations[0]">
-            <v-col id="affiliations" cols="12">
-              <div class="title">Affiliations</div>
-              <v-container fluid>
-                <v-row>
-                  <v-col
-                    v-for="affiliate in $page.allCommunity.edges[0].node.affiliations"
-                    :key="affiliate.id"
-                    cols="4"
-                  >
-                    <template v-if="affiliate.url">
-                      <a :href="affiliate.url" target="_blank">
-                        <v-img
-                          :src="affiliate.logo.url"
-                          class="image"
-                          max-width="100%"
-                          max-height="100%"
-                          contain
-                        />
-                      </a>
-                    </template>
-                    <template v-else>
+        <template v-if="$page.allCommunity.edges[0].node.featuredPosts[0]">
+          <v-col id="featured-posts" cols="12" md="6" lg="4">
+            <h3 class="title mb-4">Featured Posts</h3>
+            <div class="divider mb-4">
+              <span />
+            </div>
+            <PostCardLarge
+              :post="post"
+              v-for="post in $page.allCommunity.edges[0].node.featuredPosts"
+              :key="post.id"
+            />
+          </v-col>
+        </template>
+        <template v-if="$page.newposts.edges[0].node">
+          <v-col id="new-posts" cols="12" md="6" lg="4">
+            <h3 class="title mb-4">
+              New Posts
+              <g-link
+                class="subtitle font-weight-bold black--text float-right"
+                style="text-decoration: none"
+                to="/articles/tag/idea-brewery"
+              >More ></g-link>
+            </h3>
+            <div class="divider mb-4">
+              <span />
+            </div>
+            <template v-for="edge in $page.newposts.edges[0]">
+              <div v-for="post in edge" :key="post.id">
+                <PostCardMedium :post="item.node" v-for="item in post.edges" :key="item.id" />
+              </div>
+            </template>
+          </v-col>
+        </template>
+        <v-col id="affiliates" cols="12" md="12" lg="4">
+          <template v-if="$page.allCommunity.edges[0].node.affiliations[0]">
+            <div class="title mb-4 font-weight-black">Our Affiliations</div>
+
+            <v-container fluid>
+              <v-row align="center" justify="center">
+                <v-col
+                  v-for="affiliate in $page.allCommunity.edges[0].node.affiliations"
+                  :key="affiliate.id"
+                  cols="4"
+                >
+                  <template v-if="affiliate.url">
+                    <a :href="affiliate.url" target="_blank">
                       <v-img
                         :src="affiliate.logo.url"
                         class="image"
@@ -71,34 +67,34 @@
                         max-height="100%"
                         contain
                       />
-                    </template>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-col>
-          </v-row>
-          <v-row v-if="$page.allCommunity.edges[0].node.affiliations[0]">
-            <v-col id="partners" cols="12">
-              <div class="title">Our Partners</div>
-              <v-container fluid>
-                <v-row>
-                  <v-col
-                    v-for="partner in $page.allCommunity.edges[0].node.partners"
-                    :key="partner.id"
-                    cols="2"
-                  >
-                    <template v-if="partner.url">
-                      <a :href="partner.url" target="_blank">
-                        <v-img
-                          :src="partner.logo.url"
-                          class="image"
-                          max-width="100%"
-                          max-height="100%"
-                          contain
-                        />
-                      </a>
-                    </template>
-                    <template v-else>
+                    </a>
+                  </template>
+                  <template v-else>
+                    <v-img
+                      :src="affiliate.logo.url"
+                      class="image"
+                      max-width="100%"
+                      max-height="100%"
+                      contain
+                    />
+                  </template>
+                </v-col>
+              </v-row>
+            </v-container>
+          </template>
+        </v-col>
+        <v-col align-self="center" id="affiliates" cols="12">
+          <template v-if="$page.allCommunity.edges[0].node.partners[0]">
+            <div class="title mb-4 font-weight-black">Our Partners Are:</div>
+            <v-container fluid>
+              <v-row align="center" justify="center">
+                <v-col
+                  v-for="partner in $page.allCommunity.edges[0].node.partners"
+                  :key="partner.id"
+                  cols="2"
+                >
+                  <template v-if="partner.url">
+                    <a :href="partner.url" target="_blank">
                       <v-img
                         :src="partner.logo.url"
                         class="image"
@@ -106,12 +102,21 @@
                         max-height="100%"
                         contain
                       />
-                    </template>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-col>
-          </v-row>
+                    </a>
+                  </template>
+                  <template v-else>
+                    <v-img
+                      :src="partner.logo.url"
+                      class="image"
+                      max-width="100%"
+                      max-height="100%"
+                      contain
+                    />
+                  </template>
+                </v-col>
+              </v-row>
+            </v-container>
+          </template>
         </v-col>
       </v-row>
     </v-container>
