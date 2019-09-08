@@ -31,7 +31,7 @@
     </div>
     <v-footer padless color="white">
       <v-col cols="12" md="4">
-        <Logo />
+        <Logo logoClasses="logo small" />
         <SubscribeFormInline />
       </v-col>
       <v-col cols="12" md="2">
