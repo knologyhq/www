@@ -2,8 +2,14 @@
   <v-col lg="6" md="12">
     <v-row>
       <v-col>
-        <h3 v-html="`Recent Posts in ${pillar.title}`" class="subtitle-1" />
-
+        <h3 class="subtitle-1 mb-2 font-weight-bold">
+          Recent Posts in {{pillar.title}}
+          <g-link
+            class="subtitle font-weight-bold black--text float-right"
+            :to="`/category/${pillar.slug}`"
+            style="text-decoration: none"
+          >More ></g-link>
+        </h3>
         <div class="divider-1">
           <span></span>
         </div>

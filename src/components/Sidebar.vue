@@ -15,7 +15,7 @@
 
 <static-query>
 query  {
-  newposts: allPosts(limit: 4, order: DESC, sortBy: "publishDate") {
+  newposts: allPosts(limit: 4, order: DESC, sortBy: "publishDate", ) {
       edges {
         node {
           slug
