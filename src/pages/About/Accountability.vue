@@ -64,7 +64,7 @@
       }
     }
   }
-  reports: allPosts(filter: {postType: {id: {eq: "1367706"}}},sortBy: "publishDate", order: ASC) {
+  reports: allPosts(filter: {postType: {id: {eq: "1367706"}}},sortBy: "publishDate", order: DESC) {
       edges {
         node {
           slug
