@@ -47,7 +47,7 @@
           </v-list>
 
           <v-list dense v-if="$page.initiatives.collaborators[0]">
-            <v-subheader>Collaborators</v-subheader>
+            <v-subheader>Collaborators &amp; Partners</v-subheader>
             <v-list-item-group color="primary">
               <v-list-item
                 dense
