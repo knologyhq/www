@@ -1,16 +1,29 @@
 <template>
   <Layout>
     <v-container>
-      <div class="display-2 mb-4">Archive</div>
-      <v-data-table :headers="headers" :items="$page.alldataSheet2019.edges"></v-data-table>
+      <Banner :banner="{ image: '', title: 'Archive', copy: '', button: false }" />
+      <v-sheet class="mt-4">
+        <v-tabs v-model="tab" color="primary" left>
+          <v-tab>2019</v-tab>
+          <v-tab>2018</v-tab>
+        </v-tabs>
+        <v-tabs-items v-model="tab">
+          <v-tab-item>
+            <v-data-table :headers="headers" :items="$page.alldataSheet2019.edges"></v-data-table>
+          </v-tab-item>
+          <v-tab-item>
+            <v-data-table :headers="headers" :items="$page.alldataSheet2018.edges"></v-data-table>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-sheet>
     </v-container>
   </Layout>
 </template>
+
+
 <page-query>
-
-
   query GoogleData {
-      alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+    alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
           Row_Should_Be_Visible_on_Website_       
@@ -27,14 +40,36 @@
         }
       }
     }
+    alldataSheet2018(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+      edges {
+        node {
+          Row_Should_Be_Visible_on_Website_       
+          Publication_Title
+          Funder_Name
+          Grant_Number
+          Project_Name
+          Research_Area
+          Initiative
+          Authors
+          Publication_Date
+          Citation
+        }
+      }
+    }
   }
   
 
 </page-query>
 <script>
+import Banner from "~/components/Banner.vue";
+
 export default {
+  components: {
+    Banner
+  },
   data() {
     return {
+      tab: null,
       headers: [
         {
           sortable: true,

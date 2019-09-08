@@ -28,6 +28,15 @@ module.exports = {
         range: "2019",
         type: "dataSheet2019"
       }
+    },
+    {
+      use: "gridsome-source-google-sheets",
+      options: {
+        sheetId: process.env.GOOGLE_SHEET_ID,
+        apiKey: process.env.GOOGLE_API_KEY,
+        range: "2018",
+        type: "dataSheet2018"
+      }
     }
   ],
 
