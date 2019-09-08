@@ -41,6 +41,9 @@ module.exports = function(api) {
     const careers = store.addContentType({
       typeName: "CareersPage"
     });
+    const sidebar = store.addContentType({
+      typeName: "Sidebar"
+    });
     const jobsPosts = store.addContentType({
       typeName: "JobsPosts",
       route: "job/:slug"
@@ -126,6 +129,24 @@ module.exports = function(api) {
       data: {
         query: ` 
           query SingleInstances {
+            sidebar {
+              featuredPosts {
+                title
+                subtitle
+                publishDate
+                slug
+                image {
+                  url
+                }
+                authors {
+                  name
+                }
+                categories {
+                  title
+                  id
+                }
+              }
+            }
             alumni: alumniPage {
               title
               cta {
@@ -340,6 +361,9 @@ module.exports = function(api) {
       home.addNode({
         ...result.data.data.home
       });
+      sidebar.addNode({
+        ...result.data.data.sidebar
+      });
       ethics.addNode({
         ...result.data.data.ethics
       });
@@ -409,6 +433,7 @@ module.exports = function(api) {
               title
               id
             }
+
 
             jobs: allJobs(filter: {open: {eq: true}}) {
               title

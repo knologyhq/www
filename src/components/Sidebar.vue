@@ -9,31 +9,40 @@
     <div class="divider mb-4">
       <span />
     </div>
-    <PostCardSmall :post="post.node" v-for="post in $static.newposts.edges" :key="post.node.id" />
+    <PostCardSmall
+      :post="post"
+      v-for="post in $static.sidebarPosts.edges[0].node.featuredPosts"
+      :key="post.id"
+    />
   </div>
 </template>
 
 <static-query>
 query  {
-  newposts: allPosts(limit: 4, order: DESC, sortBy: "publishDate", ) {
-      edges {
-        node {
-          slug
+  sidebarPosts: allSidebar(order: DESC, sortBy: "publishDate") {
+    edges {
+      node {
+        featuredPosts {
           title
+          subtitle
           publishDate
-          categories {
-            title
+          slug
+          image {
+            url
           }
           authors {
             name
           }
-          image {
-            url
+          categories {
+            title
+            id
           }
         }
       }
     }
+  }
 }
+
 
 </static-query>
 
