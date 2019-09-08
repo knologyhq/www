@@ -27,7 +27,14 @@
 
       <h3 class="subtitle-1">Annual Reports</h3>
       <v-row class="mb-6">
-        <v-col id="reports" cols="3" v-for="post in $page.reports.edges" :key="post.id">
+        <v-col
+          id="reports"
+          cols="12"
+          md="6"
+          lg="3"
+          v-for="post in $page.reports.edges"
+          :key="post.id"
+        >
           <PostCardLarge :post="post.node" />
         </v-col>
       </v-row>
