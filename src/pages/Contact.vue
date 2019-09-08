@@ -10,7 +10,7 @@
               <div>Telephone: {{$page.allContact.edges[0].node.phone}}</div>
 
               <div v-for="account in $page.allContact.edges[0].node.socialMedia" :key="account.id">
-                <Social :account="account" />
+                <Social :account="account" color="secondary" />
               </div>
             </v-card-text>
           </v-card>

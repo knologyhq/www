@@ -37,8 +37,8 @@
       <v-col cols="12" md="2">
         <v-card flat tile>
           <v-list dense>
-            <v-list-item>
-              <v-list-item-content>
+            <v-list-item class="mt-0">
+              <v-list-item-content class="pt-0">
                 <v-list-item-title
                   class="text--black font-weight-black text-uppercase"
                 >General Inquiries</v-list-item-title>
@@ -55,6 +55,16 @@
                 <v-list-item-subtitle>
                   <a href="mailto:press@knology.com">press@knology.com</a>
                 </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>
+                <div
+                  v-for="account in $static.allContact.edges[0].node.socialMedia"
+                  :key="account.id"
+                >
+                  <Social :account="account" color="primary" />
+                </div>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -128,17 +138,27 @@ query {
   metaData {
     siteName
   }
-
   allSite {
-      edges {
-        node {
-          globalSeo {
-            siteName
-          }
+    edges {
+      node {
+        globalSeo {
+          siteName
         }
       }
     }
   }
+  allContact {
+    edges {
+      node {
+        socialMedia {
+          handle
+          platform
+          profileUrl
+        }
+      }
+    }
+  }
+}
 </static-query>
 
 <style lang="postcss">
@@ -155,6 +175,7 @@ h3 {
 import Toolbar from "~/components/Toolbar.vue";
 import Logo from "~/components/Logo.vue";
 import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
+import Social from "~/components/Social.vue";
 
 export default {
   data() {
@@ -181,7 +202,8 @@ export default {
   components: {
     Toolbar,
     Logo,
-    SubscribeFormInline
+    SubscribeFormInline,
+    Social
   }
 };
 </script>
