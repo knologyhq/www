@@ -161,6 +161,7 @@ export default {
     return {
       searchMenu: null,
       drawer: null,
+      alert: true,
       col1Items: [
         { title: "Mission & Vision", to: "/about/mission" },
         { title: "Community", to: "/community" },

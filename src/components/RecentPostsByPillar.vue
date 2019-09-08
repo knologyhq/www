@@ -5,8 +5,8 @@
         <h3 class="subtitle-1 mb-2 font-weight-bold">
           Recent Posts in {{pillar.title}}
           <g-link
-            class="subtitle font-weight-bold black--text float-right"
             :to="`/category/${pillar.slug}`"
+            class="subtitle font-weight-bold black--text float-right"
             style="text-decoration: none"
           >More ></g-link>
         </h3>

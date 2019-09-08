@@ -2,7 +2,7 @@
   <v-toolbar flat class="align-center">
     <template v-if="$route.path !== '/'">
       <g-link to="/">
-        <Logo />
+        <Logo logoClasses="logo small" />
       </g-link>
     </template>
     <v-spacer></v-spacer>
@@ -152,6 +152,11 @@ query  {
 .v-toolbar .v-btn__content {
   text-transform: none;
   letter-spacing: 0;
+}
+
+svg.logo.small {
+  width: 160px;
+  height: 56px;
 }
 </style>
 <script>

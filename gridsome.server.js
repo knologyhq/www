@@ -281,6 +281,7 @@ module.exports = function(api) {
     }
   }
   home: homePage {
+    alert
     cta {
       buttonLink
       buttonText

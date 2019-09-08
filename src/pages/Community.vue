@@ -48,6 +48,11 @@
                 </div>
               </template>
             </v-col>
+            <g-link
+              class="subtitle font-weight-bold black--text float-right"
+              style="text-decoration: none"
+              to="/articles/tag/idea-brewery"
+            >More ></g-link>
           </v-row>
         </v-col>
         <v-col cols="6">

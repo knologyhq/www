@@ -1,26 +1,20 @@
 <template>
   <Layout>
     <template slot="alertBanner">
-      <v-responsive
-        class="white--text py-12"
-        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
-      >
-        <v-container>
-          <v-row align="center" justify="center">
-            <div
-              class="display-1 font-weight-black mb-4 text-center text-uppercase"
-            >New Name, Same People</div>
-          </v-row>
-          <v-row align="center" justify="center">
-            <div
-              class="subheading text-center font-weight-regular pa-4 col-md-7"
-            >In 2019, New Knowledge Organization Ltd. became Knology. With this change, we’ve renewed our commitment to studying and untangling complex social issues. We’re proud that our new website puts more social science research into the hands of people who can make a difference.</div>
-          </v-row>
-        </v-container>
-      </v-responsive>
+      <div>
+        <v-alert
+          v-model="alert"
+          close-text="Close"
+          tile
+          dark
+          dismissible
+          class="white--text py-4 text-center"
+          :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
+        >{{$page.allHome.edges[0].node.alert}}</v-alert>
+      </div>
     </template>
 
-    <Logo />
+    <Logo logoClasses="logo large" />
 
     <p
       class="headline grey--text lighten-1 mb-8"
@@ -97,6 +91,7 @@
     allHome {
       edges {
         node {
+          alert
           cta {
             buttonLink
             buttonText
@@ -172,8 +167,11 @@ import { Pager } from "gridsome";
 
 export default {
   metaInfo: {
-    title: "Knology Home"
+    title: "Knology"
   },
+  data: () => ({
+    alert: true
+  }),
   components: {
     Cta,
     Logo,
@@ -186,4 +184,7 @@ export default {
 };
 </script>
 <style lang="postcss">
+svg.logo.large {
+  width: 300px;
+}
 </style>

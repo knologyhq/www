@@ -1,8 +1,7 @@
 <template>
   <div>
     <svg
-      width="160"
-      height="56"
+      :class="logoClasses"
       viewBox="0 0 160 56"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -47,9 +46,10 @@
 </static-query>
 <script>
 export default {
-  props: ["tagline"],
+  props: ["tagline", "logoClasses"],
   name: "Logo"
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+</style>
