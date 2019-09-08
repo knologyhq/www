@@ -18,12 +18,12 @@
 
     <v-container v-if="$page.tags.belongsTo.edges[0]">
       <v-row class="mb-6">
-        <v-col cols="8">
+        <v-col cols="12" md="8">
           <template v-for="edge in $page.tags.belongsTo.edges">
             <PostCardLarge :post="edge.node" :key="edge.node.id" />
           </template>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4">
           <Sidebar />
         </v-col>
       </v-row>
