@@ -67,7 +67,7 @@
     </v-container>
 
     <v-container fluid v-if="$page.people.belongsTo.edges[0]">
-      <div class="title text--black font-weight-black">Meet Our Experts in the Area</div>
+      <div class="title text--black font-weight-black">Meet Our Experts in this Research Area</div>
 
       <v-row class="mb-6">
         <v-col cols="3" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
