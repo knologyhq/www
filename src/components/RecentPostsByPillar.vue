@@ -33,6 +33,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
@@ -48,6 +49,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
@@ -63,6 +65,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
@@ -78,6 +81,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
@@ -93,6 +97,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
@@ -108,6 +113,7 @@ query {
           name
         }
         title
+        subtitle
         publishDate
         image {
             url
