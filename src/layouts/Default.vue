@@ -162,18 +162,17 @@ export default {
       searchMenu: null,
       drawer: null,
       col1Items: [
-        { title: "About", to: "/about/mission" },
-        { title: "Publications", to: "/?publications" },
+        { title: "Mission &amp; Vision", to: "/about/mission" },
+        { title: "Community", to: "/community" },
         { title: "Our Team", to: "/our-team" },
-        { title: "Jobs", to: "/careers" }
+        { title: "Contact", to: "/contact" }
       ],
       col2Items: [
-        { title: "Community", to: "/community" },
-        { title: "Contact", to: "/contact" },
-        { title: "Ethics", to: "/ethics" }
+        { title: "Jobs", to: "/careers" },
+        { title: "Archive", to: "/archive" }
       ],
       col3Items: [
-        { title: "Archive", to: "/archive" },
+        { title: "Ethics", to: "/ethics" },
         { title: "Privacy Information", to: "/privacy" }
       ]
     };
