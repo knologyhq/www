@@ -37,8 +37,6 @@
   </v-form>
 </template>
 
-
-
 <style lang="postcss" scoped>
 #app .v-messages {
   display: none;
@@ -47,6 +45,6 @@
 
 <script>
 export default {
-  name: "SubscribeInlineForm"
+  name: "SubscribeFormInline"
 };
 </script>
