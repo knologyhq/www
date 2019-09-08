@@ -4,7 +4,7 @@
     <template slot="textBanner">
       <v-responsive
         class="white--text py-12"
-        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
+        :style="`background-color: ${$page.pillars.colour.hex}`"
       >
         <v-container>
           <v-row>
@@ -67,6 +67,9 @@ query CategoryData($id: String!) {
     title
     description
     svgIcon
+    colour {
+      hex
+    }
     initiative {
       title
       slug

@@ -4,12 +4,12 @@
     <template slot="textBanner">
       <v-responsive
         class="white--text py-12"
-        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
+        :style="`background-color: ${$page.pillars.belongsTo.edges[0].node.colour.hex}`"
       >
         <v-container>
           <v-row>
             <v-card-text>
-              <h1 class="display-2 font-weight-thin mb-4" v-html="$page.initiatives.title" />
+              <h1 class="display-2 font-weight-bold ma-0" v-html="$page.initiatives.title" />
             </v-card-text>
           </v-row>
         </v-container>
@@ -93,6 +93,7 @@ query InitativeData($id: String!) {
   initiatives(id: $id) {
     title
     description
+
     collaborators {
       title
       link
@@ -109,6 +110,9 @@ query InitativeData($id: String!) {
             title
             slug
             svgIcon
+            colour {
+              hex
+            }
           }
         }
       }
