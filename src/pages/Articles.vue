@@ -52,6 +52,7 @@ query Dato {
       node {
         slug
         title
+        subtitle
         publishDate
         categories {
           title

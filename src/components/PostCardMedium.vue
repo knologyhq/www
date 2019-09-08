@@ -7,6 +7,11 @@
     >{{ category.title }}</span>
     <v-card-title class="fill-height pa-0 my-2">
       <div class="black--text d-block font-weight-black title">{{ post.title }}</div>
+      <p
+        v-if="post.subtitle"
+        color="grey"
+        class="darken-1 body-1 my-2 text-truncate"
+      >{{ post.subtitle }}</p>
     </v-card-title>
     <v-card-text v-if="post.authors" class="px-0 pr-1">
       <div class="grey--text subheader font-italic">

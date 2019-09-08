@@ -1,10 +1,14 @@
 <template>
   <div>
     <div class="title font-weight-black black--text mb-2">Subscribe to our Newsletter</div>
-    <v-divider class="mb-2" />
+    <div class="divider mb-4">
+      <span />
+    </div>
     <SubscribeFormInline />
     <div class="title font-weight-black black--text mb-2 mt-4">Featured New Bites</div>
-    <v-divider></v-divider>
+    <div class="divider mb-4">
+      <span />
+    </div>
     <PostCardSmall :post="post.node" v-for="post in $static.newposts.edges" :key="post.node.id" />
   </div>
 </template>

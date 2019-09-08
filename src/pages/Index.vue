@@ -58,18 +58,6 @@
           </div>
           <PostCardMedium :post="post.node" v-for="post in $page.newposts.edges" :key="post.id" />
         </v-sheet>
-
-        <div class="text-center">
-          <v-container>
-            <v-row justify="center">
-              <v-col cols="8">
-                <v-container class="max-width">
-                  <Pager linkClass="my-4" :info="$page.newposts.pageInfo" />
-                </v-container>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
       </v-col>
       <v-col cols="12" sm="12" md="4" lg="4" order-md="4" order-lg="3">
         <Sidebar />
@@ -159,6 +147,7 @@
         node {
           slug
           title
+          subtitle
           publishDate
           categories {
             title

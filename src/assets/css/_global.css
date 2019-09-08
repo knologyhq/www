@@ -24,3 +24,7 @@
   border-radius: 4px;
   background-color: #ccc;
 }
+
+#app.v-application .body-1 {
+  letter-spacing: 0 !important;
+}
