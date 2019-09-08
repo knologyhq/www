@@ -84,7 +84,7 @@
 
           <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2">
             <v-btn
-              flat
+              text
               elevation="0"
               color="grey"
               class="ma-2 lighten-2 black--text"
