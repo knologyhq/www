@@ -9,7 +9,7 @@
       >
         <v-card-text>
           <div class="title" v-html="marked($page.about.edges[0].node.bannerCopy)" />
-          <ReadMoreButton />
+          <ReadMoreButton v-if="$page.about.edges[0].node.readMoreButton == true" />
         </v-card-text>
       </v-card>
 
@@ -47,6 +47,7 @@
         bannerImage {
           url
         }
+        readMoreButton
         body
         id
         introCopy

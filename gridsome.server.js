@@ -423,6 +423,7 @@ module.exports = function(api) {
               introCopy
               position
               body
+              readMoreButton
               bannerImage {
                 url
               }

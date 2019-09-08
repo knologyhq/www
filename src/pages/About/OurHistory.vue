@@ -63,6 +63,7 @@
         bannerImage {
           url
         }
+        readMoreButton
         body
         id
         introCopy
