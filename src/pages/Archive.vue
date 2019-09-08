@@ -53,6 +53,7 @@
           Authors
           Publication_Date
           Citation
+          Instruments___Data_URL__When_Available_
         }
       }
     }
