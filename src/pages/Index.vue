@@ -112,6 +112,7 @@
               name
             }
             title
+            subtitle
             publishDate
             image {
               url

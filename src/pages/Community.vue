@@ -165,6 +165,7 @@
           }
           featuredPosts {
             title
+            subtitle
             publishDate
             slug
             image {

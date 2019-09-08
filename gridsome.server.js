@@ -252,6 +252,7 @@ module.exports = function(api) {
     }
     featuredPosts {
       title
+      subtitle
       publishDate
       slug
       image {
@@ -296,6 +297,7 @@ module.exports = function(api) {
     }
     featuredPosts {
       title
+      subtitle
       publishDate
       slug
       image {
