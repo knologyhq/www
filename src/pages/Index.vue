@@ -20,13 +20,11 @@
       </v-responsive>
     </template>
 
-    <v-row>
-      <v-col md="5" xs="12">
-        <p
-          class="headline grey--text lighten-1 mb-4 d-flex"
-        >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
-      </v-col>
-    </v-row>
+    <Logo />
+
+    <p
+      class="headline grey--text lighten-1 mb-8"
+    >{{ $page.allSite.edges[0].node.globalSeo.fallbackSeo.description }}</p>
     <v-row>
       <v-col id="featured-posts" cols="12" sm="12" md="8" lg="4" order-md="1">
         <v-sheet>

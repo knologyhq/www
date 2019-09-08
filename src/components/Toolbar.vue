@@ -1,9 +1,10 @@
 <template>
   <v-toolbar flat class="align-center">
-    <g-link to="/">
-      <Logo />
-    </g-link>
-
+    <template v-if="$route.path !== '/'">
+      <g-link to="/">
+        <Logo />
+      </g-link>
+    </template>
     <v-spacer></v-spacer>
     <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
       <template v-if="item.action === 'menu' && item.title == 'Publication'">
