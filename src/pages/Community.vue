@@ -61,13 +61,26 @@
                     :key="affiliate.id"
                     cols="4"
                   >
-                    <v-img
-                      :src="affiliate.logo.url"
-                      class="image"
-                      max-width="100%"
-                      max-height="100%"
-                      contain
-                    />
+                    <template v-if="affiliate.url">
+                      <a :href="affiliate.url" target="_blank">
+                        <v-img
+                          :src="affiliate.logo.url"
+                          class="image"
+                          max-width="100%"
+                          max-height="100%"
+                          contain
+                        />
+                      </a>
+                    </template>
+                    <template v-else>
+                      <v-img
+                        :src="affiliate.logo.url"
+                        class="image"
+                        max-width="100%"
+                        max-height="100%"
+                        contain
+                      />
+                    </template>
                   </v-col>
                 </v-row>
               </v-container>
@@ -79,18 +92,30 @@
               <v-container fluid>
                 <v-row>
                   <v-col
-                    class="d-flex justify-center justify-space-around mb-6"
                     v-for="partner in $page.allCommunity.edges[0].node.partners"
                     :key="partner.id"
                     cols="2"
                   >
-                    <v-img
-                      :src="partner.logo.url"
-                      class="image"
-                      max-width="100%"
-                      max-height="100%"
-                      contain
-                    />
+                    <template v-if="partner.url">
+                      <a :href="partner.url" target="_blank">
+                        <v-img
+                          :src="partner.logo.url"
+                          class="image"
+                          max-width="100%"
+                          max-height="100%"
+                          contain
+                        />
+                      </a>
+                    </template>
+                    <template v-else>
+                      <v-img
+                        :src="partner.logo.url"
+                        class="image"
+                        max-width="100%"
+                        max-height="100%"
+                        contain
+                      />
+                    </template>
                   </v-col>
                 </v-row>
               </v-container>
