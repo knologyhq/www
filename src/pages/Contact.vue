@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="5" class="white--text">
           <v-card class="mx-auto my-2" flat>
-            <v-card-title class="headline mb-1">General Communication</v-card-title>
+            <v-card-title class="headline mb-1">Contact Our Main Office</v-card-title>
             <v-card-text>
               <div>Email: {{$page.allContact.edges[0].node.email}}</div>
               <div>Telephone: {{$page.allContact.edges[0].node.phone}}</div>
