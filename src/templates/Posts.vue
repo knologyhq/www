@@ -43,12 +43,9 @@
       <span class="font-italic">
         <template v-if="$page.posts.authors[0]">
           by
-          <g-link
-            :to="`/person/${author.slug}`"
-            class="author subtitle-1"
-            v-for="author in $page.posts.authors"
-            :key="author.id"
-          >{{ author.name }}</g-link>
+          <span class="author" v-for="author in $page.posts.authors" :key="author.id">
+            <g-link :to="`/person/${author.slug}`" class="subtitle-1">{{ author.name }}</g-link>
+          </span>
         </template>
         <template v-if="$page.posts.additionalAuthors">
           <span
@@ -307,6 +304,11 @@ export default {
     return {
       title: this.$page.posts.title
     };
+  },
+  watch: {
+    $route(to, from) {
+      this.submitted = false;
+    }
   },
   methods: {
     encode(data) {
