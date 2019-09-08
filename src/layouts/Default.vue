@@ -165,9 +165,8 @@ export default {
         { title: "About", to: "/about/mission" },
         { title: "Publications", to: "/?publications" },
         { title: "Our Team", to: "/our-team" },
-        { title: "Careers", to: "/careers" }
+        { title: "Jobs", to: "/careers" }
       ],
-
       col2Items: [
         { title: "Community", to: "/community" },
         { title: "Contact", to: "/contact" },
