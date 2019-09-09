@@ -30,105 +30,80 @@
       <slot name="cta" />
     </div>
     <v-footer padless color="white">
-      <v-col cols="12" md="4">
-        <Logo logoClasses="logo small" />
-        <SubscribeFormInline />
-      </v-col>
-      <v-col cols="12" md="2">
-        <v-card flat tile>
-          <v-list dense>
-            <v-list-item class="mt-0">
-              <v-list-item-content class="pt-0">
-                <v-list-item-title
-                  class="text--black font-weight-black text-uppercase"
-                >General Inquiries</v-list-item-title>
-                <v-list-item-subtitle>
-                  <a href="mailto:contact@knology.com">contact@knology.com</a>
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title
-                  class="text--black font-weight-black text-uppercase"
-                >Press Inquiries</v-list-item-title>
-                <v-list-item-subtitle>
-                  <a href="mailto:press@knology.com">press@knology.com</a>
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <div
-                  v-for="account in $static.allContact.edges[0].node.socialMedia"
-                  :key="account.id"
-                >
-                  <Social :account="account" color="primary" />
-                </div>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-container fluid>
-          <v-row no-gutters class="pa-0">
-            <v-col cols="12" md="4">
-              <v-list dense>
-                <v-list-item class="pl-1" text v-for="item in col1Items" :key="item.id">
-                  <v-list-item-content class="my-0 py-0" dense>
-                    <v-list-item-title>
-                      <g-link
-                        style="text-decoration: none"
-                        class="text--black text-uppercase font-weight-bold black--text"
-                        color="black"
-                        :to="item.to"
-                      >{{ item.title }}</g-link>
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-list dense>
-                <v-list-item class="pl-1" text v-for="item in col2Items" :key="item.id">
-                  <v-list-item-content class="my-0 py-0" dense>
-                    <v-list-item-title>
-                      <g-link
-                        style="text-decoration: none"
-                        class="text--black text-uppercase font-weight-bold black--text"
-                        color="black"
-                        :to="item.to"
-                      >{{ item.title }}</g-link>
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-list dense>
-                <v-list-item class="pl-1" text v-for="item in col3Items" :key="item.id">
-                  <v-list-item-content class="my-0 py-0" dense>
-                    <v-list-item-title>
-                      <g-link
-                        style="text-decoration: none"
-                        class="text--black text-uppercase font-weight-bold black--text"
-                        color="black"
-                        :to="item.to"
-                      >{{ item.title }}</g-link>
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-col>
+      <v-container fluid class="mb-0 pb-0">
+        <v-row align-content="start" class="py-12">
+          <v-col cols="12" md="3">
+            <Logo logoClasses="logo small" />
+            <SubscribeFormBlock />
+          </v-col>
+          <v-col cols="12" md="3" class="py-sm-0 my-sm-8 my-md-0">
+            <ul>
+              <li class="mb-12">
+                <p class="text--black font-weight-black text-uppercase mb-0">General Inquiries</p>
+                <p>
+                  <a
+                    class="grey--text darken-2"
+                    href="mailto:contact@knology.com"
+                  >contact@knology.com</a>
+                </p>
+              </li>
+              <li>
+                <p class="text--black font-weight-black text-uppercase mb-0">Press Inquiries</p>
+                <p>
+                  <a class="grey--text darken-2" href="mailto:press@knology.com">press@knology.com</a>
+                </p>
+              </li>
+            </ul>
+            <div v-for="account in $static.allContact.edges[0].node.socialMedia" :key="account.id">
+              <Social :account="account" color="primary" />
+            </div>
+          </v-col>
 
-      <v-col
-        class="primary py-4 white--text"
-        cols="12"
-      >Unless otherwise noted this site and its contents are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</v-col>
+          <v-col cols="12" md="2" class="py-sm-0">
+            <ul>
+              <li v-for="item in col1Items" :key="item.id" class="mb-sm-3 mb-md-6">
+                <g-link
+                  style="text-decoration: none"
+                  class="text--black text-uppercase font-weight-bold black--text"
+                  color="black"
+                  :to="item.to"
+                >{{ item.title }}</g-link>
+              </li>
+            </ul>
+          </v-col>
+          <v-col cols="12" md="2" class="py-sm-0">
+            <ul>
+              <li v-for="item in col2Items" :key="item.id" class="mb-sm-3 mb-md-6">
+                <g-link
+                  style="text-decoration: none"
+                  class="text--black text-uppercase font-weight-bold black--text"
+                  color="black"
+                  :to="item.to"
+                >{{ item.title }}</g-link>
+              </li>
+            </ul>
+          </v-col>
+          <v-col cols="12" md="2" class="pt-sm-0">
+            <ul>
+              <li v-for="item in col3Items" :key="item.id" class="mb-sm-3 mb-md-6">
+                <g-link
+                  style="text-decoration: none"
+                  class="text--black text-uppercase font-weight-bold black--text"
+                  color="black"
+                  :to="item.to"
+                >{{ item.title }}</g-link>
+              </li>
+            </ul>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col
+            class="primary py-4 white--text"
+            cols="12"
+          >Unless otherwise noted this site and its contents are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</v-col>
+        </v-row>
+      </v-container>
     </v-footer>
   </v-app>
 </template>
@@ -160,12 +135,26 @@ query {
   }
 }
 </static-query>
-
+<style lang="postcss">
+#app {
+  footer {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+</style>
 
 <script>
 import Toolbar from "~/components/Toolbar.vue";
 import Logo from "~/components/Logo.vue";
-import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
+import SubscribeFormBlock from "~/components/SubscribeFormBlock.vue";
 import Social from "~/components/Social.vue";
 
 export default {
@@ -198,7 +187,7 @@ export default {
   components: {
     Toolbar,
     Logo,
-    SubscribeFormInline,
+    SubscribeFormBlock,
     Social
   }
 };

@@ -10,37 +10,37 @@
   >
     <v-text-field
       label="Email address"
-      color="primary"
+      color="secondary"
       type="email"
       outlined
       value
-      text
       name="EMAIL"
-      class="required email mr-0"
+      class="required email mr-0 mb-1"
       id="mce-EMAIL"
     >
       <div style="position: absolute; left: -5000px;" aria-hidden="true">
         <input type="text" name="b_1db73363360c636b7502c16bd_42eef8fc76" tabindex="-1" value />
       </div>
-      <template v-slot:append-outer>
-        <v-btn
-          depressed
-          style="top: -14px; left: -10px;"
-          color="primary"
-          x-large
-          type="submit"
-          value="Subscribe"
-          name="subscribe"
-          id="mc-embedded-subscribe"
-        >Subscribe</v-btn>
-      </template>
     </v-text-field>
+    <v-btn
+      depressed
+      color="secondary"
+      large
+      class="button my-0"
+      type="submit"
+      value="Subscribe"
+      name="subscribe"
+      id="mc-embedded-subscribe"
+    >Subscribe</v-btn>
   </v-form>
 </template>
 
 <style lang="postcss" scoped>
 #app .v-messages {
   display: none;
+}
+#app .v-text-field__details {
+  display: none !important;
 }
 </style>
 
