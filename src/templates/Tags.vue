@@ -20,7 +20,7 @@
       <v-row class="mb-6">
         <v-col cols="12" md="8">
           <template v-for="edge in $page.tags.belongsTo.edges">
-            <PostCardLarge :post="edge.node" :key="edge.node.id" />
+            <PostCardLargeAlt :post="edge.node" :key="edge.node.id" />
           </template>
         </v-col>
         <v-col cols="12" md="4">
@@ -64,13 +64,13 @@ query Tag($id: String!) {
 
 <script>
 import Layout from "~/layouts/Default.vue";
-import PostCardLarge from "~/components/PostCardLarge.vue";
+import PostCardLargeAlt from "~/components/PostCardLargeAlt.vue";
 import Sidebar from "~/components/Sidebar.vue";
 
 export default {
   components: {
     Layout,
-    PostCardLarge,
+    PostCardLargeAlt,
     Sidebar
   },
   metaInfo() {
