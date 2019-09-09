@@ -19,67 +19,67 @@
     </template>
 
     <v-container>
-      <v-card flat class="mb-8">
-        <v-card-text class="pa-0 mb-0 ml-n3">
-          <span class="category" v-for="category in $page.posts.categories" :key="category.id">
-            <v-btn
-              text
-              color="grey darken-2"
-              :to="`/articles/category/${ category.slug }`"
-            >{{ category.title }}</v-btn>
-          </span>
-          <br />
-        </v-card-text>
-      </v-card>
-
-      <div class="black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
-      <div v-if="$page.posts.subtitle">
-        <div
-          class="grey--text font-italic font-weight-normal subtitle"
-          v-html="marked($page.posts.subtitle)"
-        />
-      </div>
-
-      <span class="font-italic">
-        <template v-if="$page.posts.authors[0]">
-          by
-          <span class="author" v-for="author in $page.posts.authors" :key="author.id">
-            <g-link :to="`/person/${author.slug}`" class="subtitle-1">{{ author.name }}</g-link>
-          </span>
-        </template>
-        <template v-if="$page.posts.additionalAuthors">
-          <span
-            class="author subtitle-1"
-            v-for="author in $page.posts.additionalAuthors"
-            :key="author.id"
-          >{{ author }}</span>
-        </template>
-      </span>
-
-      <div
-        class="pr-1 black--text subtitle-1 mb-2"
-      >{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
-
-      <v-row>
-        <v-col>
-          <v-btn
-            v-if="$page.posts.dataFile"
-            x-large
-            class="deep-orange lighten1 white--text mr-3"
-            elevation="0"
-            :href="$page.posts.dataFile"
-          >{{$page.posts.dataFileLabel ? $page.posts.dataFileLabel : "Download Data"}}</v-btn>
-          <v-btn
-            v-if="$page.posts.postFile"
-            x-large
-            class="deep-orange lighten1 white--text"
-            elevation="0"
-            :href="$page.posts.postFile.url"
-          >Download Post</v-btn>
-        </v-col>
-      </v-row>
       <v-row id="main">
         <v-col cols="12" md="8">
+          <v-card flat class="mb-8" v-if="$page.posts.categories[0]">
+            <v-card-text class="pa-0 mb-0 ml-n3">
+              <span class="category" v-for="category in $page.posts.categories" :key="category.id">
+                <v-btn
+                  text
+                  color="grey darken-2"
+                  :to="`/articles/category/${ category.slug }`"
+                >{{ category.title }}</v-btn>
+              </span>
+              <br />
+            </v-card-text>
+          </v-card>
+
+          <div class="black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
+          <div v-if="$page.posts.subtitle">
+            <div
+              class="grey--text font-italic font-weight-normal subtitle"
+              v-html="marked($page.posts.subtitle)"
+            />
+          </div>
+
+          <span class="font-italic">
+            <template v-if="$page.posts.authors[0]">
+              by
+              <span class="author" v-for="author in $page.posts.authors" :key="author.id">
+                <g-link :to="`/person/${author.slug}`" class="subtitle-1">{{ author.name }}</g-link>
+              </span>
+            </template>
+            <template v-if="$page.posts.additionalAuthors">
+              <span
+                class="author subtitle-1"
+                v-for="author in $page.posts.additionalAuthors"
+                :key="author.id"
+              >{{ author }}</span>
+            </template>
+          </span>
+
+          <div
+            class="pr-1 black--text subtitle-1 mb-2"
+          >{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
+
+          <v-row>
+            <v-col>
+              <v-btn
+                v-if="$page.posts.dataFile"
+                x-large
+                class="deep-orange lighten1 white--text mr-3"
+                elevation="0"
+                :href="$page.posts.dataFile"
+              >{{$page.posts.dataFileLabel ? $page.posts.dataFileLabel : "Download Data"}}</v-btn>
+              <v-btn
+                v-if="$page.posts.postFile"
+                x-large
+                class="deep-orange lighten1 white--text"
+                elevation="0"
+                :href="$page.posts.postFile.url"
+              >Download Post</v-btn>
+            </v-col>
+          </v-row>
           <div id="post-body" v-html="marked($page.posts.body)" />
 
           <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2">
