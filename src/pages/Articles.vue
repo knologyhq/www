@@ -20,7 +20,11 @@
         <v-col cols="12" md="8">
           <v-row>
             <v-col id="featured-posts" cols="12">
-              <PostCardLarge :post="post.node" v-for="post in $page.allPosts.edges" :key="post.id" />
+              <PostCardLargeAlt
+                :post="post.node"
+                v-for="post in $page.allPosts.edges"
+                :key="post.id"
+              />
             </v-col>
           </v-row>
         </v-col>
@@ -71,7 +75,7 @@ query Dato {
 </page-query>
 <script>
 import Cta from "~/components/Cta.vue";
-import PostCardLarge from "~/components/PostCardLarge.vue";
+import PostCardLargeAlt from "~/components/PostCardLargeAlt.vue";
 import Sidebar from "~/components/Sidebar.vue";
 import { Pager } from "gridsome";
 
@@ -82,7 +86,7 @@ export default {
   components: {
     Cta,
     Pager,
-    PostCardLarge,
+    PostCardLargeAlt,
     Sidebar
   }
 };
