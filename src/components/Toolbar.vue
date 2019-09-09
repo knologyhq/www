@@ -26,13 +26,18 @@
               </span>
             </template>
             <v-card class="pa-0 ma-0">
-              <v-container fluid class="pa-0 ma-0">
+              <v-container fluid class="pa-0 ma-0" fill-height>
                 <v-row no-gutters>
-                  <v-col cols="2" v-for="pillar in $static.pillars.edges" :key="pillar.id">
+                  <v-col
+                    cols="2"
+                    align-self="stretch"
+                    v-for="pillar in $static.pillars.edges"
+                    :key="pillar.id"
+                  >
                     <v-card
                       flat
                       tile
-                      height="300"
+                      height="100%"
                       class="pa-3 ma-0"
                       :color="`${pillar.node.colour ? pillar.node.colour.hex : 'light-blue'}`"
                     >
