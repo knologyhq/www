@@ -1,4 +1,6 @@
 import Vuetify from "vuetify";
+import "~/assets/css/index.css";
+
 import "vuetify/dist/vuetify.min.css";
 import VueMoment from "vue-moment";
 import DefaultLayout from "~/layouts/Default.vue";
