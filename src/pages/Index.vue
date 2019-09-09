@@ -1,19 +1,17 @@
 <template>
   <Layout>
     <template slot="alertBanner">
-      <div>
-        <v-alert
-          v-model="alert"
-          close-text="Close"
-          tile
-          dark
-          dismissible
-          class="white--text py-4 text-center"
-          :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
-        >
-          <div class="alert-text" v-html="marked($page.allHome.edges[0].node.alert)" />
-        </v-alert>
-      </div>
+      <v-alert
+        v-model="alert"
+        close-text="Close"
+        tile
+        dark
+        dismissible
+        class="white--text py-4 text-center mb-0"
+        :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
+      >
+        <div class="alert-text" v-html="marked($page.allHome.edges[0].node.alert)" />
+      </v-alert>
     </template>
 
     <Logo logoClasses="logo large" />
@@ -192,5 +190,8 @@ svg.logo.large {
 }
 .alert-text p {
   margin: 0;
+  a {
+    color: inherit;
+  }
 }
 </style>
