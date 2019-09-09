@@ -1,4 +1,3 @@
-
 <template>
   <Layout :title="$page.initiatives.title">
     <template slot="textBanner">
@@ -18,19 +17,21 @@
 
     <v-container fluid>
       <v-row>
-        <v-col cols="2">
+        <v-col cols="12" md="2">
           <div
             v-if="$page.pillars.belongsTo.edges[0]"
             v-html="$page.pillars.belongsTo.edges[0].node.svgIcon"
           />
         </v-col>
-        <v-col cols="6">
+        <v-col cols="12" md="6">
+          <div class="title black--text font-weight-black">Description</div>
+
           <div v-if="$page.initiatives.description" v-html="marked($page.initiatives.description)" />
         </v-col>
 
-        <v-col cols="4">
+        <v-col cols="12" md="4">
           <v-list dense>
-            <v-subheader>Research Area</v-subheader>
+            <div class="title black--text font-weight-black">Research Area</div>
             <v-list-item-group color="primary">
               <v-list-item dense>
                 <v-list-item-content>
@@ -70,7 +71,7 @@
       <div class="title text--black font-weight-black">Meet Our Experts in this Research Area</div>
 
       <v-row class="mb-6">
-        <v-col cols="3" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
+        <v-col cols="12" md="3" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
           <PersonCard :person="edge.node" :key="edge.node.id" />
         </v-col>
       </v-row>
@@ -80,7 +81,7 @@
         class="title text--black font-weight-black"
       >Recent Posts About {{$page.initiatives.title}}</div>
       <v-row class="mb-6">
-        <v-col cols="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
+        <v-col cols="12" md="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
           <PostCardLarge :post="edge.node" :key="edge.node.id" />
         </v-col>
       </v-row>

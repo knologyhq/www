@@ -1,4 +1,3 @@
-
 <template>
   <Layout :title="$page.pillars.title">
     <template slot="textBanner">
