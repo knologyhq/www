@@ -3,7 +3,7 @@
     <div v-if="$slots.alertBanner">
       <slot name="alertBanner" />
     </div>
-    <header class="header">
+    <header class="header mt-6">
       <toolbar />
     </header>
     <div v-if="$slots.textBanner">
