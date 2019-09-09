@@ -20,7 +20,7 @@ export default function(Vue, { appOptions, head }) {
   head.link.push({
     rel: "stylesheet",
     href:
-      "https://fonts.googleapis.com/css?family=Ubuntu:100,400,700|Roboto:100,400,700&display=swap"
+      "https://fonts.googleapis.com/css?family=Ubuntu:100,400,700&display=swap"
   });
 
   Vue.use(Vuetify);
