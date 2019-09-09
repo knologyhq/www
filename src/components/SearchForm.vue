@@ -5,7 +5,7 @@
     <!-- :close-on-content-click="true" -->
 
     <v-menu
-      offsety
+      :offset-y="true"
       bottom
       full-width
       v-model="searchMenu"
@@ -14,9 +14,8 @@
       :close-on-content-click="false"
     >
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on" class="ml-2">
+        <v-btn icon v-on="on" class="ml-2 menu-toggle">
           <v-icon color="secondary">mdi-magnify</v-icon>
-          <!-- <font-awesome :icon="['fa', 'search']" /> -->
         </v-btn>
       </template>
       <v-list class="pa-4" tile>
@@ -54,7 +53,11 @@ query Posts {
   }
 }
 </static-query>
-
+<style lang="postcss">
+.menu-toggle {
+  padding: 12px 0;
+}
+</style>
 <script>
 import Flexsearch from "flexsearch";
 import colors from "vuetify/lib/util/colors";

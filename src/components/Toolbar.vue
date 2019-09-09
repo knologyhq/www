@@ -8,11 +8,11 @@
     <v-spacer></v-spacer>
     <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
       <template v-if="item.action === 'menu' && item.title == 'Research'">
-        <v-btn text class="primary--text mx-2">
+        <v-btn text class="primary--text mx-2 d-flex">
           <v-menu
             :close-on-content-click="false"
             bottom
-            offset-y="true"
+            :offset-y="true"
             class="mt-10"
             full-width
             min-width="100%"
@@ -20,7 +20,7 @@
             v-model="researchMenu"
           >
             <template v-slot:activator="{ on }">
-              <span text id="pub-btn" v-on="on">
+              <span text class="menu-toggle" v-on="on">
                 {{ item.title }}
                 <v-icon right>mdi-chevron-down</v-icon>
               </span>
@@ -71,9 +71,9 @@
 
       <template v-if="item.action === 'menu' && item.title == 'About'">
         <v-btn text class="primary--text mx-2">
-          <v-menu :offset-y="offset" bottom :key="item.id">
+          <v-menu :offset-y="true" bottom :key="item.id">
             <template v-slot:activator="{ on }">
-              <span text color="primary" v-on="on">
+              <span text class="menu-toggle" color="primary" v-on="on">
                 {{item.title}}
                 <v-icon right>mdi-chevron-down</v-icon>
               </span>
@@ -157,6 +157,9 @@ query  {
 .v-toolbar .v-btn__content {
   text-transform: none;
   letter-spacing: 0;
+}
+.menu-toggle {
+  padding: 10px 0;
 }
 
 svg.logo.small {
