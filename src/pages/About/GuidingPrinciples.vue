@@ -60,8 +60,12 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .body {
-  columns: 2 auto;
-  orphans: 3;
+  columns: 1;
+
+  @media (--tablet), (--desktop) {
+    columns: 2 auto;
+    orphans: 3;
+  }
 }
 .banner {
   background-size: cover;

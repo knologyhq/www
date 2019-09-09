@@ -56,16 +56,24 @@ import Cta from "~/components/Cta.vue";
 import Banner from "~/components/Banner.vue";
 
 export default {
+  mounted() {
+    console.log(this.$vuetify.breakpoint);
+  },
+
   components: {
     Cta,
     Banner
   }
 };
 </script>
-<style lang="postcss" scoped>
+<style lang="postcss">
 .body {
-  columns: 2 auto;
-  orphans: 3;
+  columns: 1;
+
+  @media (--tablet), (--desktop) {
+    columns: 2 auto;
+    orphans: 3;
+  }
 }
 .banner {
   background-size: cover;
