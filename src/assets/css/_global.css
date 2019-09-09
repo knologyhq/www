@@ -1,17 +1,11 @@
 :root {
-  --font-family-body: "Roboto", sans-serif;
+  --font-family: "Ubuntu", sans-serif;
   --font-family-headers: "Ubuntu", sans-serif;
-  --font-family-major-headers: "Ubuntu", sans-serif;
 }
 
-body #app {
-  font-family: var(--font-family-body) !important;
-
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-family-headers) !important;
-  }
+body #app * {
+  font-family: var(--font-family) !important;
+  /* oh geez */
 }
 
 #app {
