@@ -20,9 +20,9 @@
 
     <v-container>
       <v-row>
-        <v-col id="main" cols="8" v-html="marked($page.allEthics.edges[0].node.body)" />
+        <v-col id="main" cols="12" md="8" v-html="marked($page.allEthics.edges[0].node.body)" />
 
-        <v-col cols="4">
+        <v-col cols="12" md="4">
           <Sidebar />
         </v-col>
       </v-row>
