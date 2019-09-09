@@ -86,17 +86,16 @@
             <v-btn
               text
               elevation="0"
-              color="grey"
-              class="ma-2 lighten-2 black--text"
+              color="secondary"
               dark
               :to="`/articles/tag/${ tag.slug }`"
             >{{ tag.title }}</v-btn>
           </span>
 
           <!-- todo: make a component for comment block -->
-          <v-container id="comments" v-if="$page.posts.allowComments == true">
+          <template id="comments" v-if="$page.posts.allowComments == true">
             <v-row v-if="$page.comments.belongsTo.edges[0]">
-              <v-col sm="12">
+              <v-col sm="12" class="mt-12">
                 <div class="title">Comments</div>
                 <span
                   cols="12"
@@ -126,8 +125,8 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col sm="12">
-                <div class="title mb-2">Join the Conversation</div>
+              <v-col sm="12" class="mt-12">
+                <div class="title mb-2 font-weight-black">Join the Conversation</div>
                 <v-alert
                   type="success"
                   v-if="submitted"
@@ -192,7 +191,7 @@
                 </v-form>
               </v-col>
             </v-row>
-          </v-container>
+          </template>
         </v-col>
 
         <v-col cols="12" md="4">
