@@ -53,6 +53,7 @@ module.exports = {
       .tap(options => {
         options.plugins.unshift(
           ...[
+            require("postcss-custom-properties"),
             require("postcss-nested"),
             require("postcss-custom-media"),
             require("postcss-mixins")
