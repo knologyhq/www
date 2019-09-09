@@ -9,7 +9,10 @@
   </v-sheet>
 </template>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
+.banner {
+  min-height: 380px;
+}
 </style>
 
 <script>
