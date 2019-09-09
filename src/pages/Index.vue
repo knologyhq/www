@@ -10,7 +10,9 @@
           dismissible
           class="white--text py-4 text-center"
           :style="`background: linear-gradient(to right, #266093, #00A2AE)`"
-        >{{$page.allHome.edges[0].node.alert}}</v-alert>
+        >
+          <div class="alert-text" v-html="marked($page.allHome.edges[0].node.alert)" />
+        </v-alert>
       </div>
     </template>
 
@@ -187,5 +189,8 @@ export default {
 <style lang="postcss">
 svg.logo.large {
   width: 300px;
+}
+.alert-text p {
+  margin: 0;
 }
 </style>
