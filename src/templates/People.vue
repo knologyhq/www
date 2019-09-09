@@ -4,9 +4,9 @@
     <v-container>
       <v-row>
         <v-col cols="12" md="6" order-xs="2">
-          <h1 v-html="$page.people.name" class="title" />
-          <h2 v-html="$page.people.jobTitle" class="subtitle text-uppercase" />
-          <h2 v-html="$page.people.education" class="subtitle font-italic font-weight-regular" />
+          <h1 v-html="$page.people.name" class="display-1 font-weight-black mb-2" />
+          <h2 v-html="$page.people.jobTitle" class="body-1 font-weight-bold text-uppercase" />
+          <div v-html="$page.people.education" class="body-1 font-italic font-weight-regular" />
           <v-row>
             <v-col>
               <v-btn
