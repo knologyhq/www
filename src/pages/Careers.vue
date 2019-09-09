@@ -1,28 +1,9 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" justify="center">
-        <v-col>
-          <v-card
-            class="mb-4 banner py-12"
-            flat
-            :style="`background-image: url(${$page.allCareersPage.edges[0].node.bannerImage.url})`"
-            height="300"
-          >
-            <v-card-text>
-              <h1
-                class="display-2 white--text mb-4"
-                v-html="$page.allCareersPage.edges[0].node.title"
-              />
-              <div
-                class="title white--text"
-                v-html="marked($page.allCareersPage.edges[0].node.bannerCopy)"
-              />
-              <ReadMoreButton />
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
+      <Banner
+        :banner="{ image: $page.allCareersPage.edges[0].node.bannerImage.url, title: $page.allCareersPage.edges[0].node.title, copy: $page.allCareersPage.edges[0].node.bannerCopy, button: false }"
+      />
     </v-container>
     <v-container>
       <v-row>
@@ -95,6 +76,7 @@ query Dato {
 </page-query>
 <script>
 import Sidebar from "~/components/Sidebar.vue";
+import Banner from "~/components/Banner.vue";
 import ReadMoreButton from "~/components/ReadMoreButton.vue";
 
 export default {
@@ -105,6 +87,7 @@ export default {
   },
   components: {
     Sidebar,
+    Banner,
     ReadMoreButton
   }
 };
