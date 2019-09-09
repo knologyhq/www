@@ -1,5 +1,6 @@
 <template>
   <v-card
+    tile
     class="white--text py-12 text-align-center"
     :style="`background: linear-gradient(to right, ${cta.colour.hex ? cta.colour.hex : '#266093' }, ${cta.colour2.hex ? cta.colour2.hex : '#00A2AE'})`"
   >
