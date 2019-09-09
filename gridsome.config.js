@@ -39,7 +39,18 @@ module.exports = {
       }
     }
   ],
-
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          require("postcss-custom-properties")({ preserve: false }),
+          require("postcss-nested"),
+          require("postcss-custom-media"),
+          require("postcss-mixins")
+        ]
+      }
+    }
+  },
   chainWebpack: config => {
     config.mode("development");
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
@@ -53,7 +64,7 @@ module.exports = {
       .tap(options => {
         options.plugins.unshift(
           ...[
-            require("postcss-custom-properties"),
+            require("postcss-custom-properties")({ preserve: false }),
             require("postcss-nested"),
             require("postcss-custom-media"),
             require("postcss-mixins")
