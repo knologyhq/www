@@ -57,6 +57,8 @@
                   v-for="affiliate in $page.allCommunity.edges[0].node.affiliations"
                   :key="affiliate.id"
                   cols="4"
+                  md="3"
+                  lg="6"
                 >
                   <template v-if="affiliate.url">
                     <a :href="affiliate.url" target="_blank">
@@ -91,7 +93,9 @@
                 <v-col
                   v-for="partner in $page.allCommunity.edges[0].node.partners"
                   :key="partner.id"
-                  cols="2"
+                  cols="4"
+                  md="3"
+                  lg="2"
                 >
                   <template v-if="partner.url">
                     <a :href="partner.url" target="_blank">
