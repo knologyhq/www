@@ -5,9 +5,10 @@
     <!-- :close-on-content-click="true" -->
 
     <v-menu
-      offset-y
+      offsety
       bottom
       full-width
+      v-model="searchMenu"
       min-width="100%"
       z-index="10000000"
       :close-on-content-click="false"
@@ -21,7 +22,12 @@
       <v-list class="pa-4" tile>
         <v-form ref="search">
           <v-text-field v-model="searchTerm" placeholder="Search articles" />
-          <v-list-item v-for="post in searchResults" :key="post.id" :to="`/article/${post.slug}`">
+          <v-list-item
+            v-for="post in searchResults"
+            :key="post.id"
+            :to="`/article/${post.slug}`"
+            @click="searchMenu = false"
+          >
             <v-list-item-content>
               <v-list-item-title v-text="post.title" />
               <v-list-item-subtitle v-if="post.subtitle" v-text="post.subtitle" />
@@ -62,7 +68,7 @@ export default {
 
   data() {
     return {
-      searchMenu: null,
+      searchMenu: false,
       index: null,
       searchTerm: ""
     };

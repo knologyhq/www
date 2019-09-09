@@ -169,6 +169,11 @@ import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
 import Social from "~/components/Social.vue";
 
 export default {
+  watch: {
+    $route(to, from) {
+      this.searchMenu = null;
+    }
+  },
   data() {
     return {
       searchMenu: null,

@@ -12,11 +12,12 @@
           <v-menu
             :close-on-content-click="false"
             bottom
-            :offset-y="offset"
+            offset-y="true"
             class="mt-10"
             full-width
             min-width="100%"
             z-index="10000000"
+            v-model="researchMenu"
           >
             <template v-slot:activator="{ on }">
               <span text id="pub-btn" v-on="on">
@@ -37,7 +38,10 @@
                     >
                       <v-list color="transparent">
                         <v-list-item-group>
-                          <v-list-item :to="`/category/${pillar.node.slug}`">
+                          <v-list-item
+                            :to="`/category/${pillar.node.slug}`"
+                            @click="researchMenu = false"
+                          >
                             <v-list-item-content>
                               <v-list-item-title
                                 class="white--text font-weight-bold"
@@ -47,6 +51,7 @@
                           <v-list-item
                             :to="`/initiative/${initiative.slug}`"
                             v-for="initiative in pillar.node.initiative"
+                            @click="researchMenu = false"
                             :key="initiative.id"
                           >
                             <v-list-item-content>
@@ -173,6 +178,7 @@ export default {
       dialog: false,
       drawer: null,
       offset: true,
+      researchMenu: false,
 
       items: [
         { title: "Home", to: "/" },
