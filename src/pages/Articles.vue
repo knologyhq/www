@@ -17,14 +17,14 @@
 
     <v-container>
       <v-row>
-        <v-col cols="8">
+        <v-col cols="12" md="8">
           <v-row>
             <v-col id="featured-posts" cols="12">
               <PostCardLarge :post="post.node" v-for="post in $page.allPosts.edges" :key="post.id" />
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4">
           <Sidebar />
         </v-col>
       </v-row>
