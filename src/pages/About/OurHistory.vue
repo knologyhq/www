@@ -5,9 +5,7 @@
         :banner="{ image: $page.about.edges[0].node.bannerImage.url, title: $page.about.edges[0].node.title, copy: $page.about.edges[0].node.bannerCopy, button: $page.about.edges[0].node.readMoreButton }"
       />
 
-      <h1>{{ $page.about.edges[0].node.title }}</h1>
-
-      <v-row>
+      <v-row v-if="$page.about.edges[0].node.body">
         <v-col
           cols="12"
           md="8"
@@ -17,28 +15,31 @@
         />
       </v-row>
 
-      <v-timeline>
-        <v-timeline-item
-          v-for="milestone in $page.milestones.edges"
-          :key="milestone.node.id"
-          color="red lighten-2"
-          large
-        >
-          <!-- <template v-slot:opposite>
-            <span>Tus eu perfecto</span>
-          </template>-->
-          <v-card class="elevation-2">
-            <v-img
-              height="200px"
-              :src="`${milestone.node.image.url}?auto=compress&w=500&fit=fillmax`"
-            />
-            <v-card-title class="headline">{{ milestone.node.title }}</v-card-title>
-            <v-card-text>
-              <div v-html="marked(milestone.node.description)" />
-            </v-card-text>
-          </v-card>
-        </v-timeline-item>
-      </v-timeline>
+      <v-card
+        tile
+        flat
+        v-for="(milestone, index) in $page.milestones.edges"
+        :key="milestone.node.id"
+        class="my-12"
+      >
+        <v-row class="ml-0 pl-0">
+          <v-col size="200" tile class="col-sm-3 col-md-4 ml-0 pl-0">
+            <v-img :src="`${milestone.node.image.url}?auto=compress&w=500&fit=fillmax`"></v-img>
+          </v-col>
+          <v-col class="col-sm-9 col-md-8 ml-0 pl-4">
+            <div class="display-1 font-weight-black mb-2" v-text="milestone.node.title"></div>
+
+            <div class="body-1" v-html="marked(milestone.node.description)" />
+          </v-col>
+        </v-row>
+        <v-col tile class="col-sm-3 col-md-4 col-lg-4 ma-0 pa-0">
+          <v-divider
+            v-if="$page.milestones.edges.length !== index + 1"
+            vertical
+            style="height: 120px; display: flex; text-align: center; margin: 0 auto"
+          ></v-divider>
+        </v-col>
+      </v-card>
     </v-container>
     <template slot="cta">
       <Cta :cta="$page.about.edges[0].node.cta" />
