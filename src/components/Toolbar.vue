@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app flat>
+    <v-toolbar app flat>
       <template v-if="$route.path !== '/'">
         <g-link to="/">
           <Logo logoClasses="logo small" />
@@ -110,7 +110,7 @@
         <v-icon color="primary" @click.stop="drawer = !drawer">mdi-menu</v-icon>
       </div>
       <SearchForm />
-    </v-app-bar>
+    </v-toolbar>
 
     <v-navigation-drawer
       app
