@@ -42,6 +42,7 @@ query Tag($id: String!) {
           ... on Posts {
             slug
             title
+            subtitle
             publishDate
             categories {
               title
