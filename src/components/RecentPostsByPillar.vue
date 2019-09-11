@@ -89,7 +89,7 @@ query {
       }
     }
   }
-  processes: allProcessPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  behaviors: allProcessPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
