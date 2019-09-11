@@ -128,6 +128,9 @@
         node {
           title
           slug
+          colour {
+            hex
+          }
         }
       }
     } 

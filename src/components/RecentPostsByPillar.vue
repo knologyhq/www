@@ -11,7 +11,7 @@
           >More ></g-link>
         </h3>
         <div class="divider-1">
-          <span></span>
+          <span :style="`background-color: ${pillar.colour.hex}`"></span>
         </div>
       </v-col>
     </v-row>
@@ -136,7 +136,7 @@ query {
     position: relative;
     top: -4px;
     border-radius: 4px;
-    background-color: #f60;
+    background-color: var(--color);
   }
 }
 </style>
@@ -147,13 +147,6 @@ import PostCardLarge from "~/components/PostCardLarge.vue";
 export default {
   name: "RecentPostsByPillar",
   props: ["pillar"],
-  // computed: {
-  //   cssProps() {
-  //     return {
-  //       "--color": this.pillar.h / 2 + "px"
-  //     };
-  //   }
-  // },
   components: {
     PostCardLarge
   }
