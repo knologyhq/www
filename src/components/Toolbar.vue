@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar app flat>
+    <v-toolbar flat>
       <template v-if="$route.path !== '/'">
         <g-link to="/">
           <Logo logoClasses="logo small" />
