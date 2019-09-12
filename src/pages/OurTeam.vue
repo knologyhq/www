@@ -4,7 +4,6 @@
       <Banner
         :banner="{ image: $page.allOurTeam.edges[0].node.bannerImage.url, title: $page.allOurTeam.edges[0].node.title, copy: $page.allOurTeam.edges[0].node.bannerCopy }"
       />
-
       <v-row v-if="$page.allOurTeam.edges[0].node.introCopy">
         <v-col
           cols="12"
@@ -13,7 +12,6 @@
           v-html="marked($page.allOurTeam.edges[0].node.introCopy)"
         />
       </v-row>
-
       <template>
         <v-chip-group column class="mx-auto" active-class="primary--text" v-model="selectedRole">
           <v-chip class="ma-2" value="All" filter>All</v-chip>
@@ -26,7 +24,6 @@
           >{{ role.node.title}}</v-chip>
         </v-chip-group>
       </template>
-
       <v-row class="mb-6">
         <v-col cols="12" xs="12" sm="6" md="3" v-for="person in filteredPeople" :key="person.id">
           <PersonCard :person="person.node" />
@@ -36,70 +33,69 @@
   </Layout>
 </template>
 <page-query>
-  query {
-    allOurTeam {
-      edges {
-        node {
-          title
-          bannerImage {
-            url
-          }
-          bannerCopy
-          introCopy
-          cta {
-              buttonLink
-              buttonText
-              class
-              body
-              colour2 {
-                hex
-              }
-              colour {
-                hex
-              }    
+query {
+  allOurTeam {
+    edges {
+      node {
+        title
+        bannerImage {
+          url
+        }
+        bannerCopy
+        introCopy
+        cta {
+            buttonLink
+            buttonText
+            class
+            body
+            colour2 {
+              hex
             }
-          body
-        }
+            colour {
+              hex
+            }
+          }
+        body
       }
     }
-    allRoles {
-      edges {
-        node {
+  }
+  allRoles {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+  allPeople(filter: {team: {eq: true}}, sortBy: "name", order: ASC) {
+    edges {
+      node {
+        bio
+        slug
+        education
+        email
+        expertise {
           title
-          id
         }
-      }
-    }
-    allPeople(filter: {team: {eq: true}}, sortBy: "name", order: ASC) {
-      edges {
-        node {
-          bio
-          slug
-          education
-          email
-          expertise {
-            title
-          }
-          jobTitle
-          name
-          team
-          photo {
-            url
-          }
-          website
-          role {
-            id
-            title
-          }
+        jobTitle
+        name
+        team
+        photo {
+          url
+        }
+        website
+        role {
+          id
+          title
         }
       }
     }
   }
+}
 </page-query>
 <script>
 import PersonCard from "~/components/PersonCard.vue";
 import Banner from "~/components/Banner.vue";
-
+import { filter } from "minimatch";
 export default {
   computed: {
     people() {
@@ -110,13 +106,27 @@ export default {
       if (role === "All") {
         return this.people;
       } else {
-        return this.people.filter(function(person) {
-          return person.node.role[0].title === role;
-        });
+        return this.getMatchingPeople(this.people, role);
       }
     }
   },
+  methods: {
+    getMatchingPeople: function getMatchingPeople(people, role) {
+      people.filter(person => {
+        return person.node.role.filter(roles => {
+          const rolesArray = Object.keys(roles).map(i => roles[i]);
 
+          return rolesArray.filter(function(personRole) {
+            if (personRole.includes(role) === true) {
+              // console.log(`${person.node.name} is in ${role}`);
+              return true;
+              // returns the role array
+            }
+          });
+        });
+      });
+    }
+  },
   data() {
     return {
       active: false,
