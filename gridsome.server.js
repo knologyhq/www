@@ -337,7 +337,10 @@ module.exports = function(api) {
   contact: contactPage {
     phone
     mailingAddress
-    email
+    emailAddresses {
+      email
+      label
+    }
     fax
     socialMedia {
       handle
