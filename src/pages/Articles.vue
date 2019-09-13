@@ -19,14 +19,25 @@
       <v-row>
         <v-col cols="12" md="8">
           <v-row>
-            <v-col id="featured-posts" cols="12">
-              <PostCardLargeAlt
-                :post="post.node"
-                v-for="post in $page.allPosts.edges"
-                :key="post.id"
-              />
+            <v-col
+              id="featured-posts"
+              cols="12"
+              v-for="post in posts.slice(0,postsShown)"
+              :key="post.id"
+            >
+              <PostCardLargeAlt :post="post.node" />
             </v-col>
           </v-row>
+
+          <div class="text-center">
+            <v-btn
+              class="ma-2"
+              outlined
+              color="indigo"
+              v-if="posts.length > 4 && postsShown < posts.length"
+              @click="loadMore"
+            >Load more posts</v-btn>
+          </div>
         </v-col>
         <v-col cols="12" md="4">
           <Sidebar />
@@ -42,16 +53,12 @@
 
 
 
-<!-- pagination allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8, page: $page) @paginate {
-  -->
 
 <page-query>
-query Dato {
- allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate") {
-    pageInfo {
-      totalPages
-      currentPage
-    }
+query posts {
+
+  allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate") {
+
     edges {
       node {
         slug
@@ -80,6 +87,21 @@ import Sidebar from "~/components/Sidebar.vue";
 import { Pager } from "gridsome";
 
 export default {
+  computed: {
+    posts() {
+      return this.$page.allPosts.edges;
+    }
+  },
+  data() {
+    return {
+      postsShown: 4
+    };
+  },
+  methods: {
+    loadMore() {
+      this.postsShown *= 2;
+    }
+  },
   metaInfo: {
     title: "Knology Home"
   },
