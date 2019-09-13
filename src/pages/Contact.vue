@@ -6,7 +6,13 @@
           <v-card class="mx-auto my-2" flat>
             <v-card-title class="headline mb-1">Contact Our Main Office</v-card-title>
             <v-card-text>
-              <div>Email: {{$page.allContact.edges[0].node.email}}</div>
+              <template v-for="email in $page.allContact.edges[0].node.emailAddresses">
+                <p :key="email.id">
+                  <b>{{email.label}}</b>
+                  <br />
+                  <a :href="`mailto:${email.email}`">{{email.email}}</a>
+                </p>
+              </template>
               <div>Telephone: {{$page.allContact.edges[0].node.phone}}</div>
 
               <div v-for="account in $page.allContact.edges[0].node.socialMedia" :key="account.id">
@@ -50,7 +56,10 @@ query Dato {
     edges {
       node {
         phone
-        email
+        emailAddresses {
+          email
+          label
+        }
         fax
         mailingAddress
         socialMedia {
