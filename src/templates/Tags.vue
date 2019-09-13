@@ -19,9 +19,18 @@
     <v-container v-if="$page.tags.belongsTo.edges[0]">
       <v-row class="mb-6">
         <v-col cols="12" md="8">
-          <template v-for="edge in $page.tags.belongsTo.edges">
+          <template v-for="edge in posts.slice(0,postsShown)">
             <PostCardLargeAlt :post="edge.node" :key="edge.node.id" />
           </template>
+          <div class="text-center">
+            <v-btn
+              class="ma-2"
+              outlined
+              color="indigo"
+              v-if="posts.length > 4 && postsShown < posts.length"
+              @click="loadMore"
+            >Load more posts</v-btn>
+          </div>
         </v-col>
         <v-col cols="12" md="4">
           <Sidebar />
@@ -69,6 +78,21 @@ import PostCardLargeAlt from "~/components/PostCardLargeAlt.vue";
 import Sidebar from "~/components/Sidebar.vue";
 
 export default {
+  computed: {
+    posts() {
+      return this.$page.tags.belongsTo.edges;
+    }
+  },
+  data() {
+    return {
+      postsShown: 4
+    };
+  },
+  methods: {
+    loadMore() {
+      this.postsShown *= 2;
+    }
+  },
   components: {
     Layout,
     PostCardLargeAlt,
