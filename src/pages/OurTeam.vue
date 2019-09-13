@@ -111,20 +111,14 @@ export default {
     }
   },
   methods: {
-    getMatchingPeople: function getMatchingPeople(people, role) {
-      people.filter(person => {
-        return person.node.role.filter(roles => {
-          const rolesArray = Object.keys(roles).map(i => roles[i]);
-
-          return rolesArray.filter(function(personRole) {
-            if (personRole.includes(role) === true) {
-              // console.log(`${person.node.name} is in ${role}`);
-              return true;
-              // returns the role array
-            }
-          });
+    getMatchingPeople(people, role) {
+      const results = this.people.filter(person => {
+        const matchingRoles = person.node.role.filter(filteredRole => {
+          return filteredRole.title == role;
         });
+        return matchingRoles && matchingRoles.length > 0;
       });
+      return results;
     }
   },
   data() {
