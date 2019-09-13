@@ -5,7 +5,7 @@
         <v-row class="mb-12">
           <v-col cols="12" md="4" class="white--text mx-0 pa-0" fill-height>
             <v-card
-              class="mx-auto my-2 pa-4 pt-12 white--text"
+              class="mx-auto my-2 py-12 px-4 white--text"
               flat
               tile
               height="100%"
