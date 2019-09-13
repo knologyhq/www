@@ -12,17 +12,26 @@
     <div v-if="$slots.imageBanner">
       <slot name="imageBanner" />
     </div>
-    <v-content>
-      <v-container>
-        <v-slide-y-transition mode="out-in">
-          <v-row>
-            <v-col cols="12">
-              <slot />
-            </v-col>
-          </v-row>
-        </v-slide-y-transition>
-      </v-container>
-    </v-content>
+    <!-- regular pages in contained layout -->
+    <template v-if="!$slots.fluidLayout">
+      <v-content>
+        <v-container>
+          <v-slide-y-transition mode="out-in">
+            <v-row>
+              <v-col cols="12">
+                <slot />
+              </v-col>
+            </v-row>
+          </v-slide-y-transition>
+        </v-container>
+      </v-content>
+    </template>
+    <!-- full-width (fluid) pages -->
+
+    <div v-if="$slots.fluidLayout">
+      <slot name="fluidLayout" />
+    </div>
+
     <div v-if="$slots.textBannerAppend">
       <slot name="textBannerAppend" />
     </div>

@@ -336,6 +336,9 @@ module.exports = function(api) {
   }
   contact: contactPage {
     phone
+    featureImage {
+      url
+    }
     mailingAddress
     emailAddresses {
       email
