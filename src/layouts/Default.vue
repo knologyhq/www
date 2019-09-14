@@ -169,6 +169,10 @@ query {
 .footer-logo {
   padding-top:0!important;
 }
+
+footer .v-input__slot {
+  width:80%!important;
+}
 </style>
 
 <script>

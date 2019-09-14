@@ -46,6 +46,32 @@ body #app * {
   font-size:1.3rem;
 }
 
-a.black--text:hover{
+a.black--text:hover, a .black--text:hover{
 color:#ff7043 !important;
 }
+
+footer .row.py-12.align-content-start {
+    padding-left: 90px!important;
+    padding-right: 90px!important;
+}
+
+header i {
+    margin-left: 0px!important;
+}
+
+a, a .black--text {
+  transition: color 0.25s !important;
+}
+
+.v-card .v-image__image {
+  border-radius: 5px!important;
+}
+
+@media (min-width:1904px){
+
+  main {
+    padding-left: 90px!important;
+    padding-right: 90px!important;
+}
+}
+

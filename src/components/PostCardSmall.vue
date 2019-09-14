@@ -7,7 +7,7 @@
       <v-avatar v-else class="profile shrink mr-3 pa-0" color="#00A2AE" size="80" tile />
 
       <v-list-item-content>
-        <div class="black--text font-weight-normal subtitle mb-1">{{ post.title }}</div>
+        <div class="black--text font-weight-bold subtitle mb-1">{{ post.title }}</div>
 
         <v-card-text v-if="post.authors" class="px-0 pr-1">
           <div
@@ -23,6 +23,12 @@
 .subtitle {
   line-height: 1.5rem;
 }
+
+.v-card__text {
+padding-top:5px!important;
+  
+}
+
 </style>
 
 
