@@ -37,7 +37,7 @@
       <v-col id="new-posts" cols="12" sm="12" md="4" lg="4" order-md="2">
         <v-sheet>
           <div class="title font-weight-black black--text mb-2">
-            New Posts
+            New Ideas
             <g-link
               class="subtitle font-weight-normal black--text float-right"
               to="/articles"

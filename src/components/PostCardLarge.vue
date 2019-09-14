@@ -20,7 +20,7 @@
     </v-card-title>
       <div v-if="post.authors" class="px-0 pr-1">
         <div class="grey--text body-1 font-italic">
-          By {{post.authors[1] ? `${post.authors[0].name} et. al` : post.authors[0].name }} •
+          By {{post.authors[1] ? `${post.authors[0].name} Et al.` : post.authors[0].name }} •
           {{post.publishDate | moment("MMM D, YYYY") }}
         </div>
       </div>

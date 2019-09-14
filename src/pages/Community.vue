@@ -16,7 +16,7 @@
       <v-row>
         <template v-if="$page.allCommunity.edges[0].node.featuredPosts[0]">
           <v-col id="featured-posts" cols="12" md="6" lg="4">
-            <h3 class="title mb-4">Featured Posts</h3>
+            <div class="title font-weight-black black--text mb-2">Featured Posts</div>
             <div class="divider mb-4">
               <span />
             </div>
@@ -29,14 +29,15 @@
         </template>
         <template v-if="$page.newposts.edges[0].node">
           <v-col id="new-posts" cols="12" md="6" lg="4">
-            <h3 class="title mb-4">
+            <div class="title font-weight-black black--text mb-2">
+
               New Posts
               <g-link
                 class="subtitle font-weight-bold black--text float-right"
                 style="text-decoration: none"
                 to="/articles/tag/idea-brewery"
               >More ></g-link>
-            </h3>
+            </div>
             <div class="divider mb-4">
               <span />
             </div>
@@ -193,7 +194,11 @@
       }
     }
     
-    newposts: allTags(filter: {id: {eq: "1435043"}}) {
+    newposts: allTags(filter: {id: {eq: "1435043"}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8)  {
+      pageInfo {
+        totalPages
+        currentPage
+      }
       edges {
         node {
           title

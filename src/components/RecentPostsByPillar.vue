@@ -132,9 +132,9 @@ query {
   span {
     display: block;
     width: 80px;
-    height: 5px;
+    height: 8px;
     position: relative;
-    top: -4px;
+    top: -8px;
     border-radius: 4px;
     background-color: var(--color);
   }

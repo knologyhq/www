@@ -34,6 +34,18 @@ body #app * {
   background-color: #ccc;
 }
 
+.divider-1 span {
+    height: 8px!important;
+}
+
 #app.v-application .body-1 {
   letter-spacing: 0 !important;
+}
+
+.v-card__title {
+  font-size:1.3rem;
+}
+
+a.black--text:hover{
+color:#ff7043 !important;
 }

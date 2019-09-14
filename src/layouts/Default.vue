@@ -41,26 +41,28 @@
     <v-footer padless color="white">
       <v-container fluid class="mb-0 pb-0">
         <v-row align-content="start" class="py-12">
-          <v-col cols="12" md="3">
+          <v-col cols="12" md="3" class="footer-logo">
             <Logo logoClasses="logo small" />
             <SubscribeFormBlock />
           </v-col>
           <v-col cols="12" md="3" class="py-sm-0 my-sm-8 my-md-0">
-            <ul>
+            <ul class="footer-contact">
               <li class="mb-12">
                 <p class="text--black font-weight-black text-uppercase mb-0">General Inquiries</p>
                 <p>
                   <a
                     class="grey--text darken-2"
-                    href="mailto:contact@knology.com"
+                    href="mailto:info@knology.org"
                   >contact@knology.com</a>
                 </p>
               </li>
+              <!--
               <li>
                 <p class="text--black font-weight-black text-uppercase mb-0">Press Inquiries</p>
                 <p>
                   <a class="grey--text darken-2" href="mailto:press@knology.com">press@knology.com</a>
                 </p>
+                -->
               </li>
             </ul>
             <div v-for="account in $static.allContact.edges[0].node.socialMedia" :key="account.id">
@@ -156,7 +158,16 @@ query {
         padding: 0;
       }
     }
+    .footer-contact {
+      li {
+        margin-bottom:10px!important;
+      }
+    }
   }
+}
+
+.footer-logo {
+  padding-top:0!important;
 }
 </style>
 

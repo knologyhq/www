@@ -120,7 +120,7 @@ query InitativeData($id: String!) {
     }
   }
   posts: initiatives(id: $id) {
-    belongsTo(filter: {typeName: {eq: Posts}}) {
+    belongsTo(filter: {typeName: {eq: Posts}} , sortBy: "publishDate", order: DESC) {
       edges {
         node {
           __typename
