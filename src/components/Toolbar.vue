@@ -103,7 +103,7 @@
         color="secondary"
         class="white--text ml-2 hidden-sm-and-down"
         elevation="0"
-        to="/donate"
+        to="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YR9RTSD34X6NY&source=url"
       >Donate</v-btn>
 
       <div class="hidden-md-and-up">
