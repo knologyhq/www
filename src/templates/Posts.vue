@@ -77,7 +77,7 @@
                 class="deep-orange lighten1 white--text"
                 elevation="0"
                 :href="$page.posts.postFile.url"
-              >Download Post</v-btn>
+              >Full Document</v-btn>
             </v-col>
           </v-row>
           <div id="post-body" v-html="marked($page.posts.body)" />

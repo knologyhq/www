@@ -68,7 +68,7 @@ export default {
 </script>
 <style lang="postcss">
 .body {
-  columns: 1;
+  columns: 2;
 
   @media (--tablet), (--desktop) {
     columns: 2 auto;
