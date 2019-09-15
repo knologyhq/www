@@ -251,4 +251,14 @@ export default {
 .banner {
   background-size: cover;
 }
+
+.body {
+  columns: 1;
+
+  @media (min-width:1264px) {
+    columns: 2 auto;
+    orphans: 3;
+  }
+}
+
 </style>
