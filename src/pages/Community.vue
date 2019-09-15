@@ -30,7 +30,6 @@
         <template v-if="$page.newposts.edges[0].node">
           <v-col id="new-posts" cols="12" md="6" lg="4">
             <div class="title font-weight-black black--text mb-2">
-
               New Posts
               <g-link
                 class="subtitle font-weight-bold black--text float-right"
