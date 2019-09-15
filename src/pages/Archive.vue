@@ -1,12 +1,7 @@
 <template>
   <Layout>
     <v-container>
-<!--       <Banner :banner="{ image: $page.allArchive.edges[0].node.bannerImage.url, title: $page.allArchive.edges[0].node.title, copy: $page.allArchive.edges[0].node.bannerCopy, button: false }" />
 
-      <v-row>
-        <v-col cols="12" id="main" v-html="marked($page.allArchive.edges[0].node.introCopy)" />
-      </v-row>
- -->
       <v-sheet class="mt-4">
         <v-tabs v-model="tab" color="primary" left>
           <v-tab>2019</v-tab>
@@ -22,33 +17,11 @@
         </v-tabs-items>
       </v-sheet>
     </v-container>
-<!--     <template slot="cta">
-      <Cta :cta="$page.allArchive.edges[0].node.cta" />
-    </template> -->
-
-<!--       query Dato {
-    allArchive {
-      edges {
-         node {
-           title
-           bannerCopy
-           introCopy
-           bannerImage{
-             url
-            }
-        }
-      }
-    }
-  } -->
-
   </Layout>
 </template>
 
 
 <page-query>
-
-
-
   query GoogleData {
     alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
@@ -90,11 +63,9 @@
 
 <script>
 import Banner from "~/components/Banner.vue";
-import Cta from "~/components/Cta.vue";
 
 export default {
   components: {
-    Cta,
     Banner
   },
   data() {
