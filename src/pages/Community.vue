@@ -252,10 +252,10 @@ export default {
 }
 
 .body {
-  columns: 1;
+  columns: 1!important;
 
   @media (min-width:1264px) {
-    columns: 2 auto;
+    columns: 2 auto!important;
     orphans: 3;
   }
 }

@@ -18,6 +18,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/vue-fontawesome": "^0.1.7",
+    "@gridsome/plugin-google-analytics": "^0.1.0",
     "axios": "^0.19.0",
     "dotenv": "^8.1.0",
     "flexsearch": "^0.6.30",
@@ -35,7 +36,6 @@
     "mem": "^5.1.1",
     "netlify-lambda": "^1.6.3",
     "postcss-custom-media": "^7.0.8",
-    "postcss-custom-properties": "^9.0.2",
     "postcss-mixins": "^6.2.2",
     "postcss-nested": "^4.1.2",
     "slug": "^1.1.0",
@@ -46,6 +46,7 @@
     "@fortawesome/fontawesome-free": "^5.10.2",
     "@mdi/font": "^4.2.95",
     "css-loader": "^3.2.0",
+    "postcss-custom-properties": "^9.0.2",
     "postcss-loader": "^3.0.0",
     "style-resources-loader": "^1.2.1",
     "webpack-node-externals": "^1.7.2"
