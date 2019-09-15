@@ -6,7 +6,7 @@
         v-if="$page.posts.image"
         fluid
         height="500"
-        class="white--text py-12 banner"
+        class="white--text py-12 banner post-banner-image"
         :style="`background-image: url(${$page.posts.image.url})`"
       />
       <v-responsive
@@ -21,7 +21,7 @@
     <v-container>
       <v-row id="main">
         <v-col cols="12" md="8">
-          <v-card flat class="mb-8" v-if="$page.posts.categories[0]">
+          <v-card flat id="post-category-container" class="mb-8" v-if="$page.posts.categories[0]">
             <v-card-text class="pa-0 mb-0 ml-n3">
               <span class="category" v-for="category in $page.posts.categories" :key="category.id">
                 <v-btn
@@ -34,7 +34,7 @@
             </v-card-text>
           </v-card>
 
-          <div class="black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
+          <div class="post-title-container black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
           <div v-if="$page.posts.subtitle">
             <div
               class="grey--text font-italic font-weight-normal subtitle"
@@ -62,7 +62,7 @@
             class="pr-1 black--text subtitle-1 mb-2"
           >{{$page.posts.publishDate | moment("MMM D, YYYY") }}</div>
 
-          <v-row>
+          <v-row id="post-button-container">
             <v-col>
               <v-btn
                 v-if="$page.posts.dataFile"
@@ -81,16 +81,17 @@
             </v-col>
           </v-row>
           <div id="post-body" v-html="marked($page.posts.body)" />
-
-          <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2">
-            <v-btn
-              text
-              elevation="0"
-              color="secondary"
-              dark
-              :to="`/articles/tag/${ tag.slug }`"
-            >{{ tag.title }}</v-btn>
-          </span>
+            <div class="post-tag-container">
+              <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2 post-tags">
+                <v-btn
+                  text
+                  elevation="0"
+                  color="secondary"
+                  dark
+                  :to="`/articles/tag/${ tag.slug }`"
+                >{{ tag.title }}</v-btn>
+              </span>
+           </div>
 
           <!-- todo: make a component for comment block -->
           <template id="comments" v-if="$page.posts.allowComments == true">
@@ -351,6 +352,32 @@ export default {
 .author + .author:before {
   content: ", ";
 }
+
+.post-tag-container{
+  margin-top:40px;
+}
+
+.post-tag-container a {
+
+  background-color: #e1e1e1;
+  margin-right: 20px!important;
+  color:black;
+}
+
+.post-tag-container span {
+  color:black;
+  font-family: "Open Sans" , sans-serif !important;
+  letter-spacing: 0px!important;
+}
+
+.post-banner-image {
+  margin-top: 20px;
+}
+
+.post-title-container p{
+margin-bottom:5px!important;
+}
+
 #post-body {
   p {
     img {
