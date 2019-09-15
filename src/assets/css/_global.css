@@ -66,6 +66,9 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
 .v-card .v-image__image {
   border-radius: 5px!important;
 }
+/*
+Single Post CSS
+*/
 
 #post-category-container {
   margin-bottom:5px!important;
@@ -90,6 +93,7 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
   font-size: 1rem!important;
   text-transform: initial!important;
   letter-spacing: 0px!important;
+  color: #ff5722;
 }
 
 #post-category-container a {
@@ -102,6 +106,38 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
 
 #post-button-container{
   margin-bottom: 10px!important;
+}
+
+.post-tag-container{
+  margin-top:40px;
+}
+
+.post-tag-container a {
+
+  background-color: #e1e1e1;
+  margin-right: 20px!important;
+  color:black;
+}
+
+.post-tag-container span {
+  color:black;
+  font-family: "Open Sans" , sans-serif !important;
+  letter-spacing: 0px!important;
+  font-weight: 700;
+}
+
+.post-banner-image {
+  margin-top: 20px;
+}
+
+.post-title-container p{
+margin-bottom:5px!important;
+}
+
+
+/*Menu*/
+.v-menu__content .white--text {
+    line-height: 1.8rem!important;
 }
 
 @media (min-width:1264px){

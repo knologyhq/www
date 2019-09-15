@@ -353,30 +353,6 @@ export default {
   content: ", ";
 }
 
-.post-tag-container{
-  margin-top:40px;
-}
-
-.post-tag-container a {
-
-  background-color: #e1e1e1;
-  margin-right: 20px!important;
-  color:black;
-}
-
-.post-tag-container span {
-  color:black;
-  font-family: "Open Sans" , sans-serif !important;
-  letter-spacing: 0px!important;
-}
-
-.post-banner-image {
-  margin-top: 20px;
-}
-
-.post-title-container p{
-margin-bottom:5px!important;
-}
 
 #post-body {
   p {

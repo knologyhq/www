@@ -12,7 +12,7 @@
         <v-card-text v-if="post.authors" class="px-0 pr-1">
           <div
             class="grey--text subheader font-italic"
-          >By {{post.authors[1] ? `${post.authors[0].name} Et al.` : post.authors[0].name }}</div>
+          >By {{post.authors[1] ? `${post.authors[0].name} et al.` : post.authors[0].name }}</div>
         </v-card-text>
       </v-list-item-content>
     </v-list-item>
