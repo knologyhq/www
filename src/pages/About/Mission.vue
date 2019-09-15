@@ -73,7 +73,7 @@ export default {
 .body {
   columns: 1;
 
-  @media (--tablet), (--desktop) {
+  @media (--desktop) {
     columns: 2 auto;
     orphans: 3;
   }
