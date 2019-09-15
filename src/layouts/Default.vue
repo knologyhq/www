@@ -53,7 +53,7 @@
                   <a
                     class="grey--text darken-2"
                     href="mailto:info@knology.org"
-                  >contact@knology.com</a>
+                  >info@knology.org</a>
                 </p>
               </li>
               <!--
