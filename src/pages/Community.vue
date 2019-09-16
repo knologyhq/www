@@ -9,7 +9,7 @@
         <v-col
           cols="12"
           id="main"
-          class="body"
+          class="idea-brewery-intro-copy"
           v-html="marked($page.allCommunity.edges[0].node.introCopy)"
         />
       </v-row>
@@ -251,13 +251,16 @@ export default {
   background-size: cover;
 }
 
-.body {
-  columns: 1!important;
-
-  @media (min-width:1264px) {
-    columns: 2 auto!important;
-    orphans: 3;
-  }
+.idea-brewery-intro-copy {
+  max-width: 60%!important;
 }
+
+
+  @media (max-width:1264px) {
+
+.idea-brewery-intro-copy {
+  max-width: 100%!important;
+}
+  }
 
 </style>
