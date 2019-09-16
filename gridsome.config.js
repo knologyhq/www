@@ -37,6 +37,12 @@ module.exports = {
         range: "2018",
         type: "dataSheet2018"
       }
+    },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-118217495-1'
+      }
     }
   ],
   css: {

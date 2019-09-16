@@ -1,11 +1,11 @@
 import Vuetify from "vuetify";
 import "~/assets/css/index.css";
-
 import "vuetify/dist/vuetify.min.css";
 import VueMoment from "vue-moment";
 import DefaultLayout from "~/layouts/Default.vue";
 
 export default function(Vue, { appOptions, head }) {
+
   head.link.push({
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/icon?family=Material+Icons"

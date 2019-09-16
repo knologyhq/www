@@ -183,14 +183,6 @@ import Social from "~/components/Social.vue";
 
 export default {
 
-  plugins: [
-    {
-      use: '@gridsome/plugin-google-analytics',
-      options: {
-        id: 'UA-118217495-1'
-      }
-    }
-  ],
 
   watch: {
     $route(to, from) {
