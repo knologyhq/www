@@ -171,7 +171,7 @@ import { Pager } from "gridsome";
 
 export default {
   metaInfo: {
-    title: "Knology"
+    title: "Knology - Practical social science for a better world"
   },
   data: () => ({
     alert: true
