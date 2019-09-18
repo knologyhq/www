@@ -37,6 +37,7 @@
             v-if="$page.milestones.edges.length !== index + 1"
             vertical
             style="height: 120px; display: flex; text-align: center; margin: 0 auto"
+            class="our-history-divider"
           ></v-divider>
         </v-col>
       </v-card>
@@ -101,11 +102,18 @@ export default {
   components: {
     Cta,
     Banner
-  }
+  }, 
+   metaInfo: {
+    title: "Our History",
+  },  
 };
 </script>
 <style lang="postcss" scoped>
 .banner {
   background-size: cover;
+}
+
+.our-history-divider {
+  margin-top:50px!important;
 }
 </style>

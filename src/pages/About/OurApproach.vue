@@ -96,7 +96,10 @@ export default {
   components: {
     Cta,
     Banner
-  }
+  },
+    metaInfo: {
+    title: "Our Approach",
+  },  
 };
 </script>
 <style lang="postcss" scoped>

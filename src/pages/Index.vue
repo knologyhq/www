@@ -22,7 +22,7 @@
     <v-row>
       <v-col id="featured-posts" cols="12" sm="12" md="8" lg="4" order-md="1">
         <v-sheet>
-          <div class="title font-weight-black black--text mb-2">Featured Posts</div>
+          <div class="title font-weight-black black--text mb-2">Featured Articles</div>
 
           <div class="divider mb-4">
             <span />
@@ -37,7 +37,7 @@
       <v-col id="new-posts" cols="12" sm="12" md="4" lg="4" order-md="2">
         <v-sheet>
           <div class="title font-weight-black black--text mb-2">
-            New Ideas
+            Recent Articles
             <g-link
               class="subtitle font-weight-normal black--text float-right"
               to="/articles"
@@ -171,7 +171,12 @@ import { Pager } from "gridsome";
 
 export default {
   metaInfo: {
-    title: "Knology - Practical social science for a better world"
+    title: "Knology",
+    titleTemplate:'%s - Practical social science for a better world',
+    htmlAttrs: {
+      lang: 'en',
+      amp: true
+    }
   },
   data: () => ({
     alert: true

@@ -128,6 +128,7 @@
             <v-row no-gutters>
               <v-col sm="12" class="mt-12">
                 <div class="title mb-2 font-weight-black">Join the Conversation</div>
+                <div id="comment-subtitle" class="subtitle mb-2">What did you think of this? How did you use it? Is there something else we should be thinking of?</div>
                 <v-alert
                   type="success"
                   v-if="submitted"
@@ -353,6 +354,9 @@ export default {
   content: ", ";
 }
 
+#comment-subtitle {
+  margin-bottom:30px!important;
+}
 
 #post-body {
   p {

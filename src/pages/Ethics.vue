@@ -70,7 +70,11 @@ import Cta from "~/components/Cta.vue";
 export default {
   metaInfo() {
     return {
-      title: this.$page.allEthics.edges[0].node.title
+      title: this.$page.allEthics.edges[0].node.title,
+      htmlAttrs: {
+      lang: 'en',
+      amp: true
+    }
     };
   },
   components: {

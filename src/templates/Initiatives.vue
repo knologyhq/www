@@ -48,7 +48,7 @@
           </v-list>
 
           <v-list dense v-if="$page.initiatives.collaborators[0]">
-            <v-subheader>Collaborators &amp; Partners</v-subheader>
+            <div class="title black--text font-weight-black">Collaborators &amp; Partners</div>
             <v-list-item-group color="primary">
               <v-list-item
                 dense
@@ -141,7 +141,7 @@ query InitativeData($id: String!) {
     }
   }
   people: initiatives(id: $id) {
-    belongsTo(filter: {typeName: {eq: People}}) {
+    belongsTo(filter: {typeName: {eq: People}},  sortBy: "name", order: ASC) {
       edges {
         node {
           __typename

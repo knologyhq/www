@@ -55,7 +55,10 @@ export default {
   components: {
     Cta,
     Banner
-  }
+  },
+  metaInfo: {
+    title: "Guiding Principles",
+  },  
 };
 </script>
 <style lang="postcss" scoped>

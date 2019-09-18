@@ -104,7 +104,7 @@ import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
 
 export default {
   metaInfo: {
-    title: "Knology Home"
+    title: "Contact Us"
   },
   components: {
     Social,

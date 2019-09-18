@@ -94,12 +94,17 @@ import Cta from "~/components/Cta.vue";
 import PostCardLarge from "~/components/PostCardLarge.vue";
 import Banner from "~/components/Banner.vue";
 
+
+
 export default {
   components: {
     Cta,
     PostCardLarge,
     Banner
-  }
+  },
+  metaInfo: {
+    title: "Annual Reports",
+  },  
 };
 </script>
 <style lang="postcss" scoped>

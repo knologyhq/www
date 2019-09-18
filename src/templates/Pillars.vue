@@ -114,7 +114,7 @@ query CategoryData($id: String!) {
     }
   }
   people: pillars(id: $id) {
-    belongsTo(filter: {typeName: {eq: People}}) {
+    belongsTo(filter: {typeName: {eq: People}}, sortBy: "name", order: ASC) {
       edges {
         node {
           __typename

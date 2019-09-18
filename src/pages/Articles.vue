@@ -103,7 +103,7 @@ export default {
     }
   },
   metaInfo: {
-    title: "Knology Home"
+    title: "All Articles"
   },
   components: {
     Cta,

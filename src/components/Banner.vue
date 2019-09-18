@@ -1,7 +1,7 @@
 <template>
   <v-sheet
     class="mb-4 pa-12 elevation-6 banner"
-    :style="`background-image: linear-gradient(to bottom, rgba(38,96,147,1), rgba(38,96,147,0.577468487394958)), url(${banner.image})`"
+    :style="`background-image: linear-gradient(to bottom, rgba(38,96,147,0.85), rgba(38,96,147,0.577468487394958)), url(${banner.image})`"
   >
     <h1
       v-html="banner.title"

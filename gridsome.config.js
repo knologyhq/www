@@ -1,5 +1,6 @@
 const path = require("path");
 
+
 function addStyleResource(rule) {
   rule
     .use("style-resource")
@@ -19,6 +20,9 @@ module.exports = {
       }
     }
   },
+
+  icon: './src/assets/favicon.png',
+
   plugins: [
     {
       use: "gridsome-source-google-sheets",

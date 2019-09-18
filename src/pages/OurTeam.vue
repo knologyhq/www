@@ -128,7 +128,11 @@ export default {
     };
   },
   metaInfo: {
-    title: "Our Team"
+    title: "Our Team",
+    htmlAttrs: {
+      lang: 'en',
+      amp: true
+    }    
   },
   components: {
     PersonCard,

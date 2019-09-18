@@ -32,6 +32,8 @@ body #app * {
   top: -7px;
   border-radius: 4px;
   background-color: #ccc;
+      border-bottom-left-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
 }
 
 .divider-1 span {
@@ -67,10 +69,6 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
   border-radius: 5px!important;
 }
 
-
-/*
-Mission & Vision
-*/
 
 
 
@@ -134,12 +132,25 @@ Single Post CSS
   font-weight: 700;
 }
 
+.post-tag-container a {
+    margin-bottom: 20px!important;
+    font-family: "Open Sans" , sans-serif !important;
+
+}
 .post-banner-image {
   margin-top: 20px;
 }
 
 .post-title-container p{
 margin-bottom:5px!important;
+}
+
+ul {
+  margin-bottom:10px;
+}
+
+.theme--light.v-divider {
+    border-color: rgba(0, 0, 0, 0.25)!important;
 }
 
 

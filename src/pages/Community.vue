@@ -87,7 +87,7 @@
         </v-col>
         <v-col align-self="center" id="affiliates" cols="12">
           <template v-if="$page.allCommunity.edges[0].node.partners[0]">
-            <div class="title mb-4 font-weight-black">Our Partners Are:</div>
+            <div class="title mb-4 font-weight-black">Partners</div>
             <v-container fluid>
               <v-row align="center" justify="center">
                 <v-col
@@ -235,7 +235,7 @@ import Banner from "~/components/Banner.vue";
 
 export default {
   metaInfo: {
-    title: "Knology Home"
+    title: "Community"
   },
   components: {
     Cta,

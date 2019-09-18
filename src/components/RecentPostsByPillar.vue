@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h3 class="subtitle-1 mb-2 font-weight-bold">
-          Recent Posts in {{pillar.title}}
+          Recent Articles in {{pillar.title}}
           <g-link
             :to="`/category/${pillar.slug}`"
             class="subtitle font-weight-bold black--text float-right"

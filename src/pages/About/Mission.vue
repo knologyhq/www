@@ -62,7 +62,9 @@ export default {
   mounted() {
     console.log(this.$vuetify.breakpoint);
   },
-
+    metaInfo: {
+    title: "Mission & Vision",
+  },  
   components: {
     Cta,
     Banner

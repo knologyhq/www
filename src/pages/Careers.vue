@@ -9,7 +9,7 @@
       <v-row>
         <v-col id="main" cols="8">
           <template v-if="$page.allJobsPosts.edges[0]">
-            <v-card class="mx-auto" tile flat>
+            <v-card class="mx-auto job-posts" tile flat>
               <v-list-item
                 v-for="job in $page.allJobsPosts.edges"
                 :key="job.id"
@@ -95,5 +95,18 @@ export default {
 <style lang="postcss">
 .banner {
   background-size: cover;
+}
+.job-posts a {
+    margin-bottom: 20px;
+    max-width: 450px;
+    border-radius: 5px!important;
+    background: #266093;
+    color: white!important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.job-posts a .v-list-item__title {
+    color: white!important;
 }
 </style>
