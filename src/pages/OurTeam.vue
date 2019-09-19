@@ -127,12 +127,27 @@ export default {
       selectedRole: "All"
     };
   },
-  metaInfo: {
-    title: "Our Team",
-    htmlAttrs: {
-      lang: 'en',
-      amp: true
-    }    
+
+  metaInfo() {
+    return {
+      title:this.$page.allOurTeam.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.allOurTeam.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+            this.$page.allOurTeam.edges[0].node.bannerCopy
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.allOurTeam.edges[0].node.bannerImage
+        }
+      ]
+    };
+
   },
   components: {
     PersonCard,
