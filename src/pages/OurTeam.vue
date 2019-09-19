@@ -143,7 +143,7 @@ export default {
         },
         {
           name: "twitter:image",
-          content: this.$page.allOurTeam.edges[0].node.bannerImage
+          content: this.$page.allOurTeam.edges[0].node.bannerImage.url
         }
       ]
     };
