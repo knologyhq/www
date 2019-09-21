@@ -22,9 +22,15 @@ module.exports = function(api) {
     const contact = store.addContentType({
       typeName: "Contact"
     });
+
+    const donate = store.addContentType({
+      typeName: "Donate"
+    });
+
     const community = store.addContentType({
       typeName: "Community"
     });
+
     const ethics = store.addContentType({
       typeName: "Ethics"
     });
@@ -359,6 +365,16 @@ module.exports = function(api) {
       title
     }
   }
+
+
+donate: donatePage {
+  title
+  bannerImage{
+    url
+  }
+  bannerCopy
+  body
+}
 }
 
 
@@ -391,6 +407,9 @@ module.exports = function(api) {
       });
       careers.addNode({
         ...result.data.data.careers
+      });
+      donate.addNode({
+        ...result.data.data.donate
       });
     });
 
