@@ -103,9 +103,28 @@ export default {
     Cta,
     Banner
   }, 
-   metaInfo: {
-    title: "Our History",
-  },  
+  metaInfo() {
+    return {
+      title:this.$page.about.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.about.edges[0].node.bannerCopy},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.about.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+            this.$page.about.edges[0].node.bannerCopy
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.about.edges[0].node.bannerImage.url
+        }
+      ]
+    };
+
+  }   
 };
 </script>
 <style lang="postcss" scoped>

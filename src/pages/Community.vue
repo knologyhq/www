@@ -234,9 +234,28 @@ import Sidebar from "~/components/Sidebar.vue";
 import Banner from "~/components/Banner.vue";
 
 export default {
-  metaInfo: {
-    title: "Community"
-  },
+  metaInfo() {
+    return {
+      title:this.$page.allCommunity.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.allCommunity.edges[0].node.introCopy},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.allCommunity.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+            this.$page.allCommunity.edges[0].node.introCopy
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.allCommunity.edges[0].node.bannerImage.url
+        }
+      ]
+    };
+
+  } ,
   components: {
     Cta,
     PostCardLarge,

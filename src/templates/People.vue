@@ -135,7 +135,23 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.$page.people.title
+      title:this.$page.people.name,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.people.bio},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.people.name},
+        {
+          name: "twitter:description",
+          content:
+            this.$page.people.bio
+        },
+        {
+          name: "twitter:image",
+          content:$page.people.photo.url
+        }
+      ]
     };
   }
 };

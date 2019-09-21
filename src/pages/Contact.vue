@@ -103,9 +103,28 @@ import Social from "~/components/Social.vue";
 import SubscribeFormInline from "~/components/SubscribeFormInline.vue";
 
 export default {
-  metaInfo: {
-    title: "Contact Us"
-  },
+  metaInfo() {
+    return {
+      title:"Contact Us",
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:"Get In Touch With Us!"},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: "Contact Us" },
+        {
+          name: "twitter:description",
+          content:
+            "Get In Touch With Us!"
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.allContact.edges[0].node.featureImage.url
+        }
+      ]
+    };
+
+  } ,
   components: {
     Social,
     SubscribeFormInline

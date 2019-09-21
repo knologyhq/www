@@ -170,14 +170,30 @@ import Sidebar from "~/components/Sidebar.vue";
 import { Pager } from "gridsome";
 
 export default {
-  metaInfo: {
-    title: "Knology",
-    titleTemplate:'%s - Practical social science for a better world',
-    htmlAttrs: {
-      lang: 'en',
-      amp: true
-    }
+  metaInfo() {
+    return {
+      title:"Knology",
+      titleTemplate:'%s - Practical social science for a better world',
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:"Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: "Knology - Practical social science for a better world" },
+        {
+          name: "twitter:description",
+          content:
+            "Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."
+        },
+        {
+          name: "twitter:image",
+          content: "https://www.datocms-assets.com/15254/1568599985-social-seo-card.png"
+        }
+      ]
+    };
+
   },
+
   data: () => ({
     alert: true
   }),

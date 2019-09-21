@@ -147,7 +147,23 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.$page.pillars.title
+      title:this.$page.pillars.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.pillars.description},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.pillars.title},
+        {
+          name: "twitter:description",
+          content:
+            this.$page.pillars.description
+        },
+        {
+          name: "twitter:image",
+          content: "https://www.datocms-assets.com/15254/1568599985-social-seo-card.png"
+        }
+      ]
     };
   }
 };

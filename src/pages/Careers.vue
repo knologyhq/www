@@ -82,9 +82,26 @@ import ReadMoreButton from "~/components/ReadMoreButton.vue";
 export default {
   metaInfo() {
     return {
-      title: "Careers at Knology"
+      title:this.$page.allCareersPage.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.allCareersPage.edges[0].node.bannerCopy},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.allCareersPage.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+            this.$page.allCareersPage.edges[0].node.bannerCopy
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.allCareersPage.edges[0].node.bannerImage.url
+        }
+      ]
     };
-  },
+
+  } ,
   components: {
     Sidebar,
     Banner,

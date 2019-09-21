@@ -62,9 +62,28 @@ export default {
   mounted() {
     console.log(this.$vuetify.breakpoint);
   },
-    metaInfo: {
-    title: "Mission & Vision",
-  },  
+  metaInfo() {
+    return {
+      title:this.$page.about.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content: "Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.about.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+           "Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.about.edges[0].node.bannerImage.url
+        }
+      ]
+    };
+
+  },
   components: {
     Cta,
     Banner

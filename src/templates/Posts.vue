@@ -303,8 +303,25 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.$page.posts.title
+      title:this.$page.posts.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.posts.subtitle},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.posts.title},
+        {
+          name: "twitter:description",
+          content:
+            this.$page.posts.subtitle
+        },
+        {
+          name: "twitter:image",
+          content: this.$page.posts.image.url
+        }
+      ]
     };
+
   },
   watch: {
     $route(to, from) {

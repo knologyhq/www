@@ -102,8 +102,26 @@ export default {
       this.postsShown *= 2;
     }
   },
-  metaInfo: {
-    title: "All Articles"
+  metaInfo() {
+    return {
+      title:"All Articles",
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:"Enjoy Archive of All of our Articles in one place."},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: "All Articles"},
+        {
+          name: "twitter:description",
+          content:"Enjoy Archive of All of our Articles in one place."
+        },
+        {
+          name: "twitter:image",
+          content: "https://www.datocms-assets.com/15254/1568599985-social-seo-card.png"
+        }
+      ]
+    };
+
   },
   components: {
     Cta,

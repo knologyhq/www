@@ -78,9 +78,26 @@ import Sidebar from "~/components/Sidebar.vue";
 export default {
   metaInfo() {
     return {
-      title: "Alumni"
+      title:this.$page.about.edges[0].node.title,
+      meta: [
+        { name: "author", content: "Knology" },
+        { name: "description", content:this.$page.allAlumni.edges[0].node.body},
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "@KnologyResearch" },
+        { name: "twitter:title", content: this.$page.allAlumni.edges[0].node.title },
+        {
+          name: "twitter:description",
+          content:
+            this.$page.allAlumni.edges[0].node.body
+        },
+        {
+          name: "twitter:image",
+          content: "https://www.datocms-assets.com/15254/1568599985-social-seo-card.png"
+        }
+      ]
     };
-  },
+
+  } ,
   components: {
     Sidebar
   }
