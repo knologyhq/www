@@ -149,7 +149,7 @@ export default {
         },
         {
           name: "twitter:image",
-          content:$page.people.photo.url
+          content: "https://www.datocms-assets.com/15254/1568599985-social-seo-card.png"
         }
       ]
     };

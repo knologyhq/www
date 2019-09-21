@@ -306,14 +306,14 @@ export default {
       title:this.$page.posts.title,
       meta: [
         { name: "author", content: "Knology" },
-        { name: "description", content:this.$page.posts.subtitle},
+        { name: "description", content:this.$page.posts.body},
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:site", content: "@KnologyResearch" },
         { name: "twitter:title", content: this.$page.posts.title},
         {
           name: "twitter:description",
           content:
-            this.$page.posts.subtitle
+            this.$page.posts.body
         },
         {
           name: "twitter:image",
