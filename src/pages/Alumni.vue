@@ -78,7 +78,7 @@ import Sidebar from "~/components/Sidebar.vue";
 export default {
   metaInfo() {
     return {
-      title:this.$page.about.edges[0].node.title,
+      title:this.$page.allAlumni.edges[0].node.title,
       meta: [
         { name: "author", content: "Knology" },
         { name: "description", content:this.$page.allAlumni.edges[0].node.body},
