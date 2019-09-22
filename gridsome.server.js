@@ -65,6 +65,11 @@ module.exports = function(api) {
       typeName: "Posts",
       route: "article/:slug"
     });
+
+    const ideaBreweryPosts = store.addContentType({
+      typeName: "IdeaBreweryPosts"
+    });
+
     const initiatives = store.addContentType({
       typeName: "Initiatives",
       route: "initiative/:slug"
@@ -562,6 +567,14 @@ donate: donatePage {
                 slug
               }
             }
+
+            ideaBreweryPosts: allPosts(filter: {tags: {anyIn: ["1435043"]} } ) {
+              ...postFields
+              authors {
+                name
+              }
+            }
+
             wellnessPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
               ...postFields
               authors {
@@ -715,6 +728,12 @@ donate: donatePage {
 
       for (const item of result.data.data.pillars) {
         categories.addNode({
+          ...item
+        });
+      }
+
+      for(const item of result.data.data.ideaBreweryPosts){
+        ideaBreweryPosts.addNode({
           ...item
         });
       }

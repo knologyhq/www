@@ -193,18 +193,14 @@
       }
     }
     
-    newposts: allTags(order: DESC, sortBy: "publishDate", perPage: 4, limit: 8)  {
-      pageInfo {
-        totalPages
-        currentPage
-      }
+    newposts: allTags(filter:{id:{eq:"1435043"}})  {
       edges {
         node {
           title
           belongsTo {
             edges {
               node {
-                ... on Posts {
+                ... on Posts{
                   slug
                   title
                   publishDate
