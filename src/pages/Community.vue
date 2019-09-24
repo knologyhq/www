@@ -27,7 +27,7 @@
             />
           </v-col>
         </template>
-        <template v-if="$page.newposts.edges[0].node">
+        <template v-if="$page.newposts.edges[0]">
           <v-col id="new-posts" cols="12" md="6" lg="4">
             <div class="title font-weight-black black--text mb-2">
               Recent Ideas
