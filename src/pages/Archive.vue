@@ -1,7 +1,13 @@
 <template>
   <Layout>
     <v-container>
-
+      <Banner
+        :banner="{ image: $page.allArchive.edges[0].node.bannerImage.url, title: $page.allArchive.edges[0].node.title, copy: $page.allArchive.edges[0].node.bannerCopy, button:false }" id="archiveBanner"
+      />
+      <v-row>
+        <v-col cols="12" id="main" v-html="marked($page.allArchive.edges[0].node.introCopy)" />
+      </v-row>
+      
       <v-sheet class="mt-4">
         <v-tabs v-model="tab" color="primary" left>
           <v-tab>2019</v-tab>
@@ -22,7 +28,23 @@
 
 
 <page-query>
+
+
   query GoogleData {
+
+    allArchive {
+      edges{
+      node{
+        title
+        bannerImage{
+         url
+        }
+        bannerCopy
+        introCopy
+      }
+    }
+  }
+
     alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
@@ -58,6 +80,10 @@
       }
     }
   }
+
+
+
+
 
 </page-query>
 
@@ -136,4 +162,5 @@ export default {
 .banner {
   background-size: cover;
 }
+
 </style>

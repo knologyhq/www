@@ -154,6 +154,10 @@ ul {
 }
 
 
+#archiveBanner a {
+    color: white!important;
+}
+
 /*Menu*/
 .v-menu__content .white--text {
     line-height: 1.8rem!important;

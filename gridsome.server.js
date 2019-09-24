@@ -27,6 +27,10 @@ module.exports = function(api) {
       typeName: "Donate"
     });
 
+    const archive = store.addContentType({
+      typeName: "Archive"
+    });
+
     const community = store.addContentType({
       typeName: "Community"
     });
@@ -380,6 +384,18 @@ donate: donatePage {
   bannerCopy
   body
 }
+
+archive: archivePage{
+  title
+  bannerImage{
+    url
+  }
+  introCopy
+  bannerCopy
+}
+
+
+
 }
 
 
@@ -415,6 +431,9 @@ donate: donatePage {
       });
       donate.addNode({
         ...result.data.data.donate
+      });
+      archive.addNode({
+        ...result.data.data.archive
       });
     });
 
