@@ -456,12 +456,12 @@ donate: donatePage {
           
 
           query Collections {
-            tags: allTags {
+            tags: allTags(first: 100) {
               title
               id
               slug
             }
-            roles: allRoles {
+            roles: allRoles(first: 100) {
               title
               id
             }

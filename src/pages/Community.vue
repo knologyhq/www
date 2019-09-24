@@ -27,7 +27,13 @@
             />
           </v-col>
         </template>
-        <template v-if="$page.newposts.edges[0].node">
+
+
+
+
+
+
+        <template v-if="$page.newposts.edges">
           <v-col id="new-posts" cols="12" md="6" lg="4">
             <div class="title font-weight-black black--text mb-2">
               Recent Ideas
@@ -134,7 +140,7 @@
 
 
 <page-query>
-  query Dato {
+  query Dato ($page: Int) {
     allCommunity {
       edges {
         node {
@@ -193,25 +199,39 @@
       }
     }
     
-  newposts: allTags(filter: {id: {eq: "1435043"}}) {
+    listOfAllTags: allTags {
     edges {
-      node {
-        title
-        belongsTo(sortBy: "publishDate", order: DESC,  limit: 6) {
-          edges {
-            node {
-              ... on Posts {
-                slug
-                title
-                publishDate
-                categories {
+    node{
+    title
+    id
+    slug
+  }
+  }
+  }
+
+    newposts: allTags(filter: {slug: {eq: "idea-brewery"}}, perPage: 4, limit: 8, page: $page) @paginate {
+      pageInfo {
+        totalPages
+        currentPage
+      }
+      edges {
+        node {
+          title
+          slug
+          id
+          belongsTo (order: DESC, sortBy: "publishDate") {
+            edges {
+              node {
+                ... on Posts {
+                  slug
                   title
-                }
-                authors {
-                  name
-                }
-                image {
-                  url
+                  publishDate
+                  categories {
+                    title
+                  }
+                  authors {
+                    name
+                  }
                 }
               }
             }
@@ -219,7 +239,6 @@
         }
       }
     }
-  }
   }
 </page-query>
 <script>
