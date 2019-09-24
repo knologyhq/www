@@ -193,26 +193,25 @@
       }
     }
     
-    newposts: allTags(filter:{id:{eq:"1435043"}})  {
-      edges {
-        node {
-          title
-          belongsTo {
-            edges {
-              node {
-                ... on Posts{
-                  slug
+  newposts: allTags(filter: {id: {eq: "1435043"}}) {
+    edges {
+      node {
+        title
+        belongsTo(sortBy: "publishDate", order: DESC,  limit: 6) {
+          edges {
+            node {
+              ... on Posts {
+                slug
+                title
+                publishDate
+                categories {
                   title
-                  publishDate
-                  categories {
-                    title
-                  }
-                  authors {
-                    name
-                  }
-                  image {
-                    url
-                  }
+                }
+                authors {
+                  name
+                }
+                image {
+                  url
                 }
               }
             }
@@ -220,6 +219,7 @@
         }
       }
     }
+  }
   }
 </page-query>
 <script>
