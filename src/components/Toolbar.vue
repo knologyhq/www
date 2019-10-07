@@ -103,8 +103,7 @@
         color="secondary"
         class="white--text ml-2 hidden-sm-and-down"
         elevation="0"
-        target="_blank"
-        href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YR9RTSD34X6NY&source=url"
+        href="/donate"
       >Donate</v-btn>
 
       <div class="hidden-md-and-up">
