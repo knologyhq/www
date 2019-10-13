@@ -9,7 +9,8 @@
         <v-container>
           <v-row>
             <v-card-text>
-              <h1 class="display-2 font-weight-thin mb-4" v-html="$page.tags.title" />
+              <h1 class="display-2 font-weight-thin mb-4" v-if="$page.tags.title === 'Idea Brewery'">All Ideas</h1>
+              <h1 class="display-2 font-weight-thin mb-4" v-else v-html="$page.tags.title" />
             </v-card-text>
           </v-row>
         </v-container>
@@ -99,9 +100,15 @@ export default {
     Sidebar
   },
   metaInfo() {
-    return {
-      title: this.$page.tags.title
-    };
+    if (this.$page.tags.title === 'Idea Brewery') {
+      return {
+        title: 'All Ideas'
+      }
+    } else {
+      return {
+        title: this.$page.tags.title
+      };
+    }
   }
 };
 </script>
