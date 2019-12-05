@@ -175,10 +175,6 @@
             authors {
               name
             }
-            categories {
-              title
-              id
-            }
           }
           title
           introCopy
