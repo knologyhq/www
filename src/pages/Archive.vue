@@ -44,7 +44,22 @@
       }
     }
   }
-
+    alldataSheet2020(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+      edges {
+        node {
+          Row_Should_Be_Visible_on_Website_       
+          Publication_Title
+          Funder_Name
+          Grant_Number
+          Project_Name
+          Research_Area
+          Initiative
+          Authors
+          Publication_Date
+          Citation   
+        }
+      }
+    }
     alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {

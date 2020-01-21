@@ -29,6 +29,15 @@ module.exports = {
       options: {
         sheetId: process.env.GOOGLE_SHEET_ID,
         apiKey: process.env.GOOGLE_API_KEY,
+        range: "2020",
+        type: "dataSheet2020"
+      }
+    },
+    {
+      use: "gridsome-source-google-sheets",
+      options: {
+        sheetId: process.env.GOOGLE_SHEET_ID,
+        apiKey: process.env.GOOGLE_API_KEY,
         range: "2019",
         type: "dataSheet2019"
       }
