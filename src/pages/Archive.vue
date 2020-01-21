@@ -10,10 +10,14 @@
       
       <v-sheet class="mt-4">
         <v-tabs v-model="tab" color="primary" left>
+          <v-tab>2020</v-tab>
           <v-tab>2019</v-tab>
           <v-tab>2018</v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
+          <v-tab-item>
+            <v-data-table :headers="headers" :items="$page.alldataSheet2020.edges"></v-data-table>
+          </v-tab-item>
           <v-tab-item>
             <v-data-table :headers="headers" :items="$page.alldataSheet2019.edges"></v-data-table>
           </v-tab-item>
@@ -56,7 +60,8 @@
           Initiative
           Authors
           Publication_Date
-          Citation   
+          Citation
+   
         }
       }
     }
