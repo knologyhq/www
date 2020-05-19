@@ -43,7 +43,7 @@
 
 <page-query>
 
-query Tag($id: String!) {
+query Tag($id: ID!) {
   tags(id: $id) {
     title
     belongsTo {

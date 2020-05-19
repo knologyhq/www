@@ -31,7 +31,7 @@
 
 <page-query>
 
-query Dato($id: String!)  {
+query Dato($id: ID!)  {
   posts: jobsPosts(id: $id) {
     title
     description  

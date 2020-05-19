@@ -73,7 +73,7 @@
 
 <page-query>
 
-  query Dato($id: String!)  {
+  query Dato($id: ID!)  {
     people(id: $id) {
       name
       jobTitle

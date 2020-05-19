@@ -16,13 +16,13 @@
         </v-tabs>
         <v-tabs-items v-model="tab">
           <v-tab-item>
-            <v-data-table :headers="headers" :items="$page.alldataSheet2020.edges"></v-data-table>
+            <v-data-table :headers="headers" :items="$page.allDataSheet2020.edges"></v-data-table>
           </v-tab-item>
           <v-tab-item>
-            <v-data-table :headers="headers" :items="$page.alldataSheet2019.edges"></v-data-table>
+            <v-data-table :headers="headers" :items="$page.allDataSheet2019.edges"></v-data-table>
           </v-tab-item>
           <v-tab-item>
-            <v-data-table :headers="headers" :items="$page.alldataSheet2018.edges"></v-data-table>
+            <v-data-table :headers="headers" :items="$page.allDataSheet2018.edges"></v-data-table>
           </v-tab-item>
         </v-tabs-items>
       </v-sheet>
@@ -48,7 +48,7 @@
       }
     }
   }
-    alldataSheet2020(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+    allDataSheet2020(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
           Row_Should_Be_Visible_on_Website_       
@@ -65,7 +65,7 @@
         }
       }
     }
-    alldataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+    allDataSheet2019(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
           Row_Should_Be_Visible_on_Website_       
@@ -82,7 +82,7 @@
         }
       }
     }
-    alldataSheet2018(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
+    allDataSheet2018(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
           Row_Should_Be_Visible_on_Website_       

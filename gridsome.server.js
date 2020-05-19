@@ -13,112 +13,112 @@ module.exports = function(api) {
   });
 
   api.loadSource(async store => {
-    const site = store.addContentType({
+    const site = store.addCollection({
       typeName: "Site"
     });
-    const home = store.addContentType({
+    const home = store.addCollection({
       typeName: "Home"
     });
-    const contact = store.addContentType({
+    const contact = store.addCollection({
       typeName: "Contact"
     });
 
-    const donate = store.addContentType({
+    const donate = store.addCollection({
       typeName: "Donate"
     });
 
-    const archive = store.addContentType({
+    const archive = store.addCollection({
       typeName: "Archive"
     });
 
-    const community = store.addContentType({
+    const community = store.addCollection({
       typeName: "Community"
     });
 
-    const ethics = store.addContentType({
+    const ethics = store.addCollection({
       typeName: "Ethics"
     });
-    const privacy = store.addContentType({
+    const privacy = store.addCollection({
       typeName: "Privacy"
     });
-    const about = store.addContentType({
+    const about = store.addCollection({
       typeName: "About"
     });
-    const alumni = store.addContentType({
+    const alumni = store.addCollection({
       typeName: "Alumni"
     });
 
-    const careers = store.addContentType({
+    const careers = store.addCollection({
       typeName: "CareersPage"
     });
-    const sidebar = store.addContentType({
+    const sidebar = store.addCollection({
       typeName: "Sidebar"
     });
-    const jobsPosts = store.addContentType({
+    const jobsPosts = store.addCollection({
       typeName: "JobsPosts",
       route: "job/:slug"
     });
-    const ourTeam = store.addContentType({
+    const ourTeam = store.addCollection({
       typeName: "OurTeam"
     });
-    const people = store.addContentType({
+    const people = store.addCollection({
       typeName: "People",
       route: "person/:slug"
     });
-    const posts = store.addContentType({
+    const posts = store.addCollection({
       typeName: "Posts",
       route: "article/:slug"
     });
 
-    const ideaBreweryPosts = store.addContentType({
+    const ideaBreweryPosts = store.addCollection({
       typeName: "IdeaBreweryPosts"
     });
 
-    const initiatives = store.addContentType({
+    const initiatives = store.addCollection({
       typeName: "Initiatives",
       route: "initiative/:slug"
     });
-    const milestones = store.addContentType({
+    const milestones = store.addCollection({
       typeName: "Milestones"
     });
-    const wellnessPosts = store.addContentType({
+    const wellnessPosts = store.addCollection({
       typeName: "WellnessPosts",
       route: "category/:slug"
     });
-    const mediaPosts = store.addContentType({
+    const mediaPosts = store.addCollection({
       typeName: "MediaPosts"
     });
-    const processPosts = store.addContentType({
+    const processPosts = store.addCollection({
       typeName: "ProcessPosts"
     });
-    const systemsPosts = store.addContentType({
+    const systemsPosts = store.addCollection({
       typeName: "SystemsPosts"
     });
-    const biospherePosts = store.addContentType({
+    const biospherePosts = store.addCollection({
       typeName: "BiospherePosts"
     });
-    const culturePosts = store.addContentType({
+    const culturePosts = store.addCollection({
       typeName: "CulturePosts"
     });
     // using a different pillar overview template here
     // Pillars (model name and old term) == Categories (interface/paths) == Research Areas (internal term)
-    const pillars = store.addContentType({
+    const pillars = store.addCollection({
       typeName: "Pillars",
       route: "category/:slug"
     });
-    const categories = store.addContentType({
+    const categories = store.addCollection({
       typeName: "Categories",
       route: "articles/category/:slug"
     });
 
-    const tags = store.addContentType({
+    const tags = store.addCollection({
       typeName: "Tags",
       route: "articles/tag/:slug"
     });
-    const comments = store.addContentType({
+    const comments = store.addCollection({
       typeName: "Comments"
     });
-    const roles = store.addContentType({
+    const roles = store.addCollection({
       typeName: "Roles"
     });
 

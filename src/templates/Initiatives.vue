@@ -90,7 +90,7 @@
 </template>
 
 <page-query>
-query InitativeData($id: String!) {
+query InitativeData($id: ID!) {
   initiatives(id: $id) {
     title
     description

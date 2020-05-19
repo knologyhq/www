@@ -42,7 +42,7 @@
 
 <page-query>
 
-query Pillars($id: String!) {
+query Pillars($id: ID!) {
   pillars(id: $id) {
     title
     belongsTo(filter: {typeName: {eq: Posts}}) { 

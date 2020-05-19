@@ -63,7 +63,7 @@
 </template>
 
 <page-query>
-query CategoryData($id: String!) {
+query CategoryData($id: ID!) {
   pillars(id: $id) {
     title
     description

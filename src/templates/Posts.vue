@@ -210,7 +210,7 @@
 
 <page-query>
 
-query Dato($id: String!)  {
+query Dato($id: ID!)  {
 
   comments: posts(id: $id) {
     postId: id
