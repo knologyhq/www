@@ -52,9 +52,11 @@ module.exports = {
       }
     },
     {
-      use: '@gridsome/plugin-google-analytics',
+      use: 'gridsome-plugin-gtm',
       options: {
-        id: 'UA-118217495-1'
+        id: 'GTM-WZQW5JM',
+        enabled: true,
+        debug: true
       }
     }
   ],
