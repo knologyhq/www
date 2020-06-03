@@ -46,6 +46,7 @@ body #app * {
 
 .v-card__title {
   font-size:1.3rem;
+  word-break: normal !important;
 }
 
 a.black--text:hover, a .black--text:hover, a.grey--text:hover, a.subtitle-1:hover{
