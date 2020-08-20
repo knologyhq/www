@@ -58,10 +58,9 @@
           Project_Name
           Research_Area
           Initiative
-          Authors
           Publication_Date
           Citation
-   
+          Instruments___Data_URL__When_Available_
         }
       }
     }
@@ -75,10 +74,9 @@
           Project_Name
           Research_Area
           Initiative
-          Authors
           Publication_Date
           Citation
-          Instruments___Data_URL__When_Available_     
+          Instruments___Data_URL__When_Available_
         }
       }
     }
@@ -92,7 +90,6 @@
           Project_Name
           Research_Area
           Initiative
-          Authors
           Publication_Date
           Citation
           Instruments___Data_URL__When_Available_
@@ -147,11 +144,6 @@ export default {
           sortable: false,
           text: "Initiative",
           value: "node.Initiative"
-        },
-        {
-          sortable: false,
-          text: "Authors",
-          value: "node.Authors"
         },
         {
           sortable: true,
