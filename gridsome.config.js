@@ -25,30 +25,28 @@ module.exports = {
 
   plugins: [
     {
-      use: "gridsome-source-google-sheets",
+      use: "gridsome-source-google-sheets-v2",
       options: {
-        sheetId: process.env.GOOGLE_SHEET_ID,
         apiKey: process.env.GOOGLE_API_KEY,
-        range: "2020",
-        type: "dataSheet2020"
-      }
-    },
-    {
-      use: "gridsome-source-google-sheets",
-      options: {
-        sheetId: process.env.GOOGLE_SHEET_ID,
-        apiKey: process.env.GOOGLE_API_KEY,
-        range: "2019",
-        type: "dataSheet2019"
-      }
-    },
-    {
-      use: "gridsome-source-google-sheets",
-      options: {
-        sheetId: process.env.GOOGLE_SHEET_ID,
-        apiKey: process.env.GOOGLE_API_KEY,
-        range: "2018",
-        type: "dataSheet2018"
+        spreadsheets: [
+          {
+            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            sheets: [
+              {
+                sheetName: '2020',
+                collectionName: 'dataSheet2020'
+              },
+              {
+                sheetName: '2019',
+                collectionName: 'dataSheet2019'
+              },
+              {
+                sheetName: '2018',
+                collectionName: 'dataSheet2018'
+              }
+            ]
+          }
+        ]
       }
     },
     {
