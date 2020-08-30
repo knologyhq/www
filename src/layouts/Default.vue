@@ -14,7 +14,7 @@
     </div>
     <!-- regular pages in contained layout -->
     <template v-if="!$slots.fluidLayout">
-      <v-content>
+      <v-main>
         <v-container>
           <v-slide-y-transition mode="out-in">
             <v-row>
@@ -24,7 +24,7 @@
             </v-row>
           </v-slide-y-transition>
         </v-container>
-      </v-content>
+      </v-main>
     </template>
     <!-- full-width (fluid) pages -->
 

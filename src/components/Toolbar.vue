@@ -15,7 +15,6 @@
               bottom
               :offset-y="true"
               class="mt-10"
-              full-width
               min-width="100%"
               z-index="10000000"
               v-model="researchMenu"

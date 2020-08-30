@@ -7,7 +7,6 @@
     <v-menu
       :offset-y="true"
       bottom
-      full-width
       v-model="searchMenu"
       min-width="100%"
       z-index="10000000"
