@@ -215,7 +215,7 @@
           title
           slug
           id
-          belongsTo (order: DESC, sortBy: "publishDate") {
+          belongsTo (order: DESC, sortBy: "publishDate", perPage: 4) {
             edges {
               node {
                 ... on Posts {
