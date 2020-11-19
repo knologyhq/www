@@ -99,6 +99,16 @@ Single Post CSS
   margin-bottom: 10px;
 }
 
+#post-body img.left {
+  float: left;
+  padding: 0 1em 2em 0;
+}
+
+#post-body img.right {
+  float: right;
+  padding: 0 0 2em 1em;
+}
+
 #post-category-container .category a span.v-btn__content {
   font-family: "Open Sans", sans-serif!important;
   font-size: 1rem!important;
