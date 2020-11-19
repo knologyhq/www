@@ -91,6 +91,10 @@ Single Post CSS
   margin-bottom:25px!important;
 }
 
+#post-body h2, #post-body h3, #post-body h4, #post-body h5, #post-body h6 {
+  clear: both;
+}
+
 #post-body h3 {
   margin-bottom: 10px;
 }
