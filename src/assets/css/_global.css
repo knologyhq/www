@@ -131,6 +131,7 @@ Single Post CSS
 
 .post-tag-container{
   margin-top:40px;
+  clear: both;
 }
 
 .post-tag-container a {
