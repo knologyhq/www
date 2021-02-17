@@ -65,9 +65,16 @@
                 -->
               </li>
             </ul>
-            <div v-for="account in $static.allContact.edges[0].node.socialMedia" :key="account.id">
-              <Social :account="account" color="primary" />
+            <div class="social">
+              <div class="social-icon" v-for="account in $static.allContact.edges[0].node.socialMedia" :key="account.id">
+                <Social :account="account" color="primary" />
+              </div>
             </div>
+
+            <div class="guidestar">
+              <a href="https://www.guidestar.org/profile/45-4393574" target="_blank"><img src="https://widgets.guidestar.org/gximage2?o=9237384&l=v4" /></a>
+            </div>
+
           </v-col>
 
           <v-col cols="12" md="2" class="py-sm-0">

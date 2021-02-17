@@ -70,7 +70,32 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
   border-radius: 5px!important;
 }
 
+/*
+Footer social icons
+*/
+footer .social {
+  display: inline-block;
+}
 
+
+/*
+Guidestar widget
+*/
+footer .guidestar {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 2em;
+}
+footer .guidestar img {
+  width: 90px;
+}
+#donate-page .guidestar {
+  margin-top: 3em!important;
+  margin-left: 1em!important;
+}
+#donate-page .guidestar img {
+  width: 110px;
+}
 
 
 /*

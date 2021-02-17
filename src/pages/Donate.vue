@@ -15,6 +15,7 @@
               <v-card-title class="display-2 mb-1 font-weight-black">{{$page.allDonate.edges[0].node.title}}</v-card-title>
 
               <div class="mb-1 donate-subtitle" v-html="marked($page.allDonate.edges[0].node.bannerCopy)" />
+
                     <v-btn
         color="secondary"
         class="white--text ml-2"
@@ -22,6 +23,11 @@
         target="_blank"
         href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YR9RTSD34X6NY&source=url"
       >Donate</v-btn>
+
+              <div class="guidestar">
+                <a href="https://www.guidestar.org/profile/45-4393574" target="_blank"><img src="https://widgets.guidestar.org/gximage2?o=9237384&l=v4" /></a>
+              </div>
+
             </v-card>
           </v-col>
           <v-col cols="12" md="7" class="col-offset-md-1" fill-height id="donate-right">
