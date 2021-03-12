@@ -7,3 +7,6 @@
 [[redirects]]
   from = "/financial-education-mapping-tool"
   to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
+[[redirects]]
+  from = "/Financial-Education-Mapping-Tool"
+  to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
