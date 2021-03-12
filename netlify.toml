@@ -3,3 +3,7 @@
   functions = "functions"
   publish = "dist"
   NODE_ENV = "10.15.3"
+
+[[redirects]]
+  from = "/financial-education-mapping-tool"
+  to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
