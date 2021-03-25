@@ -33,10 +33,6 @@ query  {
           authors {
             name
           }
-          categories {
-            title
-            id
-          }
         }
       }
     }
