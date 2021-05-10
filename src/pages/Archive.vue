@@ -61,7 +61,6 @@
           Grant_Number
           Project_Name
           Research_Area
-          Initiative
           Publication_Date
           Citation
           Instruments___Data_URL__When_Available_
@@ -77,7 +76,6 @@
           Grant_Number
           Project_Name
           Research_Area
-          Initiative
           Publication_Date
           Citation
           Instruments___Data_URL__When_Available_
@@ -93,7 +91,6 @@
           Grant_Number
           Project_Name
           Research_Area
-          Initiative
           Publication_Date
           Citation
           Instruments___Data_URL__When_Available_
@@ -109,7 +106,6 @@
           Grant_Number
           Project_Name
           Research_Area
-          Initiative
           Publication_Date
           Citation
           Instruments___Data_URL__When_Available_
@@ -159,11 +155,6 @@ export default {
           sortable: false,
           text: "Research Area",
           value: "node.Research_Area"
-        },
-        {
-          sortable: false,
-          text: "Initiative",
-          value: "node.Initiative"
         },
         {
           sortable: true,
