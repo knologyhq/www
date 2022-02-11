@@ -50,7 +50,7 @@
     "@mdi/font": "^5.9.55",
     "css-loader": "^3.6.0",
     "postcss-custom-properties": "^9.2.0",
-    "postcss-loader": "^3.0.0",
+    "postcss-loader": "^6.2.1",
     "style-resources-loader": "^1.4.1",
     "webpack-node-externals": "^1.7.2"
   }
