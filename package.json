@@ -30,7 +30,7 @@
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.7.1",
     "loader-utils": "^2.0.0",
