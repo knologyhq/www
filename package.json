@@ -34,6 +34,7 @@
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.7.1",
     "loader-utils": "^2.0.0",
+    "lodash": "^4.17.21",
     "marked": "^0.7.0",
     "mem": "^5.1.1",
     "netlify-lambda": "^1.6.3",
