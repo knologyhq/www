@@ -33,6 +33,10 @@ module.exports = {
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
             sheets: [
               {
+                sheetName: '2022',
+                collectionName: 'dataSheet2022'
+              },
+              {
                 sheetName: '2021',
                 collectionName: 'dataSheet2021'
               },
