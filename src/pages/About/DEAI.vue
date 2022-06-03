@@ -9,9 +9,6 @@
         <v-col cols="12" id="main" v-html="marked($page.about.edges[0].node.introCopy)" />
       </v-row>
       <v-row>
-        <v-col cols="12">
-        <h3 id="strategic-goals">Strategic Goals</h3>
-      </v-col>
         <v-col cols="12" id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
       </v-row>
     </v-container>
@@ -23,7 +20,7 @@
 <page-query>
 
 {
-  about: allAbout(filter: {title: {eq: "Mission & Vision"}}) {
+  about: allAbout(filter: {title: {eq: "Diversity, Equity, Access, & Inclusion"}}) {
     edges {
       node {
         bannerCopy
