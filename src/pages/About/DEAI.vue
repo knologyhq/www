@@ -20,7 +20,7 @@
 <page-query>
 
 {
-  about: allAbout(filter: {title: {eq: "Diversity, Equity, Access, & Inclusion"}}) {
+  about: allAbout(filter: {id: {eq: "122031095"}}) {
     edges {
       node {
         bannerCopy
