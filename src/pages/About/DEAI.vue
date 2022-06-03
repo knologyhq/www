@@ -5,11 +5,8 @@
         :banner="{ image: $page.about.edges[0].node.bannerImage.url, title: $page.about.edges[0].node.title, copy: $page.about.edges[0].node.bannerCopy, button: $page.about.edges[0].node.readMoreButton }"
       />
 
-      <v-row>
-        <v-col cols="12" id="main" v-html="marked($page.about.edges[0].node.introCopy)" />
-      </v-row>
-      <v-row>
-        <v-col cols="12" id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
+      <v-row cols="6">
+        <v-col id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
       </v-row>
     </v-container>
     <template slot="cta">
@@ -20,7 +17,7 @@
 <page-query>
 
 {
-  about: allAbout(filter: {id: {eq: "122031095"}}) {
+  about: allAbout(filter: {title: {eq: "Diversity, Equity, Access, & Inclusion"}}) {
     edges {
       node {
         bannerCopy
@@ -48,7 +45,6 @@
       }
     }
   }
-  
 }
 </page-query>
 <script>
@@ -56,22 +52,23 @@ import Cta from "~/components/Cta.vue";
 import Banner from "~/components/Banner.vue";
 
 export default {
-  mounted() {
-    console.log(this.$vuetify.breakpoint);
+  components: {
+    Cta,
+    Banner
   },
   metaInfo() {
     return {
       title:this.$page.about.edges[0].node.title,
       meta: [
         { name: "author", content: "Knology" },
-        { name: "description", content: "Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."},
+        { name: "description", content:this.$page.about.edges[0].node.bannerCopy},
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:site", content: "@KnologyResearch" },
         { name: "twitter:title", content: this.$page.about.edges[0].node.title },
         {
           name: "twitter:description",
           content:
-           "Knology is a collective of scientists, writers, and educators dedicated to studying and untangling complex social issues. Equity, transparency, and deliberation are the foundation of our work process. We recognize that no issue exists in isolation from its social and environmental context. Our research is embedded in real-world application to develop practical approaches to thorny problems. We are committed to serving the public good by sharing our data and clearly reporting our results."
+            this.$page.about.edges[0].node.bannerCopy
         },
         {
           name: "twitter:image",
@@ -80,18 +77,14 @@ export default {
       ]
     };
 
-  },
-  components: {
-    Cta,
-    Banner
-  }
+  } 
 };
 </script>
-<style lang="postcss">
+<style lang="postcss" scoped>
 .body {
   columns: 1;
 
-  @media (--desktop) {
+  @media (--tablet), (--desktop) {
     columns: 2 auto;
     orphans: 3;
   }
