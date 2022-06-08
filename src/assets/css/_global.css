@@ -70,6 +70,10 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
   border-radius: 5px!important;
 }
 
+blockquote {
+  margin-left: 1rem;
+}
+
 /*
 Footer social icons
 */
@@ -220,5 +224,12 @@ footer .row.py-12.align-content-start {
 }
 }
 
+/*DEAI page overrides*/
+.container.deai > div.banner {
+    background: linear-gradient(rgba(38, 96, 147, 0.85), rgba(38, 96, 147, 0)), url("https://www.datocms-assets.com/15254/1654543286-deai.jpg") !important;
+}
 
+.container.deai .body {
+    columns: 1;
+}
 
