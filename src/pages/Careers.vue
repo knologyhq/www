@@ -62,7 +62,7 @@ query Dato {
       }
     }
   }
-  allJobsPosts {
+  allJobsPosts(filter: {open: {eq: true}}) {
     edges {
       node {
         title

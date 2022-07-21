@@ -486,10 +486,11 @@ archive: archivePage{
             }
 
 
-            jobs: allJobs(filter: {open: {eq: true}}) {
+            jobs: allJobs {
               title
               description
               slug
+              open
             }
 
             about: allAboutSectionPages {
