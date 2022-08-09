@@ -71,7 +71,7 @@
       <div class="title text--black font-weight-black">Meet Our Experts in this Research Area</div>
 
       <v-row class="mb-6">
-        <v-col cols="12" md="3" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
+        <v-col cols="12" md="3" v-if="edge.node.team" v-for="edge in $page.people.belongsTo.edges" :key="edge.node.id">
           <PersonCard :person="edge.node" :key="edge.node.id" />
         </v-col>
       </v-row>
@@ -149,6 +149,7 @@ query InitativeData($id: ID!) {
             name
             jobTitle
             slug
+            team
             photo {
               url
             }
