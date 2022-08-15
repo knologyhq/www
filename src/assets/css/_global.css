@@ -185,6 +185,7 @@ Single Post CSS
 .post-banner-image {
   margin-top: 20px;
   background-position-y: center;
+  background-position-x: center;
 }
 
 .post-title-container p{
