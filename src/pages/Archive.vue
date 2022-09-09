@@ -143,6 +143,9 @@
 import Banner from "~/components/Banner.vue";
 
 export default {
+  metaInfo: {
+    title: 'Archive of Publications and Datasets',
+  },
   components: {
     Banner
   },
