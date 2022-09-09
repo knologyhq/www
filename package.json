@@ -14,16 +14,16 @@
     "check": "gulp check-init"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@gridsome/cli": "^0.3.4",
-    "axios": "^0.21.2",
-    "dotenv": "^8.2.0",
+    "axios": "^0.21.4",
+    "dotenv": "^8.6.0",
     "flexsearch": "^0.6.32",
     "global": "^4.4.0",
-    "gravatar": "^1.8.1",
+    "gravatar": "^1.8.2",
     "gridsome": "^0.7.23",
     "gridsome-plugin-gtm": "^0.1.1",
     "gridsome-source-google-sheets-v2": "^1.0.4",
@@ -33,7 +33,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.7.1",
-    "loader-utils": "^2.0.0",
+    "loader-utils": "^2.0.2",
     "lodash": "^4.17.21",
     "marked": "^0.7.0",
     "mem": "^5.1.1",
@@ -43,15 +43,15 @@
     "postcss-nested": "^4.2.3",
     "slug": "^1.1.0",
     "vue-moment": "^4.1.0",
-    "vuetify": "^2.4.8"
+    "vuetify": "^2.6.9"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@mdi/font": "^5.9.55",
     "css-loader": "^3.6.0",
     "postcss-custom-properties": "^9.2.0",
     "postcss-loader": "^6.2.1",
-    "style-resources-loader": "^1.4.1",
+    "style-resources-loader": "^1.5.0",
     "webpack-node-externals": "^1.7.2"
   }
 }
