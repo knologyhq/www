@@ -588,6 +588,39 @@ archive: archivePage{
               }
             }
 
+            posts2: allPosts(first: 100, skip: 100) {
+              ...postFields
+              dataFile
+              dataFileLabel
+              tags {
+                id
+                title
+                slug
+              }
+              postFile {
+                url
+              }
+              postType {
+                title
+                id
+              }
+              authors {
+                name
+                slug
+                id
+              }
+              categories {
+                title
+                id
+                slug
+              }
+              initiatives {
+                id
+                title
+                slug
+              }
+            }
+
             ideaBreweryPosts: allPosts(filter: {tags: {anyIn: ["1435043"]} } ) {
               ...postFields
               authors {
@@ -702,7 +735,11 @@ archive: archivePage{
           pillarList: pillarList
         });
       }
-      for (const item of result.data.data.posts) {
+      
+      // 20220915 adding this as a bandaid for the 100 post limit issue
+      let combinedPosts = result.data.data.posts.concat(result.data.data.posts2);
+
+      for (const item of combinedPosts) {
         // create reference to initiatives
         let initiatives = item.initiatives;
         let initiativeList = initiatives.map(function(initiative) {
