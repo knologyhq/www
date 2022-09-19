@@ -586,6 +586,8 @@ archive: archivePage{
                 title
                 slug
               }
+              exclude
+              recent
             }
 
             posts2: allPosts(first: 100, skip: 100) {
@@ -619,6 +621,8 @@ archive: archivePage{
                 title
                 slug
               }
+              exclude
+              recent
             }
 
             ideaBreweryPosts: allPosts(filter: {tags: {anyIn: ["1435043"]} } ) {

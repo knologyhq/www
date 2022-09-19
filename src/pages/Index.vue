@@ -135,7 +135,7 @@
       }
     } 
 
-    newposts: allPosts(filter: {postType: {title: {eq: "Article"}}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8, page: $page) @paginate {
+    newposts: allPosts(filter: {postType: {title: {eq: "Article"}}, recent: {ne: true}}, order: DESC, sortBy: "publishDate", perPage: 4, limit: 8, page: $page) @paginate {
       pageInfo {
         totalPages
         currentPage

@@ -54,7 +54,7 @@
     <v-container v-if="$page.posts.belongsTo.edges">
       <div class="title text--black font-weight-black">Recent Posts about {{$page.pillars.title}}</div>
       <v-row class="mb-6">
-        <v-col cols="12" md="3" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
+        <v-col cols="12" md="3" v-if="edge.node.exclude !== true" v-for="edge in $page.posts.belongsTo.edges" :key="edge.node.id">
           <PostCardLarge :post="edge.node" :key="edge.node.id" />
         </v-col>
       </v-row>
@@ -108,6 +108,7 @@ query CategoryData($id: ID!) {
               name
             }
             publishDate
+            exclude
           }
         }
       }
