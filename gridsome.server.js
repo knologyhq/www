@@ -637,36 +637,42 @@ archive: archivePage{
               authors {
                 name
               }
+              recent
             }
             mediaPosts: allPosts(filter: {categories: {anyIn: ["1366604"]}}) {
               authors {
                 name
               }
               ...postFields
+              recent
             }
             processPosts: allPosts(filter: {categories: {anyIn: ["1366603"]}}) {
               authors {
                 name
               }
               ...postFields
+              recent
             }
             systemsPosts: allPosts(filter: {categories: {anyIn: ["1366605"]}}) {
               authors {
                 name
               }
               ...postFields
+              recent
             }
             biospherePosts: allPosts(filter: {categories: {anyIn: ["1366598"]}}) {
               authors {
                 name
               }
               ...postFields
+              recent
             }
             culturePosts: allPosts(filter: {categories: {anyIn: ["1366602"]}}) {
               authors {
                 name
               }
               ...postFields
+              recent
             }
             people: allPeople(first: 100) {
               role {

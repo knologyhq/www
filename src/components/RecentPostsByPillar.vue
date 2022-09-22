@@ -25,7 +25,7 @@
 <static-query>
 
 query {
-  media: allMediaPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  media: allMediaPosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
