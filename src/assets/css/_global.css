@@ -214,6 +214,7 @@ table {
   border:1px solid #b3adad;
   border-collapse:collapse;
   padding:10px;
+  width: 100%;
 }
 table th {
   border:1px solid #b3adad;
