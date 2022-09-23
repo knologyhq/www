@@ -41,7 +41,7 @@ query {
       }
     }
   }
-  wellness: allWellnessPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  wellbeing: allWellbeingPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug

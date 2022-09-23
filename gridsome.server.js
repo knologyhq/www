@@ -81,8 +81,8 @@ module.exports = function(api) {
     const milestones = store.addCollection({
       typeName: "Milestones"
     });
-    const wellnessPosts = store.addCollection({
-      typeName: "WellnessPosts",
+    const wellbeingPosts = store.addCollection({
+      typeName: "WellbeingPosts",
       route: "category/:slug"
     });
     const mediaPosts = store.addCollection({
@@ -632,7 +632,7 @@ archive: archivePage{
               }
             }
 
-            wellnessPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
+            wellbeingPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
               ...postFields
               authors {
                 name
@@ -805,8 +805,8 @@ archive: archivePage{
         });
       }
 
-      for (const item of result.data.data.wellnessPosts) {
-        wellnessPosts.addNode({
+      for (const item of result.data.data.wellbeingPosts) {
+        wellbeingPosts.addNode({
           ...item
         });
       }

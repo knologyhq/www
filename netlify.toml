@@ -10,3 +10,20 @@
 [[redirects]]
   from = "/Financial-Education-Mapping-Tool"
   to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
+
+## Redirects resulting in change from "wellness" to "wellbeing" 
+[[redirects]]
+  from = "/category/wellness"
+  to = "/category/wellbeing"
+[[redirects]]
+  from = "/articles/category/wellness"
+  to = "/articles/category/wellbeing"
+[[redirects]]
+  from = "/initiative/understanding-health-narratives"
+  to = "/initiative/social-construction-of-public-health-and-wellbeing"
+[[redirects]]
+  from = "/initiative/mindfulness"
+  to = "/category/wellbeing"
+[[redirects]]
+  from = "/initiative/pre-arming-self-efficacy-capacity-building"
+  to = "/initiative/social-life-of-public-health-disasters"
