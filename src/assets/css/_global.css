@@ -14,7 +14,7 @@ body #app * {
   /* oh geez */
 }
 
-img, hr, table, h2 {
+img, hr, table, h2, ol, ul {
   margin: 1em 0;
 }
 
