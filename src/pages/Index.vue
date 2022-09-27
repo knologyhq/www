@@ -2,6 +2,7 @@
   <Layout>
     <template slot="alertBanner">
       <v-alert
+        v-if="$page.allHome.edges[0].node.alert"
         v-model="alert"
         close-text="Close"
         tile
