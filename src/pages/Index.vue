@@ -70,6 +70,7 @@
     <template slot="cta">
       <Cta :cta="$page.allHome.edges[0].node.cta" />
     </template>
+
   </Layout>
 </template>
 
@@ -167,6 +168,7 @@ import PostCardLarge from "~/components/PostCardLarge.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Logo from "~/components/Logo.vue";
 import Cta from "~/components/Cta.vue";
+import Modal from "~/components/Modal.vue";
 import Sidebar from "~/components/Sidebar.vue";
 import { Pager } from "gridsome";
 

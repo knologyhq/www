@@ -3,6 +3,7 @@ import "~/assets/css/index.css";
 import "vuetify/dist/vuetify.min.css";
 import VueMoment from "vue-moment";
 import DefaultLayout from "~/layouts/Default.vue";
+import VModal from "vue-js-modal";
 
 export default function(Vue, { appOptions, head }) {
 
@@ -54,4 +55,6 @@ export default function(Vue, { appOptions, head }) {
   });
 
   Vue.component("Layout", DefaultLayout);
+
+  Vue.use(VModal);
 }

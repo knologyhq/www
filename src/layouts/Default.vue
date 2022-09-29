@@ -1,5 +1,8 @@
 <template>
   <v-app id="knology">
+    <div id="modal" v-if="$slots.modal">
+      <slot name="modal" />
+    </div>
     <div v-if="$slots.alertBanner">
       <slot name="alertBanner" />
     </div>
@@ -38,6 +41,7 @@
     <div id="cta" v-if="$slots.cta">
       <slot name="cta" />
     </div>
+
     <v-footer padless color="white">
       <v-container fluid class="mb-0 pb-0">
         <v-row align-content="start" class="py-12">

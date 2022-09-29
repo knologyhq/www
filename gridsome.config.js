@@ -64,7 +64,10 @@ module.exports = {
         enabled: true,
         debug: true
       }
-    }
+    },
+    {
+      use: 'gridsome-plugin-modal',
+    },
   ],
   css: {
     loaderOptions: {
