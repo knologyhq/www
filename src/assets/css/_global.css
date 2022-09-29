@@ -53,6 +53,11 @@ img, hr, table, h2, ol, ul {
   word-break: normal !important;
 }
 
+/* Fix for homepage recent posts to force lede to newline below hed */
+#new-posts p {
+  width: 100%;
+}
+
 a.black--text:hover, a .black--text:hover, a.grey--text:hover, a.subtitle-1:hover{
 color:#ff7043 !important;
 }
