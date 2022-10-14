@@ -83,6 +83,23 @@ blockquote {
   margin-left: 1rem;
 }
 
+/* 
+Images with captions 
+*/
+figure {
+    margin: 2em auto;
+    display: table;
+}
+figure img {
+    display: block;
+}
+figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    text-align: center;
+    font-style: italic;
+}
+
 /*
 Footer social icons
 */
