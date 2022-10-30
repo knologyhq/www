@@ -279,3 +279,65 @@ footer .row.py-12.align-content-start {
     columns: 1;
 }
 
+/*
+Collapsible sections
+
+Found here: https://codeconvey.com/html-expand-collapse-text-without-javascript/
+
+Use HTML similar to this in your post:
+
+<section class="accordion">
+  <input type="checkbox" name="collapse" id="handle1" checked="checked">
+  <h2 class="handle">
+    <label for="handle1">
+    The Visible Short Heading 
+    </label>
+  </h2>
+  
+  <div class="content">
+    <p>Your detailed contents...</p>  
+  </div>
+</section>
+
+*/
+
+.accordion > input[name="collapse"] {
+  display: none;
+}
+
+.accordion .content {
+  overflow: hidden;
+  height: 0;
+  transition: 0.5s;
+}
+
+.accordion label {
+  cursor: pointer;
+}
+ 
+.accordion label:hover,
+.accordion label:focus {
+
+}
+ 
+.accordion .handle label:after {
+  content: ">";
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 1em;
+  line-height: 1.556em;
+  vertical-align: middle;
+  transition: 0.4s;
+  
+}
+ 
+.accordion > input[name="collapse"]:checked ~ .handle label:after {
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 0.4s;
+}
+
+.accordion > input[name="collapse"]:checked ~ .content {
+  height: auto; /* set to a pixel value for a smooth transition */
+  transition: height 0.5s;
+}
