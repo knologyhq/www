@@ -33,7 +33,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-serve": "^1.4.0",
     "gulp-shell": "^0.7.1",
-    "loader-utils": "^2.0.2",
+    "loader-utils": "^2.0.3",
     "lodash": "^4.17.21",
     "marked": "^0.7.0",
     "mem": "^5.1.1",
