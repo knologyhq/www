@@ -1,6 +1,8 @@
 :root {
   --font-family: "Ubuntu", sans-serif;
   --font-family-headers: "Ubuntu", sans-serif;
+  --knology-blue: #256092;
+  --knology-orange: #EB7B31;
 }
 
 @custom-media --mini (min-width: 280px) and (max-width: 374px);
@@ -270,13 +272,20 @@ footer .row.py-12.align-content-start {
 }
 }
 
-/*DEAI page overrides*/
+/*About secion page overrides*/
 .container.deai > div.banner {
     background: linear-gradient(rgba(38, 96, 147, 0.85), rgba(38, 96, 147, 0)), url("https://www.datocms-assets.com/15254/1654543286-deai.jpg") !important;
 }
 
 .container.deai .body, .container.impacts .body {
     columns: 1;
+}
+
+.container.impacts .body h2 {
+  color:  var(--knology-blue);
+}
+.container.impacts .body h3 {
+  color:  var(--knology-orange);
 }
 
 /*
