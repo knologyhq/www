@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <v-container>
+    <v-container class="impacts">
       <Banner
         :banner="{ image: $page.about.edges[0].node.bannerImage.url, title: $page.about.edges[0].node.title, copy: $page.about.edges[0].node.bannerCopy, button: $page.about.edges[0].node.readMoreButton }"
       />

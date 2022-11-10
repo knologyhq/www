@@ -275,7 +275,7 @@ footer .row.py-12.align-content-start {
     background: linear-gradient(rgba(38, 96, 147, 0.85), rgba(38, 96, 147, 0)), url("https://www.datocms-assets.com/15254/1654543286-deai.jpg") !important;
 }
 
-.container.deai .body {
+.container.deai .body, .container.impacts .body {
     columns: 1;
 }
 
