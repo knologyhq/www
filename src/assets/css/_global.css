@@ -153,7 +153,12 @@ Single Post CSS
 }
 
 #post-body h3 {
+  color: var(--knology-orange);
   margin-bottom: 10px;
+}
+
+#post-body h2 {
+  color: var(--knology-blue);
 }
 
 #post-body img.left {
@@ -281,10 +286,12 @@ footer .row.py-12.align-content-start {
     columns: 1;
 }
 
-.container.impacts .body h2 {
+/* General page overrides */
+
+.container .body h2 {
   color:  var(--knology-blue);
 }
-.container.impacts .body h3 {
+.container .body h3 {
   color:  var(--knology-orange);
 }
 
@@ -330,23 +337,25 @@ Use HTML similar to this in your post:
 }
  
 .accordion .handle label:after {
-  content: ">";
+  content: "+";
+  color: var(--knology-orange);
   display: inline-block;
   margin-left: 10px;
-  font-size: 1em;
+  font-size: 1.25em;
   line-height: 1.556em;
   vertical-align: middle;
   transition: 0.4s;
-  
 }
  
 .accordion > input[name="collapse"]:checked ~ .handle label:after {
-    transform: rotate(90deg);
     transform-origin: center;
     transition: 0.4s;
+    content: "–";
 }
 
 .accordion > input[name="collapse"]:checked ~ .content {
   height: auto; /* set to a pixel value for a smooth transition */
   transition: height 0.5s;
+  border-bottom: 1px solid black;
+  margin-bottom: 1em;
 }
