@@ -85,6 +85,11 @@ blockquote {
   margin-left: 1rem;
 }
 
+/* Fix for buttons */
+.v-btn:not(.v-btn--round).v-size--x-large {
+  margin: 1em 0;
+}
+
 /* 
 Images with captions 
 */
