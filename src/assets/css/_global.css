@@ -86,7 +86,7 @@ blockquote {
 }
 
 /* Fix for buttons */
-.v-btn:not(.v-btn--round).v-size--x-large {
+#post-button-container .v-btn:not(.v-btn--round).v-size--x-large {
   margin: 1em 0;
 }
 
