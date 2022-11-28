@@ -90,6 +90,11 @@ blockquote {
   margin: 1em 0;
 }
 
+/* Fix for homepage subscribe button */
+#mc-embedded-subscribe-form .v-text-field--outlined .v-input__append-outer {
+    margin-top: 2px;
+}
+
 /* 
 Images with captions 
 */

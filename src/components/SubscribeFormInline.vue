@@ -25,7 +25,6 @@
       <template v-slot:append-outer>
         <v-btn
           depressed
-          style="top: -14px; left: -10px;"
           color="primary"
           x-large
           type="submit"
