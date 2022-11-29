@@ -10,7 +10,7 @@
       <p
         v-if="post.subtitle"
         color="grey"
-        class="darken-1 body-1 my-2 text-truncate"
+        class="darken-1 body-1 my-2"
       >{{ post.subtitle }}</p>
     </v-card-title>
     <v-card-text v-if="post.authors" class="px-0 pr-1">
