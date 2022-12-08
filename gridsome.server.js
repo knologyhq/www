@@ -625,49 +625,49 @@ archive: archivePage{
               recent
             }
 
-            ideaBreweryPosts: allPosts(filter: {tags: {anyIn: ["1435043"]} } ) {
+            ideaBreweryPosts: allPosts(first: 100, filter: {tags: {anyIn: ["1435043"]} } ) {
               ...postFields
               authors {
                 name
               }
             }
 
-            wellbeingPosts: allPosts(filter: {categories: {anyIn: ["1366606"]}}) {
+            wellbeingPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366606"]}}) {
               ...postFields
               authors {
                 name
               }
               recent
             }
-            mediaPosts: allPosts(filter: {categories: {anyIn: ["1366604"]}}) {
+            mediaPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366604"]}}) {
               authors {
                 name
               }
               ...postFields
               recent
             }
-            processPosts: allPosts(filter: {categories: {anyIn: ["1366603"]}}) {
+            processPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366603"]}}) {
               authors {
                 name
               }
               ...postFields
               recent
             }
-            systemsPosts: allPosts(filter: {categories: {anyIn: ["1366605"]}}) {
+            systemsPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366605"]}}) {
               authors {
                 name
               }
               ...postFields
               recent
             }
-            biospherePosts: allPosts(filter: {categories: {anyIn: ["1366598"]}}) {
+            biospherePosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366598"]}}) {
               authors {
                 name
               }
               ...postFields
               recent
             }
-            culturePosts: allPosts(filter: {categories: {anyIn: ["1366602"]}}) {
+            culturePosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366602"]}}) {
               authors {
                 name
               }
