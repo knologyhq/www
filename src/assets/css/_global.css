@@ -20,6 +20,10 @@ img, hr, table, h2, ol, ul {
   margin: 1em 0;
 }
 
+blockquote {
+  margin-bottom: 1rem;
+}
+
 #app {
   background-color: #fff;
 }
