@@ -227,7 +227,7 @@
 
 <static-query>
 query  {
-  pillars: allPillars(sortBy: "position", order: ASC) {
+  pillars: allPillars(filter: {slug: {ne: "general"}}, sortBy: "position", order: ASC) {
     edges {
       node {
         title
