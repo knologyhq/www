@@ -123,7 +123,7 @@
         }
       }
     }
-      allPillars(sortBy: "position", order: ASC) {
+      allPillars(filter: {slug: {ne: "general"}}, sortBy: "position", order: ASC) {
 
       edges {
         node {
