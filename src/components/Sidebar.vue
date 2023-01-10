@@ -30,6 +30,9 @@ query  {
           image {
             url
           }
+          imageThumb {
+            url
+          }
           authors {
             name
           }

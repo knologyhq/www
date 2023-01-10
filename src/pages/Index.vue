@@ -118,6 +118,9 @@
             image {
               url
             }
+            imageThumb {
+              url
+            }
             slug
           }
         }
@@ -154,6 +157,9 @@
             name
           }
           image {
+            url
+          }
+          imageThumb {
             url
           }
         }

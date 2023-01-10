@@ -153,6 +153,9 @@ module.exports = function(api) {
                 image {
                   url
                 }
+                imageThumb {
+                  url
+                }
                 authors {
                   name
                 }
@@ -294,6 +297,9 @@ module.exports = function(api) {
       image {
         url
       }
+      imageThumb {
+        url
+      }
       authors {
         name
       }
@@ -338,6 +344,9 @@ module.exports = function(api) {
       publishDate
       slug
       image {
+        url
+      }
+      imageThumb {
         url
       }
       authors {
@@ -460,6 +469,10 @@ archive: archivePage{
         query: `
           fragment postFields on PostRecord {
             image {
+              url
+              title
+            }
+            imageThumb {
               url
               title
             }

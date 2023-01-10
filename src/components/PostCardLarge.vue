@@ -1,7 +1,12 @@
 <template>
   <v-card :class="`mx-auto mb-8 ${postClasses}`" flat tile :to="`/article/${post.slug}`">
     <v-img
-      v-if="post.image"
+      v-if="post.imageThumb"
+      height="200px"
+      :src="`${post.imageThumb.url}?auto=compress&w=500&fit=fillmax`"
+    />
+    <v-img
+      v-else="post.image"
       height="200px"
       :src="`${post.image.url}?auto=compress&w=500&fit=fillmax`"
     />

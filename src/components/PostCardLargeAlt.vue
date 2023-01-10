@@ -3,7 +3,12 @@
     <v-row>
       <v-col cols="12" md="4">
         <v-img
-          v-if="post.image"
+          v-if="post.imageThumb"
+          height="200px"
+          :src="`${post.imageThumb.url}?auto=compress&w=500&fit=fillmax`"
+        />
+        <v-img
+          v-else="post.image"
           height="200px"
           :src="`${post.image.url}?auto=compress&w=500&fit=fillmax`"
         />

@@ -1,7 +1,10 @@
 <template>
   <v-card flat tile :to="`/article/${post.slug}`">
     <v-list-item three-line>
-      <v-avatar v-if="post.image" class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
+      <v-avatar v-if="post.imageThumb" class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
+        <v-img tile :src="`${post.imageThumb.url}?auto=compress&w=80&h=80&fit=crop`" />
+      </v-avatar>
+      <v-avatar v-else-if="post.image" class="profile shrink mr-3 pa-0" color="grey" size="80" tile>
         <v-img tile :src="`${post.image.url}?auto=compress&w=80&h=80&fit=crop`" />
       </v-avatar>
       <v-avatar v-else class="profile shrink mr-3 pa-0" color="#00A2AE" size="80" tile />
