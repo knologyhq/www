@@ -99,6 +99,13 @@ blockquote {
     margin-top: 2px;
 }
 
+/*
+Banner image custom tweaks
+*/
+.post-banner-image.books-to-speed-the-climate-response {
+  background-position-x:  left;
+}
+
 /* 
 Images with captions 
 */

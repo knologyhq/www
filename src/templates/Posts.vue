@@ -6,7 +6,7 @@
         v-if="$page.posts.image"
         fluid
         height="500"
-        class="white--text py-12 banner post-banner-image"
+        :class="`white--text py-12 banner post-banner-image ${$page.posts.slug}`"
         :style="`background-image: url(${$page.posts.image.url})`"
       />
       <v-responsive
