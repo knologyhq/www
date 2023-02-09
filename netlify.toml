@@ -30,5 +30,8 @@
 
 ## Redirects because a previously published article was removed
 [[redirects]]
-  from = "/article/financial-education-database-training-fellowship-application/"
+  from = "/article/financial-education-database-training-fellowship-application"
   to = "/article/2022-nefe-knology-fellowship"
+[[redirects]]
+  from = "/article/can-the-news-help-you-learn-statistics"
+  to = "/article/meaningful-math"
