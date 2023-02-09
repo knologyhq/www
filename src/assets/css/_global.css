@@ -2,7 +2,7 @@
   --font-family: "Ubuntu", sans-serif;
   --font-family-headers: "Ubuntu", sans-serif;
   --knology-blue: #256092;
-  --knology-orange: #EB7B31;
+  --knology-orange: #FF6A39;
 }
 
 @custom-media --mini (min-width: 280px) and (max-width: 374px);
