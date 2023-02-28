@@ -90,7 +90,7 @@ blockquote {
 }
 
 /* Fix for buttons */
-#post-button-container .v-btn:not(.v-btn--round).v-size--x-large {
+.v-btn:not(.v-btn--round).v-size--x-large {
   margin: 1em 0;
 }
 
