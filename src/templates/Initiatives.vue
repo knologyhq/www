@@ -48,7 +48,7 @@
           </v-list>
 
           <v-list dense v-if="$page.initiatives.collaborators[0]">
-            <div class="title black--text font-weight-black">Collaborators &amp; Partners</div>
+            <div class="title black--text font-weight-black">Partners &amp; Projects</div>
             <v-list-item-group color="primary">
               <v-list-item
                 dense
