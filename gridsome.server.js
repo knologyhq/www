@@ -638,6 +638,41 @@ archive: archivePage{
               recent
             }
 
+            posts3: allPosts(first: 100, skip: 200) {
+              ...postFields
+              dataFile
+              dataFileLabel
+              tags {
+                id
+                title
+                slug
+              }
+              postFile {
+                url
+              }
+              postType {
+                title
+                id
+              }
+              authors {
+                name
+                slug
+                id
+              }
+              categories {
+                title
+                id
+                slug
+              }
+              initiatives {
+                id
+                title
+                slug
+              }
+              exclude
+              recent
+            }
+
             ideaBreweryPosts: allPosts(first: 100, filter: {tags: {anyIn: ["1435043"]} } ) {
               ...postFields
               authors {
@@ -760,7 +795,7 @@ archive: archivePage{
       }
       
       // 20220915 adding this as a bandaid for the 100 post limit issue
-      let combinedPosts = result.data.data.posts.concat(result.data.data.posts2);
+      let combinedPosts = result.data.data.posts.concat(result.data.data.posts2).concat(result.data.data.posts3);
 
       for (const item of combinedPosts) {
         // create reference to initiatives
