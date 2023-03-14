@@ -21,7 +21,7 @@
     </v-card-text>
     <v-card-title class="pa-0 mb-0 mt-2">
       <div class="black--text font-weight-black subtitle mb-2">{{ post.title }}</div>
-      <p v-if="post.subtitle" color="grey" class="darken-1 body-1 mb-2 text-truncate">{{ post.subtitle }}</p>
+      <p v-if="post.subtitle" color="grey" class="darken-1 body-1 mb-2">{{ post.subtitle }}</p>
     </v-card-title>
       <div v-if="post.authors" class="px-0 pr-1">
         <div class="grey--text body-1 font-italic">
