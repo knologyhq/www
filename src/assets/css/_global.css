@@ -277,6 +277,11 @@ ul {
 
 .moral-motives blockquote {font-style: italic; color: #8e3a80;}
 .moral-motives.glossary h3 {margin-top: 3em;}
+.moral-motives.participants hr {
+  border-top: 1px solid var(--knology-yellow);
+  margin: 1em auto;
+  width: 25%;
+}
 
 section.citation {
     margin: 1em 0;
