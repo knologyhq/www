@@ -3,6 +3,7 @@
   --font-family-headers: "Ubuntu", sans-serif;
   --knology-blue: #256092;
   --knology-orange: #FF6A39;
+  --knology-yellow: #d7c826;
 }
 
 @custom-media --mini (min-width: 280px) and (max-width: 374px);
@@ -184,6 +185,10 @@ Single Post CSS
   color: var(--knology-blue);
 }
 
+#post-body h1 {
+  margin-bottom: 1em;
+}
+
 #post-body img.left {
   float: left;
   padding: 0 1em 2em 0;
@@ -259,6 +264,15 @@ ul {
 
 #archiveBanner a {
     color: white!important;
+}
+
+/*Moral Motives posts*/
+.english, .english a {color: #8e3a80;}
+.espanol, .espanol a {color: #00a3ad;}
+section.citation {
+    margin: 1em 0;
+    border-top: 1px solid var(--knology-yellow);
+    border-bottom: 1px solid var(--knology-yellow);
 }
 
 /*Tables*/
