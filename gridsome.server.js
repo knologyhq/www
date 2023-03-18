@@ -601,6 +601,7 @@ archive: archivePage{
               }
               exclude
               recent
+              custom_post_class
             }
 
             posts2: allPosts(first: 100, skip: 100) {
@@ -636,6 +637,7 @@ archive: archivePage{
               }
               exclude
               recent
+              custom_post_class
             }
 
             posts3: allPosts(first: 100, skip: 200) {
@@ -671,6 +673,7 @@ archive: archivePage{
               }
               exclude
               recent
+              custom_post_class
             }
 
             ideaBreweryPosts: allPosts(first: 100, filter: {tags: {anyIn: ["1435043"]} } ) {

@@ -259,6 +259,7 @@ query Dato($id: ID!)  {
     image {
       url
     }
+    custom_post_class
     slug
     image {
       url
