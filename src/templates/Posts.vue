@@ -80,7 +80,7 @@
               >Full Document</v-btn>
             </v-col>
           </v-row>
-          <div id="post-body" v-html="marked($page.posts.body)" />
+          <div id="post-body" :class="[$page.posts.custom_post_class]" v-html="marked($page.posts.body)" />
             <div class="post-tag-container">
               <span v-for="tag in $page.posts.tags" :key="tag.id" class="my-2 post-tags">
                 <v-btn
