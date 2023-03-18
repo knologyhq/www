@@ -280,6 +280,23 @@ section.citation {
     border-bottom: 1px solid var(--knology-yellow);
 }
 
+.references {
+    margin: 2em 0;
+    padding-top: 1em;
+    font-size: smaller;
+    position: relative;
+}
+
+.references:before {
+    content: "";
+    background: rgba(0,0,0,.87);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 25%;
+}
+
 /*Tables*/
 table {
   border:1px solid #b3adad;
