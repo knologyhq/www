@@ -274,6 +274,9 @@ ul {
 /*Moral Motives posts*/
 .english, .english a {color: #8e3a80;}
 .espanol, .espanol a {color: #00a3ad;}
+
+.moral-motives blockquote {font-style: italic; color: #8e3a80;}
+
 section.citation {
     margin: 1em 0;
     border-top: 1px solid var(--knology-yellow);
@@ -296,6 +299,8 @@ section.citation {
     height: 1px;
     width: 25%;
 }
+
+*[id^="cite-"] a {text-decoration: none;}
 
 /*Tables*/
 table {
