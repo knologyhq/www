@@ -176,17 +176,22 @@ Single Post CSS
   clear: both;
 }
 
-#post-body h3 {
-  color: var(--knology-orange);
-  margin-bottom: 10px;
+#post-body h1 {
+  margin-bottom: 1em;
 }
 
 #post-body h2 {
   color: var(--knology-blue);
 }
 
-#post-body h1 {
-  margin-bottom: 1em;
+#post-body h3 {
+  color: var(--knology-orange);
+  margin-bottom: 10px;
+}
+
+#post-body h4 {
+  color: var(--knology-blue);
+  font-style: italic;
 }
 
 #post-body img.left {
