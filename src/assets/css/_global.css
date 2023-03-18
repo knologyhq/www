@@ -276,6 +276,7 @@ ul {
 .espanol, .espanol a {color: #00a3ad;}
 
 .moral-motives blockquote {font-style: italic; color: #8e3a80;}
+.moral-motives.glossary h3 {margin-top: 3em;}
 
 section.citation {
     margin: 1em 0;
