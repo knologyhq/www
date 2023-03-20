@@ -60,6 +60,7 @@ query Tag($id: ID!) {
             authors {
               name
             }
+            additionalAuthors
             image {
               url
             }

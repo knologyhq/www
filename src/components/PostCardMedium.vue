@@ -13,9 +13,20 @@
         class="darken-1 body-1 my-2"
       >{{ post.subtitle }}</p>
     </v-card-title>
-    <v-card-text v-if="post.authors" class="px-0 pr-1">
+    <v-card-text v-if="post.authors[0]" class="px-0 pr-1">
       <div class="grey--text subheader font-italic">
         By {{post.authors[1] ? `${post.authors[0].name} et al.` : post.authors[0].name }} •
+        {{post.publishDate | moment("MMM D, YYYY") }}
+      </div>
+    </v-card-text>
+    <v-card-text v-else-if="post.additionalAuthors[0]" class="px-0 pr-1">
+      <div class="grey--text subheader font-italic">
+        By {{post.additionalAuthors[1] ? `${post.additionalAuthors[0]} et al.` : post.additionalAuthors[0] }} •
+        {{post.publishDate | moment("MMM D, YYYY") }}
+      </div>
+    </v-card-text>
+    <v-card-text v-else class="px-0 pr-1">
+      <div class="grey--text subheader font-italic">
         {{post.publishDate | moment("MMM D, YYYY") }}
       </div>
     </v-card-text>

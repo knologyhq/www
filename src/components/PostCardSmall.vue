@@ -12,10 +12,15 @@
       <v-list-item-content>
         <div class="black--text font-weight-bold subtitle mb-1">{{ post.title }}</div>
 
-        <v-card-text v-if="post.authors" class="px-0 pr-1">
+        <v-card-text v-if="post.authors[0]" class="px-0 pr-1">
           <div
             class="grey--text subheader font-italic"
           >By {{post.authors[1] ? `${post.authors[0].name} et al.` : post.authors[0].name }}</div>
+        </v-card-text>
+        <v-card-text v-else-if="post.additionalAuthors[0]" class="px-0 pr-1">
+          <div
+            class="grey--text subheader font-italic"
+          >By {{post.additionalAuthors[1] ? `${post.additionalAuthors[0]} et al.` : post.additionalAuthors[0] }}</div>
         </v-card-text>
       </v-list-item-content>
     </v-list-item>
