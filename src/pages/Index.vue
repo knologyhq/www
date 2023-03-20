@@ -156,6 +156,7 @@
           authors {
             name
           }
+          additionalAuthors
           image {
             url
           }
