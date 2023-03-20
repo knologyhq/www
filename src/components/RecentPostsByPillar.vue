@@ -32,6 +32,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
@@ -48,6 +49,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
@@ -64,6 +66,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
@@ -80,6 +83,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
@@ -96,6 +100,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
@@ -112,6 +117,7 @@ query {
         authors {
           name
         }
+        additionalAuthors
         title
         subtitle
         publishDate
