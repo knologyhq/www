@@ -159,6 +159,7 @@ module.exports = function(api) {
                 authors {
                   name
                 }
+                additionalAuthors
                 categories {
                   title
                   id
