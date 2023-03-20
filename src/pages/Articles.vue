@@ -71,6 +71,7 @@ query posts {
         authors {
           name
         }
+        additionalAuthors
         image {
           url
         }

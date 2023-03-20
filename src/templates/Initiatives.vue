@@ -134,6 +134,7 @@ query InitativeData($id: ID!) {
             authors {
               name
             }
+            additionalAuthors
             publishDate
           }
         }

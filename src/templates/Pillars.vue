@@ -107,6 +107,7 @@ query CategoryData($id: ID!) {
             authors {
               name
             }
+            additionalAuthors
             publishDate
             exclude
           }

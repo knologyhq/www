@@ -59,6 +59,7 @@ query Pillars($id: ID!) {
             authors {
               name
             }
+            additionalAuthors
             image {
               url
             }
