@@ -93,7 +93,7 @@ query {
       }
     }
   }
-  behaviors: allProcessPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  behaviors: allProcessPosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug

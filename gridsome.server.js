@@ -304,6 +304,7 @@ module.exports = function(api) {
       authors {
         name
       }
+      additionalAuthors
       categories {
         title
         id
@@ -353,6 +354,7 @@ module.exports = function(api) {
       authors {
         name
       }
+      additionalAuthors
       categories {
         title
         id
@@ -485,6 +487,9 @@ archive: archivePage{
             slug
             id
             allowComments
+            exclude
+            recent
+            customPostClass
           }
           
 
@@ -600,9 +605,6 @@ archive: archivePage{
                 title
                 slug
               }
-              exclude
-              recent
-              customPostClass
             }
 
             posts2: allPosts(first: 100, skip: 100) {
@@ -636,9 +638,6 @@ archive: archivePage{
                 title
                 slug
               }
-              exclude
-              recent
-              customPostClass
             }
 
             posts3: allPosts(first: 100, skip: 200) {
@@ -672,9 +671,6 @@ archive: archivePage{
                 title
                 slug
               }
-              exclude
-              recent
-              customPostClass
             }
 
             ideaBreweryPosts: allPosts(first: 100, filter: {tags: {anyIn: ["1435043"]} } ) {
@@ -689,42 +685,36 @@ archive: archivePage{
               authors {
                 name
               }
-              recent
             }
             mediaPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366604"]}}) {
               authors {
                 name
               }
               ...postFields
-              recent
             }
             processPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366603"]}}) {
               authors {
                 name
               }
               ...postFields
-              recent
             }
             systemsPosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366605"]}}) {
               authors {
                 name
               }
               ...postFields
-              recent
             }
             biospherePosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366598"]}}) {
               authors {
                 name
               }
               ...postFields
-              recent
             }
             culturePosts: allPosts(first: 100, filter: {categories: {anyIn: ["1366602"]}}) {
               authors {
                 name
               }
               ...postFields
-              recent
             }
             people: allPeople(first: 100) {
               role {
