@@ -112,6 +112,7 @@
             authors {
               name
             }
+            additionalAuthors
             title
             subtitle
             publishDate
