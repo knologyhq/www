@@ -284,7 +284,7 @@ ul {
 }
 
 section.citation {
-    margin: 1em 0;
+    margin: 2em auto;
     border-top: 1px solid var(--knology-yellow);
     border-bottom: 1px solid var(--knology-yellow);
 }
