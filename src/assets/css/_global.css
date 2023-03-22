@@ -25,6 +25,11 @@ blockquote {
   margin-bottom: 1rem;
 }
 
+audio {
+  max-width: 100%;
+  width: 600px;
+}
+
 #app {
   background-color: #fff;
 }
