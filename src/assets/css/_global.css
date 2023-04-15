@@ -109,16 +109,20 @@ blockquote {
 Banner image custom tweaks
 */
 .post-banner-image.books-to-speed-the-climate-response {
-  background-position-x:  left;
-  background-position-y:  top;
+  background-position-x: left;
+  background-position-y: top;
 }
 
 .post-banner-image.broadening-the-stem-and-health-pipelines {
-  background-position-y:  top;
+  background-position-y: top;
 }
 
 .post-banner-image.searching-for-justice {
-  background-position-y:  top;
+  background-position-y: top;
+}
+
+.post-banner-image.coalition-building-for-science-communication, .post-banner-image.coalition-building-for-science-communication-transcript {
+  background-position-y: top;
 }
 
 /* 
