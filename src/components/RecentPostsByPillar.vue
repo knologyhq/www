@@ -42,7 +42,7 @@ query {
       }
     }
   }
-  wellbeing: allWellbeingPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  wellbeing: allWellbeingPosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
@@ -59,7 +59,7 @@ query {
       }
     }
   }
-  biosphere: allBiospherePosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  biosphere: allBiospherePosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
@@ -76,7 +76,7 @@ query {
       }
     }
   }
-  culture: allCulturePosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  culture: allCulturePosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
@@ -110,7 +110,7 @@ query {
       }
     }
   }
-  systems: allSystemsPosts(limit: 2, sortBy: "publishDate", order: DESC ) {
+  systems: allSystemsPosts(filter: {recent: {ne: true}}, limit: 2, sortBy: "publishDate", order: DESC ) {
     edges {
       node {
         slug
