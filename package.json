@@ -41,6 +41,7 @@
     "postcss-custom-media": "^7.0.8",
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.3",
+    "querystring": "^0.2.1",
     "slug": "^1.1.0",
     "vue-moment": "^4.1.0",
     "vuetify": "^2.6.10"
