@@ -127,8 +127,11 @@ async function purgeComment(id) {
 
 // Export the Bolt app for use as a Netlify function handler
 exports.handler = async (event, context) => {
-  await app.start();
-  console.log("⚡️ Bolt app is running!");
+  // Ensure the receiver is started only when the function is invoked
+  if (!app.started) {
+    await app.start();
+    console.log("⚡️ Bolt app is running!");
+  }
 
   // Send the introductory message
   sendIntroductoryMessage(specificChannelId);
