@@ -20,6 +20,19 @@ const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
 // Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
 const specificChannelId = "CMZ8L7V9N-1693580427.669119";
 
+// Function to send an introductory message to the channel
+async function sendIntroductoryMessage(channelId) {
+  try {
+    await app.client.chat.postMessage({
+      token: slackToken,
+      channel: channelId,
+      text: "Welcome to the comment approval bot. Type 'approve' or 'delete' to take action on comments.",
+    });
+  } catch (error) {
+    console.error("Error sending introductory message:", error);
+  }
+}
+
 // Listen for messages in the specified channel
 app.message(async ({ message, say }) => {
   if (message.channel === specificChannelId) {
@@ -116,4 +129,13 @@ async function purgeComment(id) {
 exports.handler = async (event, context) => {
   await app.start();
   console.log("⚡️ Bolt app is running!");
+
+  // Send the introductory message
+  sendIntroductoryMessage(specificChannelId);
+
+  // Respond to the Netlify function request
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Bolt app is running!" }),
+  };
 };
