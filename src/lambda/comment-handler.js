@@ -112,8 +112,8 @@ async function purgeComment(id) {
   }
 }
 
-// Start the Bolt app
-(async () => {
+// Export the Bolt app for use as a Netlify function handler
+exports.handler = async (event, context) => {
   await app.start();
   console.log("⚡️ Bolt app is running!");
-})();
+};
