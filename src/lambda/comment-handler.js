@@ -19,8 +19,8 @@ const app = new App({
 const apiAuth = process.env.API_AUTH;
 const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
 
-// Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
-const specificChannelId = "CMZ8L7V9N-1693580427.669119";
+// Replace 'CMZ8L7V9N' with the actual channel ID where you want your app to listen for messages.
+const specificChannelId = "CMZ8L7V9N";
 
 // Boolean flag to track whether the app is running
 let appStarted = false;
@@ -37,6 +37,22 @@ async function sendIntroductoryMessage(channelId) {
     console.error("Error sending introductory message:", error);
   }
 }
+
+// Listen for messages in the specified channel
+app.message(async ({ message, say }) => {
+  if (message.channel === specificChannelId) {
+    const text = message.text.toLowerCase();
+    if (text === "approve" || text === "delete") {
+      const commentId = message.ts; // Assuming the timestamp represents the comment ID
+      if (text === "approve") {
+        await handleApproval(commentId, say);
+      } else if (text === "delete") {
+        await handleDeletion(commentId, say);
+      }
+    }
+  }
+});
+
 
 // Listen for messages in the specified channel
 app.message(async ({ message, say }) => {
@@ -156,4 +172,3 @@ exports.handler = async (event, context) => {
     };
   }
 };
-In this version, we introduce th
