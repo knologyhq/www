@@ -9,7 +9,7 @@ dotenv.config();
 const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
 const slackSigningSecret = process.env.SLACK_SIGNING_SECRET; // Your Slack signing secret
 
-// Create the Bolt app instance without starting it
+// Create the Bolt app instance
 const app = new App({
   token: slackToken,
   signingSecret: slackSigningSecret,
@@ -19,8 +19,11 @@ const app = new App({
 const apiAuth = process.env.API_AUTH;
 const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
 
-// Replace 'CMZ8L7V9N' with the actual channel ID where you want your app to listen for messages.
-const specificChannelId = "CMZ8L7V9N";
+// Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
+const specificChannelId = "CMZ8L7V9N-1693580427.669119";
+
+// Boolean flag to track whether the app is running
+let appStarted = false;
 
 // Function to send an introductory message to the channel
 async function sendIntroductoryMessage(channelId) {
@@ -130,9 +133,10 @@ async function purgeComment(id) {
 // Export the Bolt app for use as a Netlify function handler
 exports.handler = async (event, context) => {
   try {
-    // Start the Bolt app only if it's not already started
-    if (!app.started) {
+    // Start the Bolt app only if it's not already running
+    if (!appStarted) {
       await app.start();
+      appStarted = true;
       console.log("⚡️ Bolt app is running!");
 
       // Send the introductory message
@@ -152,3 +156,4 @@ exports.handler = async (event, context) => {
     };
   }
 };
+In this version, we introduce th
