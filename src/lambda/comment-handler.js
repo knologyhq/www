@@ -19,8 +19,8 @@ const app = new App({
 const apiAuth = process.env.API_AUTH;
 const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
 
-// Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
-const specificChannelId = "CMZ8L7V9N-1693580427.669119";
+// Replace 'CMZ8L7V9N' with the actual channel ID where you want your app to listen for messages.
+const specificChannelId = "CMZ8L7V9N";
 
 // Function to send an introductory message to the channel
 async function sendIntroductoryMessage(channelId) {
