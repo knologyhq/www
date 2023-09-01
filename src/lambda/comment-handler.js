@@ -7,9 +7,10 @@ dotenv.config();
 
 // Slack configuration
 const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
+const slackSigningSecret = process.env.SLACK_SIGNING_SECRET; // Your Slack signing secret
 const app = new App({
   token: slackToken,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
+  signingSecret: slackSigningSecret,
 });
 
 // Netlify API configuration
