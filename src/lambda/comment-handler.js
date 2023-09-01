@@ -8,6 +8,8 @@ dotenv.config();
 // Slack configuration
 const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
 const slackSigningSecret = process.env.SLACK_SIGNING_SECRET; // Your Slack signing secret
+
+// Create the Bolt app instance without starting it
 const app = new App({
   token: slackToken,
   signingSecret: slackSigningSecret,
@@ -127,18 +129,26 @@ async function purgeComment(id) {
 
 // Export the Bolt app for use as a Netlify function handler
 exports.handler = async (event, context) => {
-  // Ensure the receiver is started only when the function is invoked
-  if (!app.started) {
-    await app.start();
-    console.log("⚡️ Bolt app is running!");
+  try {
+    // Start the Bolt app only if it's not already started
+    if (!app.started) {
+      await app.start();
+      console.log("⚡️ Bolt app is running!");
+
+      // Send the introductory message
+      sendIntroductoryMessage(specificChannelId);
+    }
+
+    // Respond to the Netlify function request
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Bolt app is running!" }),
+    };
+  } catch (error) {
+    console.error("Error:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "An error occurred while processing the request." }),
+    };
   }
-
-  // Send the introductory message
-  sendIntroductoryMessage(specificChannelId);
-
-  // Respond to the Netlify function request
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: "Bolt app is running!" }),
-  };
 };
