@@ -1,57 +1,138 @@
 "use strict";
 
+const { WebClient } = require('@slack/web-api');
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
 
-exports.handler = async (event) => {
+// Slack configuration
+const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
+const web = new WebClient(slackToken);
+
+// Netlify API configuration
+const apiAuth = process.env.API_AUTH;
+const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
+
+// Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
+const specificChannelId = 'CMZ8L7V9N-1693580427.669119';
+
+// Start listening for Slack events in the specified channel
+function listenForMessages(channelId) {
+  if (channelId === specificChannelId) {
+    web.chat.postMessage({
+      channel: channelId,
+      text: "Listening for 'approve' or 'delete' messages...",
+    });
+
+    const eventEmitter = web.socketMode().start();
+
+    eventEmitter.on('message', async (event) => {
+      const { text, channel } = event;
+      if (text) {
+        const lowercaseText = text.toLowerCase();
+        if (lowercaseText === 'approve' || lowercaseText === 'delete') {
+          // Assuming the channel ID represents the comment ID
+          const commentId = channel;
+
+          if (lowercaseText === 'approve') {
+            await handleApproval(commentId, channelId);
+          } else if (lowercaseText === 'delete') {
+            await handleDeletion(commentId, channelId);
+          }
+        }
+      }
+    });
+  }
+}
+
+// Function to handle comment approval
+async function handleApproval(commentId, channelId) {
   try {
-    const body = JSON.parse(event.body);
+    const commentData = await fetchCommentData(commentId);
+    if (!commentData) {
+      return;
+    }
 
-    const slackPayload = {
-      text: `New comment on ${process.env.URL}`,
-      attachments: [
-        {
-          fallback: "New comment on the Knology web site",
-          color: "#444",
-          author_name: body.data.first_name,
-          title: body.data.path,
-          title_link: `${process.env.URL}${body.data.path}`,
-          text: body.data.comment,
-        },
-        {
-          fallback: `Manage comments on ${process.env.URL}`,
-          callback_id: "comment-action",
-          actions: [
-            {
-              type: "button",
-              text: "Approve comment",
-              name: "approve",
-              value: body.id,
-            },
-            {
-              type: "button",
-              style: "danger",
-              text: "Delete comment",
-              name: "delete",
-              value: body.id,
-            },
-          ],
-        },
-      ],
-    };
+    const approvedPayload = prepareApprovedPayload(commentData);
+    await postToApprovedForm(approvedPayload);
 
-    const response = await axios.post(process.env.SLACK_WEBHOOK_URL, slackPayload);
-
-    return {
-      statusCode: response.status,
-      body: JSON.stringify({ message: "Post to Slack successful!", response: response.data }),
-    };
+    await purgeComment(commentId);
+    replyToUser(channelId, "Comment approved!");
   } catch (error) {
     console.error("Error:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "An error occurred while posting to Slack." }),
-    };
   }
-};
+}
+
+// Function to handle comment deletion
+async function handleDeletion(commentId, channelId) {
+  try {
+    await purgeComment(commentId);
+    replyToUser(channelId, "Comment deleted!");
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// Function to fetch comment data from the Netlify API
+async function fetchCommentData(commentId) {
+  try {
+    const response = await axios.get(`${netlifyApiUrl}${commentId}?access_token=${apiAuth}`);
+    if (response.status === 200) {
+      return response.data.data;
+    }
+    console.error("Error fetching comment data:", response.statusText);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+  return null;
+}
+
+// Function to prepare data for the approved form
+function prepareApprovedPayload(commentData) {
+  return {
+    "form-name": "comments-approved",
+    path: commentData.path,
+    postId: commentData.postId,
+    received: new Date().toString(),
+    last_name: commentData.last_name,
+    first_name: commentData.first_name,
+    comment: commentData.comment,
+  };
+}
+
+// Function to post data to the approved form
+async function postToApprovedForm(payload) {
+  try {
+    const approvedURL = process.env.URL;
+    const approvedResponse = await axios.post(approvedURL, payload);
+    console.log("Post to approved comments:", approvedResponse.data);
+  } catch (error) {
+    console.error("Error posting to approved comments:", error.message);
+  }
+}
+
+// Function to delete a comment from the queue
+async function purgeComment(id) {
+  try {
+    const url = `${netlifyApiUrl}${id}?access_token=${apiAuth}`;
+    await axios.delete(url);
+    console.log("Comment deleted from queue.");
+  } catch (error) {
+    console.error("Error deleting comment:", error.message);
+  }
+}
+
+// Function to reply to the user in Slack
+async function replyToUser(channel, message) {
+  try {
+    await web.chat.postMessage({
+      channel: channel,
+      text: message,
+    });
+  } catch (error) {
+    console.error("Error replying to user:", error.message);
+  }
+}
+
+// Start listening for Slack messages
+listenForMessages(specificChannelId);
