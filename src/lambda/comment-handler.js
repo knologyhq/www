@@ -1,52 +1,41 @@
 "use strict";
 
-const { WebClient } = require('@slack/web-api');
+const { App } = require("@slack/bolt");
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
 
 // Slack configuration
 const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
-const web = new WebClient(slackToken);
+const app = new App({
+  token: slackToken,
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
+});
 
 // Netlify API configuration
 const apiAuth = process.env.API_AUTH;
 const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
 
 // Replace 'CMZ8L7V9N-1693580427.669119' with the actual channel ID where you want your app to listen for messages.
-const specificChannelId = 'CMZ8L7V9N-1693580427.669119';
+const specificChannelId = "CMZ8L7V9N-1693580427.669119";
 
-// Start listening for Slack events in the specified channel
-function listenForMessages(channelId) {
-  if (channelId === specificChannelId) {
-    web.chat.postMessage({
-      channel: channelId,
-      text: "Listening for 'approve' or 'delete' messages...",
-    });
-
-    const eventEmitter = web.socketMode().start();
-
-    eventEmitter.on('message', async (event) => {
-      const { text, channel } = event;
-      if (text) {
-        const lowercaseText = text.toLowerCase();
-        if (lowercaseText === 'approve' || lowercaseText === 'delete') {
-          // Assuming the channel ID represents the comment ID
-          const commentId = channel;
-
-          if (lowercaseText === 'approve') {
-            await handleApproval(commentId, channelId);
-          } else if (lowercaseText === 'delete') {
-            await handleDeletion(commentId, channelId);
-          }
-        }
+// Listen for messages in the specified channel
+app.message(async ({ message, say }) => {
+  if (message.channel === specificChannelId) {
+    const text = message.text.toLowerCase();
+    if (text === "approve" || text === "delete") {
+      const commentId = message.ts; // Assuming the timestamp represents the comment ID
+      if (text === "approve") {
+        await handleApproval(commentId, say);
+      } else if (text === "delete") {
+        await handleDeletion(commentId, say);
       }
-    });
+    }
   }
-}
+});
 
 // Function to handle comment approval
-async function handleApproval(commentId, channelId) {
+async function handleApproval(commentId, say) {
   try {
     const commentData = await fetchCommentData(commentId);
     if (!commentData) {
@@ -57,17 +46,17 @@ async function handleApproval(commentId, channelId) {
     await postToApprovedForm(approvedPayload);
 
     await purgeComment(commentId);
-    replyToUser(channelId, "Comment approved!");
+    say("Comment approved!");
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
 // Function to handle comment deletion
-async function handleDeletion(commentId, channelId) {
+async function handleDeletion(commentId, say) {
   try {
     await purgeComment(commentId);
-    replyToUser(channelId, "Comment deleted!");
+    say("Comment deleted!");
   } catch (error) {
     console.error("Error:", error);
   }
@@ -122,17 +111,8 @@ async function purgeComment(id) {
   }
 }
 
-// Function to reply to the user in Slack
-async function replyToUser(channel, message) {
-  try {
-    await web.chat.postMessage({
-      channel: channel,
-      text: message,
-    });
-  } catch (error) {
-    console.error("Error replying to user:", error.message);
-  }
-}
-
-// Start listening for Slack messages
-listenForMessages(specificChannelId);
+// Start the Bolt app
+(async () => {
+  await app.start();
+  console.log("⚡️ Bolt app is running!");
+})();
