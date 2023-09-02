@@ -1,73 +1,13 @@
-"use strict";
+const { App, ExpressReceiver } = require('@slack/bolt');
+const axios = require('axios');
 
-const { App } = require("@slack/bolt");
-const axios = require("axios");
-const dotenv = require("dotenv");
-dotenv.config();
-
-// Slack configuration
-const slackToken = process.env.SLACK_TOKEN; // Your Slack bot token
-const slackSigningSecret = process.env.SLACK_SIGNING_SECRET; // Your Slack signing secret
-
-// Create the Bolt app instance
 const app = new App({
-  token: slackToken,
-  signingSecret: slackSigningSecret,
+  signingSecret: 'YOUR_SLACK_SIGNING_SECRET',
+  token: 'YOUR_SLACK_BOT_TOKEN',
+  receiver: new ExpressReceiver({ signingSecret: 'YOUR_SLACK_SIGNING_SECRET' }),
 });
 
-// Netlify API configuration
-const apiAuth = process.env.API_AUTH;
-const netlifyApiUrl = "https://api.netlify.com/api/v1/submissions/";
-
-// Replace 'CMZ8L7V9N' with the actual channel ID where you want your app to listen for messages.
-const specificChannelId = "CMZ8L7V9N";
-
-// Boolean flag to track whether the app is running
 let appStarted = false;
-
-// Function to send an introductory message to the channel
-async function sendIntroductoryMessage(channelId) {
-  try {
-    await app.client.chat.postMessage({
-      token: slackToken,
-      channel: channelId,
-      text: "Welcome to the comment approval bot. Type 'approve' or 'delete' to take action on comments.",
-    });
-  } catch (error) {
-    console.error("Error sending introductory message:", error);
-  }
-}
-
-// Listen for messages in the specified channel
-app.message(async ({ message, say }) => {
-  if (message.channel === specificChannelId) {
-    const text = message.text.toLowerCase();
-    if (text === "approve" || text === "delete") {
-      const commentId = message.ts; // Assuming the timestamp represents the comment ID
-      if (text === "approve") {
-        await handleApproval(commentId, say);
-      } else if (text === "delete") {
-        await handleDeletion(commentId, say);
-      }
-    }
-  }
-});
-
-
-// Listen for messages in the specified channel
-app.message(async ({ message, say }) => {
-  if (message.channel === specificChannelId) {
-    const text = message.text.toLowerCase();
-    if (text === "approve" || text === "delete") {
-      const commentId = message.ts; // Assuming the timestamp represents the comment ID
-      if (text === "approve") {
-        await handleApproval(commentId, say);
-      } else if (text === "delete") {
-        await handleDeletion(commentId, say);
-      }
-    }
-  }
-});
 
 // Function to handle comment approval
 async function handleApproval(commentId, say) {
@@ -81,9 +21,9 @@ async function handleApproval(commentId, say) {
     await postToApprovedForm(approvedPayload);
 
     await purgeComment(commentId);
-    say("Comment approved!");
+    say('Comment approved!');
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Error:', error);
   }
 }
 
@@ -91,22 +31,21 @@ async function handleApproval(commentId, say) {
 async function handleDeletion(commentId, say) {
   try {
     await purgeComment(commentId);
-    say("Comment deleted!");
+    say('Comment deleted!');
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Error:', error);
   }
 }
 
 // Function to fetch comment data from the Netlify API
 async function fetchCommentData(commentId) {
   try {
-    const response = await axios.get(`${netlifyApiUrl}${commentId}?access_token=${apiAuth}`);
-    if (response.status === 200) {
-      return response.data.data;
-    }
-    console.error("Error fetching comment data:", response.statusText);
+    // Implement your logic to fetch comment data here
+    // Example: const response = await axios.get(`YOUR_API_ENDPOINT/${commentId}`);
+    // Ensure you parse and return the comment data from the response
+    return commentData;
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error('Error:', error.message);
   }
   return null;
 }
@@ -114,7 +53,7 @@ async function fetchCommentData(commentId) {
 // Function to prepare data for the approved form
 function prepareApprovedPayload(commentData) {
   return {
-    "form-name": "comments-approved",
+    'form-name': 'comments-approved',
     path: commentData.path,
     postId: commentData.postId,
     received: new Date().toString(),
@@ -127,24 +66,101 @@ function prepareApprovedPayload(commentData) {
 // Function to post data to the approved form
 async function postToApprovedForm(payload) {
   try {
-    const approvedURL = process.env.URL;
-    const approvedResponse = await axios.post(approvedURL, payload);
-    console.log("Post to approved comments:", approvedResponse.data);
+    // Implement your logic to post data to the approved form here
+    // Example: const approvedResponse = await axios.post('YOUR_APPROVED_FORM_ENDPOINT', payload);
+    // Ensure you handle the response as needed
   } catch (error) {
-    console.error("Error posting to approved comments:", error.message);
+    console.error('Error posting to approved comments:', error.message);
   }
 }
 
 // Function to delete a comment from the queue
 async function purgeComment(id) {
   try {
-    const url = `${netlifyApiUrl}${id}?access_token=${apiAuth}`;
-    await axios.delete(url);
-    console.log("Comment deleted from queue.");
+    // Implement your logic to delete a comment from the queue here
+    // Example: const url = `YOUR_QUEUE_API_ENDPOINT/${id}`;
+    // Example: await axios.delete(url);
   } catch (error) {
-    console.error("Error deleting comment:", error.message);
+    console.error('Error deleting comment:', error.message);
   }
 }
+
+// Event listener for new comment added to the queue
+app.event('commentAdded', async ({ event, say }) => {
+  try {
+    // Fetch comment data from your comment-queue
+    const commentData = await fetchCommentData(event.commentId);
+
+    // Construct a message to post to Slack
+    const message = {
+      token: 'YOUR_SLACK_BOT_TOKEN',
+      channel: 'YOUR_SPECIFIC_CHANNEL_ID', // Specify the Slack channel where you want to post the message
+      text: 'New comment in the queue:',
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*Author*: ${commentData.author}\n*Comment*: ${commentData.comment}`,
+          },
+        },
+        // Add more blocks as needed to display additional comment details
+        {
+          type: 'actions',
+          elements: [
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Approve',
+              },
+              action_id: 'approve_button',
+              value: commentData.commentId, // Replace with the actual comment ID
+            },
+            {
+              type: 'button',
+              text: {
+                type: 'plain_text',
+                text: 'Delete',
+              },
+              action_id: 'delete_button',
+              value: commentData.commentId, // Replace with the actual comment ID
+            },
+          ],
+        },
+      ],
+    };
+
+    // Send the message to Slack
+    await app.client.chat.postMessage(message);
+
+  } catch (error) {
+    console.error('Error posting comment to Slack:', error);
+  }
+});
+
+// Listener for button actions (Approve or Delete)
+app.action('approve_button', async ({ ack, body, say }) => {
+  // Acknowledge the button click
+  await ack();
+
+  // Retrieve the comment ID from the button's value
+  const commentId = body.actions[0].value;
+
+  // Handle comment approval
+  await handleApproval(commentId, say);
+});
+
+app.action('delete_button', async ({ ack, body, say }) => {
+  // Acknowledge the button click
+  await ack();
+
+  // Retrieve the comment ID from the button's value
+  const commentId = body.actions[0].value;
+
+  // Handle comment deletion
+  await handleDeletion(commentId, say);
+});
 
 // Export the Bolt app for use as a Netlify function handler
 exports.handler = async (event, context) => {
@@ -156,7 +172,7 @@ exports.handler = async (event, context) => {
       console.log("⚡️ Bolt app is running!");
 
       // Send the introductory message
-      sendIntroductoryMessage(specificChannelId);
+      sendIntroductoryMessage(specificChannelId); // Make sure to specify the channel ID
     }
 
     // Respond to the Netlify function request
