@@ -1,190 +1,125 @@
 const { App, ExpressReceiver } = require('@slack/bolt');
-const axios = require('axios');
+const request = require('request');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const expressReceiver = new ExpressReceiver({
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
+});
 
 const app = new App({
-  signingSecret: 'YOUR_SLACK_SIGNING_SECRET',
-  token: 'YOUR_SLACK_BOT_TOKEN',
-  receiver: new ExpressReceiver({ signingSecret: 'YOUR_SLACK_SIGNING_SECRET' }),
+  token: process.env.SLACK_BOT_TOKEN,
+  receiver: expressReceiver,
 });
 
-let appStarted = false;
-
-// Function to handle comment approval
-async function handleApproval(commentId, say) {
-  try {
-    const commentData = await fetchCommentData(commentId);
-    if (!commentData) {
-      return;
-    }
-
-    const approvedPayload = prepareApprovedPayload(commentData);
-    await postToApprovedForm(approvedPayload);
-
-    await purgeComment(commentId);
-    say('Comment approved!');
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-// Function to handle comment deletion
-async function handleDeletion(commentId, say) {
-  try {
-    await purgeComment(commentId);
-    say('Comment deleted!');
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-// Function to fetch comment data from the Netlify API
-async function fetchCommentData(commentId) {
-  try {
-    // Implement your logic to fetch comment data here
-    // Example: const response = await axios.get(`YOUR_API_ENDPOINT/${commentId}`);
-    // Ensure you parse and return the comment data from the response
-    return commentData;
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-  return null;
-}
-
-// Function to prepare data for the approved form
-function prepareApprovedPayload(commentData) {
-  return {
-    'form-name': 'comments-approved',
-    path: commentData.path,
-    postId: commentData.postId,
-    received: new Date().toString(),
-    last_name: commentData.last_name,
-    first_name: commentData.first_name,
-    comment: commentData.comment,
-  };
-}
-
-// Function to post data to the approved form
-async function postToApprovedForm(payload) {
-  try {
-    // Implement your logic to post data to the approved form here
-    // Example: const approvedResponse = await axios.post('YOUR_APPROVED_FORM_ENDPOINT', payload);
-    // Ensure you handle the response as needed
-  } catch (error) {
-    console.error('Error posting to approved comments:', error.message);
-  }
-}
-
-// Function to delete a comment from the queue
-async function purgeComment(id) {
-  try {
-    // Implement your logic to delete a comment from the queue here
-    // Example: const url = `YOUR_QUEUE_API_ENDPOINT/${id}`;
-    // Example: await axios.delete(url);
-  } catch (error) {
-    console.error('Error deleting comment:', error.message);
-  }
-}
-
-// Event listener for new comment added to the queue
-app.event('commentAdded', async ({ event, say }) => {
-  try {
-    // Fetch comment data from your comment-queue
-    const commentData = await fetchCommentData(event.commentId);
-
-    // Construct a message to post to Slack
-    const message = {
-      token: 'YOUR_SLACK_BOT_TOKEN',
-      channel: 'YOUR_SPECIFIC_CHANNEL_ID', // Specify the Slack channel where you want to post the message
-      text: 'New comment in the queue:',
-      blocks: [
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*Author*: ${commentData.author}\n*Comment*: ${commentData.comment}`,
+// Custom route for Netlify
+expressReceiver.router.post('/netlify-handler', (req, res) => {
+  const body = JSON.parse(req.body);
+  const slackURL = process.env.SLACK_WEBHOOK_URL;
+  const slackPayload = {
+    text: "New comment on " + process.env.URL,
+    attachments: [
+      {
+        fallback: "New comment on the Knology web site",
+        color: "#444",
+        author_name: body.data.first_name,
+        title: body.data.path,
+        title_link: process.env.URL + body.data.path,
+        text: body.data.comment
+      },
+      {
+        fallback: "Manage comments on " + process.env.URL,
+        callback_id: "comment-action",
+        actions: [
+          {
+            type: "button",
+            text: "Approve comment",
+            name: "approve",
+            value: body.id
           },
-        },
-        // Add more blocks as needed to display additional comment details
-        {
-          type: 'actions',
-          elements: [
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: 'Approve',
-              },
-              action_id: 'approve_button',
-              value: commentData.commentId, // Replace with the actual comment ID
-            },
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: 'Delete',
-              },
-              action_id: 'delete_button',
-              value: commentData.commentId, // Replace with the actual comment ID
-            },
-          ],
-        },
-      ],
-    };
+          {
+            type: "button",
+            style: "danger",
+            text: "Delete comment",
+            name: "delete",
+            value: body.id
+          }
+        ]
+      }
+    ]
+  };
 
-    // Send the message to Slack
-    await app.client.chat.postMessage(message);
-
-  } catch (error) {
-    console.error('Error posting comment to Slack:', error);
-  }
-});
-
-// Listener for button actions (Approve or Delete)
-app.action('approve_button', async ({ ack, body, say }) => {
-  // Acknowledge the button click
-  await ack();
-
-  // Retrieve the comment ID from the button's value
-  const commentId = body.actions[0].value;
-
-  // Handle comment approval
-  await handleApproval(commentId, say);
-});
-
-app.action('delete_button', async ({ ack, body, say }) => {
-  // Acknowledge the button click
-  await ack();
-
-  // Retrieve the comment ID from the button's value
-  const commentId = body.actions[0].value;
-
-  // Handle comment deletion
-  await handleDeletion(commentId, say);
-});
-
-// Export the Bolt app for use as a Netlify function handler
-exports.handler = async (event, context) => {
-  try {
-    // Start the Bolt app only if it's not already running
-    if (!appStarted) {
-      await app.start();
-      appStarted = true;
-      console.log("⚡️ Bolt app is running!");
-
-      // Send the introductory message
-      sendIntroductoryMessage(specificChannelId); // Make sure to specify the channel ID
+  request.post({ url: slackURL, json: slackPayload }, function(err, httpResponse, body) {
+    if (err) {
+      console.log("Post to Slack failed:" + err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      console.log("Post to Slack successful! Server responded with:" + body);
+      res.status(200).send('Notification Sent');
     }
+  });
+});
 
-    // Respond to the Netlify function request
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Bolt app is running!" }),
-    };
-  } catch (error) {
-    console.error("Error:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "An error occurred while processing the request." }),
-    };
+app.action('comment-action', async ({ action, ack, respond }) => {
+  await ack();
+
+  const method = action.name;
+  const id = action.value;
+
+  if (method === 'delete') {
+    const url = `https://api.netlify.com/api/v1/submissions/${id}?access_token=${process.env.API_AUTH}`;
+    request.delete(url, function(err, response, body) {
+      if (err) {
+        console.log(err);
+        respond({ text: 'Failed to delete comment.' });
+      } else {
+        console.log("Comment deleted from queue.");
+        respond({ text: 'Comment deleted' });
+      }
+    });
+  } else if (method === 'approve') {
+    const url = `https://api.netlify.com/api/v1/submissions/${id}?access_token=${process.env.API_AUTH}`;
+    request(url, function(err, response, body) {
+      if (!err && response.statusCode === 200) {
+        const data = JSON.parse(body).data;
+        const payload = {
+          "form-name": "comments-approved",
+          path: data.path,
+          postId: data.postId,
+          received: new Date().toString(),
+          last_name: data.last_name,
+          first_name: data.first_name,
+          comment: data.comment
+        };
+        const approvedURL = process.env.URL;
+        request.post({ url: approvedURL, formData: payload }, function(err, httpResponse, body) {
+          if (err) {
+            console.log("Post to approved comments failed:" + err);
+            respond({ text: 'Failed to approve comment.' });
+          } else {
+            console.log("Post to approved comments list successful.");
+            respond({ text: 'Comment approved' });
+            // Purge the comment from the queue
+            request.delete(url, function(err, response, body) {
+              if (err) {
+                console.log("Failed to delete comment from queue: " + err);
+              } else {
+                console.log("Comment deleted from queue.");
+              }
+            });
+          }
+        });
+      } else {
+        console.log("Failed to get comment data.");
+        respond({ text: 'Failed to approve comment.' });
+      }
+    });
   }
-};
+});
+
+// Initialize your app
+(async () => {
+  await app.start();
+  console.log('⚡️ Bolt app is running!');
+})();
