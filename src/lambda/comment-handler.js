@@ -72,7 +72,7 @@ exports.handler = async function(event, context, callback) {
       {
         fallback: "New comment",
         color: "#444",
-        author_name: body.data.first_name,
+        author_name: body.data.first_name + " " + body.data.last_name,
         title: body.data.path,
         title_link: process.env.URL + body.data.path,
         text: body.data.comment
