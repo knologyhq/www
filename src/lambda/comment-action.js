@@ -45,9 +45,7 @@ export function handler(event, context, callback) {
     request(url, function(err, response, body) {
       if (!err && response.statusCode === 200) {
         var data = JSON.parse(body).data;
-        var created_at = JSON.parse(body).created_at;
         console.log("Fetched comment data:", data);
-        console.log("Fetched comment datetime:", created_at);
 
         // now we have the data, let's massage it and post it to the approved form
         var payload = {
@@ -57,7 +55,7 @@ export function handler(event, context, callback) {
           last_name: data.last_name,
           first_name: data.first_name,
           comment: data.comment,
-          comment_date: created_at // Preserve the original timestamp
+          comment_date: data.comment_date
         };
         var approvedURL = process.env.URL;
 
