@@ -172,7 +172,7 @@
                     </v-col>
                   </v-row>
                   <input type="hidden" name="form-name" value="comments-queue" />
-                  <input type="hidden" name="comment_date" value="" />
+                  <input type="hidden" name="comment_date" value="temp" />
                   <input
                     type="hidden"
                     name="path"
