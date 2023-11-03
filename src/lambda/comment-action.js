@@ -54,14 +54,14 @@ export function handler(event, context, callback) {
           "form-name": "comments-approved",
           path: data.path,
           postId: data.postId,
-          received: new Date().toString(),
           last_name: data.last_name,
           first_name: data.first_name,
           comment: data.comment,
-          "comment_date": created_at // Preserve the original timestamp
+          comment_date: created_at // Preserve the original timestamp
         };
         var approvedURL = process.env.URL;
 
+        console.log("Here is the payload for the approved comment:", payload);
         console.log("Posting to", approvedURL);
 
         request.post({ url: approvedURL, formData: payload }, function(
