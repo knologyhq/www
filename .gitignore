@@ -13,3 +13,4 @@ src/site/_data/comments.json
 src/site/_data/init.json
 yarn-error.log
 /.vscode
+bulkApproveComments.js
