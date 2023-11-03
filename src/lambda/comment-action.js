@@ -58,7 +58,7 @@ export function handler(event, context, callback) {
           last_name: data.last_name,
           first_name: data.first_name,
           comment: data.comment,
-          comment_date: created_at // Preserve the original timestamp
+          "comment_date": created_at // Preserve the original timestamp
         };
         var approvedURL = process.env.URL;
 
