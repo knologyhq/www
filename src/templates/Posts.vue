@@ -223,7 +223,6 @@ query Dato($id: ID!)  {
               first_name
               last_name
               comment
-              comment_date
             }
           }
         }
