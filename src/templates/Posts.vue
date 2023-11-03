@@ -134,8 +134,8 @@
 
                 <v-form
                   ref="form"
-                  name="comments-queue"
-                  id="comments-queue"
+                  name="comments-approved"
+                  id="comments-approved"
                   data-netlify="true"
                   method="POST"
                   action
@@ -171,7 +171,7 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                  <input type="hidden" name="form-name" value="comments-queue" />
+                  <input type="hidden" name="form-name" value="comments-approved" />
                   <input type="hidden" name="comment_date" v-model="formData.comment_date" />
                   <input
                     type="hidden"
