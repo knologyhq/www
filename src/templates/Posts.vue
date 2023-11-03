@@ -172,7 +172,7 @@
                     </v-col>
                   </v-row>
                   <input type="hidden" name="form-name" value="comments-queue" />
-                  <input type="hidden" name="comment_date" value="temp" />
+                  <input type="hidden" name="comment_date" v-model="formData.comment_date" />
                   <input
                     type="hidden"
                     name="path"
@@ -337,6 +337,8 @@ export default {
         .join("&");
     },
     handleSubmit(e) {
+      const currentDatetime = new Date().toISOString(); // Get current datetime in ISO format
+      
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -344,17 +346,18 @@ export default {
           "form-name": e.target.getAttribute("name"),
           path: e.target.querySelector("#path").value,
           postId: e.target.querySelector("#postId").value,
+          comment_date: currentDatetime, // Add the current datetime here
           ...this.formData
         })
       })
-        .then(response => {
-          this.submitted = true;
-        })
-        .catch(error => {
-          console.log("====================================");
-          console.log(`error in submiting the form data:${error}`);
-          console.log("====================================");
-        });
+      .then(response => {
+        this.submitted = true;
+      })
+      .catch(error => {
+        console.log("====================================");
+        console.log(`error in submiting the form data: ${error}`);
+        console.log("====================================");
+      });
     },
     formatDate(commentNode) {
       const date = commentNode.data.comment_date || commentNode.created_at;
