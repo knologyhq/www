@@ -115,9 +115,7 @@
                         </v-list-item-content>
 
                         <v-row align="center" justify="end">
-                          <span
-                            class="subheading"
-                          >On {{comment.node.data.comment_date | moment("dddd, MMMM D, YYYY")}}</span>
+                          <span class="subheading">On {{ formatDate(comment.node) }}</span>
                         </v-row>
                       </v-list-item>
                     </v-card-actions>
@@ -358,6 +356,10 @@ export default {
           console.log(`error in submiting the form data:${error}`);
           console.log("====================================");
         });
+    },
+    formatDate(commentNode) {
+      const date = commentNode.data.comment_date || commentNode.created_at;
+      return this.$moment(date).format('dddd, MMMM D, YYYY');
     }
   }
 };
