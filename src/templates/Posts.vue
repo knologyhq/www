@@ -117,7 +117,7 @@
                         <v-row align="center" justify="end">
                           <span
                             class="subheading"
-                          >On {{comment.node.created_at | moment("dddd, MMMM D, YYYY")}}</span>
+                          >On {{comment.node.data.comment_date | moment("dddd, MMMM D, YYYY")}}</span>
                         </v-row>
                       </v-list-item>
                     </v-card-actions>
@@ -174,7 +174,7 @@
                     </v-col>
                   </v-row>
                   <input type="hidden" name="form-name" value="comments-queue" />
-                  <input type="hidden" name="comment-date" value="" />
+                  <input type="hidden" name="comment_date" value="" />
                   <input
                     type="hidden"
                     name="path"
@@ -225,6 +225,7 @@ query Dato($id: ID!)  {
               first_name
               last_name
               comment
+              comment_date
             }
           }
         }
