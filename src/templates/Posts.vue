@@ -136,7 +136,6 @@
                   ref="form"
                   name="comments-queue"
                   id="comments-queue"
-                  data-netlify-recaptcha="true"
                   data-netlify="true"
                   method="POST"
                   action
@@ -188,7 +187,7 @@
                     id="postId"
                     :value="$page.posts.postId"
                   />
-                  <div data-netlify-recaptcha="true"></div>
+
                   <v-btn color="success" type="submit" class="mr-4" elevation="0">Submit</v-btn>
                 </v-form>
               </v-col>
