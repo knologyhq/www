@@ -5,7 +5,7 @@
       <span />
     </div>
     <SubscribeFormInline />
-    <div class="title font-weight-black black--text mb-2 mt-4">Featured New Bites</div>
+    <div class="title font-weight-black black--text mb-2 mt-4">Knology 101</div>
     <div class="divider mb-4">
       <span />
     </div>
