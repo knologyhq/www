@@ -23,7 +23,7 @@
     <v-row>
       <v-col id="featured-posts" cols="12" sm="12" md="8" lg="4" order-md="1">
         <v-sheet>
-          <div class="title font-weight-black black--text mb-2">Featured Articles</div>
+          <div class="title font-weight-black black--text mb-2">Featured Collaborations</div>
 
           <div class="divider mb-4">
             <span />
