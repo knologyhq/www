@@ -28,7 +28,7 @@
           <div class="divider mb-4">
             <span />
           </div>
-          <PostCardLarge
+          <PostCardLargeNoDate
             :post="post"
             v-for="post in $page.allHome.edges[0].node.featuredPosts"
             :key="post.id"
@@ -170,7 +170,7 @@
 </page-query>
 <script>
 import RecentPostsByPillar from "~/components/RecentPostsByPillar.vue";
-import PostCardLarge from "~/components/PostCardLarge.vue";
+import PostCardLargeNoDate from "~/components/PostCardLargeNoDate.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Logo from "~/components/Logo.vue";
 import Cta from "~/components/Cta.vue";
@@ -209,7 +209,7 @@ export default {
     Cta,
     Logo,
     Pager,
-    PostCardLarge,
+    PostCardLargeNoDate,
     PostCardMedium,
     RecentPostsByPillar,
     Sidebar
