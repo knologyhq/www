@@ -20,6 +20,12 @@
         </v-tabs>
         <v-tabs-items v-model="tab">
           <v-tab-item>
+            <v-data-table :headers="headers" :items="$page.allDataSheet2024.edges"></v-data-table>
+          </v-tab-item>
+          <v-tab-item>
+            <v-data-table :headers="headers" :items="$page.allDataSheet2023.edges"></v-data-table>
+          </v-tab-item>
+          <v-tab-item>
             <v-data-table :headers="headers" :items="$page.allDataSheet2022.edges"></v-data-table>
           </v-tab-item>
           <v-tab-item>
