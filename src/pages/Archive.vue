@@ -10,7 +10,6 @@
       
       <v-sheet class="mt-4">
         <v-tabs v-model="tab" color="primary" left>
-          <v-tab>2024</v-tab>
           <v-tab>2023</v-tab>
           <v-tab>2022</v-tab>
           <v-tab>2021</v-tab>
@@ -19,9 +18,6 @@
           <v-tab>2018</v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab">
-          <v-tab-item>
-            <v-data-table :headers="headers" :items="$page.allDataSheet2024.edges"></v-data-table>
-          </v-tab-item>
           <v-tab-item>
             <v-data-table :headers="headers" :items="$page.allDataSheet2023.edges"></v-data-table>
           </v-tab-item>
@@ -64,21 +60,6 @@
       }
     }
   }
-    allDataSheet2024(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
-      edges {
-        node {
-          Row_Should_Be_Visible_on_Website_       
-          Publication_Title
-          Funder_Name
-          Grant_Number
-          Project_Name
-          Research_Area
-          Publication_Date
-          Citation
-          Instruments___Data_URL__When_Available_
-        }
-      }
-    }
     allDataSheet2023(filter: {Row_Should_Be_Visible_on_Website_: { eq: "Yes"}}) {
       edges {
         node {
