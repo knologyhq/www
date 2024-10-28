@@ -162,59 +162,73 @@
 import Banner from "~/components/Banner.vue";
 
 export default {
-  metaInfo: {
-    title: 'Archive of Publications and Datasets',
-  },
-  components: {
-    Banner
-  },
-  data() {
-    return {
-      tab: null,
-      headers: [
-        {
-          sortable: true,
-          text: "Title",
-          value: "node.Publication_Title"
-        },
-        {
-          sortable: false,
-          text: "Funder Name",
-          value: "node.Funder_Name"
-        },
-        {
-          sortable: false,
-          text: "Grant Number",
-          value: "node.Grant_Number"
-        },
-        {
-          sortable: true,
-          text: "Project Name",
-          value: "node.Project_Name"
-        },
-        {
-          sortable: false,
-          text: "Research Area",
-          value: "node.Research_Area"
-        },
-        {
-          sortable: true,
-          text: "Publication Date",
-          value: "node.Publication_Date"
-        },
-        {
-          sortable: false,
-          text: "Citation",
-          value: "node.Citation"
-        },
-        {
-          sortable: false,
-          text: "Instruments & Data URL (When Available)",
-          value: "node.Instruments___Data_URL__When_Available_"
-        }
-      ]
-    };
-  }
+	metaInfo: {
+		title: 'Archive of Publications and Datasets',
+	},
+	components: {
+		Banner
+	},
+	data() {
+		return {
+			tab: null,
+			headers: [
+				{
+					sortable: true,
+					text: "Title",
+					value: "node.Publication_Title"
+				},
+				{
+					sortable: false,
+					text: "Funder Name",
+					value: "node.Funder_Name"
+				},
+				{
+					sortable: false,
+					text: "Grant Number",
+					value: "node.Grant_Number"
+				},
+				{
+					sortable: true,
+					text: "Project Name",
+					value: "node.Project_Name"
+				},
+				{
+					sortable: false,
+					text: "Research Area",
+					value: "node.Research_Area"
+				},
+				{
+					sortable: true,
+					text: "Publication Date",
+					value: "node.Publication_Date"
+				},
+				{
+					sortable: false,
+					text: "Citation",
+					value: "node.Citation"
+				},
+				{
+					sortable: false,
+					text: "Instruments & Data URL (When Available)",
+					value: "formattedDataURL" // Use computed property
+				}
+			]
+		};
+	},
+	computed: {
+		formattedDataURL() {
+			return this.data.map((node) => {
+				const url = node.Instruments___Data_URL__When_Available_;
+				const isURL = /^(https?:\/\/[^\s]+$)/.test(url);
+				return {
+					...node,
+					formattedDataURL: isURL
+						? `<a href="${url}" target="_blank">${url}</a>`
+						: url
+				};
+			});
+		}
+	}
 };
 </script>
 
