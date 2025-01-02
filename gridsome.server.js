@@ -290,25 +290,10 @@ module.exports = function(api) {
       url
       id
     }
-    featuredPosts {
+    featuredLinks {
       title
       subtitle
-      publishDate
-      slug
-      image {
-        url
-      }
-      imageThumb {
-        url
-      }
-      authors {
-        name
-      }
-      additionalAuthors
-      categories {
-        title
-        id
-      }
+      url
     }
     title
     introCopy

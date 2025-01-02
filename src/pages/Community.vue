@@ -2,60 +2,34 @@
   <Layout>
     <v-container>
       <Banner
-        :banner="{ image: $page.allCommunity.edges[0].node.bannerImage.url, title: $page.allCommunity.edges[0].node.title, copy: $page.allCommunity.edges[0].node.bannerCopy, button: true }"
+        :banner="{ image: $page.allCommunity.edges[0].node.bannerImage.url, title: $page.allCommunity.edges[0].node.title, copy: $page.allCommunity.edges[0].node.bannerCopy, button: false }"
       />
 
       <v-row>
-        <v-col
-          cols="12"
-          id="main"
-          class="idea-brewery-intro-copy"
-          v-html="marked($page.allCommunity.edges[0].node.introCopy)"
-        />
-      </v-row>
-      <v-row>
-        <template v-if="$page.allCommunity.edges[0].node.featuredPosts[0]">
-          <v-col id="featured-posts" cols="12" md="6" lg="4">
-            <div class="title font-weight-black black--text mb-2">Featured Ideas</div>
+        <template v-if="$page.allCommunity.edges[0].node.featuredLinks[0]">
+          <v-col id="featured-links" cols="12" md="12" lg="8">
+            <div class="title font-weight-black black--text mb-2">Recent Ideas</div>
+            
             <div class="divider mb-4">
               <span />
             </div>
-            <PostCardLarge
+
+            <div
+                class="idea-brewery-intro-copy"
+                v-html="marked($page.allCommunity.edges[0].node.introCopy)"
+            ></div>
+
+            <LinkCardMedium
               :post="post"
-              v-for="post in $page.allCommunity.edges[0].node.featuredPosts"
+              v-for="post in $page.allCommunity.edges[0].node.featuredLinks"
               :key="post.id"
             />
           </v-col>
         </template>
 
-
-
-
-
-
-        <template v-if="$page.newposts.edges">
-          <v-col id="new-posts" cols="12" md="6" lg="4">
-            <div class="title font-weight-black black--text mb-2">
-              Recent Ideas
-              <g-link
-                class="subtitle font-weight-bold black--text float-right"
-                style="text-decoration: none"
-                to="/articles/tag/idea-brewery"
-              >View All ></g-link>
-            </div>
-            <div class="divider mb-4">
-              <span />
-            </div>
-            <template v-for="edge in $page.newposts.edges[0]">
-              <div v-for="post in edge" :key="post.id">
-                <PostCardMedium :post="item.node" v-for="item in post.edges" :key="item.id" />
-              </div>
-            </template>
-          </v-col>
-        </template>
         <v-col id="affiliates" cols="12" md="12" lg="4">
           <template v-if="$page.allCommunity.edges[0].node.affiliations[0]">
-            <div class="title mb-4 font-weight-black">Our Affiliations</div>
+            <div class="title mb-4 font-weight-black">Partner Websites</div>
 
             <v-container fluid>
               <v-row align="center" justify="center">
@@ -93,7 +67,7 @@
         </v-col>
         <v-col align-self="center" id="affiliates" cols="12">
           <template v-if="$page.allCommunity.edges[0].node.partners[0]">
-            <div class="title mb-4 font-weight-black">Partners</div>
+            <div class="title mb-4 font-weight-black">Featured Partners</div>
             <v-container fluid>
               <v-row align="center" justify="center">
                 <v-col
@@ -164,17 +138,10 @@
             url
             id
           }
-          featuredPosts {
+          featuredLinks {
             title
             subtitle
-            publishDate
-            slug
-            image {
-              url
-            }
-            authors {
-              name
-            }
+            url
           }
           title
           introCopy
@@ -228,6 +195,9 @@
                   authors {
                     name
                   }
+                  image {
+                    url
+                  }
                 }
               }
             }
@@ -239,8 +209,7 @@
 </page-query>
 <script>
 import Cta from "~/components/Cta.vue";
-import PostCardLarge from "~/components/PostCardLarge.vue";
-import PostCardMedium from "~/components/PostCardMedium.vue";
+import LinkCardMedium from "~/components/LinkCardMedium.vue";
 import Sidebar from "~/components/Sidebar.vue";
 import Banner from "~/components/Banner.vue";
 
@@ -269,8 +238,7 @@ export default {
   } ,
   components: {
     Cta,
-    PostCardLarge,
-    PostCardMedium,
+    LinkCardMedium,
     Sidebar,
     Banner
   }
@@ -280,17 +248,7 @@ export default {
 .banner {
   background-size: cover;
 }
-
-.idea-brewery-intro-copy {
-  max-width: 60%!important;
-}
-
-
-  @media (max-width:1264px) {
-
-.idea-brewery-intro-copy {
-  max-width: 100%!important;
-}
-  }
+#featured-links {margin-bottom: 2em;}
+#featured-links a.v-card--link {margin: 2em 0;}
 
 </style>

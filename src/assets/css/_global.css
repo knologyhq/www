@@ -364,7 +364,7 @@ footer .row.py-12.align-content-start {
 }
 }
 
-/*About secion page overrides*/
+/* About section page overrides*/
 .container.deai > div.banner {
     background: linear-gradient(rgba(38, 96, 147, 0.85), rgba(38, 96, 147, 0)), url("https://www.datocms-assets.com/15254/1654543286-deai.jpg") !important;
 }
@@ -374,7 +374,6 @@ footer .row.py-12.align-content-start {
 }
 
 /* General page overrides */
-
 .container .body h2 {
   color:  var(--knology-blue);
 }
