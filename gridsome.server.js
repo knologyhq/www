@@ -201,201 +201,192 @@ module.exports = function(api) {
                 }
               }
             }
-
-  ourTeam: ourTeamPage {
-    title
-    bannerImage {
-      url
-    }
-    bannerCopy
-    introCopy
-    cta {
-      buttonLink
-      buttonText
-      class
-      body
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-    }
-    body
-  }
-  ethics: ethicsPage {
-    colour {
-      hex
-    }
-    colour2 {
-      hex
-    }
-    body
-    title
-    cta {
-      title
-      id
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-      buttonText
-      buttonLink
-      body
-    }
-  }
-  privacy: privacyPolicyPage {
-    colour {
-      hex
-    }
-    colour2 {
-      hex
-    }
-    body
-    title
-    cta {
-      title
-      id
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-      buttonText
-      buttonLink
-      body
-    }
-  }
-  community: communityPage {
-    cta {
-      buttonLink
-      buttonText
-      class
-      body
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-    }
-    partners {
-      logo {
-        url
-      }
-      title
-      url
-      id
-    }
-    featuredLinks {
-      title
-      subtitle
-      url
-    }
-    title
-    introCopy
-    id
-    bannerCopy
-    bannerImage {
-      url
-    }
-    affiliations {
-      id
-      title
-      url
-      logo {
-        url
-      }
-    }
-  }
-  home: homePage {
-    alert
-    cta {
-      buttonLink
-      buttonText
-      class
-      body
-      colour2 {
-        hex
-      }
-      colour {
-        hex
-      }
-    }
-    featuredPosts {
-      title
-      subtitle
-      publishDate
-      slug
-      image {
-        url
-      }
-      imageThumb {
-        url
-      }
-      authors {
-        name
-      }
-      additionalAuthors
-      categories {
-        title
-        id
-      }
-    }
-  }
-  contact: contactPage {
-    phone
-    featureImage {
-      url
-    }
-    mailingAddress
-    emailAddresses {
-      email
-      label
-    }
-    fax
-    socialMedia {
-      handle
-      platform
-      profileUrl
-    }
-    location {
-      address
-      id
-      image {
-        url
-      }
-      title
-    }
-  }
-
-
-donate: donatePage {
-  title
-  bannerImage{
-    url
-  }
-  bannerCopy
-  body
-}
-
-archive: archivePage{
-  title
-  bannerImage{
-    url
-  }
-  introCopy
-  bannerCopy
-}
-
-
-
-}
-
-
+            ourTeam: ourTeamPage {
+              title
+              bannerImage {
+                url
+              }
+              bannerCopy
+              introCopy
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+              }
+              body
+            }
+            ethics: ethicsPage {
+              colour {
+                hex
+              }
+              colour2 {
+                hex
+              }
+              body
+              title
+              cta {
+                title
+                id
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+                buttonText
+                buttonLink
+                body
+              }
+            }
+            privacy: privacyPolicyPage {
+              colour {
+                hex
+              }
+              colour2 {
+                hex
+              }
+              body
+              title
+              cta {
+                title
+                id
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+                buttonText
+                buttonLink
+                body
+              }
+            }
+            community: communityPage {
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+              }
+              partners {
+                logo {
+                  url
+                }
+                title
+                url
+                id
+              }
+              featuredLinks {
+                title
+                subtitle
+                url
+              }
+              title
+              introCopy
+              id
+              bannerCopy
+              bannerImage {
+                url
+              }
+              affiliations {
+                id
+                title
+                url
+                logo {
+                  url
+                }
+              }
+            }
+            home: homePage {
+              alert
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }
+              }
+              featuredPosts {
+                title
+                subtitle
+                publishDate
+                slug
+                image {
+                  url
+                }
+                imageThumb {
+                  url
+                }
+                authors {
+                  name
+                }
+                additionalAuthors
+                categories {
+                  title
+                  id
+                }
+              }
+            }
+            contact: contactPage {
+              phone
+              featureImage {
+                url
+              }
+              mailingAddress
+              emailAddresses {
+                email
+                label
+              }
+              fax
+              socialMedia {
+                handle
+                platform
+                profileUrl
+              }
+              location {
+                address
+                id
+                image {
+                  url
+                }
+                title
+              }
+            }
+            donate: donatePage {
+              title
+              bannerImage{
+                url
+              }
+              bannerCopy
+              body
+            }
+            archive: archivePage{
+              title
+              bannerImage{
+                url
+              }
+              introCopy
+              bannerCopy
+            }
+          }
       `
       }
     }).then(result => {
@@ -658,6 +649,39 @@ archive: archivePage{
               }
             }
 
+            posts4: allPosts(first: 100, skip: 300) {
+              ...postFields
+              dataFile
+              dataFileLabel
+              tags {
+                id
+                title
+                slug
+              }
+              postFile {
+                url
+              }
+              postType {
+                title
+                id
+              }
+              authors {
+                name
+                slug
+                id
+              }
+              categories {
+                title
+                id
+                slug
+              }
+              initiatives {
+                id
+                title
+                slug
+              }
+            }
+
             ideaBreweryPosts: allPosts(first: 100, filter: {tags: {anyIn: ["1435043"]} } ) {
               ...postFields
               authors {
@@ -774,7 +798,7 @@ archive: archivePage{
       }
       
       // 20220915 adding this as a bandaid for the 100 post limit issue
-      let combinedPosts = result.data.data.posts.concat(result.data.data.posts2).concat(result.data.data.posts3);
+      let combinedPosts = result.data.data.posts.concat(result.data.data.posts2).concat(result.data.data.posts3).concat(result.data.data.posts4);
 
       for (const item of combinedPosts) {
         // create reference to initiatives
