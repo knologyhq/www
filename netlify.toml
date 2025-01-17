@@ -4,29 +4,13 @@
   publish = "dist"
   NODE_ENV = "10.15.3"
 
+## Redirects for specific URLs
 [[redirects]]
   from = "/financial-education-mapping-tool"
   to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
 [[redirects]]
   from = "/Financial-Education-Mapping-Tool"
   to = "https://knology.shinyapps.io/knologyfinedstatespendingshiny/"
-
-## Redirects resulting in change from "wellness" to "wellbeing" 
-[[redirects]]
-  from = "/category/wellness"
-  to = "/category/wellbeing"
-[[redirects]]
-  from = "/articles/category/wellness"
-  to = "/articles/category/wellbeing"
-[[redirects]]
-  from = "/initiative/understanding-health-narratives"
-  to = "/initiative/social-construction-of-public-health-and-wellbeing"
-[[redirects]]
-  from = "/initiative/mindfulness"
-  to = "/category/wellbeing"
-[[redirects]]
-  from = "/initiative/pre-arming-self-efficacy-capacity-building"
-  to = "/initiative/social-life-of-public-health-disasters"
 
 ## Redirects because a previously published article was removed
 [[redirects]]
@@ -35,3 +19,13 @@
 [[redirects]]
   from = "/article/can-the-news-help-you-learn-statistics"
   to = "/article/meaningful-math"
+
+## Wildcard redirects for all /category/ and /initiative/ URLs
+[[redirects]]
+  from = "/category/*"
+  to = "/articles/"
+  status = 301
+[[redirects]]
+  from = "/initiative/*"
+  to = "/articles/"
+  status = 301
