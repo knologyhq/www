@@ -76,7 +76,7 @@ module.exports = function(api) {
 
     const initiatives = store.addCollection({
       typeName: "Initiatives",
-      route: "initiative/:slug"
+      // route: "initiative/:slug"
     });
     const milestones = store.addCollection({
       typeName: "Milestones"
@@ -104,7 +104,7 @@ module.exports = function(api) {
     // Pillars (model name and old term) == Categories (interface/paths) == Research Areas (internal term)
     const pillars = store.addCollection({
       typeName: "Pillars",
-      route: "category/:slug"
+      // route: "category/:slug"
     });
     const categories = store.addCollection({
       typeName: "Categories",
