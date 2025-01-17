@@ -159,6 +159,7 @@
   }
 </page-query>
 <script>
+import RecentPostsByPillar from "~/components/RecentPostsByPillar.vue";
 import PostCardLargeNoDate from "~/components/PostCardLargeNoDate.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Logo from "~/components/Logo.vue";

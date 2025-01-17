@@ -7,79 +7,14 @@
         </g-link>
       </template>
       <v-spacer></v-spacer>
-      <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
-        <template v-if="item.action === 'menu' && item.title == 'Research'">
-          <v-btn text class="primary--text mx-2 d-flex">
-            <v-menu
-              :close-on-content-click="false"
-              bottom
-              :offset-y="true"
-              class="mt-10"
-              min-width="100%"
-              z-index="10000000"
-              v-model="researchMenu"
-            >
-              <template v-slot:activator="{ on }">
-                <span text class="menu-toggle" v-on="on">
-                  {{ item.title }}
-                  <v-icon right>mdi-chevron-down</v-icon>
-                </span>
-              </template>
-              <v-card class="pa-0 ma-0">
-                <v-container fluid class="pa-0 ma-0" fill-height>
-                  <v-row no-gutters>
-                    <v-col
-                      cols="2"
-                      align-self="stretch"
-                      v-for="pillar in $static.pillars.edges"
-                      :key="pillar.id"
-                    >
-                      <v-card
-                        flat
-                        tile
-                        height="100%"
-                        class="pa-3 ma-0"
-                        :color="`${pillar.node.colour ? pillar.node.colour.hex : 'primary'}`"
-                      >
-                        <v-list color="transparent">
-                          <v-list-item-group>
-                            <v-list-item
-                              :to="`/category/${pillar.node.slug}`"
-                              @click="researchMenu = false"
-                            >
-                              <v-list-item-content>
-                                <v-list-item-title
-                                  class="white--text font-weight-bold"
-                                >{{pillar.node.title}}</v-list-item-title>
-                              </v-list-item-content>
-                            </v-list-item>
-                            <v-list-item
-                              :to="`/initiative/${initiative.slug}`"
-                              v-for="initiative in pillar.node.initiative"
-                              @click="researchMenu = false"
-                              :key="initiative.id"
-                            >
-                              <v-list-item-content>
-                                <div class="white--text">{{initiative.title}}</div>
-                              </v-list-item-content>
-                            </v-list-item>
-                          </v-list-item-group>
-                        </v-list>
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </v-card>
-            </v-menu>
-          </v-btn>
-        </template>
 
+      <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
         <template v-if="item.action === 'menu' && item.title == 'About'">
           <v-btn text class="primary--text mx-2">
             <v-menu :offset-y="true" bottom :key="item.id">
               <template v-slot:activator="{ on }">
                 <span text class="menu-toggle" color="primary" v-on="on">
-                  {{item.title}}
+                  {{ item.title }}
                   <v-icon right>mdi-chevron-down</v-icon>
                 </span>
               </template>
@@ -88,7 +23,7 @@
                   v-for="page in $static.about.edges"
                   :key="page.id"
                   :to="`/about/${page.node.slug}`"
-                >{{page.node.title}}</v-list-item>
+                >{{ page.node.title }}</v-list-item>
               </v-list>
             </v-menu>
           </v-btn>
@@ -127,93 +62,23 @@
         </v-btn>
       </v-toolbar>
       <v-list nav>
-        <v-list-item class="text-center" v-for="item in items" :key="item.id" :to="item.to">
+        <v-list-item v-for="item in items" :key="item.id" :to="item.to">
           <template v-if="item.to">
-            <v-list-item-title>{{item.title}}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </template>
-          <template v-else-if="item.action === 'menu' && item.title == 'Research'">
-            <v-list-item class="text-center align-center justify-center">
-              <v-list-group
-                active-class="active-research-menu"
-                class="text-center align-center justify-center"
-              >
-                <template v-slot:activator>
-                  <v-list-item-title
-                    text
-                    class="text-center align-center justify-center"
-                  >{{ item.title }}</v-list-item-title>
-                </template>
-                <v-list-item-content>
-                  <v-card class="pa-0 ma-0">
-                    <v-container fluid class="pa-0 ma-0" fill-height>
-                      <v-row no-gutters>
-                        <v-col
-                          cols="12"
-                          align-self="stretch"
-                          v-for="pillar in $static.pillars.edges"
-                          :key="pillar.id"
-                        >
-                          <v-card
-                            flat
-                            tile
-                            height="100%"
-                            class="pa-3 ma-0"
-                            :color="`${pillar.node.colour ? pillar.node.colour.hex : 'primary'}`"
-                          >
-                            <v-list color="transparent" dense>
-                              <v-list-item-group>
-                                <v-list-item
-                                  :to="`/category/${pillar.node.slug}`"
-                                  @click="mobileResearchMenu = false"
-                                >
-                                  <v-list-item-content>
-                                    <v-list-item-title
-                                      class="white--text font-weight-bold"
-                                    >{{pillar.node.title}}</v-list-item-title>
-                                  </v-list-item-content>
-                                </v-list-item>
-                                <v-list-item
-                                  :to="`/initiative/${initiative.slug}`"
-                                  v-for="initiative in pillar.node.initiative"
-                                  @click="mobileResearchMenu = false"
-                                  :key="initiative.id"
-                                >
-                                  <v-list-item-content>
-                                    <div class="white--text">{{initiative.title}}</div>
-                                  </v-list-item-content>
-                                </v-list-item>
-                              </v-list-item-group>
-                            </v-list>
-                          </v-card>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                  </v-card>
-                </v-list-item-content>
-              </v-list-group>
-            </v-list-item>
-          </template>
-
           <template v-else-if="item.action === 'menu' && item.title == 'About'">
-            <v-list-item class="text-center align-center justify-center">
-              <v-list-group
-                active-class="active-research-menu"
-                class="text-center align-center justify-center"
-              >
+            <v-list-item>
+              <v-list-group active-class="active-research-menu">
                 <template v-slot:activator>
-                  <v-list-item-title
-                    text
-                    class="text-center align-center justify-center"
-                  >{{item.title}}</v-list-item-title>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </template>
                 <v-list-item-content>
                   <v-list>
                     <v-list-item
-                      class="text-center align-center justify-center"
                       v-for="page in $static.about.edges"
                       :key="page.id"
                       :to="`/about/${page.node.slug}`"
-                    >{{page.node.title}}</v-list-item>
+                    >{{ page.node.title }}</v-list-item>
                   </v-list>
                 </v-list-item-content>
               </v-list-group>
@@ -275,25 +140,23 @@ import Logo from "~/components/Logo.vue";
 export default {
   components: {
     SearchForm,
-    Logo
+    Logo,
   },
   data() {
     return {
       dialog: false,
       drawer: null,
       offset: true,
-      researchMenu: false,
-      mobileResearchMenu: false,
-
       items: [
         { title: "Home", to: "/" },
-        { title: "Research", action: "menu" },
+        { title: "Research", to: "/articles" },
         { title: "Community", to: "/community" },
         { title: "Our Team", to: "/our-team" },
         { title: "About", action: "menu" },
-        { title: "Contact", to: "/contact" }
-      ]
+        { title: "Contact", to: "/contact" },
+      ],
     };
-  }
+  },
 };
 </script>
+
