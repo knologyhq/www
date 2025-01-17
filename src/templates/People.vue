@@ -114,6 +114,9 @@
 v-btn__content.pillar + .pillar:before {
   content: "| ";
 }
+.title.text--black.font-weight-black {
+  margin-bottom: 2rem;
+}
 </style>
 <script>
 import Layout from "~/layouts/Default.vue";
