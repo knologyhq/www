@@ -1,10 +1,5 @@
 <template>
   <v-card class="mx-auto mb-2" flat tile :to="`/article/${post.slug}`">
-    <span
-      class="category pr-1 grey--text body-2 py-2 overline"
-      v-for="category in post.categories"
-      :key="category.id"
-    >{{ category.title }}</span>
     <v-card-title class="fill-height pa-0 my-2">
       <div class="black--text d-block font-weight-black title">{{ post.title }}</div>
       <p
@@ -34,9 +29,6 @@
 </template>
 
 <style lang="postcss" scoped>
-.category + .category:before {
-  content: " | ";
-}
 .title {
   line-height: 1.4rem;
 }

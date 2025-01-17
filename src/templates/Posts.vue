@@ -21,18 +21,6 @@
     <v-container>
       <v-row id="main">
         <v-col cols="12" md="8">
-          <v-card flat id="post-category-container" class="mb-8" v-if="$page.posts.categories[0]">
-            <v-card-text class="pa-0 mb-0 ml-n3">
-              <span class="category" v-for="category in $page.posts.categories" :key="category.id">
-                <v-btn
-                  text
-                  color="grey darken-2"
-                  :to="`/articles/category/${ category.slug }`"
-                >{{ category.title }}</v-btn>
-              </span>
-              <br />
-            </v-card-text>
-          </v-card>
 
           <div class="post-title-container black--text font-weight-black display-1" v-html="marked($page.posts.title)" />
           <div v-if="$page.posts.subtitle">
@@ -371,9 +359,6 @@ export default {
 <style lang="postcss">
 .banner {
   background-size: cover;
-}
-.category + .category:before {
-  content: " | ";
 }
 .author + .author:before {
   content: ", ";

@@ -55,16 +55,6 @@
       <v-col cols="12" sm="12" md="4" lg="4" order-md="4" order-lg="3">
         <Sidebar />
       </v-col>
-
-      <v-col order-md="3" sm="12" md="8" lg="12">
-        <v-row>
-          <RecentPostsByPillar
-            :pillar="pillar.node"
-            :key="pillar.id"
-            v-for="pillar in $page.allPillars.edges"
-          />
-        </v-row>
-      </v-col>
     </v-row>
 
     <template slot="cta">
@@ -169,7 +159,6 @@
   }
 </page-query>
 <script>
-import RecentPostsByPillar from "~/components/RecentPostsByPillar.vue";
 import PostCardLargeNoDate from "~/components/PostCardLargeNoDate.vue";
 import PostCardMedium from "~/components/PostCardMedium.vue";
 import Logo from "~/components/Logo.vue";

@@ -14,15 +14,6 @@
         />
       </v-col>
       <v-col cols="12" md="8">
-        <v-card-text class="pa-0 mb-0 mt-2">
-          <span
-            class="category overline darken-2 mb-2"
-            v-for="category in post.categories"
-            :key="category.id"
-            color="grey"
-            v-html="category.title"
-          />
-        </v-card-text>
         <v-card-title class="pa-0 mb-0 mt-2">
           <div class="black--text font-weight-black subtitle mb-2">{{ post.title }}</div>
 
@@ -51,9 +42,6 @@
 </template>
 
 <style lang="postcss" scoped>
-.category + .category:before {
-  content: " | ";
-}
 .subtitle {
   line-height: 1.7rem;
 }

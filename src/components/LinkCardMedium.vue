@@ -20,9 +20,6 @@
 </template>
 
 <style lang="postcss" scoped>
-.category + .category:before {
-  content: " | ";
-}
 .title {
   line-height: 1.4rem;
 }

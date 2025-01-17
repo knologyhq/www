@@ -26,15 +26,6 @@
             </v-col>
           </v-row>
           <div v-html="marked($page.people.bio)" />
-          <template v-if="$page.people.expertise[0]">
-            <div class="subtitle black--text font-weight-black mb-4">Expertise in</div>
-            <v-btn
-              v-for="pillar in $page.people.expertise"
-              :key="pillar.id"
-              text
-              :to="`/category/${pillar.slug}`"
-            >{{ pillar.title }}</v-btn>
-          </template>
         </v-col>
         <v-col cols="12" md="6" order-xs="1">
           <img
@@ -51,7 +42,7 @@
       <v-responsive class="grey lighten-4">
         <v-item-group fluid>
           <v-container v-if="$page.posts.belongsTo.edges[0]" fluid>
-            <div class="title text--black font-weight-black">Recent Posts by {{$page.people.name}}</div>
+            <div class="title text--black font-weight-black">Posts by {{$page.people.name}}</div>
             <v-row class="mb-0">
               <v-col
                 cols="12"
