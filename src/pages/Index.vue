@@ -42,7 +42,7 @@
             <g-link
               class="subtitle font-weight-normal black--text float-right"
               to="/articles"
-              style="text-decoration: none"
+              style="text-decoration: none;"
             >View All ></g-link>
           </div>
 
@@ -215,5 +215,11 @@ svg.logo.large {
   a {
     color: inherit;
   }
+}
+#mc-embedded-subscribe-form .v-text-field--outlined .v-input__append-outer {
+    margin-top: -14px;
+}
+a.mx-auto.mb-2.v-card.v-card--flat.v-card--link.v-sheet.theme--light.rounded-0 {
+  margin-bottom: 1.5rem !important;
 }
 </style>

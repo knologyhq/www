@@ -18,24 +18,6 @@
         />
       </v-row>
 
-      <v-row>
-        <v-col
-          v-for="pillar in $page.pillars.edges"
-          :key="pillar.node.id"
-          cols="12"
-          md="6"
-          class="pillar"
-        >
-          <div v-html="pillar.node.svgIcon" />
-          <h3 class="subtitle">{{ pillar.node.title }}</h3>
-          <div v-html="marked(pillar.node.description)" />
-          <v-btn
-            :color="`${pillar.node.colour ? pillar.node.colour.hex : 'orange' }`"
-            :to="`/category/${pillar.node.slug}`"
-            class="white--text"
-          >Read More →</v-btn>
-        </v-col>
-      </v-row>
     </v-container>
     <template slot="cta">
       <Cta :cta="$page.about.edges[0].node.cta" />

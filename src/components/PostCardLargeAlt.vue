@@ -44,6 +44,7 @@
 <style lang="postcss" scoped>
 .subtitle {
   line-height: 1.7rem;
+  margin-top: 1rem;
 }
 </style>
 
