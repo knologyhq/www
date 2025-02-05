@@ -5,13 +5,23 @@
         :banner="{ image: $page.about.edges[0].node.bannerImage.url, title: $page.about.edges[0].node.title, copy: $page.about.edges[0].node.bannerCopy, button: $page.about.edges[0].node.readMoreButton }"
       />
 
-      <v-row>
-        <v-col cols="12" id="main" v-html="marked($page.about.edges[0].node.introCopy)" />
+      <v-row justify="center">
+        <v-col cols="12" md="8" lg="8" id="main" v-html="marked($page.about.edges[0].node.introCopy)" />
       </v-row>
-      <v-row>
-        <v-col cols="12" id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
+      <v-row justify="center">
+        <v-col cols="12" md="8" lg="8" id="main" class="body" v-html="marked($page.about.edges[0].node.body)" />
       </v-row>
     </v-container>
+
+    <!-- Footer Section -->
+    <v-container v-if="$page.about.edges[0].node.footer" class="footer">
+      <v-row justify="center">
+        <v-col cols="12">
+          <p v-html="marked($page.about.edges[0].node.footer)"></p>
+        </v-col>
+      </v-row>
+    </v-container>
+    
     <template slot="cta">
       <Cta :cta="$page.about.edges[0].node.cta" />
     </template>
@@ -33,6 +43,7 @@
         introCopy
         slug
         title
+        footer
         cta {
           buttonLink
           buttonText

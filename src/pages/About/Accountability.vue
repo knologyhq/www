@@ -28,6 +28,16 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!-- Footer Section -->
+    <v-container v-if="$page.about.edges[0].node.footer" class="footer">
+      <v-row justify="center">
+        <v-col cols="12">
+          <p v-html="marked($page.about.edges[0].node.footer)"></p>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <template slot="cta">
       <Cta :cta="$page.about.edges[0].node.cta" />
     </template>
@@ -49,6 +59,7 @@
         introCopy
         slug
         title
+        footer
         cta {
           buttonLink
           buttonText

@@ -188,6 +188,7 @@ module.exports = function(api) {
                 url
               }
               bannerCopy
+              footer
               cta {
                 buttonLink
                 buttonText
@@ -500,6 +501,7 @@ module.exports = function(api) {
                 url
               }
               bannerCopy
+              footer
               cta {
                 buttonLink
                 buttonText
