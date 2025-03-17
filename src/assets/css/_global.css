@@ -185,6 +185,10 @@ Single Post CSS
   letter-spacing: 0px!important;  
 }
 
+#post-body p a strong, #post-body p strong a {
+    color: inherit;
+}
+
 #post-body p {
   margin-bottom:25px!important;
 }
@@ -275,8 +279,14 @@ Single Post CSS
 margin-bottom:5px!important;
 }
 
-ul {
-  margin-bottom:10px;
+/* Reduce bottom margin on p when followed by a ul */
+#post-body p:has(+ ul) {
+  margin-bottom: 8px !important;
+}
+
+#post-body p + ul {
+  margin-top: 8px;
+  margin-bottom: 25px;
 }
 
 .theme--light.v-divider {
