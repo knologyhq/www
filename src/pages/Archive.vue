@@ -21,12 +21,31 @@
         </v-tabs>
         <v-tabs-items v-model="tab">
           <v-tab-item v-for="(year, index) in years" :key="index">
-            <v-data-table
-              v-if="getDataForYear(year).length"
-              :headers="headers"
-              :items="getDataForYear(year)"
-            ></v-data-table>
-            <p v-else>No data available for {{ year }}</p>
+            <div>
+              <template v-if="getDataForYear(year).length">
+                <v-data-table
+                  :headers="headers"
+                  :items="getDataForYear(year)"
+                  dense
+                >
+                  <template v-slot:[`item.node.Instruments___Data_URL__When_Available_`]="{ item }">
+                    <span v-if="isValidUrl(item.node.Instruments___Data_URL__When_Available_)">
+                      <a
+                        :href="item.node.Instruments___Data_URL__When_Available_"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {{ item.node.Instruments___Data_URL__When_Available_ }}
+                      </a>
+                    </span>
+                    <span v-else>
+                      {{ item.node.Instruments___Data_URL__When_Available_ }}
+                    </span>
+                  </template>
+                </v-data-table>
+              </template>
+              <p v-else>No data available for {{ year }}</p>
+            </div>
           </v-tab-item>
         </v-tabs-items>
       </v-sheet>
@@ -50,6 +69,19 @@ query ArchiveData {
     }
   }
   # Dynamically fetch all years
+  allDataSheet2025: allDataSheet2025(filter: { Row_Should_Be_Visible_on_Website_: { eq: "Yes" } }) {
+    edges {
+      node {
+        Publication_Title
+        Funder_Name
+        Grant_Number
+        Project_Name
+        Publication_Date
+        Citation
+        Instruments___Data_URL__When_Available_
+      }
+    }
+  }
   allDataSheet2024: allDataSheet2024(filter: { Row_Should_Be_Visible_on_Website_: { eq: "Yes" } }) {
     edges {
       node {
@@ -157,7 +189,7 @@ export default {
   data() {
     return {
       tab: 0,
-      years: [2024, 2023, 2022, 2021, 2020, 2019, 2018],
+      years: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018],
       headers: [
         { sortable: true, text: "Title", value: "node.Publication_Title" },
         { sortable: false, text: "Funder Name", value: "node.Funder_Name" },
@@ -185,6 +217,13 @@ export default {
         console.warn(`No data found for year: ${year}`);
       }
       return dataset?.edges || [];
+    },
+    isValidUrl(value) {
+      try {
+        return Boolean(new URL(value));
+      } catch {
+        return false;
+      }
     },
   },
 };

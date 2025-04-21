@@ -1,5 +1,5 @@
 const path = require("path");
-
+const years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
 
 function addStyleResource(rule) {
   rule
@@ -10,8 +10,26 @@ function addStyleResource(rule) {
     });
 }
 
+// Clean and simple transform function that maps by index only
+function transformRowByIndex(row) {
+  const cols = Object.values(row);
+  while (cols.length < 15) cols.push('');
+
+  return {
+    Row_Should_Be_Visible_on_Website_: cols[0] || '',
+    Publication_Title: cols[7] || '',
+    Funder_Name: cols[8] || '',
+    Grant_Number: cols[9] || '',
+    Project_Name: cols[10] || '',
+    Publication_Date: cols[12] || '',
+    Citation: cols[13] || '',
+    Instruments___Data_URL__When_Available_: cols[14] || ''
+  };
+}
+
 module.exports = {
   siteName: "Knology",
+
   devServer: {
     proxy: {
       "/.netlify": {
@@ -31,36 +49,11 @@ module.exports = {
         spreadsheets: [
           {
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
-            sheets: [
-              {
-                sheetName: '2024',
-                collectionName: 'dataSheet2024'
-              },
-              {
-                sheetName: '2023',
-                collectionName: 'dataSheet2023'
-              },
-              {
-                sheetName: '2022',
-                collectionName: 'dataSheet2022'
-              },
-              {
-                sheetName: '2021',
-                collectionName: 'dataSheet2021'
-              },
-              {
-                sheetName: '2020',
-                collectionName: 'dataSheet2020'
-              },
-              {
-                sheetName: '2019',
-                collectionName: 'dataSheet2019'
-              },
-              {
-                sheetName: '2018',
-                collectionName: 'dataSheet2018'
-              }
-            ]
+            sheets: years.map(year => ({
+              sheetName: String(year),
+              collectionName: `dataSheet${year}`,
+              transform: transformRowByIndex
+            }))
           }
         ]
       }
@@ -74,6 +67,7 @@ module.exports = {
       }
     }
   ],
+
   css: {
     loaderOptions: {
       postcss: {
@@ -86,6 +80,7 @@ module.exports = {
       }
     }
   },
+
   chainWebpack: config => {
     config.mode("development");
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
