@@ -7,7 +7,7 @@
         fluid
         height="500"
         :class="`white--text py-12 banner post-banner-image ${$page.posts.slug}`"
-        :style="`background-image: url(${$page.posts.image.url})`"
+        :style="bannerImageStyle"
       />
       <v-responsive
         v-else
@@ -248,6 +248,8 @@ query Dato($id: ID!)  {
       url
     }
     customPostClass
+    bannerPositionX
+    bannerPositionY
     slug
     image {
       url
@@ -270,6 +272,18 @@ import Sidebar from "~/components/Sidebar.vue";
 import Cta from "~/components/Cta.vue";
 
 export default {
+  computed: {
+    bannerImageStyle() {
+      const x = this.$page.posts.bannerPositionX || 'center'
+      const y = this.$page.posts.bannerPositionY || 'center'
+      const url = this.$page.posts.image.url
+      return {
+        backgroundImage: `url(${url})`,
+        backgroundPositionX: x,
+        backgroundPositionY: y
+      }
+    }
+  },
   data() {
     return {
       formData: {},

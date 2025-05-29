@@ -22,7 +22,7 @@ img, hr, table, h2, ol, ul {
 }
 
 blockquote {
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 audio {
@@ -91,10 +91,6 @@ a, a .black--text, a.grey--text, a.subtitle-1, a .black--text {
   border-radius: 5px!important;
 }
 
-blockquote {
-  margin-left: 1rem;
-}
-
 /* Fix for buttons */
 .v-btn:not(.v-btn--round).v-size--x-large {
   margin: 1em 0;
@@ -103,26 +99,6 @@ blockquote {
 /* Fix for homepage subscribe button */
 #mc-embedded-subscribe-form .v-text-field--outlined .v-input__append-outer {
     margin-top: 2px;
-}
-
-/*
-Banner image custom tweaks
-*/
-.post-banner-image.books-to-speed-the-climate-response {
-  background-position-x: left;
-  background-position-y: top;
-}
-
-.post-banner-image.broadening-the-stem-and-health-pipelines {
-  background-position-y: top;
-}
-
-.post-banner-image.searching-for-justice {
-  background-position-y: top;
-}
-
-.post-banner-image.coalition-building-for-science-communication, .post-banner-image.coalition-building-for-science-communication-transcript {
-  background-position-y: top;
 }
 
 /* 
@@ -269,10 +245,9 @@ Single Post CSS
     font-family: "Open Sans" , sans-serif !important;
 
 }
+
 .post-banner-image {
   margin-top: 20px;
-  background-position-y: center;
-  background-position-x: center;
 }
 
 .post-title-container p{

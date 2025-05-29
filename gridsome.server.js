@@ -467,6 +467,8 @@ module.exports = function(api) {
             exclude
             recent
             customPostClass
+            bannerPositionX
+            bannerPositionY
           }
           
 
