@@ -24,6 +24,7 @@ query  {
       node {
         featuredPosts {
           title
+          altTitle
           subtitle
           publishDate
           slug

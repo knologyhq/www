@@ -147,6 +147,7 @@ module.exports = function(api) {
             sidebar {
               featuredPosts {
                 title
+                altTitle
                 subtitle
                 publishDate
                 slug
