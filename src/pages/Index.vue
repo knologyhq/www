@@ -103,6 +103,7 @@
               name
             }
             title
+            altTitle
             subtitle
             publishDate
             image {

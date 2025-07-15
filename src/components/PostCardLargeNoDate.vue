@@ -11,7 +11,9 @@
       :src="`${post.image.url}?auto=compress&w=500&fit=fillmax`"
     />
     <v-card-title class="pa-0 mb-0 mt-2">
-      <div class="black--text font-weight-black subtitle mb-2">{{ post.title }}</div>
+      <div class="black--text font-weight-black subtitle mb-2">
+        {{ post.altTitle || post.title }}
+      </div>
       <p v-if="post.subtitle" color="grey" class="darken-1 body-1 mb-2">{{ post.subtitle }}</p>
     </v-card-title>
   </v-card>
