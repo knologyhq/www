@@ -136,26 +136,18 @@ export default {
   }
 }
 
-/* normalize figure & caption */
-.body .testimonials figure {
-  display: block;          /* ensure normal block flow */
-  margin: 0 0 1rem;
-  align-self: start;
+/* two-up as soon as there’s ~240px per card; falls back to 1 when too tight */
+.body .testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem 1.25rem;
+  align-items: start;
 }
-.body .testimonials img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.body .testimonials figcaption {
-  display: block !important;   /* override any inline-block/table rules */
-  width: 100% !important;      /* fill figure width */
-  max-width: none !important;  /* ignore global caps like 93px/6em */
-  float: none !important;      /* kill side-caption patterns */
-  margin-top: .5rem;
-  white-space: normal;
-  box-sizing: border-box;
-}
+
+/* keep image/caption behaving */
+.body .testimonials figure { display: block; margin: 0; align-self: start; }
+.body .testimonials img { display: block; width: 100%; height: auto; }
+.body .testimonials figcaption { display: block; width: 100%; margin-top: .5rem; }
 
 
 </style>
