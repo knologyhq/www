@@ -146,8 +146,8 @@ export default {
 
 /* keep image/caption behaving */
 .body .testimonials figure { display: block; margin: 0; align-self: start; }
-.body .testimonials img { display: block; width: 100%; height: auto; }
-.body .testimonials figcaption { display: block; width: 100%; margin-top: .5rem; }
+.body .testimonials img { display: block; max-width: 100%; height: auto; margin: 1rem auto;}
+.body .testimonials figcaption { display: block; width: 100%; margin-top: .5rem; margin-bottom: 2rem;}
 
 
 </style>
