@@ -123,12 +123,12 @@ export default {
   font-size: 1.5em;
 }
 
-/* two-col grid, items sized to their content */
+/* two-col grid */
 .body .testimonials {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem 2rem;
-  align-items: start; /* <-- stop items from stretching */
+  align-items: start;
 }
 @media (--desktop) {
   .body .testimonials {
@@ -136,6 +136,26 @@ export default {
   }
 }
 
+/* normalize figure & caption */
+.body .testimonials figure {
+  display: block;          /* ensure normal block flow */
+  margin: 0 0 1rem;
+  align-self: start;
+}
+.body .testimonials img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.body .testimonials figcaption {
+  display: block !important;   /* override any inline-block/table rules */
+  width: 100% !important;      /* fill figure width */
+  max-width: none !important;  /* ignore global caps like 93px/6em */
+  float: none !important;      /* kill side-caption patterns */
+  margin-top: .5rem;
+  white-space: normal;
+  box-sizing: border-box;
+}
 
 
 </style>
