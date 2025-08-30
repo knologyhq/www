@@ -9,6 +9,7 @@
       <v-spacer></v-spacer>
 
       <div v-for="item in items" :key="item.id" class="hidden-sm-and-down">
+
         <template v-if="item.action === 'menu' && item.title == 'About'">
           <v-btn text class="primary--text mx-2">
             <v-menu :offset-y="true" bottom :key="item.id">
@@ -28,6 +29,27 @@
             </v-menu>
           </v-btn>
         </template>
+
+        <template v-if="item.action === 'menu' && item.title == 'Services'">
+          <v-btn text class="primary--text mx-2">
+            <v-menu :offset-y="true" bottom :key="item.id">
+              <template v-slot:activator="{ on }">
+                <span text class="menu-toggle" color="primary" v-on="on">
+                  {{ item.title }}
+                  <v-icon right>mdi-chevron-down</v-icon>
+                </span>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="page in $static.services.edges"
+                  :key="page.id"
+                  :to="`/services/${page.node.slug}`"
+                >{{ menuLabelFromSlug(page.node) }}</v-list-item>
+              </v-list>
+            </v-menu>
+          </v-btn>
+        </template>
+
         <template v-else-if="item.action !== 'menu'">
           <v-btn text class="primary--text mx-2" :to="item.to">{{ item.title }}</v-btn>
         </template>
@@ -66,6 +88,7 @@
           <template v-if="item.to">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </template>
+
           <template v-else-if="item.action === 'menu' && item.title == 'About'">
             <v-list-item>
               <v-list-group active-class="active-research-menu">
@@ -84,6 +107,26 @@
               </v-list-group>
             </v-list-item>
           </template>
+
+          <template v-else-if="item.action === 'menu' && item.title == 'Services'">
+            <v-list-item>
+              <v-list-group active-class="active-research-menu">
+                <template v-slot:activator>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </template>
+                <v-list-item-content>
+                  <v-list>
+                    <v-list-item
+                      v-for="page in $static.services.edges"
+                      :key="page.id"
+                      :to="`/services/${page.node.slug}`"
+                    >{{ menuLabelFromSlug(page.node) }}</v-list-item>
+                  </v-list>
+                </v-list-item-content>
+              </v-list-group>
+            </v-list-item>
+          </template>
+
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -115,6 +158,15 @@ query  {
       }
     }
   }
+  services: allServices {
+    edges {
+      node {
+        slug
+        title
+        id
+      }
+    }
+  }
 }
 
 </static-query>
@@ -138,10 +190,7 @@ import SearchForm from "~/components/SearchForm.vue";
 import Logo from "~/components/Logo.vue";
 
 export default {
-  components: {
-    SearchForm,
-    Logo,
-  },
+  components: { SearchForm, Logo },
   data() {
     return {
       dialog: false,
@@ -153,10 +202,34 @@ export default {
         { title: "Community", to: "/community" },
         { title: "Our Team", to: "/our-team" },
         { title: "About", action: "menu" },
-        { title: "Contact", to: "/contact" },
-      ],
+        { title: "Services", action: "menu" },
+        { title: "Contact", to: "/contact" }
+      ]
     };
   },
+  methods: {
+    // Turn "research-services-from-knology" → "Research Services from Knology"
+    slugToTitle(slug) {
+      if (!slug) return "";
+      const smallWords = new Set([
+        "a","an","and","as","at","but","by","for","from","in","into","nor","of",
+        "on","onto","or","per","the","to","via","vs","with"
+      ]);
+      const words = slug.replace(/[-_]+/g, " ").trim().split(/\s+/);
+      return words
+        .map((w, i) => {
+          const lower = w.toLowerCase();
+          // Keep small words lowercase unless first/last
+          if (i > 0 && i < words.length - 1 && smallWords.has(lower)) return lower;
+          // Basic capitalization
+          return lower.charAt(0).toUpperCase() + lower.slice(1);
+        })
+        .join(" ");
+    },
+    menuLabelFromSlug(node) {
+      // Prefer slug-derived Title Case; fall back to node.title
+      return node?.slug ? this.slugToTitle(node.slug) : (node?.title || "");
+    }
+  }
 };
 </script>
-

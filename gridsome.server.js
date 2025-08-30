@@ -44,6 +44,9 @@ module.exports = function(api) {
     const about = store.addCollection({
       typeName: "About"
     });
+    const services = store.addCollection({
+      typeName: "Services"
+    });
     const alumni = store.addCollection({
       typeName: "Alumni"
     });
@@ -519,6 +522,32 @@ module.exports = function(api) {
                 }    
               }
             }
+            services: allServicesSectionPages {
+              id
+              slug
+              title
+              introCopy
+              position
+              body
+              readMoreButton
+              bannerImage {
+                url
+              }
+              bannerCopy
+              footer
+              cta {
+                buttonLink
+                buttonText
+                class
+                body
+                colour2 {
+                  hex
+                }
+                colour {
+                  hex
+                }    
+              }
+            }
             milestones: allTimelineItems(orderBy: position_ASC) {
               description
               id
@@ -775,6 +804,11 @@ module.exports = function(api) {
       });
       for (const item of result.data.data.about) {
         about.addNode({
+          ...item
+        });
+      }
+      for (const item of result.data.data.services) {
+        services.addNode({
           ...item
         });
       }
