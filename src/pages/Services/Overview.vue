@@ -165,13 +165,36 @@ export default {
   font-size: 0.9rem;
 }
 
-/* Mobile: stop wrapping and stack full-width */
+/* Mobile: stack, and let some figures render narrower than 100% */
 @media (max-width: 768px) {
-  .body figure.testimonial,
-  .body figure.testimonial.left {
+  .body figure.testimonial {
     float: none;
     width: 100%;
     margin: 1rem 0;
+    text-align: center; /* center the narrower block */
+    --sm-img-w: 100%;   /* default if not provided inline */
+  }
+
+  /* Tie image and caption widths together */
+  .body figure.testimonial img,
+  .body figure.testimonial figcaption {
+    max-width: var(--sm-img-w);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Optional: cap vertical growth for tall (portrait/square) images */
+  .body figure.testimonial.compact img {
+    max-height: 260px;
+    width: auto;        /* respect the height cap */
+    max-width: 100%;    /* but never overflow the container */
+  }
+
+  /* Keep caption readable */
+  .body figure.testimonial figcaption {
+    display: block;
+    margin-top: .5rem;
+    line-height: 1.35;
   }
 }
 
