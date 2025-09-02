@@ -112,14 +112,9 @@ export default {
 }
 .intro {
   margin-top: 2em;
-  font-size: larger;
 }
 .hire-us {
   margin-top: 3em;
   margin-bottom: 3em;
-  font-size: larger;
-}
-.hire-us h3 {
-  font-size: 1.5em;
 }
 </style>

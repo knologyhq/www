@@ -6,10 +6,10 @@
       />
 
       <v-row justify="center">
-        <v-col cols="12" md="8" lg="8" id="main" class="intro" v-html="marked($page.services.edges[0].node.introCopy)" />
+        <v-col cols="12" md="8" lg="8" class="intro" v-html="marked($page.services.edges[0].node.introCopy)" />
       </v-row>
       <v-row justify="center">
-        <v-col cols="12" md="8" lg="8" id="main" class="body" v-html="marked($page.services.edges[0].node.body)" />
+        <v-col cols="12" md="8" lg="8" id="main" class="body has-floats" v-html="marked($page.services.edges[0].node.body)" />
       </v-row>
     </v-container>
 
@@ -112,42 +112,67 @@ export default {
 }
 .intro {
   margin-top: 2em;
-  font-size: larger;
 }
 .hire-us {
   margin-top: 3em;
   margin-bottom: 3em;
-  font-size: larger;
-}
-.hire-us h3 {
-  font-size: 1.5em;
 }
 
-/* two-col grid */
-.body .testimonials {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem 2rem;
-  align-items: start;
+/* Disable multi-columns when floating figures */
+.body.has-floats {
+  column-count: 1 !important;
 }
-@media (--desktop) {
-  .body .testimonials {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+/* If you can't touch the template, this also works in modern browsers */
+.body:has(figure.testimonial) {
+  column-count: 1 !important;
+}
+
+/* Let following content clear the floats */
+.body::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Floatable testimonials inside the CMS body */
+.body figure.testimonial {
+  width: clamp(220px, 40%, 360px);
+  background: #fff;
+  padding: .5rem;
+  box-sizing: border-box;
+  margin: 0 0 1rem 1rem;  /* default: right float spacing */
+  float: right;
+  shape-outside: inset(0 round .5rem);
+}
+
+.body figure.testimonial.left {
+  float: left;
+  margin: 0 1rem 1rem 0;
+}
+
+.body figure.testimonial img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.body figure.testimonial figcaption {
+  display: block;
+  width: 100%;
+  margin-top: .5rem;
+  line-height: 1.35;
+  font-size: 0.9rem;
+}
+
+/* Mobile: stop wrapping and stack full-width */
+@media (max-width: 768px) {
+  .body figure.testimonial,
+  .body figure.testimonial.left {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
   }
 }
-
-/* two-up as soon as there’s ~240px per card; falls back to 1 when too tight */
-.body .testimonials {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem 1.25rem;
-  align-items: start;
-}
-
-/* keep image/caption behaving */
-.body .testimonials figure { display: block; margin: 0; align-self: start; }
-.body .testimonials img { display: block; max-width: 100%; height: auto; margin: 1rem auto;}
-.body .testimonials figcaption { display: block; width: 100%; margin-top: .5rem; margin-bottom: 2rem;}
-
 
 </style>
