@@ -165,6 +165,10 @@ export default {
   font-size: 0.9rem;
 }
 
+.body h2 {
+  clear: both;
+}
+
 /* Mobile: stack, and let some figures render narrower than 100% */
 @media (max-width: 768px) {
   .body figure.testimonial {
