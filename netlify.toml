@@ -19,6 +19,9 @@
 [[redirects]]
   from = "/article/can-the-news-help-you-learn-statistics"
   to = "/article/meaningful-math"
+[[redirects]]
+  from = "/article/learning-workshops-with-knology"
+  to = "/services/capacity-building"
 
 ## Wildcard redirects for all /category/ and /initiative/ URLs
 [[redirects]]
