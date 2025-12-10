@@ -19,9 +19,11 @@
             class="ma-2"
             :value="role.node.title"
             filter
-            v-for="role in $page.allRoles.edges"
+            v-for="role in sortedRoles"
             :key="role.node.id"
-          >{{ role.node.title}}</v-chip>
+          >
+            {{ role.node.title }}
+          </v-chip>
         </v-chip-group>
       </template>
       <v-row class="mb-6">
@@ -108,6 +110,11 @@ export default {
       } else {
         return this.getMatchingPeople(this.people, role);
       }
+    },
+    sortedRoles() {
+      return this.$page.allRoles.edges
+        .slice()
+        .sort((a, b) => a.node.title.localeCompare(b.node.title));
     }
   },
   methods: {
